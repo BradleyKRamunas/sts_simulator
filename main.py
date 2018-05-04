@@ -22,7 +22,7 @@ class Status(Enum):
 
     ##NON-STATUS CARD EFFECTS##
     DEFEND = 99 # Gain armor equivalent to n
-    DRAW = 100 #
+    DRAW = 100 # Draw n number of cards
 
 class StatusCondition:
     def __init__(self, status, value, static):
@@ -32,9 +32,70 @@ class StatusCondition:
 
 class Player:
     def __init__(self, deck, health):
-        self.conditions = []
         self.deck = deck
         self.health = health
+
+class Deck:
+    def __init__(self):
+        self.cards = []
+
+    def add_card(self, card):
+        self.cards.append(card)
+
+    def remove_card(self, card):
+        self.cards.remove(card)
+
+class Card:
+    def __init__(self, cost, status_condition, target_type, exhaust):
+        self.cost = cost
+        self.status_condition = status_condition
+        self.target_type = target_type
+        self.exhaust = exhaust
+
+    def apply(self, target, combat):
+        if self.target_type == TARGET.SELF:
+            combat.player.apply_status_condition(self.status_condition)
+        elif self.target_type == TARGET.SINGLE:
+
+        elif self.target_type == TARGET.ALL:
+
+        elif self.target_type == TARGET.RANDOM:
+
+class Combat:
+    def __init__(self, player, enemies):
+        self.player = CombatPlayer(player, self)
+        self.enemies = enemies
+        game_loop()
+
+    def game_loop(self):
+        while True:
+            # Main Combat Loop
+            #TODO: setup enemy intents
+
+            ##START OF USER INPUT##
+            self.player.draw_cards(5)
+            #TODO: define interface for interacting with the game
+            #TODO: wait until player ends turn
+            ##END OF USER INPUT##
+
+            #TODO: check if enemies are dead
+            #TODO: apply_status_condition to all enemies
+            #TODO: allow enemies to attack player/apply debuffs/buff themselves
+            #TODO: check if player has died
+            self.player.discard_hand(5)
+            self.player.reset_energy()
+        #TODO: define end-of-combat sequence
+
+
+class CombatEnemy:
+    def __init__(self, ai, health):
+        self.ai = ai # function that will generate moves
+        self.health = health
+        self.conditions = []
+        #TODO: create some AI class and extend it with some forms of enemies
+
+    def generate_move(self):
+        self.ai.generate_move()
 
     def apply_status_condition(self, condition):
         for condit in self.conditions:
@@ -53,23 +114,52 @@ class Player:
         for condition in conditions_to_remove:
             self.conditions.remove(condition)
 
-class Enemy:
-    def __init__(self, health):
+class CombatPlayer:
+    def __init__(self, player, combat):
+        self.combat = combat
         self.conditions = []
-        self.health = health
+        self.deck = CombatDeck(player.deck)
+        self.health = player.health
+        self.energy = 3
+        self.defence = 0
 
-class Deck:
-    def __init__(self):
-        self.cards = []
+        def draw_cards(self, number):
+            for i in range(number):
+                self.deck.draw_card()
 
-    def add_card(self, card):
-        self.cards.append(card)
+        def discard_hand(self):
+            self.deck.discard_hand()
 
-    def remove_card(self, card):
-        self.cards.remove(card)
+        def reset_energy(self):
+            self.energy = 3
+
+        def apply_status_condition(self, condition):
+            if condition.status == Status.DEFEND:
+                self.defence += condition.value
+                return
+            if conditon.status == Status.DRAW:
+                self.draw_card(condition.value)
+                return
+            for condit in self.conditions:
+                if condition.status == condit.status:
+                    condit.value += condition.value
+                    return
+            self.conditions.append(condition)
+
+        def decrement_status_conditions(self):
+            conditions_to_remove = []
+            for condition in self.conditions:
+                if not condition.static:
+                    condition.value -= 1
+                if condition.value == 0:
+                    conditions_to_remove.append(condition)
+            for condition in conditions_to_remove:
+                self.conditions.remove(condition)
+
 
 class CombatDeck:
-    def __init__(self, deck):
+    def __init__(self, deck, combat):
+        self.combat = combat
         self.draw_pile = random.shuffle(deck)
         self.hand = []
         self.discard_pile = []
@@ -89,32 +179,11 @@ class CombatDeck:
 
     def use_card(self, card, target):
         self.hand.remove(card)
-        card.apply(target)
+        card.apply(target, combat)
         if card.exhaust:
             self.exhaust_pile.append(card)
         else:
             self.discard_pile.append(card)
-
-
-
-
-class Card:
-    def __init__(self, cost, status_condition, target_type, exhaust):
-        self.cost = cost
-        self.status_condition = status_condition
-        self.target_type = target_type
-        self.exhaust = exhaust
-
-    def apply(self, target):
-        if self.target_type == TARGET.SELF:
-
-        elif self.target_type == TARGET.SINGLE:
-
-        elif self.target_type == TARGET.ALL:
-
-        elif self.target_type == TARGET.RANDOM:
-
-
 
 def generate_default_deck():
     deck = Deck()
