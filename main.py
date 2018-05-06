@@ -1,5 +1,27 @@
 from enum import Enum
+from collections import deque
 import random
+
+class GoblinAI:
+    def __init__(self):
+        self.counter = 0
+        self.sequence = deque([Intent.ATTACK])
+        self.attack = 6
+        self.defend = 0
+        self.buff = 0
+        self.debuff = 0
+
+    def generate_move(self):
+        move = self.sequence.popleft()
+        self.sequence.append(move)
+        return (move, self.attack)
+
+
+class Intent(Enum):
+    ATTACK = 1
+    DEFEND = 2
+    BUFF = 3
+    DEBUFF = 4
 
 class Target(Enum):
     SELF = 1 # Card targets the user
@@ -34,6 +56,7 @@ class Player:
     def __init__(self, deck, health):
         self.deck = deck
         self.health = health
+        self.max_health = health
 
 class Deck:
     def __init__(self):
@@ -70,20 +93,26 @@ class Combat:
     def game_loop(self):
         while True:
             # Main Combat Loop
-            #TODO: setup enemy intents
+            for enemy in enemies:
+                enemy.generate_move()
 
             ##START OF USER INPUT##
             self.player.draw_cards(5)
             #TODO: define interface for interacting with the game
-            #TODO: wait until player ends turn
+            while True:
+                #TODO: this while loop controls taking in input from user
+
+
+                #TODO: check if enemies are dead
             ##END OF USER INPUT##
 
-            #TODO: check if enemies are dead
-            #TODO: apply_status_condition to all enemies
+            for enemy in enemies:
+                enemy.apply_status_condition()
             #TODO: allow enemies to attack player/apply debuffs/buff themselves
             #TODO: check if player has died
             self.player.discard_hand(5)
             self.player.reset_energy()
+
         #TODO: define end-of-combat sequence
 
 
@@ -91,11 +120,12 @@ class CombatEnemy:
     def __init__(self, ai, health):
         self.ai = ai # function that will generate moves
         self.health = health
+        self.intent = None # defined as a tuple of (intent, value)
         self.conditions = []
         #TODO: create some AI class and extend it with some forms of enemies
 
     def generate_move(self):
-        self.ai.generate_move()
+        self.intent = self.ai.generate_move()
 
     def apply_status_condition(self, condition):
         for condit in self.conditions:
