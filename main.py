@@ -51,9 +51,10 @@ class Status(Enum):
 
 
 class StatusCondition:
-    def __init__(self, status, value, static):
+    def __init__(self, status, value, duration, static):
         self.status = status  # type Status
-        self.value = 0  # determines either how many turns a debuff will exist, or initial value
+        self.value = value  # determines value of debuff
+        self.duration = duration  # determines duration of debuff
         self.static = static  # true if value will never change, false is value decrements/changes per turn
 
 
@@ -95,6 +96,7 @@ class Card:
             return
             # TODO: complete this
 
+
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
@@ -133,10 +135,14 @@ class CombatEnemy:
         self.health = health
         self.intent = None # defined as a tuple of (intent, value)
         self.conditions = []
-        #TODO: create some AI class and extend it with some forms of enemies
+        # TODO: create some AI class and extend it with some forms of enemies
 
     def generate_move(self):
         self.intent = self.ai.generate_move()
+
+    def take_damage(self, value):
+        # TODO: check conditions for damage multipliers
+        self.health -= value
 
     def apply_status_condition(self, condition):
         for condit in self.conditions:
@@ -149,11 +155,12 @@ class CombatEnemy:
         conditions_to_remove = []
         for condition in self.conditions:
             if not condition.static:
-                condition.value -= 1
-            if condition.value == 0:
+                condition.duration -= 1
+            if condition.duration == 0:
                 conditions_to_remove.append(condition)
         for condition in conditions_to_remove:
             self.conditions.remove(condition)
+
 
 class CombatPlayer:
     def __init__(self, player, combat):
@@ -163,6 +170,17 @@ class CombatPlayer:
         self.health = player.health
         self.energy = 3
         self.defence = 0
+
+        def take_damage(self, value):
+            # TODO: check conditions for damage multipliers
+            self.health -= value
+
+        def health_health(self, value):
+            self.health += value
+
+        def gain_defence(self, value):
+            # TODO: check conditions for defence multipliers
+            self.defence += value
 
         def draw_cards(self, number):
             for i in range(number):
@@ -191,8 +209,8 @@ class CombatPlayer:
             conditions_to_remove = []
             for condition in self.conditions:
                 if not condition.static:
-                    condition.value -= 1
-                if condition.value == 0:
+                    condition.duration -= 1
+                if condition.duration == 0:
                     conditions_to_remove.append(condition)
             for condition in conditions_to_remove:
                 self.conditions.remove(condition)
@@ -244,6 +262,9 @@ def generate_default_deck():
 # For effects, add an effect timer
 
 # Which cards do we want to implement?
+# Strike
+# Defend
+# Bash
 # Anger
 # Armaments
 # Body Slam
@@ -312,3 +333,24 @@ def generate_default_deck():
 # Limit Break
 # Offering
 # Reaper
+
+
+class CardType(Enum):
+    ATTACK = 1
+    SKILL = 2
+    POWER = 3
+    STATUS = 4
+
+
+class NewCard:
+    def __init__(self, cost, card_type, fx, target_type, exhaust):
+        self.cost = cost  # cost of the card in order to use (-1 is X, -2 is X+1...)
+        self.card_type = card_type  # of type Card_Type
+        self.fx = fx  # function that takes in (combat, target) and does something
+        self.target_type = target_type  # of type Target
+        self.exhaust = exhaust  # boolean indicating whether the card exhausts
+
+    def apply(self, combat, target):
+        self.fx(combat, target)
+
+
