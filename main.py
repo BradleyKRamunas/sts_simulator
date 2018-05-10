@@ -76,37 +76,42 @@ class Card:
         self.exhaust = exhaust
 
     def apply(self, target, combat):
-        if self.target_type == TARGET.SELF:
+        if self.target_type == Target.SELF:
             combat.player.apply_status_condition(self.status_condition)
-        elif self.target_type == TARGET.SINGLE:
-
-        elif self.target_type == TARGET.ALL:
-
-        elif self.target_type == TARGET.RANDOM:
+        elif self.target_type == Target.SINGLE:
+            return
+            #TODO: complete this
+        elif self.target_type == Target.ALL:
+            return
+            #TODO: complete this
+        elif self.target_type == Target.RANDOM:
+            return
+            #TODO: complete this
 
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
         self.enemies = enemies
-        game_loop()
+        self.game_loop()
 
     def game_loop(self):
         while True:
             # Main Combat Loop
-            for enemy in enemies:
+            for enemy in self.enemies:
                 enemy.generate_move()
 
             ##START OF USER INPUT##
             self.player.draw_cards(5)
             #TODO: define interface for interacting with the game
             while True:
+                break
                 #TODO: this while loop controls taking in input from user
 
 
                 #TODO: check if enemies are dead
             ##END OF USER INPUT##
 
-            for enemy in enemies:
+            for enemy in self.enemies:
                 enemy.apply_status_condition()
             #TODO: allow enemies to attack player/apply debuffs/buff themselves
             #TODO: check if player has died
@@ -167,7 +172,7 @@ class CombatPlayer:
             if condition.status == Status.DEFEND:
                 self.defence += condition.value
                 return
-            if conditon.status == Status.DRAW:
+            if condition.status == Status.DRAW:
                 self.draw_card(condition.value)
                 return
             for condit in self.conditions:
@@ -196,20 +201,20 @@ class CombatDeck:
         self.exhaust_pile = []
 
     def draw_card(self):
-        if len(hand) < 12:
+        if len(self.hand) < 12:
             if len(self.draw_pile) == 0:
                 if len(self.discard_pile) != 0:
                     self.draw_pile = random.shuffle(self.discard_pile)
                     self.discard_pile = []
-            hand.append(self.draw_pile.pop())
+            self.hand.append(self.draw_pile.pop())
 
     def discard_hand(self):
-        discard_pile.extend(self.hand)
+        self.discard_pile.extend(self.hand)
         self.hand = []
 
     def use_card(self, card, target):
         self.hand.remove(card)
-        card.apply(target, combat)
+        card.apply(target, self.combat)
         if card.exhaust:
             self.exhaust_pile.append(card)
         else:
@@ -217,9 +222,11 @@ class CombatDeck:
 
 def generate_default_deck():
     deck = Deck()
-    bash = deck.add_card(Card(2, StatusCondition(Status.VULNERABLE, 2, False), Target.SINGLE, False))
+    bash = Card(2, StatusCondition(Status.VULNERABLE, 2, False), Target.SINGLE, False)
     strike = Card(1, None, Target.SINGLE, False)
-    for i in range(5): deck.add_card(strike)
+    for i in range(5):
+        deck.add_card(strike)
     defend = Card(1, StatusCondition(Status.DEFEND, 1, False), Target.SELF, False)
-    for i in range(4) : deck.add_card(defend)
+    for i in range(4):
+        deck.add_card(defend)
     return deck
