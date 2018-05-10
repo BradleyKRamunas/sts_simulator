@@ -121,7 +121,7 @@ class Combat:
                 enemy.apply_status_condition()
             # TODO: allow enemies to attack player/apply debuffs/buff themselves
             # TODO: check if player has died
-            self.player.discard_hand(5)
+            self.player.discard_hand()
             self.player.reset_energy()
 
         # TODO: define end-of-combat sequence
