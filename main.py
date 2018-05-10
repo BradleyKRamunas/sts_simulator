@@ -236,3 +236,79 @@ def generate_default_deck():
     for i in range(4):
         deck.add_card(defend)
     return deck
+
+# TODO:
+# We need to give cards types (i.e. attack, skill, power, status)
+# How should we define cards? (e.g. unplayable)
+# Think about order of effect adding/defend
+# For effects, add an effect timer
+
+# Which cards do we want to implement?
+# Anger
+# Armaments
+# Body Slam
+# Clash
+# Clothesline
+# Flex
+# Havoc
+# Headbutt
+# Heavy Blade
+# Iron Wave
+# Perfected Strike
+# Pommel Strike
+# Shrug it off
+# Thunderclap
+# True Grit
+# Twin Strike
+# Warcry
+# Wild Strike
+# Battle Trance
+# Blood for Blood
+# Bloodletting
+# Burning pact
+# Carnage
+# Combust
+# Corruption
+# Disarm
+# Dropkick
+# Dual Wield
+# Entrench
+# Evolve
+# Feel No Pain
+# Flame Barrier
+# Ghostly Armor
+# Hemokinesis
+# Infernal Blade
+# Inflame
+# Intimidate
+# Metallicize
+# Power Through
+# Pummel
+# Rage
+# Rampage
+# Reckless Charge
+# Rupture
+# Searing Blow
+# Second Wind
+# Seeing Red
+# Sever Soul
+# Shockwave
+# Spot Weakness
+# Uppercut
+# Whirlwind - add special cost for X energy
+# Barricade - block no longer expires
+# Beserk
+# Bludgeon
+# Brutality
+# Dark Embrace
+# Demon Form - for all powers, add an unrecoverable pile
+# Double Tap - literally everything happens twice
+# Exhume
+# Feed - no such thing as "minions"/"bosses" for us... for now
+# Fiend fire
+# Immolate
+# Impervious
+# Juggernaut
+# Limit Break
+# Offering
+# Reaper
