@@ -2,6 +2,7 @@ from enum import Enum
 from collections import deque
 import random
 
+
 class GoblinAI:
     def __init__(self):
         self.counter = 0
@@ -23,40 +24,45 @@ class Intent(Enum):
     BUFF = 3
     DEBUFF = 4
 
+
 class Target(Enum):
-    SELF = 1 # Card targets the user
-    SINGLE = 2 # Card targets a single enemy
-    ALL = 3 # Card targets all enemies
-    RANDOM = 4 # Card targets a random enemy
+    SELF = 1  # Card targets the user
+    SINGLE = 2  # Card targets a single enemy
+    ALL = 3  # Card targets all enemies
+    RANDOM = 4  # Card targets a random enemy
+
 
 class Status(Enum):
-    POISON = 1 # Deal n damage, decrease to (n-1) for next turn
-    WEAK = 2 # Deal 25% less damage
-    VULNERABLE = 3 # Take 50% more damage
-    FRAIL = 4 # Reduce armor gain by 25%
-    DRAW_REDUCTION = 5 # Decrease card draw by n
-    CONFUSED = 6 # Randomizes card costs
-    STRENGTH = 7 # Increases damage by 1
-    DEXTERITY = 8 # Increases defence gain by 1
-    ARTIFACT = 9 # Prevents debuff
-    REGENERATION = 10 # Heal 4 hp per turn for 5 turns
-    THORNS = 11 # Deal n damage to any attacker
+    POISON = 1  # Deal n damage, decrease to (n-1) for next turn
+    WEAK = 2  # Deal 25% less damage
+    VULNERABLE = 3  # Take 50% more damage
+    FRAIL = 4  # Reduce armor gain by 25%
+    DRAW_REDUCTION = 5  # Decrease card draw by n
+    CONFUSED = 6  # Randomizes card costs
+    STRENGTH = 7  # Increases damage by 1
+    DEXTERITY = 8  # Increases defence gain by 1
+    ARTIFACT = 9  # Prevents debuff
+    REGENERATION = 10  # Heal 4 hp per turn for 5 turns
+    THORNS = 11  # Deal n damage to any attacker
 
-    ##NON-STATUS CARD EFFECTS##
-    DEFEND = 99 # Gain armor equivalent to n
-    DRAW = 100 # Draw n number of cards
+    # NON-STATUS CARD EFFECTS #
+    DEFEND = 99  # Gain armor equivalent to n
+    DRAW = 100  # Draw n number of cards
+
 
 class StatusCondition:
     def __init__(self, status, value, static):
-        self.status = status # type Status
-        self.value = 0 # determines either how many turns a debuff will exist, or initial value
-        self.static = static # true if value will never change, false is value decrements/changes per turn
+        self.status = status  # type Status
+        self.value = 0  # determines either how many turns a debuff will exist, or initial value
+        self.static = static  # true if value will never change, false is value decrements/changes per turn
+
 
 class Player:
     def __init__(self, deck, health):
         self.deck = deck
         self.health = health
         self.max_health = health
+
 
 class Deck:
     def __init__(self):
@@ -67,6 +73,7 @@ class Deck:
 
     def remove_card(self, card):
         self.cards.remove(card)
+
 
 class Card:
     def __init__(self, cost, status_condition, target_type, exhaust):
@@ -80,13 +87,13 @@ class Card:
             combat.player.apply_status_condition(self.status_condition)
         elif self.target_type == Target.SINGLE:
             return
-            #TODO: complete this
+            # TODO: complete this
         elif self.target_type == Target.ALL:
             return
-            #TODO: complete this
+            # TODO: complete this
         elif self.target_type == Target.RANDOM:
             return
-            #TODO: complete this
+            # TODO: complete this
 
 class Combat:
     def __init__(self, player, enemies):
@@ -100,25 +107,24 @@ class Combat:
             for enemy in self.enemies:
                 enemy.generate_move()
 
-            ##START OF USER INPUT##
+            # START OF USER INPUT #
             self.player.draw_cards(5)
-            #TODO: define interface for interacting with the game
+            # TODO: define interface for interacting with the game
             while True:
                 break
-                #TODO: this while loop controls taking in input from user
+                # TODO: this while loop controls taking in input from user
 
-
-                #TODO: check if enemies are dead
-            ##END OF USER INPUT##
+                # TODO: check if enemies are dead
+            # END OF USER INPUT #
 
             for enemy in self.enemies:
                 enemy.apply_status_condition()
-            #TODO: allow enemies to attack player/apply debuffs/buff themselves
-            #TODO: check if player has died
+            # TODO: allow enemies to attack player/apply debuffs/buff themselves
+            # TODO: check if player has died
             self.player.discard_hand(5)
             self.player.reset_energy()
 
-        #TODO: define end-of-combat sequence
+        # TODO: define end-of-combat sequence
 
 
 class CombatEnemy:
