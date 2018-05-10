@@ -171,49 +171,49 @@ class CombatPlayer:
         self.energy = 3
         self.defence = 0
 
-        def take_damage(self, value):
-            # TODO: check conditions for damage multipliers
-            self.health -= value
+    def take_damage(self, value):
+        # TODO: check conditions for damage multipliers
+        self.health -= value
 
-        def health_health(self, value):
-            self.health += value
+    def health_health(self, value):
+        self.health += value
 
-        def gain_defence(self, value):
-            # TODO: check conditions for defence multipliers
-            self.defence += value
+    def gain_defence(self, value):
+        # TODO: check conditions for defence multipliers
+        self.defence += value
 
-        def draw_cards(self, number):
-            for i in range(number):
-                self.deck.draw_card()
+    def draw_cards(self, number):
+        for i in range(number):
+            self.deck.draw_card()
 
-        def discard_hand(self):
-            self.deck.discard_hand()
+    def discard_hand(self):
+        self.deck.discard_hand()
 
-        def reset_energy(self):
-            self.energy = 3
+    def reset_energy(self):
+        self.energy = 3
 
-        def apply_status_condition(self, condition):
-            if condition.status == Status.DEFEND:
-                self.defence += condition.value
+    def apply_status_condition(self, condition):
+        if condition.status == Status.DEFEND:
+            self.defence += condition.value
+            return
+        if condition.status == Status.DRAW:
+            self.draw_card(condition.value)
+            return
+        for condit in self.conditions:
+            if condition.status == condit.status:
+                condit.value += condition.value
                 return
-            if condition.status == Status.DRAW:
-                self.draw_card(condition.value)
-                return
-            for condit in self.conditions:
-                if condition.status == condit.status:
-                    condit.value += condition.value
-                    return
-            self.conditions.append(condition)
+        self.conditions.append(condition)
 
-        def decrement_status_conditions(self):
-            conditions_to_remove = []
-            for condition in self.conditions:
-                if not condition.static:
-                    condition.duration -= 1
-                if condition.duration == 0:
-                    conditions_to_remove.append(condition)
-            for condition in conditions_to_remove:
-                self.conditions.remove(condition)
+    def decrement_status_conditions(self):
+        conditions_to_remove = []
+        for condition in self.conditions:
+            if not condition.static:
+                condition.duration -= 1
+            if condition.duration == 0:
+                conditions_to_remove.append(condition)
+        for condition in conditions_to_remove:
+            self.conditions.remove(condition)
 
 
 class CombatDeck:
