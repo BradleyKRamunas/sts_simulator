@@ -41,11 +41,29 @@ class Status(Enum):
     FRAIL = 4  # Reduce armor gain by 25%
     DRAW_REDUCTION = 5  # Decrease card draw by n
     CONFUSED = 6  # Randomizes card costs
-    STRENGTH = 7  # Increases damage by 1
-    DEXTERITY = 8  # Increases block gain by 1
-    ARTIFACT = 9  # Prevents debuff
+    STRENGTH = 7  # Increases damage by n
+    DEXTERITY = 8  # Increases block gain by n
+    ARTIFACT = 9  # Prevents n debuffs
     REGENERATION = 10  # Heal 4 hp per turn for 5 turns
     THORNS = 11  # Deal n damage to any attacker
+
+    FLEX = 100  # Gain n strength immediately, lose n strength at the END of the turn
+    NO_DRAW = 101  # Can no longer draw cards until the END of the turn
+    COMBUST = 102  # Lose n HP at END of turn, 5n DAMAGE to ALL enemies
+    CORRUPTION = 103  # Skills cost 0, all skills now exhaust
+    EVOLVE = 104  # Drawing a status results in drawing n cards
+    FEELNOPAIN = 105  # Whenever a card is exhausted, gain n Block
+    FLAMEBARRIER = 106  # If you take damage this turn, deal n damage to attacker
+    METALLICIZE = 107  # At the END of turn, gain n block
+    RAGE = 108  # Playing an attack, gain n block
+    RUPTURE = 109  # Lose HP from a CARD gain n strength
+    BARRICADE = 110  # Block no longer expires at END of turn
+    BERSERK = 111  # If HP <= 50%, gain n more energy each turn
+    BRUTALITY = 112  # At START of turn lose n hp draw n cards
+    EMBRACE = 113  # Whenever card is exhausted, draw n cards
+    DEMON = 114  # At start of each turn, gain n strength
+    DOUBLE = 115  # next n attacks are played twice
+    JUGGERNAUT = 116  # gain block, deal n damage to random enemy
 
 
 class StatusCondition:
@@ -105,9 +123,23 @@ class Combat:
             for enemy in self.enemies:
                 enemy.generate_move()
 
-            # START OF USER INPUT #
-            self.player.draw_cards(5)
-            # TODO: define interface for interacting with the game
+            # Start-of-Turn Sequence
+            self.player.reset_energy()
+            draw_size = 5
+            for condition in self.player.conditions:
+                if condition.status == Status.DRAW_REDUCTION:
+                    draw_size -= condition.value
+                elif condition.status == Status.BERSERK:
+                    if self.player.health <= math.floor(0.5 * self.player.max_health):
+                        self.player.gain_energy(condition.value)
+                elif condition.status == Status.BRUTALITY:
+                    self.player.lose_health(condition.value)
+                    self.player.draw_cards(condition.value)
+                elif condition.status == Status.DEMON:
+                    status = StatusCondition(Status.STRENGTH, condition.value, 0, True)
+                    self.player.apply_status_condition(status)
+
+            self.player.draw_cards(draw_size)
             while True:
                 break
                 # TODO: this while loop controls taking in input from user
@@ -116,11 +148,17 @@ class Combat:
             # END OF USER INPUT #
 
             for enemy in self.enemies:
-                enemy.apply_status_condition()
+                enemy.decrement_status_condition()
             # TODO: allow enemies to attack player/apply debuffs/buff themselves
             # TODO: check if player has died
+
+            # End-of-Turn Sequence
+            # TODO: finish end-of-turn sequence
             self.player.discard_hand()
-            self.player.reset_energy()
+            for condition in self.player.conditions:
+                if condition.status == Status.FLEX:
+                    status = StatusCondition(Status.STRENGTH, -condition.value, 0, True)
+                    self.player.apply_status_condition(status)
 
         # TODO: define end-of-combat sequence
 
@@ -208,6 +246,10 @@ class CombatPlayer:
             self.block = 0
             self.health -= calc_value
 
+    def lose_health(self, value):
+        # TODO: check for statuses that rely on losing health by CARD effect
+        self.health -= value
+
     def heal_health(self, value):
         self.health += value
 
@@ -232,6 +274,9 @@ class CombatPlayer:
 
     def reset_energy(self):
         self.energy = 3
+
+    def gain_energy(self, value):
+        self.energy += value
 
     def apply_status_condition(self, condition):
         for condit in self.conditions:
@@ -334,7 +379,6 @@ def generate_default_deck():
 # Flame Barrier
 # Ghostly Armor
 # Hemokinesis
-# Infernal Blade
 # Inflame
 # Intimidate
 # Metallicize
