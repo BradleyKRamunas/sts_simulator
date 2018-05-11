@@ -2,6 +2,7 @@ from enum import Enum
 from collections import deque
 import random
 import cards
+import math
 
 
 class GoblinAI:
@@ -41,14 +42,10 @@ class Status(Enum):
     DRAW_REDUCTION = 5  # Decrease card draw by n
     CONFUSED = 6  # Randomizes card costs
     STRENGTH = 7  # Increases damage by 1
-    DEXTERITY = 8  # Increases defence gain by 1
+    DEXTERITY = 8  # Increases block gain by 1
     ARTIFACT = 9  # Prevents debuff
     REGENERATION = 10  # Heal 4 hp per turn for 5 turns
     THORNS = 11  # Deal n damage to any attacker
-
-    # NON-STATUS CARD EFFECTS #
-    DEFEND = 99  # Gain armor equivalent to n
-    DRAW = 100  # Draw n number of cards
 
 
 class StatusCondition:
@@ -130,9 +127,11 @@ class Combat:
 
 class CombatEnemy:
     def __init__(self, ai, health):
-        self.ai = ai # function that will generate moves
+        self.ai = ai  # function that will generate moves
         self.health = health
-        self.intent = None # defined as a tuple of (intent, value)
+        self.max_health = health
+        self.block = 0
+        self.intent = None  # defined as a tuple of (intent, value)
         self.conditions = []
         # TODO: create some AI class and extend it with some forms of enemies
 
@@ -140,8 +139,19 @@ class CombatEnemy:
         self.intent = self.ai.generate_move()
 
     def take_damage(self, value):
-        # TODO: check conditions for damage multipliers
-        self.health -= value
+        calc_value = value
+        is_vulnerable = False
+        for condition in self.conditions:
+            if condition.status == Status.VULNERABLE:
+                is_vulnerable = True
+        if is_vulnerable:
+            calc_value = math.floor(1.5 * calc_value)
+        if self.block - calc_value >= 0:
+            self.block -= calc_value
+        else:
+            calc_value = calc_value - self.block
+            self.block = 0
+            self.health -= calc_value
 
     def apply_status_condition(self, condition):
         for condit in self.conditions:
@@ -167,19 +177,51 @@ class CombatPlayer:
         self.conditions = []
         self.deck = CombatDeck(player.deck)
         self.health = player.health
+        self.max_health = player.max_health
         self.energy = 3
-        self.defence = 0
+        self.block = 0
+
+    def generate_damage(self, value):
+        calc_value = value
+        is_weak = False
+        for condition in self.conditions:
+            if condition.status == Status.STRENGTH:
+                calc_value += condition.value
+            elif condition.status == Status.WEAK:
+                is_weak = True
+        if is_weak:
+            calc_value = math.floor(0.75 * calc_value)
+        return calc_value
 
     def take_damage(self, value):
-        # TODO: check conditions for damage multipliers
-        self.health -= value
+        calc_value = value
+        is_vulnerable = False
+        for condition in self.conditions:
+            if condition.status == Status.VULNERABLE:
+                is_vulnerable = True
+        if is_vulnerable:
+            calc_value = math.floor(1.5 * calc_value)
+        if self.block - calc_value >= 0:
+            self.block -= calc_value
+        else:
+            calc_value -= self.block
+            self.block = 0
+            self.health -= calc_value
 
-    def health_health(self, value):
+    def heal_health(self, value):
         self.health += value
 
-    def gain_defence(self, value):
-        # TODO: check conditions for defence multipliers
-        self.defence += value
+    def gain_block(self, value):
+        calc_value = value
+        is_frail = False
+        for condition in self.conditions:
+            if condition.status == Status.DEXTERITY:
+                calc_value += condition.value
+            elif condition.status == Status.FRAIL:
+                is_frail = True
+        if is_frail:
+            calc_value = math.floor(0.75 * calc_value)
+        self.block += calc_value
 
     def draw_cards(self, number):
         for i in range(number):
@@ -192,12 +234,6 @@ class CombatPlayer:
         self.energy = 3
 
     def apply_status_condition(self, condition):
-        if condition.status == Status.DEFEND:
-            self.defence += condition.value
-            return
-        if condition.status == Status.DRAW:
-            self.draw_cards(condition.value)
-            return
         for condit in self.conditions:
             if condition.status == condit.status:
                 condit.value += condition.value
@@ -259,11 +295,12 @@ def generate_default_deck():
 # Think about order of effect adding/defend
 # For effects, add an effect timer
 
-# Which cards do we want to implement?
 # Strike
 # Defend
 # Bash
 # Anger
+
+# Which cards do we want to implement?
 # Armaments
 # Body Slam
 # Clash
