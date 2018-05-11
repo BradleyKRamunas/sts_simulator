@@ -1,6 +1,7 @@
 from enum import Enum
 from collections import deque
 import random
+import cards
 
 
 class GoblinAI:
@@ -76,25 +77,23 @@ class Deck:
         self.cards.remove(card)
 
 
-class Card:
-    def __init__(self, cost, status_condition, target_type, exhaust):
-        self.cost = cost
-        self.status_condition = status_condition
-        self.target_type = target_type
-        self.exhaust = exhaust
+class CardType(Enum):
+    ATTACK = 1
+    SKILL = 2
+    POWER = 3
+    STATUS = 4
 
-    def apply(self, target, combat):
-        if self.target_type == Target.SELF:
-            combat.player.apply_status_condition(self.status_condition)
-        elif self.target_type == Target.SINGLE:
-            return
-            # TODO: complete this
-        elif self.target_type == Target.ALL:
-            return
-            # TODO: complete this
-        elif self.target_type == Target.RANDOM:
-            return
-            # TODO: complete this
+
+class Card:
+    def __init__(self, cost, card_type, fx, target_type, exhaust):
+        self.cost = cost  # cost of the card in order to use (-1 is X, -2 is X+1...)
+        self.card_type = card_type  # of type Card_Type
+        self.fx = fx  # function that takes in (combat, target) and does something
+        self.target_type = target_type  # of type Target
+        self.exhaust = exhaust  # boolean indicating whether the card exhausts
+
+    def apply(self, combat, target):
+        self.fx(combat, target)
 
 
 class Combat:
@@ -197,7 +196,7 @@ class CombatPlayer:
             self.defence += condition.value
             return
         if condition.status == Status.DRAW:
-            self.draw_card(condition.value)
+            self.draw_cards(condition.value)
             return
         for condit in self.conditions:
             if condition.status == condit.status:
@@ -238,21 +237,20 @@ class CombatDeck:
 
     def use_card(self, card, target):
         self.hand.remove(card)
-        card.apply(target, self.combat)
+        card.apply(self.combat, target)
         if card.exhaust:
             self.exhaust_pile.append(card)
         else:
             self.discard_pile.append(card)
 
+
 def generate_default_deck():
     deck = Deck()
-    bash = Card(2, StatusCondition(Status.VULNERABLE, 2, False), Target.SINGLE, False)
-    strike = Card(1, None, Target.SINGLE, False)
+    deck.add_card(cards.bash)
     for i in range(5):
-        deck.add_card(strike)
-    defend = Card(1, StatusCondition(Status.DEFEND, 1, False), Target.SELF, False)
+        deck.add_card(cards.strike)
     for i in range(4):
-        deck.add_card(defend)
+        deck.add_card(cards.defend)
     return deck
 
 # TODO:
@@ -333,24 +331,3 @@ def generate_default_deck():
 # Limit Break
 # Offering
 # Reaper
-
-
-class CardType(Enum):
-    ATTACK = 1
-    SKILL = 2
-    POWER = 3
-    STATUS = 4
-
-
-class NewCard:
-    def __init__(self, cost, card_type, fx, target_type, exhaust):
-        self.cost = cost  # cost of the card in order to use (-1 is X, -2 is X+1...)
-        self.card_type = card_type  # of type Card_Type
-        self.fx = fx  # function that takes in (combat, target) and does something
-        self.target_type = target_type  # of type Target
-        self.exhaust = exhaust  # boolean indicating whether the card exhausts
-
-    def apply(self, combat, target):
-        self.fx(combat, target)
-
-
