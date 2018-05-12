@@ -191,6 +191,7 @@ class CombatEnemy:
             self.block = 0
             self.health -= calc_value
 
+    # TODO: Organize into duration and value
     def apply_status_condition(self, condition):
         for condit in self.conditions:
             if condition.status == condit.status:
@@ -351,6 +352,8 @@ def generate_default_deck():
 # Clash
 # Clothesline
 # Flex
+
+""" TODO: Implement these cards """
 # Havoc
 # Headbutt
 # Heavy Blade
@@ -412,3 +415,21 @@ def generate_default_deck():
 # Limit Break
 # Offering
 # Reaper
+
+""" So what kind of thing are we doing here?
+Strategy: Function approximation/Q-learning with features.
+State - just wherever we are in the game. 
+Features - 
+I. Wakanda
+II. Enemy health
+III. Number of enemies
+IV. Enemy types
+V. Enemy intent/danger
+VI. Presence of cards in hand (indicator list)
+VII. Cards in discard
+VIII. Cards in draw pile
+IX. Energy remaining
+X. Health remaining
+XI. Block remaining
+XII. Conditions
+
