@@ -10,7 +10,7 @@ def strike_fx(combat, target):
 
 def defend_fx(combat, target):
     player = combat.player
-    player.gain_defence(5)
+    player.gain_block(5)
 
 
 def bash_fx(combat, target):

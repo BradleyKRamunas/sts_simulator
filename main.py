@@ -126,18 +126,21 @@ class Combat:
             # Start-of-Turn Sequence
             self.player.reset_energy()
             draw_size = 5
-            for condition in self.player.conditions:
-                if condition.status == Status.DRAW_REDUCTION:
-                    draw_size -= condition.value
-                elif condition.status == Status.BERSERK:
-                    if self.player.health <= math.floor(0.5 * self.player.max_health):
-                        self.player.gain_energy(condition.value)
-                elif condition.status == Status.BRUTALITY:
-                    self.player.lose_health(condition.value)
-                    self.player.draw_cards(condition.value)
-                elif condition.status == Status.DEMON:
-                    status = StatusCondition(Status.STRENGTH, condition.value, 0, True)
-                    self.player.apply_status_condition(status)
+            if Status.DRAW_REDUCTION in self.player.conditions:
+                value = self.player.conditions[Status.DRAW_REDUCTION].value
+                draw_size -= value
+            if Status.BERSERK in self.player.conditions:
+                value = self.player.conditions[Status.BERSERK].value
+                if self.player.health <= math.floor(0.5 * self.player.max_health):
+                    self.player.gain_energy(value)
+            if Status.BRUTALITY in self.player.conditions:
+                value = self.player.conditions[Status.BRUTALITY].value
+                self.player.lose_health(value)
+                self.player.draw_cards(value)
+            if Status.DEMON in self.player.conditions:
+                value = self.player.conditions[Status.DEMON].value
+                status = StatusCondition(Status.STRENGTH, value, 0, True)
+                self.player.apply_status_condition(status)
 
             self.player.draw_cards(draw_size)
             while True:
@@ -155,10 +158,12 @@ class Combat:
             # End-of-Turn Sequence
             # TODO: finish end-of-turn sequence
             self.player.discard_hand()
-            for condition in self.player.conditions:
-                if condition.status == Status.FLEX:
-                    status = StatusCondition(Status.STRENGTH, -condition.value, 0, True)
-                    self.player.apply_status_condition(status)
+            if Status.FLEX in self.player.conditions:
+                value = self.player.conditions[Status.FLEX].value
+                status = StatusCondition(Status.STRENGTH, -value, 0, True)
+                self.player.apply_status_condition(status)
+
+            self.player.decrement_status_conditions()
 
         # TODO: define end-of-combat sequence
 
@@ -170,7 +175,7 @@ class CombatEnemy:
         self.max_health = health
         self.block = 0
         self.intent = None  # defined as a tuple of (intent, value)
-        self.conditions = []
+        self.conditions = {}
         # TODO: create some AI class and extend it with some forms of enemies
 
     def generate_move(self):
@@ -178,11 +183,7 @@ class CombatEnemy:
 
     def take_damage(self, value):
         calc_value = value
-        is_vulnerable = False
-        for condition in self.conditions:
-            if condition.status == Status.VULNERABLE:
-                is_vulnerable = True
-        if is_vulnerable:
+        if Status.VULNERABLE in self.conditions:
             calc_value = math.floor(1.5 * calc_value)
         if self.block - calc_value >= 0:
             self.block -= calc_value
@@ -192,27 +193,27 @@ class CombatEnemy:
             self.health -= calc_value
 
     def apply_status_condition(self, condition):
-        for condit in self.conditions:
-            if condition.status == condit.status:
-                condit.value += condition.value
-                return
-        self.conditions.append(condition)
+        if condition.status in self.conditions:
+            self.conditions[condition.status].value += condition.value
+            self.conditions[condition.status].duration += condition.duration
+        else:
+            self.conditions[condition.status] = condition
 
     def decrement_status_conditions(self):
         conditions_to_remove = []
-        for condition in self.conditions:
-            if not condition.static:
-                condition.duration -= 1
-            if condition.duration == 0:
-                conditions_to_remove.append(condition)
+        for key, value in self.conditions.items():
+            if not value.static:
+                value.duration -= 1
+                if value.duration == 0:
+                    conditions_to_remove.append(key)
         for condition in conditions_to_remove:
-            self.conditions.remove(condition)
+            del self.conditions[condition]
 
 
 class CombatPlayer:
     def __init__(self, player, combat):
         self.combat = combat
-        self.conditions = []
+        self.conditions = {}  # a dictionary of Status, StatusCondition
         self.deck = CombatDeck(player.deck)
         self.health = player.health
         self.max_health = player.max_health
@@ -221,23 +222,15 @@ class CombatPlayer:
 
     def generate_damage(self, value):
         calc_value = value
-        is_weak = False
-        for condition in self.conditions:
-            if condition.status == Status.STRENGTH:
-                calc_value += condition.value
-            elif condition.status == Status.WEAK:
-                is_weak = True
-        if is_weak:
+        if Status.STRENGTH in self.conditions:
+            calc_value += self.conditions[Status.STRENGTH].value
+        if Status.WEAK in self.conditions:
             calc_value = math.floor(0.75 * calc_value)
         return calc_value
 
     def take_damage(self, value):
         calc_value = value
-        is_vulnerable = False
-        for condition in self.conditions:
-            if condition.status == Status.VULNERABLE:
-                is_vulnerable = True
-        if is_vulnerable:
+        if Status.VULNERABLE in self.conditions:
             calc_value = math.floor(1.5 * calc_value)
         if self.block - calc_value >= 0:
             self.block -= calc_value
@@ -255,13 +248,9 @@ class CombatPlayer:
 
     def gain_block(self, value):
         calc_value = value
-        is_frail = False
-        for condition in self.conditions:
-            if condition.status == Status.DEXTERITY:
-                calc_value += condition.value
-            elif condition.status == Status.FRAIL:
-                is_frail = True
-        if is_frail:
+        if Status.DEXTERITY in self.conditions:
+            calc_value += self.conditions[Status.DEXTERITY].value
+        if Status.FRAIL in self.conditions:
             calc_value = math.floor(0.75 * calc_value)
         self.block += calc_value
 
@@ -279,21 +268,21 @@ class CombatPlayer:
         self.energy += value
 
     def apply_status_condition(self, condition):
-        for condit in self.conditions:
-            if condition.status == condit.status:
-                condit.value += condition.value
-                return
-        self.conditions.append(condition)
+        if condition.status in self.conditions:
+            self.conditions[condition.status].value += condition.value
+            self.conditions[condition.status].duration += condition.duration
+        else:
+            self.conditions[condition.status] = condition
 
     def decrement_status_conditions(self):
         conditions_to_remove = []
-        for condition in self.conditions:
-            if not condition.static:
-                condition.duration -= 1
-            if condition.duration == 0:
-                conditions_to_remove.append(condition)
+        for key, value in self.conditions.items():
+            if not value.static:
+                value.duration -= 1
+                if value.duration == 0:
+                    conditions_to_remove.append(key)
         for condition in conditions_to_remove:
-            self.conditions.remove(condition)
+            del self.conditions[condition]
 
 
 class CombatDeck:
