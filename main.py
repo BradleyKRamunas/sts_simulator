@@ -500,5 +500,5 @@ VIII. Cards in draw pile
 IX. Energy remaining
 X. Health remaining
 XI. Block remaining
-XII. Conditions
+XII. Conditions"""
 
