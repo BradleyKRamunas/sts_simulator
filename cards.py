@@ -39,6 +39,8 @@ def anger_fx(combat, target):
 
 def armaments_fx(combat, target):
     # TODO: ask player which card they want to upgrade
+    player = combat.player
+    player.gain_block(5)
 
 def bodyslam_fx(combat, target):
     block = combat.player.block
@@ -56,28 +58,25 @@ def clothesline_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
-    vulnerable = main.StatusCondition(main.Stats.VULNERABLE, 2, False)
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
     enemy.apply_status_condition(vulnerable)
 
 # Flex: gain 2(4) strength at the beginning of turn, then lose 2(4) at the end of turn.
 def flex_fx(combat, target):
     player = combat.player
-    flex = main.StatusCondition(main.Stats.FLEX, 2, False)
+    flex = StatusCondition(Stats.FLEX, 2, False)
     player.apply_status_condition(flex)
 
-<<<<<<< HEAD
-strike = main.Card(1, main.CardType.ATTACK, strike_fx, main.Target.SINGLE, False)
-defend = main.Card(1, main.CardType.SKILL, defend_fx, main.Target.SELF, False)
-bash = main.Card(2, main.CardType.ATTACK, bash_fx, main.Target.SINGLE, False)
-anger = main.Card(1, main.CardType.ATTACK, anger_fx, main.Target.SINGLE, False)
-armaments = main.Card(1, main.CardType.SKILL, armaments_fx, main.Target.SELF, False)
-bodyslam = main.Card(1, main.CardType.ATTACK, bodyslam_fx, main.Target.SINGLE, False)
-clash = main.Card(0, main.CardType.ATTACK, clash_fx, main.Target.SINGLE, False)
-clothesline = main.Card(2, main.CardType.ATTACK, clothesline_fx, main.Target.SINGLE, False)
-flex = main.Card(0, main.CardType.SKILL, flex_fx, main.Target.SELF, False)
-=======
+# <<<<<<< HEAD
 strike = Card("Strike", 1, CardType.ATTACK, strike_fx, Target.SINGLE, False)
 defend = Card("Defend", 1, CardType.SKILL, defend_fx, Target.SELF, False)
 bash = Card("Bash", 2, CardType.ATTACK, bash_fx, Target.SINGLE, False)
 anger = Card("Anger", 1, CardType.ATTACK, anger_fx, Target.SINGLE, False)
->>>>>>> b048d96c58fdacaa4b154b626b5cb9008c106daf
+armaments = Card("Armaments", 1, CardType.SKILL, armaments_fx, Target.SELF, False)
+bodyslam = Card("Body Slam", 1, CardType.ATTACK, bodyslam_fx, Target.SINGLE, False)
+clash = Card("Clash", 0, CardType.ATTACK, clash_fx, Target.SINGLE, False)
+clothesline = Card("Clothesline", 2, CardType.ATTACK, clothesline_fx, Target.SINGLE, False)
+flex = Card("Flex", 0, CardType.SKILL, flex_fx, Target.SELF, False)
+# =======
+# >>>>>>> b048d96c58fdacaa4b154b626b5cb9008c106daf
+# Not sure what this is...

@@ -128,11 +128,11 @@ class Combat:
         self.game_loop()
 
     def print_information(self):
-        print "Your health: {}/{} | Your Energy: {} | Your Block: {}"\
-            .format(self.player.health, self.player.max_health, self.player.energy, self.player.block)
+        print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\
+            .format(self.player.health, self.player.max_health, self.player.energy, self.player.block))
         count = 0
         for card in self.player.deck.hand:
-            print "{}: {} |".format(count, card.name),
+            print ("{}: {} |".format(count, card.name)),
             count += 1
         else:
             print
@@ -140,16 +140,16 @@ class Combat:
         for enemy in self.enemies:
             if enemy.health != 0:
                 intent, value = enemy.intent
-                print enemy.conditions
-                print "Enemy {} with health {}/{} is".format(count, enemy.health, enemy.max_health),
+                print (enemy.conditions)
+                print ("Enemy {} with health {}/{} is".format(count, enemy.health, enemy.max_health)),
                 if intent == Intent.ATTACK:
-                    print "Attacking for {} | ".format(value),
+                    print ("Attacking for {} | ".format(value)),
                 if intent == Intent.DEFEND:
-                    print "Defending for {} | ".format(value),
+                    print ("Defending for {} | ".format(value)),
                 if intent == Intent.BUFF:
-                    print "Buffing | ",
+                    print ("Buffing | "),
                 if intent == Intent.DEBUFF:
-                    print "Debuffing | ",
+                    print ("Debuffing | "),
             count += 1
         else:
             print
@@ -205,7 +205,7 @@ class Combat:
                 if dead_enemies == len(self.enemies):
                     return 1  # return 1 indicates that you have won
 
-            print "---END OF TURN---"
+            print ("---END OF TURN---")
 
             for enemy in self.enemies:
                 enemy.decrement_status_conditions()
