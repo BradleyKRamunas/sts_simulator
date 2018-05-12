@@ -210,9 +210,6 @@ class Combat:
             for enemy in self.enemies:
                 enemy.decrement_status_conditions()
 
-            if self.player.health == 0:
-                return -1  # return -1 indicates that you have lost
-
             dead_enemies = 0
             for enemy in self.enemies:
                 if enemy.health == 0:
@@ -222,6 +219,9 @@ class Combat:
 
             for enemy in self.enemies:
                 enemy.apply_intent()
+
+            if self.player.health == 0:
+                return -1  # return -1 indicates that you have lost
 
             # End-of-Turn Sequence
             # TODO: finish end-of-turn sequence
