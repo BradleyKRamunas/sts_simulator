@@ -1,7 +1,6 @@
 from enum import Enum
 from collections import deque
 import random
-import cards
 import math
 
 
@@ -73,6 +72,14 @@ class StatusCondition:
         self.duration = duration  # determines duration of debuff
         self.static = static  # true if value will never change, false is value decrements/changes per turn
 
+    def __str__(self):
+        return "{} with value {} for duration {} (static: {})"\
+            .format(self.status.name, self.value, self.duration, self.static)
+
+    def __repr__(self):
+        return "{} with value {} for duration {} (static: {})" \
+            .format(self.status, self.value, self.duration, self.static)
+
 
 class Player:
     def __init__(self, deck, health):
@@ -100,7 +107,8 @@ class CardType(Enum):
 
 
 class Card:
-    def __init__(self, cost, card_type, fx, target_type, exhaust):
+    def __init__(self, name, cost, card_type, fx, target_type, exhaust):
+        self.name = name
         self.cost = cost  # cost of the card in order to use (-1 is X, -2 is X+1...)
         self.card_type = card_type  # of type Card_Type
         self.fx = fx  # function that takes in (combat, target) and does something
@@ -115,106 +123,176 @@ class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
         self.enemies = enemies
+        for enemy in self.enemies:
+            enemy.combat = self
         self.game_loop()
+
+    def print_information(self):
+        print "Your health: {}/{} | Your Energy: {} | Your Block: {}"\
+            .format(self.player.health, self.player.max_health, self.player.energy, self.player.block)
+        count = 0
+        for card in self.player.deck.hand:
+            print "{}: {} |".format(count, card.name),
+            count += 1
+        else:
+            print
+        count = 0
+        for enemy in self.enemies:
+            if enemy.health != 0:
+                intent, value = enemy.intent
+                print enemy.conditions
+                print "Enemy {} with health {}/{} is".format(count, enemy.health, enemy.max_health),
+                if intent == Intent.ATTACK:
+                    print "Attacking for {} | ".format(value),
+                if intent == Intent.DEFEND:
+                    print "Defending for {} | ".format(value),
+                if intent == Intent.BUFF:
+                    print "Buffing | ",
+                if intent == Intent.DEBUFF:
+                    print "Debuffing | ",
+            count += 1
+        else:
+            print
 
     def game_loop(self):
         while True:
             # Main Combat Loop
             for enemy in self.enemies:
-                enemy.generate_move()
+                if enemy.health != 0:
+                    enemy.generate_move()
+                else:
+                    enemy.intent = None
 
             # Start-of-Turn Sequence
             self.player.reset_energy()
+            self.player.reset_block()
             draw_size = 5
-            for condition in self.player.conditions:
-                if condition.status == Status.DRAW_REDUCTION:
-                    draw_size -= condition.value
-                elif condition.status == Status.BERSERK:
-                    if self.player.health <= math.floor(0.5 * self.player.max_health):
-                        self.player.gain_energy(condition.value)
-                elif condition.status == Status.BRUTALITY:
-                    self.player.lose_health(condition.value)
-                    self.player.draw_cards(condition.value)
-                elif condition.status == Status.DEMON:
-                    status = StatusCondition(Status.STRENGTH, condition.value, 0, True)
-                    self.player.apply_status_condition(status)
+            if Status.DRAW_REDUCTION in self.player.conditions:
+                value = self.player.conditions[Status.DRAW_REDUCTION].value
+                draw_size -= value
+            if Status.BERSERK in self.player.conditions:
+                value = self.player.conditions[Status.BERSERK].value
+                if self.player.health <= int(math.floor(0.5 * self.player.max_health)):
+                    self.player.gain_energy(value)
+            if Status.BRUTALITY in self.player.conditions:
+                value = self.player.conditions[Status.BRUTALITY].value
+                self.player.lose_health(value)
+                self.player.draw_cards(value)
+            if Status.DEMON in self.player.conditions:
+                value = self.player.conditions[Status.DEMON].value
+                status = StatusCondition(Status.STRENGTH, value, 0, True)
+                self.player.apply_status_condition(status)
 
             self.player.draw_cards(draw_size)
             while True:
-                break
-                # TODO: this while loop controls taking in input from user
+                self.print_information()
 
-                # TODO: check if enemies are dead
-            # END OF USER INPUT #
+                option = int(raw_input("Which card would you like to use (-1 to end turn)? > "))
+                if option == -1:  # -1 means end turn
+                    break
+
+                card = self.player.deck.hand[option]
+                option = int(raw_input("Target (-1 for self)? > "))
+
+                self.player.deck.use_card(card, option)
+
+                if self.player.health == 0:
+                    return -1  # return -1 indicates that you have lost
+                dead_enemies = 0
+                for enemy in self.enemies:
+                    if enemy.health == 0:
+                        dead_enemies += 1
+                if dead_enemies == len(self.enemies):
+                    return 1  # return 1 indicates that you have won
+
+            print "---END OF TURN---"
 
             for enemy in self.enemies:
-                enemy.decrement_status_condition()
-            # TODO: allow enemies to attack player/apply debuffs/buff themselves
-            # TODO: check if player has died
+                enemy.decrement_status_conditions()
+
+            dead_enemies = 0
+            for enemy in self.enemies:
+                if enemy.health == 0:
+                    dead_enemies += 1
+            if dead_enemies == len(self.enemies):
+                return 1  # return 1 indicates that you have won
+
+            for enemy in self.enemies:
+                enemy.apply_intent()
+
+            if self.player.health == 0:
+                return -1  # return -1 indicates that you have lost
 
             # End-of-Turn Sequence
             # TODO: finish end-of-turn sequence
             self.player.discard_hand()
-            for condition in self.player.conditions:
-                if condition.status == Status.FLEX:
-                    status = StatusCondition(Status.STRENGTH, -condition.value, 0, True)
-                    self.player.apply_status_condition(status)
+            if Status.FLEX in self.player.conditions:
+                value = self.player.conditions[Status.FLEX].value
+                status = StatusCondition(Status.STRENGTH, -value, 0, True)
+                self.player.apply_status_condition(status)
+
+            self.player.decrement_status_conditions()
 
         # TODO: define end-of-combat sequence
 
 
 class CombatEnemy:
-    def __init__(self, ai, health):
+    def __init__(self, combat, ai, health):
+        self.combat = combat
         self.ai = ai  # function that will generate moves
         self.health = health
         self.max_health = health
         self.block = 0
         self.intent = None  # defined as a tuple of (intent, value)
-        self.conditions = []
+        self.conditions = {}
         # TODO: create some AI class and extend it with some forms of enemies
+
+    def apply_intent(self):
+        # TODO: finish this for all types of intents
+        intent, value = self.intent
+        if intent == Intent.ATTACK:
+            self.combat.player.take_damage(value)
 
     def generate_move(self):
         self.intent = self.ai.generate_move()
 
     def take_damage(self, value):
         calc_value = value
-        is_vulnerable = False
-        for condition in self.conditions:
-            if condition.status == Status.VULNERABLE:
-                is_vulnerable = True
-        if is_vulnerable:
-            calc_value = math.floor(1.5 * calc_value)
+        if Status.VULNERABLE in self.conditions:
+            calc_value = int(math.floor(1.5 * calc_value))
         if self.block - calc_value >= 0:
             self.block -= calc_value
         else:
             calc_value = calc_value - self.block
             self.block = 0
             self.health -= calc_value
+        if self.health < 0:
+            self.health = 0
 
     # TODO: Organize into duration and value
     def apply_status_condition(self, condition):
-        for condit in self.conditions:
-            if condition.status == condit.status:
-                condit.value += condition.value
-                return
-        self.conditions.append(condition)
+        if condition.status in self.conditions:
+            self.conditions[condition.status].value += condition.value
+            self.conditions[condition.status].duration += condition.duration
+        else:
+            self.conditions[condition.status] = condition
 
     def decrement_status_conditions(self):
         conditions_to_remove = []
-        for condition in self.conditions:
-            if not condition.static:
-                condition.duration -= 1
-            if condition.duration == 0:
-                conditions_to_remove.append(condition)
+        for key, value in self.conditions.items():
+            if not value.static:
+                value.duration -= 1
+                if value.duration == 0:
+                    conditions_to_remove.append(key)
         for condition in conditions_to_remove:
-            self.conditions.remove(condition)
+            del self.conditions[condition]
 
 
 class CombatPlayer:
     def __init__(self, player, combat):
         self.combat = combat
-        self.conditions = []
-        self.deck = CombatDeck(player.deck)
+        self.conditions = {}  # a dictionary of Status, StatusCondition
+        self.deck = CombatDeck(player.deck, combat)
         self.health = player.health
         self.max_health = player.max_health
         self.energy = 3
@@ -222,30 +300,24 @@ class CombatPlayer:
 
     def generate_damage(self, value):
         calc_value = value
-        is_weak = False
-        for condition in self.conditions:
-            if condition.status == Status.STRENGTH:
-                calc_value += condition.value
-            elif condition.status == Status.WEAK:
-                is_weak = True
-        if is_weak:
-            calc_value = math.floor(0.75 * calc_value)
+        if Status.STRENGTH in self.conditions:
+            calc_value += self.conditions[Status.STRENGTH].value
+        if Status.WEAK in self.conditions:
+            calc_value = int(math.floor(0.75 * calc_value))
         return calc_value
 
     def take_damage(self, value):
         calc_value = value
-        is_vulnerable = False
-        for condition in self.conditions:
-            if condition.status == Status.VULNERABLE:
-                is_vulnerable = True
-        if is_vulnerable:
-            calc_value = math.floor(1.5 * calc_value)
+        if Status.VULNERABLE in self.conditions:
+            calc_value = int(math.floor(1.5 * calc_value))
         if self.block - calc_value >= 0:
             self.block -= calc_value
         else:
             calc_value -= self.block
             self.block = 0
             self.health -= calc_value
+        if self.health < 0:
+            self.health = 0
 
     def lose_health(self, value):
         # TODO: check for statuses that rely on losing health by CARD effect
@@ -256,14 +328,10 @@ class CombatPlayer:
 
     def gain_block(self, value):
         calc_value = value
-        is_frail = False
-        for condition in self.conditions:
-            if condition.status == Status.DEXTERITY:
-                calc_value += condition.value
-            elif condition.status == Status.FRAIL:
-                is_frail = True
-        if is_frail:
-            calc_value = math.floor(0.75 * calc_value)
+        if Status.DEXTERITY in self.conditions:
+            calc_value += self.conditions[Status.DEXTERITY].value
+        if Status.FRAIL in self.conditions:
+            calc_value = int(math.floor(0.75 * calc_value))
         self.block += calc_value
 
     def draw_cards(self, number):
@@ -276,31 +344,36 @@ class CombatPlayer:
     def reset_energy(self):
         self.energy = 3
 
+    def reset_block(self):
+        if Status.BARRICADE not in self.conditions:
+            self.block = 0
+
     def gain_energy(self, value):
         self.energy += value
 
     def apply_status_condition(self, condition):
-        for condit in self.conditions:
-            if condition.status == condit.status:
-                condit.value += condition.value
-                return
-        self.conditions.append(condition)
+        if condition.status in self.conditions:
+            self.conditions[condition.status].value += condition.value
+            self.conditions[condition.status].duration += condition.duration
+        else:
+            self.conditions[condition.status] = condition
 
     def decrement_status_conditions(self):
         conditions_to_remove = []
-        for condition in self.conditions:
-            if not condition.static:
-                condition.duration -= 1
-            if condition.duration == 0:
-                conditions_to_remove.append(condition)
+        for key, value in self.conditions.items():
+            if not value.static:
+                value.duration -= 1
+                if value.duration == 0:
+                    conditions_to_remove.append(key)
         for condition in conditions_to_remove:
-            self.conditions.remove(condition)
+            del self.conditions[condition]
 
 
 class CombatDeck:
     def __init__(self, deck, combat):
         self.combat = combat
-        self.draw_pile = random.shuffle(deck)
+        self.draw_pile = deck.cards
+        random.shuffle(self.draw_pile)
         self.hand = []
         self.discard_pile = []
         self.exhaust_pile = []
@@ -309,7 +382,8 @@ class CombatDeck:
         if len(self.hand) < 12:
             if len(self.draw_pile) == 0:
                 if len(self.discard_pile) != 0:
-                    self.draw_pile = random.shuffle(self.discard_pile)
+                    self.draw_pile = list(self.discard_pile)
+                    random.shuffle(self.draw_pile)
                     self.discard_pile = []
             self.hand.append(self.draw_pile.pop())
 
@@ -318,22 +392,17 @@ class CombatDeck:
         self.hand = []
 
     def use_card(self, card, target):
-        self.hand.remove(card)
-        card.apply(self.combat, target)
-        if card.exhaust:
-            self.exhaust_pile.append(card)
-        else:
-            self.discard_pile.append(card)
+        if card.cost <= self.combat.player.energy:
+            self.combat.player.energy -= card.cost
+            self.hand.remove(card)
+            card.apply(self.combat, target)
+            if card.exhaust:
+                self.exhaust_pile.append(card)
+            else:
+                self.discard_pile.append(card)
 
 
-def generate_default_deck():
-    deck = Deck()
-    deck.add_card(cards.bash)
-    for i in range(5):
-        deck.add_card(cards.strike)
-    for i in range(4):
-        deck.add_card(cards.defend)
-    return deck
+
 
 # TODO:
 # We need to give cards types (i.e. attack, skill, power, status)
