@@ -5,6 +5,7 @@ from main import CardType
 from main import Target
 from main import Deck
 
+
 def generate_default_deck():
     deck = Deck()
     deck.add_card(bash)
@@ -12,7 +13,10 @@ def generate_default_deck():
         deck.add_card(strike)
     for i in range(4):
         deck.add_card(defend)
+    for i in range(3):
+        deck.add_card(clash)
     return deck
+
 
 def strike_fx(combat, target):
     enemy = combat.enemies[target]
@@ -37,21 +41,25 @@ def anger_fx(combat, target):
     player = combat.player
     player.deck.discard_pile.append(anger)
 
+
 def armaments_fx(combat, target):
     # TODO: ask player which card they want to upgrade
     player = combat.player
     player.gain_block(5)
+
 
 def bodyslam_fx(combat, target):
     block = combat.player.block
     enemy = combat.enemies[target]
     enemy.take_damage(combat.player.generate_damage(block))
 
+
 # TODO: Can only be used if all cards in the player's hand are attack cards
 def clash_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(14))
+
 
 # Clothesline: deals 12(14) damage and applies 2(3) weak.
 def clothesline_fx(combat, target):
@@ -61,11 +69,13 @@ def clothesline_fx(combat, target):
     vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
     enemy.apply_status_condition(vulnerable)
 
+
 # Flex: gain 2(4) strength at the beginning of turn, then lose 2(4) at the end of turn.
 def flex_fx(combat, target):
     player = combat.player
-    flex = StatusCondition(Stats.FLEX, 2, False)
+    flex = StatusCondition(Status.FLEX, 2, False)
     player.apply_status_condition(flex)
+
 
 # <<<<<<< HEAD
 strike = Card("Strike", 1, CardType.ATTACK, strike_fx, Target.SINGLE, False)

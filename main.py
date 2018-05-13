@@ -295,7 +295,7 @@ class CombatPlayer:
         self.deck = CombatDeck(player.deck, combat)
         self.health = player.health
         self.max_health = player.max_health
-        self.energy = 3
+        self.energy = 10
         self.block = 0
 
     def generate_damage(self, value):
@@ -342,7 +342,7 @@ class CombatPlayer:
         self.deck.discard_hand()
 
     def reset_energy(self):
-        self.energy = 3
+        self.energy = 10
 
     def reset_block(self):
         if Status.BARRICADE not in self.conditions:
@@ -392,6 +392,10 @@ class CombatDeck:
         self.hand = []
 
     def use_card(self, card, target):
+        if card.name == "Clash":
+            for cardInHand in self.hand:
+                if cardInHand.card_type != CardType.ATTACK:
+                    return
         if card.cost <= self.combat.player.energy:
             self.combat.player.energy -= card.cost
             self.hand.remove(card)
