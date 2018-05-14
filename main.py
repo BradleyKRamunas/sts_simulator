@@ -224,12 +224,19 @@ class Combat:
                 return -1  # return -1 indicates that you have lost
 
             # End-of-Turn Sequence
-            # TODO: finish end-of-turn sequence
             self.player.discard_hand()
             if Status.FLEX in self.player.conditions:
                 value = self.player.conditions[Status.FLEX].value
                 status = StatusCondition(Status.STRENGTH, -value, 0, True)
                 self.player.apply_status_condition(status)
+            if Status.COMBUST in self.player.conditions:
+                value = self.player.conditions[Status.COMBUST].value
+                self.player.lose_health(value)
+                for enemy in self.enemies:
+                    enemy.take_damage(5 * value)
+            if Status.METALLICIZE in self.player.conditions:
+                value = self.player.conditions[Status.METALLICIZE].value
+                self.player.block += value  # note that dexterity does not affect this
 
             self.player.decrement_status_conditions()
 
@@ -269,13 +276,17 @@ class CombatEnemy:
         if self.health < 0:
             self.health = 0
 
-    # TODO: Organize into duration and value
     def apply_status_condition(self, condition):
         if condition.status in self.conditions:
             self.conditions[condition.status].value += condition.value
             self.conditions[condition.status].duration += condition.duration
         else:
             self.conditions[condition.status] = condition
+        status = self.conditions[condition.status]
+        if not status.static and status.duration <= 0:
+            del self.conditions[condition.status]
+        if status.static and status.value == 0:
+            del self.conditions[condition.status]
 
     def decrement_status_conditions(self):
         conditions_to_remove = []
@@ -297,6 +308,7 @@ class CombatPlayer:
         self.max_health = player.max_health
         self.energy = 10
         self.block = 0
+        self.damage_track = 0  # used for keeping track of damage taken for Blood For Blood
 
     def generate_damage(self, value):
         calc_value = value
@@ -320,7 +332,11 @@ class CombatPlayer:
             self.health = 0
 
     def lose_health(self, value):
-        # TODO: check for statuses that rely on losing health by CARD effect
+        self.damage_track += 1
+        if Status.RUPTURE in self.conditions:
+            value = self.conditions[Status.RUPTURE].value
+            strength = StatusCondition(Status.STRENGTH, value, 0, True)
+            self.apply_status_condition(strength)
         self.health -= value
 
     def heal_health(self, value):
@@ -357,6 +373,11 @@ class CombatPlayer:
             self.conditions[condition.status].duration += condition.duration
         else:
             self.conditions[condition.status] = condition
+        status = self.conditions[condition.status]
+        if not status.static and status.duration <= 0:
+            del self.conditions[condition.status]
+        if status.static and status.value == 0:
+            del self.conditions[condition.status]
 
     def decrement_status_conditions(self):
         conditions_to_remove = []
@@ -385,7 +406,12 @@ class CombatDeck:
                     self.draw_pile = list(self.discard_pile)
                     random.shuffle(self.draw_pile)
                     self.discard_pile = []
-            self.hand.append(self.draw_pile.pop())
+            card = self.draw_pile.pop()
+            if card.card_type == CardType.STATUS and Status.EVOLVE in self.combat.player.conditions:
+                value = self.combat.player.conditions[Status.EVOLVE].value
+                for i in range(value):
+                    self.draw_card()
+            self.hand.append(card)
 
     def discard_hand(self):
         self.discard_pile.extend(self.hand)
@@ -393,9 +419,12 @@ class CombatDeck:
 
     def use_card(self, card, target):
         if card.name == "Clash":
-            for cardInHand in self.hand:
-                if cardInHand.card_type != CardType.ATTACK:
+            for card_in_hand in self.hand:
+                if card_in_hand.card_type != CardType.ATTACK:
                     return
+        if Status.RAGE in self.combat.player.conditions:
+            value = self.combat.player.conditions[Status.RAGE].value
+            self.combat.player.block += value  # note that dexterity is not accounted for
         if card.cost <= self.combat.player.energy:
             self.combat.player.energy -= card.cost
             self.hand.remove(card)
