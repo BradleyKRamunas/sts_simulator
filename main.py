@@ -127,6 +127,23 @@ class Combat:
             enemy.combat = self
         self.game_loop()
 
+    def generate_state(self):
+        # TODO: return a state representing the current combat
+        return
+
+    def generate_successor_state(self, state, action):
+        # TODO: return the successor state given that an action has been executed from a given state
+        return
+
+    def generate_actions(self, state):
+        # TODO: return a list of possible actions to be done given a state
+        actions = []
+        energy = self.player.energy
+        for card in self.player.deck.hand:
+            if card.cost <= energy:
+                actions.append(card)
+        return actions
+
     def print_information(self):
         print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\
             .format(self.player.health, self.player.max_health, self.player.energy, self.player.block))
@@ -438,7 +455,6 @@ class CombatDeck:
 
 
 # TODO:
-# We need to give cards types (i.e. attack, skill, power, status)
 # How should we define cards? (e.g. unplayable)
 # Think about order of effect adding/defend
 # For effects, add an effect timer

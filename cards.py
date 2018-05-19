@@ -54,7 +54,6 @@ def bodyslam_fx(combat, target):
     enemy.take_damage(combat.player.generate_damage(block))
 
 
-# TODO: Can only be used if all cards in the player's hand are attack cards
 def clash_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
@@ -74,7 +73,9 @@ def clothesline_fx(combat, target):
 def flex_fx(combat, target):
     player = combat.player
     flex = StatusCondition(Status.FLEX, 2, False)
+    strength = StatusCondition(Status.STRENGTH, 2, True)
     player.apply_status_condition(flex)
+    player.apply_status_condition(strength)
 
 
 # <<<<<<< HEAD
