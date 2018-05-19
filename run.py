@@ -21,10 +21,11 @@ def is_end_state(state):
 def generate_successor_state(state, action):
     #TODO: handle non-determinism of drawing a card?
     if action == None:
-        return None
+        state.end_turn()
+        state.start_turn()
     else:
         state.player.deck.use_card(action)
-        return state
+    return state
 
 def generate_actions(state):
     actions = []

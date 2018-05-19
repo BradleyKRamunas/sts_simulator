@@ -126,6 +126,45 @@ class Combat:
             enemy.combat = self
         self.game_loop()  # meant for human player, not for AI usage
 
+    def start_turn(self):
+        self.player.reset_energy()
+        self.player.reset_block()
+        draw_size = 5
+        if Status.DRAW_REDUCTION in self.player.conditions:
+            value = self.player.conditions[Status.DRAW_REDUCTION].value
+            draw_size -= value
+        if Status.BERSERK in self.player.conditions:
+            value = self.player.conditions[Status.BERSERK].value
+            if self.player.health <= int(math.floor(0.5 * self.player.max_health)):
+                self.player.gain_energy(value)
+        if Status.BRUTALITY in self.player.conditions:
+            value = self.player.conditions[Status.BRUTALITY].value
+            self.player.lose_health(value)
+            self.player.draw_cards(value)
+        if Status.DEMON in self.player.conditions:
+            value = self.player.conditions[Status.DEMON].value
+            status = StatusCondition(Status.STRENGTH, value, 0, True)
+            self.player.apply_status_condition(status)
+
+        self.player.draw_cards(draw_size)
+
+    def end_turn(self):
+        self.player.discard_hand()
+        if Status.FLEX in self.player.conditions:
+            value = self.player.conditions[Status.FLEX].value
+            status = StatusCondition(Status.STRENGTH, -value, 0, True)
+            self.player.apply_status_condition(status)
+        if Status.COMBUST in self.player.conditions:
+            value = self.player.conditions[Status.COMBUST].value
+            self.player.lose_health(value)
+            for enemy in self.enemies:
+                enemy.take_damage(5 * value)
+        if Status.METALLICIZE in self.player.conditions:
+            value = self.player.conditions[Status.METALLICIZE].value
+            self.player.block += value  # note that dexterity does not affect this
+
+        self.player.decrement_status_conditions()
+
     def print_information(self):
         print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\
             .format(self.player.health, self.player.max_health, self.player.energy, self.player.block))
@@ -163,26 +202,8 @@ class Combat:
                     enemy.intent = None
 
             # Start-of-Turn Sequence
-            self.player.reset_energy()
-            self.player.reset_block()
-            draw_size = 5
-            if Status.DRAW_REDUCTION in self.player.conditions:
-                value = self.player.conditions[Status.DRAW_REDUCTION].value
-                draw_size -= value
-            if Status.BERSERK in self.player.conditions:
-                value = self.player.conditions[Status.BERSERK].value
-                if self.player.health <= int(math.floor(0.5 * self.player.max_health)):
-                    self.player.gain_energy(value)
-            if Status.BRUTALITY in self.player.conditions:
-                value = self.player.conditions[Status.BRUTALITY].value
-                self.player.lose_health(value)
-                self.player.draw_cards(value)
-            if Status.DEMON in self.player.conditions:
-                value = self.player.conditions[Status.DEMON].value
-                status = StatusCondition(Status.STRENGTH, value, 0, True)
-                self.player.apply_status_condition(status)
+            self.start_turn()
 
-            self.player.draw_cards(draw_size)
             while True:
                 self.print_information()
 
@@ -223,21 +244,8 @@ class Combat:
                 return -1  # return -1 indicates that you have lost
 
             # End-of-Turn Sequence
-            self.player.discard_hand()
-            if Status.FLEX in self.player.conditions:
-                value = self.player.conditions[Status.FLEX].value
-                status = StatusCondition(Status.STRENGTH, -value, 0, True)
-                self.player.apply_status_condition(status)
-            if Status.COMBUST in self.player.conditions:
-                value = self.player.conditions[Status.COMBUST].value
-                self.player.lose_health(value)
-                for enemy in self.enemies:
-                    enemy.take_damage(5 * value)
-            if Status.METALLICIZE in self.player.conditions:
-                value = self.player.conditions[Status.METALLICIZE].value
-                self.player.block += value  # note that dexterity does not affect this
+            self.end_turn()
 
-            self.player.decrement_status_conditions()
 
         # TODO: define end-of-combat sequence
 
