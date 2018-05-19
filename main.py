@@ -127,6 +127,12 @@ class Combat:
         self.game_loop()  # meant for human player, not for AI usage
 
     def start_turn(self):
+        for enemy in self.enemies:
+            if enemy.health != 0:
+                enemy.generate_move()
+            else:
+                enemy.intent = None
+
         self.player.reset_energy()
         self.player.reset_block()
         draw_size = 5
@@ -140,6 +146,8 @@ class Combat:
         if Status.BRUTALITY in self.player.conditions:
             value = self.player.conditions[Status.BRUTALITY].value
             self.player.lose_health(value)
+            if self.player.health == 0:
+                return  # premature stop condition, no need to continue
             self.player.draw_cards(value)
         if Status.DEMON in self.player.conditions:
             value = self.player.conditions[Status.DEMON].value
@@ -149,6 +157,22 @@ class Combat:
         self.player.draw_cards(draw_size)
 
     def end_turn(self):
+        for enemy in self.enemies:
+            enemy.decrement_status_conditions()
+
+        dead_enemies = 0
+        for enemy in self.enemies:
+            if enemy.health == 0:
+                dead_enemies += 1
+        if dead_enemies == len(self.enemies):
+            return  # premature stop condition to ensure that we do not lose health
+
+        for enemy in self.enemies:
+            enemy.apply_intent()
+
+        if self.player.health == 0:
+            return  # premature stop condition, no need to continue
+
         self.player.discard_hand()
         if Status.FLEX in self.player.conditions:
             value = self.player.conditions[Status.FLEX].value
@@ -194,23 +218,12 @@ class Combat:
 
     def game_loop(self):
         while True:
-            # Main Combat Loop
-            for enemy in self.enemies:
-                if enemy.health != 0:
-                    enemy.generate_move()
-                else:
-                    enemy.intent = None
-
-            # Start-of-Turn Sequence
             self.start_turn()
-
             while True:
                 self.print_information()
-
                 option = int(raw_input("Which card would you like to use (-1 to end turn)? > "))
                 if option == -1:  # -1 means end turn
                     break
-
                 card = self.player.deck.hand[option]
                 option = int(raw_input("Target (-1 for self)? > "))
 
@@ -224,31 +237,8 @@ class Combat:
                         dead_enemies += 1
                 if dead_enemies == len(self.enemies):
                     return 1  # return 1 indicates that you have won
-
             print ("---END OF TURN---")
-
-            for enemy in self.enemies:
-                enemy.decrement_status_conditions()
-
-            dead_enemies = 0
-            for enemy in self.enemies:
-                if enemy.health == 0:
-                    dead_enemies += 1
-            if dead_enemies == len(self.enemies):
-                return 1  # return 1 indicates that you have won
-
-            for enemy in self.enemies:
-                enemy.apply_intent()
-
-            if self.player.health == 0:
-                return -1  # return -1 indicates that you have lost
-
-            # End-of-Turn Sequence
             self.end_turn()
-
-
-        # TODO: define end-of-combat sequence
-
 
 class CombatEnemy:
     def __init__(self, combat, ai, health):
@@ -345,6 +335,8 @@ class CombatPlayer:
             strength = StatusCondition(Status.STRENGTH, value, 0, True)
             self.apply_status_condition(strength)
         self.health -= value
+        if self.health < 0:
+            self.health = 0
 
     def heal_health(self, value):
         self.health += value
@@ -425,6 +417,7 @@ class CombatDeck:
         self.hand = []
 
     def use_card(self, card, target):
+        # TODO: implement checks for card target types and apply appropriately
         if card.name == "Clash":
             for card_in_hand in self.hand:
                 if card_in_hand.card_type != CardType.ATTACK:

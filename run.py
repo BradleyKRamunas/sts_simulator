@@ -24,7 +24,8 @@ def generate_successor_state(state, action):
         state.end_turn()
         state.start_turn()
     else:
-        state.player.deck.use_card(action)
+        card, target = action
+        state.player.deck.use_card(card, target)
     return state
 
 def generate_actions(state):
@@ -32,8 +33,24 @@ def generate_actions(state):
     energy = state.player.energy
     for card in state.player.deck.hand:
         if card.cost <= energy:
-            actions.append(card)
-    actions.append(None)
+            if card.target_type == main.Target.SELF:
+                actions.append((card, -1))
+            if card.target_type == main.Target.SINGLE:
+                for target, enemy in enumerate(state.enemies):
+                    if enemy.health > 0:
+                        actions.append((card, target))
+            if card.target_type == main.Target.RANDOM:
+                # another issue with random...
+                # TODO: implement randomness, right now targets first alive enemy
+                for target, enemy in enumerate(state.enemies):
+                    if enemy.health > 0:
+                        actions.append((card, target))
+                        break
+            if card.target_type == main.Target.ALL:
+                actions.append((card, -1))
+
+
+    actions.append(None)  # None represents ending turn
     return actions
 
 def state_feature_extractor(state):
