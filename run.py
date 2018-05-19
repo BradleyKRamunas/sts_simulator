@@ -1,5 +1,6 @@
 import main
 import cards
+from copy import deepcopy
 
 '''
 --OUR MODEL--
@@ -20,13 +21,14 @@ def is_end_state(state):
 
 def generate_successor_state(state, action):
     #TODO: handle non-determinism of drawing a card?
+    temp_state = deepcopy(state)
     if action == None:
-        state.end_turn()
-        state.start_turn()
+        temp_state.end_turn()
+        temp_state.start_turn()
     else:
         card, target = action
-        state.player.deck.use_card(card, target)
-    return state
+        temp_state.player.deck.use_card(card, target)
+    return temp_state
 
 def generate_actions(state):
     actions = []
