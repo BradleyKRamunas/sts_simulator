@@ -118,31 +118,13 @@ class Card:
     def apply(self, combat, target):
         self.fx(combat, target)
 
-
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
         self.enemies = enemies
         for enemy in self.enemies:
             enemy.combat = self
-        self.game_loop()
-
-    def generate_state(self):
-        # TODO: return a state representing the current combat
-        return
-
-    def generate_successor_state(self, state, action):
-        # TODO: return the successor state given that an action has been executed from a given state
-        return
-
-    def generate_actions(self, state):
-        # TODO: return a list of possible actions to be done given a state
-        actions = []
-        energy = self.player.energy
-        for card in self.player.deck.hand:
-            if card.cost <= energy:
-                actions.append(card)
-        return actions
+        self.game_loop()  # meant for human player, not for AI usage
 
     def print_information(self):
         print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\
