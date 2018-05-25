@@ -4,6 +4,7 @@ from main import Status
 from main import CardType
 from main import Target
 from main import Deck
+from main import Intent
 import random
 
 
@@ -325,9 +326,13 @@ def metallicize_fx(combat, target):
 
 def power_through_fx(combat, target):
     player = combat.player
-    enemy = combat.enemies[target]
     player.gain_block(15)
-    # TODO: Shuffle 2 wounds into your combatdeck
+    if len(player.deck.hand) < 12:
+        player.deck.hand.append(wound)
+    else:
+        player.deck.discard_pile.append(wound)
+    player.deck.hand.append(wound)
+
 
 
 def pummel_fx(combat, target):
@@ -355,7 +360,7 @@ def reckless_charge_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(7))
-    # TODO: Shuffle a dazed card into your combat deck
+    player.deck.discard_pile.append(dazed)
 
 
 def rupture_fx(combat, target):
@@ -371,7 +376,7 @@ def searing_blow_fx(combat, target):
 
 
 # TODO: exhaust everything in hand and gain 5X block
-def second_wind(combat, target):
+def second_wind_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
@@ -379,7 +384,114 @@ def second_wind(combat, target):
     enemy.apply_status_condition(vulnerable)
 
 
-def clothesline_fx(combat, target):
+def seeing_red_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    player.gain_energy(2)
+
+
+def sever_soul_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(16))
+    # TODO: Exhaust all non-attack cards in your hand.
+
+
+def shockwave_fx(combat, target):
+    shock = StatusCondition(Status.VULNERABLE, 3, False)
+    wave = StatusCondition(Status.WEAK, 3, False)
+    for enemy in combat.enemies:
+        enemy.apply_status_condition(shock)
+        enemy.apply_status_condition(wave)
+
+
+def spot_weakness_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    if enemy.intent[0] == Intent.ATTACK:
+        gotem = StatusCondition(Status.STRENGTH, 3, True)
+        player.apply_status_condition(gotem)
+
+
+def uppercut_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(13))
+    upper = StatusCondition(Status.VULNERABLE, 1, False)
+    cut = StatusCondition(Status.WEAK, 1, False)
+    enemy.apply_status_condition(upper)
+    enemy.apply_status_condition(cut)
+
+# -----------------------------------------------
+
+
+# TODO: Create a special case in use_card to remove the rest of the user's energy
+def whirlwind_fx(combat, target):
+    player = combat.player
+    for enemy in combat.enemies:
+        for i in range(player.energy + 1):
+            enemy.take_damage(player.generate_damage(5))
+
+
+def barricade_fx(combat, target):
+    player = combat.player
+    barricadus = StatusCondition(Status.BARRICADE, 1, True)
+    player.apply_status_condition(barricadus)
+
+
+def berserk_fx(combat, target):
+    player = combat.player
+    betaBerserker = StatusCondition(Status.BERSERK, 1, True)
+    player.apply_status_condition(betaBerserker)
+
+
+def bludgeon_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(32))
+
+
+def brutality_fx(combat, target):
+    player = combat.player
+    player.lose_health(1)
+    player.deck.draw_card()
+
+
+def dark_embrace_fx(combat, target):
+    player = combat.player
+    hugs = StatusCondition(Status.EMBRACE, 1, True)
+    player.apply_status_condition(hugs)
+
+
+def demon_form_fx(combat, target):
+    player = combat.player
+    antiChrist = StatusCondition(Status.DEMON, 1, True)
+    player.apply_status_condition(antiChrist)
+
+
+def double_tap_fx(combat, target):
+    player = combat.player
+    doubleDipping = StatusCondition(Status.DOUBLE, 1, False)
+    player.apply_status_condition(doubleDipping)
+
+
+# TODO: Draw a card from the exhaust pile
+def exhume_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+
+
+# TODO: If we killed an enemy with this card, increase our max HP
+def feed_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(10))
+
+# -------------------------------------
+
+
+# TODO: Exhaust all cards in your hand. Deal 7 damage for each card. Exhaust this card.
+def fiend_fire_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
@@ -387,37 +499,57 @@ def clothesline_fx(combat, target):
     enemy.apply_status_condition(vulnerable)
 
 
-def clothesline_fx(combat, target):
+def immolate_fx(combat, target):
+    player = combat.player
+    for enemy in combat.enemies:
+        enemy.take_damage(player.generate_damage(21))
+    player.deck.discard_pile.append(burn)
+
+
+def impervious_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    player.gain_block(30)
 
 
-def clothesline_fx(combat, target):
+def juggernaut_fx(combat, target):
     player = combat.player
-    enemy = combat.enemies[target]
-    enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    juggler_naught = StatusCondition(Status.JUGGERNAUT, 1, True)
+    player.apply_status_condition(juggler_naught)
 
 
-def clothesline_fx(combat, target):
+def limit_break_fx(combat, target):
     player = combat.player
-    enemy = combat.enemies[target]
-    enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    if Status.STRENGTH in player.conditions:
+        player.conditions[Status.STRENGTH] *= 2
 
 
-def clothesline_fx(combat, target):
+def offering(combat, target):
     player = combat.player
-    enemy = combat.enemies[target]
-    enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    player.lose_health(4)
+    player.gain_energy(2)
+    for i in range(3):
+        player.deck.draw_card()
 
+
+def reaper_fx(combat, target):
+    player = combat.player
+    oldTotalHealth = 0
+    newTotalHealth = 0
+    for enemy in combat.enemies:
+        oldTotalHealth += enemy.health
+        enemy.take_damage(player.generate_damage(5))
+        newTotalHealth += enemy.health
+    player.heal_health(oldTotalHealth - newTotalHealth)
+
+
+def sentinel_fx(combat, target):
+    player = combat.player
+    player.gain_block(5)
+
+
+def status_fx(combat, target):
+    return
 
 # <<<<<<< HEAD
 # Parameters: "name", cost, CardType, fx function, Target, Exhaust (t/f)
@@ -470,16 +602,40 @@ powerThrough = Card("Power Through", 1, CardType.SKILL, power_through_fx, Target
 pummel = Card("Pummel", 1, CardType.ATTACK, pummel_fx, Target.SINGLE, True)
 rage = Card("Rage", 0, CardType.SKILL, rage_fx, Target.SELF, False)
 
-rampage = Card("Rampage", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-recklessCharge = Card("Reckless Charge", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-rupture = Card("Rupture", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-searingBlow = Card("Searing Blow", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-secondWind = Card("Second Wind", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-seeingRed = Card("Seeing Red", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-severSoul = Card("Sever Soul", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-shockwave = Card("Shock Wave", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-spotWeakness = Card("Spot Weakness", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
-uppercut = Card("Uppercut", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+rampage = Card("Rampage", 1, CardType.ATTACK, rampage_fx, Target.SINGLE, False)
+recklessCharge = Card("Reckless Charge", 0, CardType.ATTACK, reckless_charge_fx, Target.SINGLE, False)
+rupture = Card("Rupture", 1, CardType.POWER, rupture_fx, Target.SELF, False)
+searingBlow = Card("Searing Blow", 2, CardType.ATTACK, searing_blow_fx, Target.SINGLE, False)
+secondWind = Card("Second Wind", 1, CardType.SKILL, second_wind_fx, Target.SELF, False)
+seeingRed = Card("Seeing Red", 1, CardType.SKILL, seeing_red_fx, Target.SELF, True)
+severSoul = Card("Sever Soul", 2, CardType.ATTACK, sever_soul_fx, Target.SINGLE, False)
+shockwave = Card("Shock Wave", 2, CardType.SKILL, shockwave_fx, Target.ALL, True)
+spotWeakness = Card("Spot Weakness", 1, CardType.SKILL, spot_weakness_fx, Target.SINGLE, False)
+uppercut = Card("Uppercut", 2, CardType.ATTACK, uppercut_fx, Target.SINGLE, False)
+
+whirlwind = Card("Whirlwind", 1, CardType.ATTACK, whirlwind_fx, Target.ALL, False)
+barricade = Card("Barricade", 3, CardType.SKILL, barricade_fx, Target.SELF, False)
+berserk = Card("Berserk", 1, CardType.POWER, berserk_fx, Target.SELF, False)
+bludgeon = Card("Bludgeon", 3, CardType.ATTACK, bludgeon_fx, Target.SINGLE, False)
+brutality = Card("Brutality", 0, CardType.POWER, brutality_fx, Target.SELF, False)
+darkEmbrace = Card("Dark Embrace", 2, CardType.POWER, dark_embrace_fx, Target.SELF, False)
+demonForm = Card("Demon Form", 3, CardType.POWER, demon_form_fx, Target.SELF, False)
+doubleTap = Card("Double Tap", 1, CardType.SKILL, double_tap_fx, Target.SELF, False)
+exhume = Card("Exhume", 1, CardType.SKILL, exhume_fx, Target.SELF, True)
+feed = Card("Feed", 1, CardType.ATTACK, feed_fx, Target.SINGLE, False)
+
+fiendFire = Card("Fiend Fire", 2, CardType.ATTACK, fiend_fire_fx, Target.SINGLE, True)
+immolate = Card("Immolate", 2, CardType.ATTACK, immolate_fx, Target.ALL, False)
+impervious = Card("Impervious", 2, CardType.SKILL, impervious_fx, Target.SELF, True)
+juggernaut = Card("Juggernaut", 2, CardType.POWER, juggernaut_fx, Target.SELF, False)
+limitBreak = Card("Limit Break", 1, CardType.SKILL, limit_break_fx, Target.SELF, True)
+offering = Card("Offering", 0, CardType.SKILL, offering, Target.SINGLE, True)
+reaper = Card("Reaper", 2, CardType.ATTACK, reaper_fx, Target.ALL, True)
+sentinel = Card("Sentinel", 1, CardType.SKILL, rampage_fx, Target.SELF, False)
+
+dazed = Card("Dazed", 0, CardType.STATUS, status_fx, Target.SELF, False)
+wound = Card("Wound", 0, CardType.STATUS, status_fx, Target.SELF, False)
+burn = Card("Burn", 0, CardType.STATUS, status_fx, Target.SELF, False)
 # =======
 # >>>>>>> b048d96c58fdacaa4b154b626b5cb9008c106daf
 # Not sure what this is...
@@ -546,6 +702,8 @@ uppercut = Card("Uppercut", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, F
 # Double Tap - literally everything happens twice
 # Exhume
 # Feed - no such thing as "minions"/"bosses" for us... for now
+
+
 # Fiend fire
 # Immolate
 # Impervious
