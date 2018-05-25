@@ -1,27 +1,130 @@
 from enum import Enum
-from collections import deque
+
 import random
 import math
 
 
 class GoblinAI:
     def __init__(self):
-        self.counter = 0
-        self.sequence = deque([Intent.ATTACK])
+        self.sequence = [Intent.ATTACK]
         self.attack = 6
-        self.defend = 0
+        self.block = 0
         self.buff = 0
         self.debuff = 0
 
     def generate_move(self):
-        move = self.sequence.popleft()
+        move = self.sequence.pop(0)
         self.sequence.append(move)
-        return (move, self.attack)
+        return (move, self.attack, None)
 
+class SpikeSlimeAI:
+    def __init__(self):
+        self.sequence = [Intent.DEBUFF, Intent.DEBUFF, Intent.ATTACK, Intent.ATTACK]
+        self.attack = 8
+        self.block = 0
+        self.buff = 0
+        self.debuff = 1
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        if move == Intent.DEBUFF:
+            return (move, self.debuff, Status.FRAIL)
+        else:
+            return (move, self.attack, None)
+
+class AcidSlimeAI:
+    def __init__(self):
+        self.sequence = [Intent.DEBUFF, Intent.ATTACK]
+        self.attack = 3
+        self.block = 0
+        self.buff = 0
+        self.debuff = 1
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        if move == Intent.DEBUFF:
+            return (move, self.debuff, Status.WEAK)
+        else:
+            return (move, self.attack, None)
+
+class JawWormAI:
+    def __init__(self):
+        self.sequence = [Intent.ATTACK, Intent.BLOCK, Intent.BUFF]
+        self.attack = 11
+        self.block = 6
+        self.buff = 3
+        self.debuff = 0
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        if move == Intent.BUFF:
+            return (move, self.buff, Status.STRENGTH)
+        elif move == Intent.BLOCK:
+            return (move, self.block, None)
+        else:
+            return (move, self.attack, None)
+
+class ExplosiveGoblinAI:
+    def __init__(self):
+        self.sequence = [Intent.BLOCK, Intent.BLOCK, Intent.BLOCK, Intent.ATTACK]
+        self.attack = 30
+        self.block = 5
+        self.buff = 0
+        self.debuff = 0
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        if move == Intent.BLOCK:
+            return (move, self.block, None)
+        else:
+            return (move, self.attack, None)
+
+class FungiBeastAI:
+    def __init__(self):
+        self.sequence = [Intent.BUFF, Intent.ATTACK, Intent.ATTACK]
+        self.attack = 6
+        self.block = 0
+        self.buff = 3
+        self.debuff = 0
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        if move == Intent.BUFF:
+            return (move, self.buff, Status.STRENGTH)
+        else:
+            return (move, self.attack, None)
+
+class SlaverAI:
+    def __init__(self):
+        self.sequence = [Intent.ATTACK, ]
+
+
+class LagavulinAI:
+    def __init__(self):
+        self.sequence = [Intent.BLOCK, Intent.BLOCK, Intent.ATTACK, Intent.ATTACK, Intent.ATTACK, Intent.DEBUFF]
+        self.attack = 18
+        self.block = 12
+        self.buff = 0
+        self.debuff = 3
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        if move == Intent.BLOCK:
+            return (move, self.block, None)
+        elif move == Intent.ATTACK:
+            return (move, self.attack, None)
+        else:
+            return (move, self.debuff, Status.WEAK)
 
 class Intent(Enum):
     ATTACK = 1
-    DEFEND = 2
+    BLOCK = 2
     BUFF = 3
     DEBUFF = 4
 
@@ -114,9 +217,10 @@ class Card:
         self.fx = fx  # function that takes in (combat, target) and does something
         self.target_type = target_type  # of type Target
         self.exhaust = exhaust  # boolean indicating whether the card exhausts
+        self.count = 0
 
     def apply(self, combat, target):
-        self.fx(combat, target)
+        self.fx(combat, target, self.count)
 
 class Combat:
     def __init__(self, player, enemies):
@@ -316,6 +420,7 @@ class CombatPlayer:
         return calc_value
 
     def take_damage(self, value):
+        self.damage_track += 1
         calc_value = value
         if Status.VULNERABLE in self.conditions:
             calc_value = int(math.floor(1.5 * calc_value))
@@ -416,6 +521,15 @@ class CombatDeck:
         self.discard_pile.extend(self.hand)
         self.hand = []
 
+    def exhaust_card(self, card):
+        self.exhaust_pile.append(card)
+        if Status.FEELNOPAIN in self.combat.player.conditions:
+            value = self.combat.player.conditions[Status.FEELNOPAIN].value
+            self.combat.player.block += value
+        if Status.EMBRACE in self.combat.player.conditions:
+            value = self.combat.player.conditions[Status.EMBRACE].value
+            self.combat.player.draw_cards(value)
+
     def use_card(self, card, target):
         # TODO: implement checks for card target types and apply appropriately
         if card.name == "Clash":
@@ -430,7 +544,7 @@ class CombatDeck:
             self.hand.remove(card)
             card.apply(self.combat, target)
             if card.exhaust:
-                self.exhaust_pile.append(card)
+                self.exhaust_card(card)
             else:
                 self.discard_pile.append(card)
 
@@ -524,7 +638,7 @@ Features -
 I. Wakanda
 II. Enemy health
 III. Number of enemies
-IV. Enemy types (?)
+IV. Enemy types
 V. Enemy intent/danger
 VI. Presence of cards in hand (indicator list)
 VII. Cards in discard
