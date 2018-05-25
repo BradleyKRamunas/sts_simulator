@@ -362,13 +362,19 @@ class CombatEnemy:
         self.block = 0
         self.intent = None  # defined as a tuple of (intent, value, status)
         self.conditions = {}
-        # TODO: create some AI class and extend it with some forms of enemies
 
     def apply_intent(self):
-        # TODO: finish this for all types of intents
-        intent, value = self.intent
+        intent, value, status = self.intent
         if intent == Intent.ATTACK:
             self.combat.player.take_damage(value)
+        if intent == Intent.BLOCK:
+            self.block += value
+        if intent == Intent.BUFF:
+            status_condition = StatusCondition(status, value, 0, True)
+            self.apply_status_condition(status_condition)
+        if intent == Intent.DEBUFF:
+            status_condition = StatusCondition(status, 0, value, False)
+            self.combat.player.apply_status_condition(status_condition)
 
     def generate_move(self):
         self.intent = self.ai.generate_move()
@@ -528,7 +534,13 @@ class CombatDeck:
             self.hand.append(card)
 
     def discard_hand(self):
-        self.discard_pile.extend(self.hand)
+        for card in self.hand:
+            if card.name == "Burn":
+                self.combat.player.lose_health(2)
+            if card.name == "Dazed" or card.name == "Carnage" or card.name == "Ghostly Armor":
+                self.exhaust_card(card)
+            else:
+                self.discard_pile.append(card)
         self.hand = []
 
     def exhaust_card(self, card):
@@ -541,7 +553,6 @@ class CombatDeck:
             self.combat.player.draw_cards(value)
 
     def use_card(self, card, target):
-        # TODO: implement checks for card target types and apply appropriately
         if card.name == "Clash":
             for card_in_hand in self.hand:
                 if card_in_hand.card_type != CardType.ATTACK:
@@ -550,7 +561,7 @@ class CombatDeck:
             value = self.combat.player.conditions[Status.RAGE].value
             self.combat.player.block += value  # note that dexterity is not accounted for
         if card.name == "Blood for Blood":
-            card.cost = max(0, 4 - self.damage_track)
+            card.cost = max(0, 4 - card.damage_track)
         if card.cost <= self.combat.player.energy:
             self.combat.player.energy -= card.cost
             self.hand.remove(card)
