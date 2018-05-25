@@ -101,7 +101,16 @@ class FungiBeastAI:
 
 class SlaverAI:
     def __init__(self):
-        self.sequence = [Intent.ATTACK, ]
+        self.sequence = [Intent.ATTACK]
+        self.attack = 12
+        self.block = 0
+        self.buff = 0
+        self.debuff = 0
+
+    def generate_move(self):
+        move = self.sequence.pop(0)
+        self.sequence.append(move)
+        return (move, self.attack, None)
 
 
 class LagavulinAI:
