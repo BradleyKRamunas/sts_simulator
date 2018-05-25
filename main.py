@@ -314,11 +314,7 @@ class Combat:
         count = 0
         for enemy in self.enemies:
             if enemy.health != 0:
-<<<<<<< HEAD
                 intent, value, status = enemy.intent
-=======
-                intent, value, other = enemy.intent
->>>>>>> e57755d94c3bc07ac8b04b4a751d599e0f4e0e05
                 print (enemy.conditions)
                 print ("Enemy {} with health {}/{} is".format(count, enemy.health, enemy.max_health)),
                 if intent == Intent.ATTACK:
