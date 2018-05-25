@@ -425,6 +425,8 @@ class CombatDeck:
         if Status.RAGE in self.combat.player.conditions:
             value = self.combat.player.conditions[Status.RAGE].value
             self.combat.player.block += value  # note that dexterity is not accounted for
+        if card.name == "Blood for Blood":
+            card.cost = max(0, 4 - self.damage_track)
         if card.cost <= self.combat.player.energy:
             self.combat.player.energy -= card.cost
             self.hand.remove(card)

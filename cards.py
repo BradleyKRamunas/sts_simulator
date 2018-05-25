@@ -188,21 +188,22 @@ def battle_trance_fx(combat, target):
     enemy = combat.enemies[target]
     for i in range(3):
         player.deck.draw_card()
-    # TODO: Cannot draw any more cards this turn
+    noDraw = StatusCondition(Status.NO_DRAW, 1, True)
+    player.apply_status_condition(noDraw)
 
 
 def blood_for_blood_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(18))
+    # Note: Energy reduction already accounted for
 
 
 def bloodletting_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    player.health -= 3
-    player.energy += 1
-    # TODO: Update counter for number of times taken damage
+    player.lose_health(3)
+    player.gain_energy(1)
 
 
 def burning_pact_fx(combat, target):
@@ -272,6 +273,151 @@ def evolve_fx(combat, target):
     evolved = StatusCondition(Status.EVOLVE, 1, True)
     player.apply_status_condition(evolved)
 
+# --------------------------------------------
+
+def feel_no_pain_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    noPainNoGain = StatusCondition(Status.FEELNOPAIN, 1, True)
+    enemy.apply_status_condition(noPainNoGain)
+
+
+def flame_barrier_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    player.gain_block(12)
+    fireInYourHair = StatusCondition(Status.FLAMEBARRIER, 1, False)
+    enemy.apply_status_condition(fireInYourHair)
+
+
+def ghostly_armor_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    player.gain_block(10)
+
+
+def hemokinesis_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    player.lose_health(3)
+    enemy.take_damage(player.generate_damage(14))
+
+
+def inflame_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    inflamed = StatusCondition(Status.STRENGTH, 2, True)
+    player.apply_status_condition(inflamed)
+
+
+def intimidate_fx(combat, target):
+    player = combat.player
+    getRekt = StatusCondition(Status.WEAK, 1, False)
+    for enemy in combat.enemies:
+        enemy.apply_status_condition(getRekt)
+
+
+def metallicize_fx(combat, target):
+    player = combat.player
+    metalMan = StatusCondition(Status.METALLICIZE, 1, False)
+    player.apply_status_condition(metalMan)
+
+
+def power_through_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    player.gain_block(15)
+    # TODO: Shuffle 2 wounds into your combatdeck
+
+
+def pummel_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    for i in range(4):
+        enemy.take_damage(player.generate_damage(2))
+
+
+def rage_fx(combat, target):
+    player = combat.player
+    rawr = StatusCondition(Status.RAGE, 1, False)
+    player.apply_status_condition(rawr)
+
+# ----------------------------------------------------
+
+# TODO: rampage effect when we merge
+def rampage_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(8))
+
+
+def reckless_charge_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(7))
+    # TODO: Shuffle a dazed card into your combat deck
+
+
+def rupture_fx(combat, target):
+    player = combat.player
+    wheredMyBloodGo = StatusCondition(Status.RUPTURE, 1, True)
+    player.apply_status_condition(wheredMyBloodGo)
+
+
+def searing_blow_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+
+
+# TODO: exhaust everything in hand and gain 5X block
+def second_wind(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    enemy.apply_status_condition(vulnerable)
+
+
+def clothesline_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    enemy.apply_status_condition(vulnerable)
+
+
+def clothesline_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    enemy.apply_status_condition(vulnerable)
+
+
+def clothesline_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    enemy.apply_status_condition(vulnerable)
+
+
+def clothesline_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    enemy.apply_status_condition(vulnerable)
+
+
+def clothesline_fx(combat, target):
+    player = combat.player
+    enemy = combat.enemies[target]
+    enemy.take_damage(player.generate_damage(12))
+    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    enemy.apply_status_condition(vulnerable)
+
 
 # <<<<<<< HEAD
 # Parameters: "name", cost, CardType, fx function, Target, Exhaust (t/f)
@@ -302,16 +448,38 @@ battleTrance = Card("Battle Trance", 0, CardType.SKILL, battle_trance_fx, Target
 # TODO: Counter for number of times we've taken damage
 bloodForBlood = Card("Blood for Blood", 4, CardType.SKILL, blood_for_blood_fx, Target.SINGLE, False)
 
-bloodLetting = Card("Bloodletting", 0, CardType.SKILL, wild_strike_fx, Target.SELF, False)
-burningPact = Card("Burning Pact", 1, CardType.SKILL, wild_strike_fx, Target.SELF, False)
-carnage = Card("Carnage", 2, CardType.ATTACK, wild_strike_fx, Target.SINGLE, False)
-combust = Card("Combust", 1, CardType.POWER, wild_strike_fx, Target.SELF, False)
-corruption = Card("Corruption", 3, CardType.POWER, wild_strike_fx, Target.SELF, False)
-disarm = Card("Disarm", 1, CardType.SKILL, wild_strike_fx, Target.SINGLE, True)
-dropkick = Card("Dropkick", 1, CardType.ATTACK, wild_strike_fx, Target.SINGLE, False)
-dualWield = Card("Dual Wield", 1, CardType.SKILL, wild_strike_fx, Target.SELF, False)
-entrench = Card("Entrench", 2, CardType.SKILL, wild_strike_fx, Target.SELF, False)
-evolve = Card("Evolve", 1, CardType.POWER, wild_strike_fx, Target.SELF, False)
+bloodLetting = Card("Bloodletting", 0, CardType.SKILL, bloodletting_fx, Target.SELF, False)
+burningPact = Card("Burning Pact", 1, CardType.SKILL, burning_pact_fx, Target.SELF, False)
+carnage = Card("Carnage", 2, CardType.ATTACK, carnage_fx, Target.SINGLE, False)
+combust = Card("Combust", 1, CardType.POWER, combust_fx, Target.SELF, False)
+corruption = Card("Corruption", 3, CardType.POWER, corruption_fx, Target.SELF, False)
+disarm = Card("Disarm", 1, CardType.SKILL, disarm_fx, Target.SINGLE, True)
+dropkick = Card("Dropkick", 1, CardType.ATTACK, dropkick_fx, Target.SINGLE, False)
+dualWield = Card("Dual Wield", 1, CardType.SKILL, dual_wield_fx, Target.SELF, False)
+entrench = Card("Entrench", 2, CardType.SKILL, entrench_fx, Target.SELF, False)
+evolve = Card("Evolve", 1, CardType.POWER, evolve_fx, Target.SELF, False)
+
+feelNoPain = Card("Feel No Pain", 1, CardType.POWER, feel_no_pain_fx, Target.SELF, False)
+flameBarrier = Card("Flame Barrier", 2, CardType.SKILL, flame_barrier_fx, Target.SELF, False)
+ghostlyArmor = Card("Ghostly Armor", 1, CardType.SKILL, ghostly_armor_fx, Target.SELF, False)
+hemoKinesis = Card("Hemokinesis", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+inflame = Card("Inflame", 1, CardType.POWER, inflame_fx, Target.SELF, False)
+intimidate = Card("Intimidate", 0, CardType.SKILL, intimidate_fx, Target.ALL, True)
+metallicize = Card("Metallicize", 1, CardType.POWER, metallicize_fx, Target.SELF, False)
+powerThrough = Card("Power Through", 1, CardType.SKILL, power_through_fx, Target.SELF, False)
+pummel = Card("Pummel", 1, CardType.ATTACK, pummel_fx, Target.SINGLE, True)
+rage = Card("Rage", 0, CardType.SKILL, rage_fx, Target.SELF, False)
+
+rampage = Card("Rampage", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+recklessCharge = Card("Reckless Charge", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+rupture = Card("Rupture", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+searingBlow = Card("Searing Blow", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+secondWind = Card("Second Wind", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+seeingRed = Card("Seeing Red", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+severSoul = Card("Sever Soul", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+shockwave = Card("Shock Wave", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+spotWeakness = Card("Spot Weakness", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
+uppercut = Card("Uppercut", 1, CardType.ATTACK, hemokinesis_fx, Target.SINGLE, False)
 # =======
 # >>>>>>> b048d96c58fdacaa4b154b626b5cb9008c106daf
 # Not sure what this is...
@@ -354,6 +522,8 @@ evolve = Card("Evolve", 1, CardType.POWER, wild_strike_fx, Target.SELF, False)
 # Power Through
 # Pummel
 # Rage
+
+
 # Rampage
 # Reckless Charge
 # Rupture
@@ -364,6 +534,8 @@ evolve = Card("Evolve", 1, CardType.POWER, wild_strike_fx, Target.SELF, False)
 # Shockwave
 # Spot Weakness
 # Uppercut
+
+
 # Whirlwind - add special cost for X energy
 # Barricade - block no longer expires
 # Beserk
