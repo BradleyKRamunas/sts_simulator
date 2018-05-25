@@ -8,6 +8,77 @@ from main import Intent
 import random
 
 
+def generate_all_deck():
+    deck = Deck()
+    for i in range(3):
+        deck.add_card(havoc)
+        deck.add_card(headbutt)
+        deck.add_card(heavyBlade)
+        deck.add_card(ironWave)
+        deck.add_card(perfectedStrike)
+        deck.add_card(pommelStrike)
+        deck.add_card(shrugItOff)
+        deck.add_card(thunderclap)
+        deck.add_card(trueGrit)
+        deck.add_card(twinStrike)
+        deck.add_card(warcry)
+        deck.add_card(wildStrike)
+        deck.add_card(battleTrance)
+        deck.add_card(bloodForBlood)
+        deck.add_card(bloodLetting)
+        deck.add_card(burningPact)
+        deck.add_card(carnage)
+        deck.add_card(combust)
+        deck.add_card(corruption)
+        deck.add_card(disarm)
+        deck.add_card(dropkick)
+        deck.add_card(dualWield)
+        deck.add_card(entrench)
+        deck.add_card(evolve)
+        deck.add_card(feelNoPain)
+        deck.add_card(flameBarrier)
+        deck.add_card(ghostlyArmor)
+        deck.add_card(hemoKinesis)
+        deck.add_card(inflame)
+        deck.add_card(intimidate)
+        deck.add_card(metallicize)
+        deck.add_card(powerThrough)
+        deck.add_card(pummel)
+        deck.add_card(rage)
+        deck.add_card(rampage)
+        deck.add_card(recklessCharge)
+        deck.add_card(rupture)
+        deck.add_card(searingBlow)
+        deck.add_card(secondWind)
+        deck.add_card(seeingRed)
+        deck.add_card(severSoul)
+        deck.add_card(shockwave)
+        deck.add_card(spotWeakness)
+        deck.add_card(uppercut)
+        deck.add_card(whirlwind)
+        deck.add_card(barricade)
+        deck.add_card(berserk)
+        deck.add_card(bludgeon)
+        deck.add_card(brutality)
+        deck.add_card(darkEmbrace)
+        deck.add_card(demonForm)
+        deck.add_card(doubleTap)
+        deck.add_card(exhume)
+        deck.add_card(feed)
+        deck.add_card(fiendFire)
+        deck.add_card(immolate)
+        deck.add_card(impervious)
+        deck.add_card(juggernaut)
+        deck.add_card(limitBreak)
+        deck.add_card(offering)
+        deck.add_card(reaper)
+        deck.add_card(sentinel)
+        deck.add_card(dazed)
+        deck.add_card(wound)
+        deck.add_card(burn)
+    return deck
+
+
 def generate_default_deck():
     deck = Deck()
     deck.add_card(bash)
@@ -67,17 +138,17 @@ def clothesline_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    vulnerable = StatusCondition(Status.VULNERABLE, 0, 2, False)
     enemy.apply_status_condition(vulnerable)
 
 
 # Flex: gain 2(4) strength at the beginning of turn, then lose 2(4) at the end of turn.
 def flex_fx(combat, target):
     player = combat.player
-    flexing = StatusCondition(Status.FLEX, 2, False)
-    strength = StatusCondition(Status.STRENGTH, 2, True)
+    flexing = StatusCondition(Status.FLEX, 0, 1, False)
+    # strength = StatusCondition(Status.STRENGTH, 2, True)
     player.apply_status_condition(flexing)
-    player.apply_status_condition(strength)
+    # player.apply_status_condition(strength)
 
 
 # Draws the top card on the draw pile, play, and exhaust it
@@ -144,7 +215,7 @@ def shrug_it_off_fx(combat, target):
 
 def thunderclap_fx(combat, target):
     player = combat.player
-    vulnerable = StatusCondition(Status.VULNERABLE, 1, True)
+    vulnerable = StatusCondition(Status.VULNERABLE, 0, 1, True)
     for enemy in combat.enemies:
         enemy.take_damage(4)
         enemy.apply_status_condition(vulnerable)
@@ -189,7 +260,7 @@ def battle_trance_fx(combat, target):
     enemy = combat.enemies[target]
     for i in range(3):
         player.deck.draw_card()
-    noDraw = StatusCondition(Status.NO_DRAW, 1, True)
+    noDraw = StatusCondition(Status.NO_DRAW, 1, 0, True)
     player.apply_status_condition(noDraw)
 
 
@@ -227,21 +298,21 @@ def carnage_fx(combat, target):
 def combust_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    combustion = StatusCondition(Status.COMBUST, 1, False)
+    combustion = StatusCondition(Status.COMBUST, 0, 1, False)
     player.apply_status_condition(combustion)
 
 
 def corruption_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    corrupt = StatusCondition(Status.CORRUPTION, 2, False)
+    corrupt = StatusCondition(Status.CORRUPTION, 0, 2, False)
     player.apply_status_condition(corrupt)
 
 
 def disarm_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    weak = StatusCondition(Status.STRENGTH, -2, False)
+    weak = StatusCondition(Status.STRENGTH, -2, 0, True)
     enemy.apply_status_condition(weak)
 
 
@@ -271,7 +342,7 @@ def entrench_fx(combat, target):
 def evolve_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    evolved = StatusCondition(Status.EVOLVE, 1, True)
+    evolved = StatusCondition(Status.EVOLVE, 1, 0, True)
     player.apply_status_condition(evolved)
 
 # --------------------------------------------
@@ -279,7 +350,7 @@ def evolve_fx(combat, target):
 def feel_no_pain_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    noPainNoGain = StatusCondition(Status.FEELNOPAIN, 1, True)
+    noPainNoGain = StatusCondition(Status.FEELNOPAIN, 1, 0, True)
     enemy.apply_status_condition(noPainNoGain)
 
 
@@ -287,7 +358,7 @@ def flame_barrier_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     player.gain_block(12)
-    fireInYourHair = StatusCondition(Status.FLAMEBARRIER, 1, False)
+    fireInYourHair = StatusCondition(Status.FLAMEBARRIER, 0, 1, False)
     enemy.apply_status_condition(fireInYourHair)
 
 
@@ -307,20 +378,20 @@ def hemokinesis_fx(combat, target):
 def inflame_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
-    inflamed = StatusCondition(Status.STRENGTH, 2, True)
+    inflamed = StatusCondition(Status.STRENGTH, 2, 0, True)
     player.apply_status_condition(inflamed)
 
 
 def intimidate_fx(combat, target):
     player = combat.player
-    getRekt = StatusCondition(Status.WEAK, 1, False)
+    getRekt = StatusCondition(Status.WEAK, 0, 1, False)
     for enemy in combat.enemies:
         enemy.apply_status_condition(getRekt)
 
 
 def metallicize_fx(combat, target):
     player = combat.player
-    metalMan = StatusCondition(Status.METALLICIZE, 1, False)
+    metalMan = StatusCondition(Status.METALLICIZE, 0, 1, False)
     player.apply_status_condition(metalMan)
 
 
@@ -344,7 +415,7 @@ def pummel_fx(combat, target):
 
 def rage_fx(combat, target):
     player = combat.player
-    rawr = StatusCondition(Status.RAGE, 1, False)
+    rawr = StatusCondition(Status.RAGE, 0, 1, False)
     player.apply_status_condition(rawr)
 
 # ----------------------------------------------------
@@ -365,7 +436,7 @@ def reckless_charge_fx(combat, target):
 
 def rupture_fx(combat, target):
     player = combat.player
-    wheredMyBloodGo = StatusCondition(Status.RUPTURE, 1, True)
+    wheredMyBloodGo = StatusCondition(Status.RUPTURE, 1, 0, True)
     player.apply_status_condition(wheredMyBloodGo)
 
 
@@ -380,7 +451,7 @@ def second_wind_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    vulnerable = StatusCondition(Status.VULNERABLE, 0, 2, False)
     enemy.apply_status_condition(vulnerable)
 
 
@@ -398,8 +469,8 @@ def sever_soul_fx(combat, target):
 
 
 def shockwave_fx(combat, target):
-    shock = StatusCondition(Status.VULNERABLE, 3, False)
-    wave = StatusCondition(Status.WEAK, 3, False)
+    shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
+    wave = StatusCondition(Status.WEAK, 0, 3, False)
     for enemy in combat.enemies:
         enemy.apply_status_condition(shock)
         enemy.apply_status_condition(wave)
@@ -409,7 +480,7 @@ def spot_weakness_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     if enemy.intent[0] == Intent.ATTACK:
-        gotem = StatusCondition(Status.STRENGTH, 3, True)
+        gotem = StatusCondition(Status.STRENGTH, 3, 0, True)
         player.apply_status_condition(gotem)
 
 
@@ -417,8 +488,8 @@ def uppercut_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(13))
-    upper = StatusCondition(Status.VULNERABLE, 1, False)
-    cut = StatusCondition(Status.WEAK, 1, False)
+    upper = StatusCondition(Status.VULNERABLE, 0, 1, False)
+    cut = StatusCondition(Status.WEAK, 0, 1, False)
     enemy.apply_status_condition(upper)
     enemy.apply_status_condition(cut)
 
@@ -435,13 +506,13 @@ def whirlwind_fx(combat, target):
 
 def barricade_fx(combat, target):
     player = combat.player
-    barricadus = StatusCondition(Status.BARRICADE, 1, True)
+    barricadus = StatusCondition(Status.BARRICADE, 1, 0, True)
     player.apply_status_condition(barricadus)
 
 
 def berserk_fx(combat, target):
     player = combat.player
-    betaBerserker = StatusCondition(Status.BERSERK, 1, True)
+    betaBerserker = StatusCondition(Status.BERSERK, 1, 0, True)
     player.apply_status_condition(betaBerserker)
 
 
@@ -459,19 +530,19 @@ def brutality_fx(combat, target):
 
 def dark_embrace_fx(combat, target):
     player = combat.player
-    hugs = StatusCondition(Status.EMBRACE, 1, True)
+    hugs = StatusCondition(Status.EMBRACE, 1, 0, True)
     player.apply_status_condition(hugs)
 
 
 def demon_form_fx(combat, target):
     player = combat.player
-    antiChrist = StatusCondition(Status.DEMON, 1, True)
+    antiChrist = StatusCondition(Status.DEMON, 1, 0, True)
     player.apply_status_condition(antiChrist)
 
 
 def double_tap_fx(combat, target):
     player = combat.player
-    doubleDipping = StatusCondition(Status.DOUBLE, 1, False)
+    doubleDipping = StatusCondition(Status.DOUBLE, 0, 1, False)
     player.apply_status_condition(doubleDipping)
 
 
@@ -495,7 +566,7 @@ def fiend_fire_fx(combat, target):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 2, False)
+    vulnerable = StatusCondition(Status.VULNERABLE, 0, 2, False)
     enemy.apply_status_condition(vulnerable)
 
 
@@ -514,7 +585,7 @@ def impervious_fx(combat, target):
 
 def juggernaut_fx(combat, target):
     player = combat.player
-    juggler_naught = StatusCondition(Status.JUGGERNAUT, 1, True)
+    juggler_naught = StatusCondition(Status.JUGGERNAUT, 1, 0, True)
     player.apply_status_condition(juggler_naught)
 
 
@@ -524,7 +595,7 @@ def limit_break_fx(combat, target):
         player.conditions[Status.STRENGTH] *= 2
 
 
-def offering(combat, target):
+def offering_fx(combat, target):
     player = combat.player
     player.lose_health(4)
     player.gain_energy(2)
@@ -629,7 +700,7 @@ immolate = Card("Immolate", 2, CardType.ATTACK, immolate_fx, Target.ALL, False)
 impervious = Card("Impervious", 2, CardType.SKILL, impervious_fx, Target.SELF, True)
 juggernaut = Card("Juggernaut", 2, CardType.POWER, juggernaut_fx, Target.SELF, False)
 limitBreak = Card("Limit Break", 1, CardType.SKILL, limit_break_fx, Target.SELF, True)
-offering = Card("Offering", 0, CardType.SKILL, offering, Target.SINGLE, True)
+offering = Card("Offering", 0, CardType.SKILL, offering_fx, Target.SINGLE, True)
 reaper = Card("Reaper", 2, CardType.ATTACK, reaper_fx, Target.ALL, True)
 sentinel = Card("Sentinel", 1, CardType.SKILL, rampage_fx, Target.SELF, False)
 
