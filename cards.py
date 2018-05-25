@@ -11,6 +11,15 @@ import random
 def generate_all_deck():
     deck = Deck()
     for i in range(3):
+        deck.add_card(strike)
+        deck.add_card(defend)
+        deck.add_card(bash)
+        deck.add_card(anger)
+        deck.add_card(armaments)
+        deck.add_card(bodySlam)
+        deck.add_card(clash)
+        deck.add_card(clothesline)
+        deck.add_card(flex)
         deck.add_card(havoc)
         deck.add_card(headbutt)
         deck.add_card(heavyBlade)
