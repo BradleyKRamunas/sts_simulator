@@ -306,16 +306,20 @@ class Combat:
         print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\
             .format(self.player.health, self.player.max_health, self.player.energy, self.player.block))
         count = 0
+        print ("Your hand: "),
         for card in self.player.deck.hand:
             print ("{}: {} |".format(count, card.name)),
             count += 1
         else:
             print
+
+        print ("Your conditions: "),
+        print self.player.conditions
         count = 0
         for enemy in self.enemies:
             if enemy.health != 0:
                 intent, value, other = enemy.intent
-                print (enemy.conditions)
+
                 print ("Enemy {} with health {}/{} is".format(count, enemy.health, enemy.max_health)),
                 if intent == Intent.ATTACK:
                     print ("Attacking for {} | ".format(value)),
@@ -325,6 +329,8 @@ class Combat:
                     print ("Buffing | "),
                 if intent == Intent.DEBUFF:
                     print ("Debuffing | "),
+                print ("Conditions: "),
+                print (enemy.conditions)
             count += 1
         else:
             print
