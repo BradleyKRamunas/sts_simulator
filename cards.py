@@ -712,7 +712,7 @@ juggernaut = Card("Juggernaut", 2, CardType.POWER, juggernaut_fx, Target.SELF, F
 limitBreak = Card("Limit Break", 1, CardType.SKILL, limit_break_fx, Target.SELF, True)
 offering = Card("Offering", 0, CardType.SKILL, offering_fx, Target.SINGLE, True)
 reaper = Card("Reaper", 2, CardType.ATTACK, reaper_fx, Target.ALL, True)
-sentinel = Card("Sentinel", 1, CardType.SKILL, rampage_fx, Target.SELF, False)
+sentinel = Card("Sentinel", 1, CardType.SKILL, sentinel_fx, Target.SELF, False)
 
 dazed = Card("Dazed", 0, CardType.STATUS, status_fx, Target.SELF, False)
 wound = Card("Wound", 0, CardType.STATUS, status_fx, Target.SELF, False)
