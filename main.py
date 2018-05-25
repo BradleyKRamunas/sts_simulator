@@ -314,12 +314,12 @@ class Combat:
         count = 0
         for enemy in self.enemies:
             if enemy.health != 0:
-                intent, value = enemy.intent
+                intent, value, other = enemy.intent
                 print (enemy.conditions)
                 print ("Enemy {} with health {}/{} is".format(count, enemy.health, enemy.max_health)),
                 if intent == Intent.ATTACK:
                     print ("Attacking for {} | ".format(value)),
-                if intent == Intent.DEFEND:
+                if intent == Intent.BLOCK:
                     print ("Defending for {} | ".format(value)),
                 if intent == Intent.BUFF:
                     print ("Buffing | "),
