@@ -231,6 +231,12 @@ class Card:
     def apply(self, combat, target):
         self.fx(combat, target, self.count)
 
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
+
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
@@ -343,6 +349,15 @@ class Combat:
                 option = int(raw_input("Which card would you like to use (-1 to end turn)? > "))
                 if option == -1:  # -1 means end turn
                     break
+                if option == -2:  # print draw pile
+                    print self.player.deck.draw_pile
+                    continue
+                if option == -3:  # print discard pile
+                    print self.player.deck.discard_pile
+                    continue
+                if option == -4:  # print exhaust pile
+                    print self.player.deck.exhaust_pile
+                    continue
                 card = self.player.deck.hand[option]
                 option = int(raw_input("Target (-1 for self)? > "))
 
