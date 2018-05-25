@@ -50,11 +50,33 @@ def generate_actions(state):
                 actions.append((card, -1))
 
 
+
     actions.append(None)  # None represents ending turn
     return actions
 
 def state_feature_extractor(state):
     #TODO: implement some sort of feature extraction
+
+    # Sparse vector of features represented by dictionary
+    features = {}
+
+    # Grabs the health of each enemy
+    for i, enemy in enumerate(state.enemies):
+            features["enemy" + str(i) + "Health"] = enemy.health
+
+    # Grabs the number of alive enemies
+    aliveEnemies = 0
+    for enemy in state.enemies:
+        if enemy.health > 0:
+            aliveEnemies += 1
+    features["numEnemies"] = aliveEnemies
+
+    # TODO: Implement enemyAI as a feature
+
+    # TODO: Cards as features somehow (indicator list with all cards in it, singleton/pairs/triples of cards, etc.)
+
+    #
+
     return
 
 def run():

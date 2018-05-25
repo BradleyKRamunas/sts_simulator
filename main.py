@@ -524,7 +524,7 @@ Features -
 I. Wakanda
 II. Enemy health
 III. Number of enemies
-IV. Enemy types
+IV. Enemy types (?)
 V. Enemy intent/danger
 VI. Presence of cards in hand (indicator list)
 VII. Cards in discard

@@ -77,6 +77,9 @@ def flex_fx(combat, target):
     player.apply_status_condition(flex)
     player.apply_status_condition(strength)
 
+# Draws the top card on the draw pile, play, and exhaust it
+def havoc_fx(combat, target):
+    combat.player.deck.
 
 # <<<<<<< HEAD
 strike = Card("Strike", 1, CardType.ATTACK, strike_fx, Target.SINGLE, False)
@@ -88,6 +91,69 @@ bodyslam = Card("Body Slam", 1, CardType.ATTACK, bodyslam_fx, Target.SINGLE, Fal
 clash = Card("Clash", 0, CardType.ATTACK, clash_fx, Target.SINGLE, False)
 clothesline = Card("Clothesline", 2, CardType.ATTACK, clothesline_fx, Target.SINGLE, False)
 flex = Card("Flex", 0, CardType.SKILL, flex_fx, Target.SELF, False)
+havoc = Card("Havoc", 1, CardType.SKILL, havoc_fx, Target.SELF, False)
 # =======
 # >>>>>>> b048d96c58fdacaa4b154b626b5cb9008c106daf
 # Not sure what this is...
+
+# Havoc
+# Headbutt
+# Heavy Blade
+# Iron Wave
+# Perfected Strike
+# Pommel Strike
+# Shrug it off
+# Thunderclap
+# True Grit
+# Twin Strike
+# Warcry
+# Wild Strike
+# Battle Trance
+# Blood for Blood
+# Bloodletting
+# Burning pact
+# Carnage
+# Combust
+# Corruption
+# Disarm
+# Dropkick
+# Dual Wield
+# Entrench
+# Evolve
+# Feel No Pain
+# Flame Barrier
+# Ghostly Armor
+# Hemokinesis
+# Inflame
+# Intimidate
+# Metallicize
+# Power Through
+# Pummel
+# Rage
+# Rampage
+# Reckless Charge
+# Rupture
+# Searing Blow
+# Second Wind
+# Seeing Red
+# Sever Soul
+# Shockwave
+# Spot Weakness
+# Uppercut
+# Whirlwind - add special cost for X energy
+# Barricade - block no longer expires
+# Beserk
+# Bludgeon
+# Brutality
+# Dark Embrace
+# Demon Form - for all powers, add an unrecoverable pile
+# Double Tap - literally everything happens twice
+# Exhume
+# Feed - no such thing as "minions"/"bosses" for us... for now
+# Fiend fire
+# Immolate
+# Impervious
+# Juggernaut
+# Limit Break
+# Offering
+# Reaper
