@@ -360,7 +360,7 @@ class CombatEnemy:
         self.health = health
         self.max_health = health
         self.block = 0
-        self.intent = None  # defined as a tuple of (intent, value)
+        self.intent = None  # defined as a tuple of (intent, value, status)
         self.conditions = {}
         # TODO: create some AI class and extend it with some forms of enemies
 
@@ -454,6 +454,7 @@ class CombatPlayer:
 
     def heal_health(self, value):
         self.health += value
+        self.health = min(self.max_health, self.health)
 
     def gain_block(self, value):
         calc_value = value
