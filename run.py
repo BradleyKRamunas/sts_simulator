@@ -1,5 +1,6 @@
 import main
 import cards
+import random
 from enemy_ai import *
 from enums import *
 from copy import deepcopy
@@ -13,27 +14,39 @@ T(s,a,s') Probability: 1 for all
 IsEnd(s): is_end_state
 '''
 
+EPSILON = 0.5
+
 
 def generic_policy(state, actions):
-    max_action = None
-    max_delta = 0
-    prev_sum = 0
-    for enemy in state.enemies:
-        prev_sum += enemy.block
-        prev_sum += enemy.health
+    if state.state_type == StateType.NORMAL:
+        if random.uniform(0, 1) <= EPSILON:
+            max_action = None
+            max_delta = 0
+            prev_sum = 0
+            for enemy in state.enemies:
+                prev_sum += enemy.block
+                prev_sum += enemy.health
 
-    for action in actions:
-        next_state = generate_successor_state(state, action)
-        new_sum = 0
-        if next_state is not None:
-            for enemy in next_state.enemies:
-                new_sum += enemy.block
-                new_sum += enemy.health
-            if prev_sum - new_sum > max_delta:
-                max_action = action
-                max_delta = prev_sum - new_sum
+            for action in actions:
+                next_state = generate_successor_state(state, action)
+                new_sum = 0
+                if next_state is not None:
+                    for enemy in next_state.enemies:
+                        new_sum += enemy.block
+                        new_sum += enemy.health
+                    if prev_sum - new_sum > max_delta:
+                        max_action = action
+                        max_delta = prev_sum - new_sum
 
-    return max_action
+            return max_action
+        else:
+            action = random.choice(actions)
+            next_state = generate_successor_state(state, action)
+            if next_state is None:
+                return None
+            return action
+    else:
+        return random.choice(actions)
 
 
 def is_end_state(state):
@@ -57,17 +70,35 @@ def generate_successor_state(state, action):
             card, target = action
             if not temp_state.player.deck.use_card(card, target):
                 return None
+        return temp_state
     if state.state_type == StateType.COPY:
-        return
+        if action is not None:
+            temp_state.player.deck.hand.append(action)
+        temp_state.state_type = StateType.NORMAL
+        return temp_state
     if state.state_type == StateType.DISCARD_TO_DRAW:
-        return
+        if action is not None:
+            temp_state.player.deck.draw_pile.insert(0, action)
+            temp_state.player.deck.discard_pile.remove(action)
+        temp_state.state_type = StateType.NORMAL
+        return temp_state
     if state.state_type == StateType.EXHAUST_TO_HAND:
-        return
+        if action is not None:
+            temp_state.player.deck.hand.append(action)
+            temp_state.player.deck.exhaust_pile.remove(action)
+        temp_state.state_type = StateType.NORMAL
+        return temp_state
     if state.state_type == StateType.HAND_TO_DRAW:
-        return
+        if action is not None:
+            temp_state.player.deck.draw_pile.insert(0, action)
+            temp_state.player.deck.hand.remove(action)
+        temp_state.state_type = StateType.NORMAL
+        return temp_state
     if state.state_type == StateType.HAND_TO_EXHAUST:
-        return
-    return temp_state
+        if action is not None:
+            temp_state.player.deck.exhaust_card(action)
+        temp_state.state_type = StateType.NORMAL
+        return temp_state
 
 
 def generate_actions(state):
@@ -141,8 +172,8 @@ def state_feature_extractor(state):
     return
 
 def run():
-    player = main.Player(cards.testing_deck(), 80)
-    enemies = [main.CombatEnemy(None, SpikeSlimeAI(), 100), main.CombatEnemy(None, AcidSlimeAI(), 100)]
+    player = main.Player(cards.testing_deck(), 800)
+    enemies = [main.CombatEnemy(None, SpikeSlimeAI(), 1000), main.CombatEnemy(None, AcidSlimeAI(), 1000)]
     current_state = main.Combat(player, enemies)
     current_state.start_turn()
     while not is_end_state(current_state):

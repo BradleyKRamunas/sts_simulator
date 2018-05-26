@@ -8,9 +8,13 @@ import random
 def testing_deck():
     deck = Deck()
 
-    for i in range(5):
-        deck.add_card(hemoKinesis)
-        deck.add_card(bloodForBlood)
+    for i in range(10):
+        deck.add_card(defend)
+        deck.add_card(bodySlam)
+        deck.add_card(shrugItOff)
+        deck.add_card(impervious)
+    for i in range(3):
+        deck.add_card(barricade)
     return deck
 
 
@@ -151,6 +155,13 @@ def clash_fx(combat, target, count):
     enemy.take_damage(player.generate_damage(14))
 
 
+def cleave_fx(combat, target, count):
+    player = combat.player
+    for enemy in combat.enemies:
+        if enemy.health > 0:
+            enemy.take_damage(player.generate_damage(7))
+
+
 # Clothesline: deals 12(14) damage and applies 2(3) weak.
 def clothesline_fx(combat, target, count):
     player = combat.player
@@ -190,17 +201,20 @@ def headbutt_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(9))
-    if len(combat.player.deck.discard_pile) == 0:
-        print ("Your discard is empty.")
+    if not __debug__:
+        if len(combat.player.deck.discard_pile) == 0:
+            print ("Your discard is empty.")
+        else:
+            print ("Your discard: "),
+            for card in combat.player.deck.discard_pile:
+                print ("{}: {} |".format(count, card.name)),
+                count += 1
+            print
+            index = int(raw_input("Which card would you like to recover from your discard pile? -> "))
+            card = combat.player.deck.discard_pile.pop(index)
+            player.deck.draw_pile.insert(0, card)
     else:
-        print ("Your discard: "),
-        for card in combat.player.deck.discard_pile:
-            print ("{}: {} |".format(count, card.name)),
-            count += 1
-        print
-        index = int(raw_input("Which card would you like to recover from your discard pile? -> "))
-        card = combat.player.deck.discard_pile.pop(index)
-        player.deck.draw_pile.insert(0, card)
+        combat.state_type = StateType.DISCARD_TO_DRAW
 
 
 def heavy_blade_fx(combat, target, count):
@@ -256,9 +270,10 @@ def shrug_it_off_fx(combat, target, count):
 def thunderclap_fx(combat, target, count):
     player = combat.player
     for enemy in combat.enemies:
-        vulnerable = StatusCondition(Status.VULNERABLE, 0, 1, False)
-        enemy.take_damage(4)
-        enemy.apply_status_condition(vulnerable)
+        if enemy.health > 0:
+            vulnerable = StatusCondition(Status.VULNERABLE, 0, 1, False)
+            enemy.take_damage(4)
+            enemy.apply_status_condition(vulnerable)
 
 
 # Gains 7 block; exhausts a random card
@@ -282,15 +297,18 @@ def warcry_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     player.deck.draw_card()
-    print ("Your hand: "),
-    for card in combat.player.deck.hand:
-        print ("{}: {} |".format(count, card.name)),
-        count += 1
-    print
-    option = int(raw_input("Which card to place on top of your draw pile? -> "))
-    card = player.deck.hand[option]
-    player.deck.hand.remove(card)
-    player.deck.draw_pile.insert(0, card)
+    if not __debug__:
+        print ("Your hand: "),
+        for card in combat.player.deck.hand:
+            print ("{}: {} |".format(count, card.name)),
+            count += 1
+        print
+        option = int(raw_input("Which card to place on top of your draw pile? -> "))
+        card = player.deck.hand[option]
+        player.deck.hand.remove(card)
+        player.deck.draw_pile.insert(0, card)
+    else:
+        combat.state_type = StateType.HAND_TO_DRAW
 
 
 def wild_strike_fx(combat, target, count):
@@ -327,15 +345,19 @@ def bloodletting_fx(combat, target, count):
 def burning_pact_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    print ("Your hand: "),
-    for card in combat.player.deck.hand:
-        print ("{}: {} |".format(count, card.name)),
-        count += 1
-    print
-    option = int(raw_input("Which card to exhaust? -> "))
-    card = player.deck.hand[option]
-    player.deck.exhaust_card(card)
     player.draw_cards(2)
+    if not __debug__:
+        print ("Your hand: "),
+        for card in combat.player.deck.hand:
+            print ("{}: {} |".format(count, card.name)),
+            count += 1
+        print
+        option = int(raw_input("Which card to exhaust? -> "))
+        card = player.deck.hand[option]
+        player.deck.exhaust_card(card)
+    else:
+        combat.state_type = StateType.HAND_TO_EXHAUST
+
 
 
 def carnage_fx(combat, target, count):
@@ -378,14 +400,17 @@ def dual_wield_fx(combat, target, count):
     # TODO: only attack cards
     player = combat.player
     enemy = combat.enemies[target]
-    print ("Your hand: "),
-    for card in combat.player.deck.hand:
-        print ("{}: {} |".format(count, card.name)),
-        count += 1
-    print
-    option = int(raw_input("Which card to copy? -> "))
-    card = player.deck.hand[option]
-    player.deck.hand.append(card)
+    if not __debug__:
+        print ("Your hand: "),
+        for card in combat.player.deck.hand:
+            print ("{}: {} |".format(count, card.name)),
+            count += 1
+        print
+        option = int(raw_input("Which card to copy? -> "))
+        card = player.deck.hand[option]
+        player.deck.hand.append(card)
+    else:
+        combat.state_type = StateType.COPY
 
 
 def entrench_fx(combat, target, count):
@@ -441,7 +466,8 @@ def intimidate_fx(combat, target, count):
     player = combat.player
     getRekt = StatusCondition(Status.WEAK, 0, 1, False)
     for enemy in combat.enemies:
-        enemy.apply_status_condition(getRekt)
+        if enemy.health > 0:
+            enemy.apply_status_condition(getRekt)
 
 
 def metallicize_fx(combat, target, count):
@@ -531,10 +557,11 @@ def sever_soul_fx(combat, target, count):
 
 def shockwave_fx(combat, target, count):
     for enemy in combat.enemies:
-        shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
-        wave = StatusCondition(Status.WEAK, 0, 3, False)
-        enemy.apply_status_condition(shock)
-        enemy.apply_status_condition(wave)
+        if enemy.health > 0:
+            shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
+            wave = StatusCondition(Status.WEAK, 0, 3, False)
+            enemy.apply_status_condition(shock)
+            enemy.apply_status_condition(wave)
 
 
 def spot_weakness_fx(combat, target, count):
@@ -560,8 +587,9 @@ def uppercut_fx(combat, target, count):
 def whirlwind_fx(combat, target, count):
     player = combat.player
     for enemy in combat.enemies:
-        for i in range(player.energy + 1):
-            enemy.take_damage(player.generate_damage(5))
+        if enemy.health > 0:
+            for i in range(player.energy + 1):
+                enemy.take_damage(player.generate_damage(5))
 
 
 def barricade_fx(combat, target, count):
@@ -610,6 +638,11 @@ def double_tap_fx(combat, target, count):
 def exhume_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
+    if not __debug__:
+        # TODO: not implemented for debug mode
+        return
+    else:
+        combat.state_type = StateType.EXHAUST_TO_HAND
 
 
 def feed_fx(combat, target, count):
@@ -634,7 +667,8 @@ def fiend_fire_fx(combat, target, count):
 def immolate_fx(combat, target, count):
     player = combat.player
     for enemy in combat.enemies:
-        enemy.take_damage(player.generate_damage(21))
+        if enemy.health > 0:
+            enemy.take_damage(player.generate_damage(21))
     player.deck.discard_pile.append(burn)
 
 
@@ -669,9 +703,10 @@ def reaper_fx(combat, target, count):
     oldTotalHealth = 0
     newTotalHealth = 0
     for enemy in combat.enemies:
-        oldTotalHealth += enemy.health
-        enemy.take_damage(player.generate_damage(5))
-        newTotalHealth += enemy.health
+        if enemy.health > 0:
+            oldTotalHealth += enemy.health
+            enemy.take_damage(player.generate_damage(5))
+            newTotalHealth += enemy.health
     player.heal_health(oldTotalHealth - newTotalHealth)
 
 
@@ -692,6 +727,7 @@ anger = Card("Anger", 1, CardType.ATTACK, anger_fx, Target.SINGLE, False)
 armaments = Card("Armaments", 1, CardType.SKILL, armaments_fx, Target.SELF, False)
 bodySlam = Card("Body Slam", 1, CardType.ATTACK, bodyslam_fx, Target.SINGLE, False)
 clash = Card("Clash", 0, CardType.ATTACK, clash_fx, Target.SINGLE, False)
+cleave = Card("Cleave", 1, CardType.ATTACK, cleave_fx, Target.ALL, False)
 clothesline = Card("Clothesline", 2, CardType.ATTACK, clothesline_fx, Target.SINGLE, False)
 flex = Card("Flex", 0, CardType.SKILL, flex_fx, Target.SELF, False)
 havoc = Card("Havoc", 1, CardType.SKILL, havoc_fx, Target.SELF, False)
