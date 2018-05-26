@@ -184,6 +184,7 @@ def flex_fx(combat, target, count):
 def havoc_fx(combat, target, count):
     if len(combat.player.deck.draw_pile) > 0:
         card = combat.player.deck.draw_pile.pop(0)
+        combat.player.deck.hand.append(card)
         tempCost = card.cost
         tempExhaust = card.exhaust
         card.cost = 0

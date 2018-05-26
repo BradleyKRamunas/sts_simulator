@@ -237,13 +237,18 @@ class Card:
     def __repr__(self):
         return self.name
 
+    def __eq__(self, other):
+        return self.name == other.name and self.cost == other.cost and self.card_type == other.card_type and\
+               self.exhaust == other.exhaust and self.count == other.count
+
+
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
         self.enemies = enemies
         for enemy in self.enemies:
             enemy.combat = self
-        self.game_loop()  # meant for human player, not for AI usage
+        #self.game_loop()  # meant for human player, not for AI usage
 
     def start_turn(self):
         for enemy in self.enemies:
@@ -254,7 +259,7 @@ class Combat:
 
         self.player.reset_energy()
         self.player.reset_block()
-        draw_size = 10
+        draw_size = 5
         if Status.DRAW_REDUCTION in self.player.conditions:
             value = self.player.conditions[Status.DRAW_REDUCTION].value
             draw_size -= value
@@ -391,6 +396,8 @@ class CombatEnemy:
         self.conditions = {}
 
     def apply_intent(self):
+        if self.health == 0:
+            return
         intent, value, status = self.intent
         if intent == Intent.ATTACK:
             self.combat.player.take_damage(self.generate_damage(value))
@@ -403,7 +410,7 @@ class CombatEnemy:
             status_condition = StatusCondition(status, value, 0, True)
             self.apply_status_condition(status_condition)
         if intent == Intent.DEBUFF:
-            status_condition = StatusCondition(status, 0, value, False)
+            status_condition = StatusCondition(status, 0, value+1, False)
             self.combat.player.apply_status_condition(status_condition)
 
     def generate_move(self):
@@ -464,7 +471,7 @@ class CombatPlayer:
         self.deck = CombatDeck(player.deck, combat)
         self.health = player.health
         self.max_health = player.max_health
-        self.energy = 10
+        self.energy = 3
         self.block = 0
         self.damage_track = 0  # used for keeping track of damage taken for Blood For Blood
 
@@ -526,7 +533,7 @@ class CombatPlayer:
         self.deck.discard_hand()
 
     def reset_energy(self):
-        self.energy = 10
+        self.energy = 3
 
     def reset_block(self):
         if Status.BARRICADE not in self.conditions:
@@ -614,11 +621,11 @@ class CombatDeck:
 
     def use_card(self, card, target):
         if card.card_type == CardType.STATUS:
-            return
+            return False
         if card.name == "Clash":
             for card_in_hand in self.hand:
                 if card_in_hand.card_type != CardType.ATTACK:
-                    return
+                    return False
         if Status.RAGE in self.combat.player.conditions:
             value = self.combat.player.conditions[Status.RAGE].value
             self.combat.player.block += value  # note that dexterity is not accounted for
@@ -646,6 +653,9 @@ class CombatDeck:
             if card.name == "Whirlwind":
                 self.combat.player.energy = 0
             card.count += 1
+            return True
+        else:
+            return False
 
 
 # Strike Y
