@@ -11,8 +11,9 @@ import random
 def testing_deck():
     deck = Deck()
     for i in range(3):
-        deck.add_card(flex)
-        deck.add_card(limitBreak)
+        deck.add_card(juggernaut)
+        deck.add_card(defend)
+        deck.add_card(defend)
     return deck
 
 def generate_all_deck():

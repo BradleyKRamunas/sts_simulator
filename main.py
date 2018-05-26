@@ -513,7 +513,10 @@ class CombatPlayer:
         self.block += calc_value
         if Status.JUGGERNAUT in self.conditions:
             value = self.conditions[Status.JUGGERNAUT].value
-
+            random_target = random.randint(0, len(self.combat.enemies)-1)
+            while self.combat.enemies[random_target].health <= 0:
+                random_target = random.randint(0, len(self.combat.enemies) - 1)
+            self.combat.enemies[random_target].lose_health(value)
 
     def draw_cards(self, number):
         for i in range(number):
