@@ -1,6 +1,7 @@
-import main
+import combat
 import cards
 import random
+import player
 from enemy_ai import *
 from enums import *
 from copy import deepcopy
@@ -172,9 +173,9 @@ def state_feature_extractor(state):
     return
 
 def run():
-    player = main.Player(cards.testing_deck(), 800)
-    enemies = [main.CombatEnemy(None, SpikeSlimeAI(), 1000), main.CombatEnemy(None, AcidSlimeAI(), 1000)]
-    current_state = main.Combat(player, enemies)
+    actor = player.Player(cards.testing_deck(), 800)
+    enemies = [combat.CombatEnemy(None, SpikeSlimeAI(), 1000), combat.CombatEnemy(None, AcidSlimeAI(), 1000)]
+    current_state = combat.Combat(actor, enemies)
     current_state.start_turn()
     while not is_end_state(current_state):
         current_state.print_information()

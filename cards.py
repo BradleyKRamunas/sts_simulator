@@ -1,6 +1,6 @@
-from main import Card
-from main import StatusCondition
-from main import Deck
+from player import Card
+from combat import StatusCondition
+from player import Deck
 from enums import *
 import random
 
@@ -28,6 +28,7 @@ def generate_all_deck():
         deck.add_card(armaments)
         deck.add_card(bodySlam)
         deck.add_card(clash)
+        deck.add_card(cleave)
         deck.add_card(clothesline)
         deck.add_card(flex)
         deck.add_card(havoc)
@@ -651,6 +652,7 @@ def feed_fx(combat, target, count):
     enemy.take_damage(player.generate_damage(10))
     if enemy.health == 0:
         player.max_health += 3
+        player.heal_health(3)
         # TODO: increase real player's max health (not the combat players)
 
 # -------------------------------------
