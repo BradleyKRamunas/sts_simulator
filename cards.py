@@ -8,6 +8,13 @@ from main import Intent
 import random
 
 
+def testing_deck():
+    deck = Deck()
+    for i in range(1):
+        deck.add_card(rampage)
+        deck.add_card(flex)
+    return deck
+
 def generate_all_deck():
     deck = Deck()
     for i in range(3):
@@ -154,10 +161,10 @@ def clothesline_fx(combat, target, count):
 # Flex: gain 2(4) strength at the beginning of turn, then lose 2(4) at the end of turn.
 def flex_fx(combat, target, count):
     player = combat.player
-    flexing = StatusCondition(Status.FLEX, 0, 1, False)
-    # strength = StatusCondition(Status.STRENGTH, 2, True)
+    flexing = StatusCondition(Status.FLEX, 2, 1, False)
+    strength = StatusCondition(Status.STRENGTH, 2, 0, True)
     player.apply_status_condition(flexing)
-    # player.apply_status_condition(strength)
+    player.apply_status_condition(strength)
 
 
 # Draws the top card on the draw pile, play, and exhaust it
@@ -202,7 +209,16 @@ def perfected_strike_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     damage = 6
-    for card in player.deck:
+    for card in player.deck.draw_pile:
+        if "strike" in card.name.lower():
+            damage += 2
+    for card in player.deck.hand:
+        if "strike" in card.name.lower():
+            damage += 2
+    for card in player.deck.discard_pile:
+        if "strike" in card.name.lower():
+            damage += 2
+    for card in player.deck.exhaust_pile:
         if "strike" in card.name.lower():
             damage += 2
     enemy.take_damage(player.generate_damage(damage))
@@ -235,9 +251,9 @@ def true_grit_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     player.gain_block(7)
-    card = random.choice(player.deck.hand)
-    player.deck.remove_card(card)
-    player.deck.exhaust_pile.append(card)
+    if len(player.deck.hand) > 0:
+        card = random.choice(player.deck.hand)
+        player.deck.exhaust_card(card)
 
 
 def twin_strike_fx(combat, target, count):
@@ -261,7 +277,8 @@ def wild_strike_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
-    # TODO: Add a wound into player's combatdeck
+    random_number = random.randint(0, len(player.deck.draw_pile))
+    player.deck.draw_pile.insert(random_number, wound)
 
 
 def battle_trance_fx(combat, target, count):
@@ -429,8 +446,6 @@ def rage_fx(combat, target, count):
 
 # ----------------------------------------------------
 
-
-# TODO: rampage effect when we merge
 def rampage_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
@@ -456,13 +471,15 @@ def searing_blow_fx(combat, target, count):
     enemy.take_damage(player.generate_damage(12))
 
 
-# TODO: exhaust everything in hand and gain 5X block
 def second_wind_fx(combat, target, count):
     player = combat.player
-    enemy = combat.enemies[target]
-    enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 0, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    to_remove = []
+    for card in player.deck.hand:
+        if card.card_type != CardType.ATTACK:
+            to_remove.append(card)
+    for card in to_remove:
+        player.gain_block(5)
+        player.deck.exhaust_card(card)
 
 
 def seeing_red_fx(combat, target, count):
@@ -506,7 +523,6 @@ def uppercut_fx(combat, target, count):
 # -----------------------------------------------
 
 
-# TODO: Create a special case in use_card to remove the rest of the user's energy
 def whirlwind_fx(combat, target, count):
     player = combat.player
     for enemy in combat.enemies:
@@ -562,22 +578,23 @@ def exhume_fx(combat, target, count):
     enemy = combat.enemies[target]
 
 
-# TODO: If we killed an enemy with this card, increase our max HP
 def feed_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(10))
+    if enemy.health == 0:
+        player.max_health += 3
+        # TODO: increase real player's max health (not the combat players)
 
 # -------------------------------------
 
 
-# TODO: Exhaust all cards in your hand. Deal 7 damage for each card. Exhaust this card.
 def fiend_fire_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 0, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    for i in range(len(player.deck.hand)):
+        enemy.take_damage(player.generate_damage(7))
+        player.deck.exhaust_card(player.deck.hand[0])
 
 
 def immolate_fx(combat, target, count):

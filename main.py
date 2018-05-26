@@ -186,7 +186,7 @@ class StatusCondition:
 
     def __str__(self):
         return "{} with value {} for duration {} (static: {})"\
-            .format(self.status.name, self.value, self.duration, self.static)
+            .format(self.status, self.value, self.duration, self.static)
 
     def __repr__(self):
         return "{} with value {} for duration {} (static: {})" \
@@ -254,7 +254,7 @@ class Combat:
 
         self.player.reset_energy()
         self.player.reset_block()
-        draw_size = 5
+        draw_size = 10
         if Status.DRAW_REDUCTION in self.player.conditions:
             value = self.player.conditions[Status.DRAW_REDUCTION].value
             draw_size -= value
@@ -346,17 +346,23 @@ class Combat:
             self.start_turn()
             while True:
                 self.print_information()
-                option = int(raw_input("Which card would you like to use (-1 to end turn)? > "))
+                option = int(raw_input("Which card would you like to use (-1 end, -2 draw, -3 discard, -4 exhaust)? > "))
                 if option == -1:  # -1 means end turn
                     break
                 if option == -2:  # print draw pile
+                    print ("Draw pile: "),
                     print self.player.deck.draw_pile
+                    print
                     continue
                 if option == -3:  # print discard pile
+                    print ("Discard pile: "),
                     print self.player.deck.discard_pile
+                    print
                     continue
                 if option == -4:  # print exhaust pile
+                    print ("Exhaust pile: "),
                     print self.player.deck.exhaust_pile
+                    print
                     continue
                 card = self.player.deck.hand[option]
                 option = int(raw_input("Target (-1 for self)? > "))
@@ -541,12 +547,16 @@ class CombatDeck:
         self.exhaust_pile = []
 
     def draw_card(self):
+        if Status.NO_DRAW in self.combat.player.conditions:
+            return
         if len(self.hand) < 12:
             if len(self.draw_pile) == 0:
                 if len(self.discard_pile) != 0:
                     self.draw_pile = list(self.discard_pile)
                     random.shuffle(self.draw_pile)
                     self.discard_pile = []
+                elif len(self.discard_pile) == 0:
+                    return
             card = self.draw_pile.pop()
             if card.card_type == CardType.STATUS and Status.EVOLVE in self.combat.player.conditions:
                 value = self.combat.player.conditions[Status.EVOLVE].value
@@ -565,6 +575,7 @@ class CombatDeck:
         self.hand = []
 
     def exhaust_card(self, card):
+        self.hand.remove(card)
         self.exhaust_pile.append(card)
         if Status.FEELNOPAIN in self.combat.player.conditions:
             value = self.combat.player.conditions[Status.FEELNOPAIN].value
@@ -585,14 +596,15 @@ class CombatDeck:
             card.cost = max(0, 4 - card.damage_track)
         if card.cost <= self.combat.player.energy:
             self.combat.player.energy -= card.cost
-            self.hand.remove(card)
-            card.apply(self.combat, target)
             if card.exhaust:
                 self.exhaust_card(card)
             else:
+                self.hand.remove(card)
                 self.discard_pile.append(card)
-
-
+            card.apply(self.combat, target)
+            if card.name == "Whirlwind":
+                self.combat.player.energy = 0
+            card.count += 1
 
 
 # TODO:

@@ -82,7 +82,7 @@ def state_feature_extractor(state):
     return
 
 def run():
-    player = main.Player(cards.generate_all_deck(), 80000)
+    player = main.Player(cards.testing_deck(), 80000)
     enemy_ai = main.JawWormAI()
     enemy = main.CombatEnemy(None, enemy_ai, 30000)
     enemy2 = main.CombatEnemy(None, main.FungiBeastAI(), 10000)
