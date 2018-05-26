@@ -254,7 +254,7 @@ class Combat:
 
         self.player.reset_energy()
         self.player.reset_block()
-        draw_size = 5
+        draw_size = 10
         if Status.DRAW_REDUCTION in self.player.conditions:
             value = self.player.conditions[Status.DRAW_REDUCTION].value
             draw_size -= value
