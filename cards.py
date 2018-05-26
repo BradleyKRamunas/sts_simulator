@@ -11,9 +11,12 @@ import random
 def testing_deck():
     deck = Deck()
     for i in range(1):
-        deck.add_card(rampage)
-        deck.add_card(flex)
+        deck.add_card(strike)
+        deck.add_card(havoc)
+        deck.add_card(pommelStrike)
+        deck.add_card(inflame)
     return deck
+
 
 def generate_all_deck():
     deck = Deck()
@@ -146,6 +149,9 @@ def bodyslam_fx(combat, target, count):
 def clash_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
+    for card in player.deck.hand:
+        if card.card_type != CardType.ATTACK:
+            return
     enemy.take_damage(player.generate_damage(14))
 
 
@@ -154,8 +160,8 @@ def clothesline_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(12))
-    vulnerable = StatusCondition(Status.VULNERABLE, 0, 2, False)
-    enemy.apply_status_condition(vulnerable)
+    unzipped = StatusCondition(Status.WEAK, 0, 2, False)
+    enemy.apply_status_condition(unzipped)
 
 
 # Flex: gain 2(4) strength at the beginning of turn, then lose 2(4) at the end of turn.
@@ -169,33 +175,45 @@ def flex_fx(combat, target, count):
 
 # Draws the top card on the draw pile, play, and exhaust it
 def havoc_fx(combat, target, count):
-    card = combat.player.deck.draw_pile.pop()
-    tempCost = card.cost
-    tempExhaust = card.exhaust
-    card.cost = 0
-    card.exhaust = True
-    combat.player.deck.use_card(card)
-    card.cost = tempCost
-    card.exhaust = tempExhaust
+    if len(combat.player.deck.draw_pile) > 0:
+        card = combat.player.deck.draw_pile.pop(0)
+        tempCost = card.cost
+        tempExhaust = card.exhaust
+        card.cost = 0
+        card.exhaust = True
+        randomTarget = random.randint(0, len(combat.enemies) - 1)
+        while combat.enemies[randomTarget].health <= 0:
+            randomTarget = random.randint(0, len(combat.enemies) - 1)
+        combat.player.deck.use_card(card, randomTarget)
+        card.cost = tempCost
+        card.exhaust = tempExhaust
 
 
 def headbutt_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(9))
-    addendum = player.deck.discard_pile.pop()
-    player.deck.draw_pile.insert(0, addendum)
+    if len(combat.player.deck.discard_pile) == 0:
+        print ("Your discard is empty.")
+    else:
+        print ("Your discard: "),
+        for card in combat.player.deck.discard_pile:
+            print ("{}: {} |".format(count, card.name)),
+            count += 1
+        print
+        index = int(raw_input("Which card would you like to recover from your discard pile? -> "))
+        card = combat.player.deck.discard_pile.pop(index)
+        player.deck.draw_pile.insert(0, card)
 
 
 def heavy_blade_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
+    tempStr = 0
     # Multiplies strength by 3, attacks, and divides by 3 again.
     if Status.STRENGTH in player.conditions:
-        player.conditions[Status.STRENGTH] *= 3
-    enemy.take_damage(player.generate_damage(14))
-    if Status.STRENGTH in player.conditions:
-        player.conditions[Status.STRENGTH] /= 3
+        tempStr = 2 * player.conditions[Status.STRENGTH].value
+    enemy.take_damage(player.generate_damage(14 + tempStr))
 
 
 def iron_wave_fx(combat, target, count):
@@ -267,10 +285,15 @@ def warcry_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     player.deck.draw_card()
-    option = raw_input("Which card to place on top of your draw pile? -> ")
+    print ("Your hand: "),
+    for card in combat.player.deck.hand:
+        print ("{}: {} |".format(count, card.name)),
+        count += 1
+    print
+    option = int(raw_input("Which card to place on top of your draw pile? -> "))
     card = player.deck.hand[option]
     player.deck.hand.remove(card)
-    player.deck.draw_pile.append(card)
+    player.deck.draw_pile.insert(0, card)
 
 
 def wild_strike_fx(combat, target, count):
@@ -307,12 +330,15 @@ def bloodletting_fx(combat, target, count):
 def burning_pact_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    player.deck.draw_card()
-    player.deck.draw_card()
-    option = raw_input("Which card to exhaust? -> ")
+    print ("Your hand: "),
+    for card in combat.player.deck.hand:
+        print ("{}: {} |".format(count, card.name)),
+        count += 1
+    print
+    option = int(raw_input("Which card to exhaust? -> "))
     card = player.deck.hand[option]
-    player.deck.remove_card(card)
-    player.deck.exhaust_pile.append(card)
+    player.deck.exhaust_card(card)
+    player.draw_cards(2)
 
 
 def carnage_fx(combat, target, count):
@@ -324,14 +350,14 @@ def carnage_fx(combat, target, count):
 def combust_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    combustion = StatusCondition(Status.COMBUST, 0, 1, False)
+    combustion = StatusCondition(Status.COMBUST, 1, 0, True)
     player.apply_status_condition(combustion)
 
 
 def corruption_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    corrupt = StatusCondition(Status.CORRUPTION, 0, 2, False)
+    corrupt = StatusCondition(Status.CORRUPTION, 1, 0, True)
     player.apply_status_condition(corrupt)
 
 
@@ -354,9 +380,14 @@ def dropkick_fx(combat, target, count):
 def dual_wield_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    option = raw_input("Which card to copy? -> ")
+    print ("Your hand: "),
+    for card in combat.player.deck.hand:
+        print ("{}: {} |".format(count, card.name)),
+        count += 1
+    print
+    option = int(raw_input("Which card to copy? -> "))
     card = player.deck.hand[option]
-    player.deck.draw_card(card)
+    player.deck.hand.append(card)
 
 
 def entrench_fx(combat, target, count):

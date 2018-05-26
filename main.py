@@ -607,24 +607,16 @@ class CombatDeck:
             card.count += 1
 
 
-# TODO:
-# How should we define cards? (e.g. unplayable)
-# Think about order of effect adding/defend
-# For effects, add an effect timer
-
-# Strike
-# Defend
-# Bash
-# Anger
-
-# Which cards do we want to implement?
-# Armaments
+# Strike Y
+# Defend Y
+# Bash Y
+# Anger Y
+# Armaments - needs implementation
 # Body Slam
 # Clash
 # Clothesline
-# Flex
+# Flex Y
 
-""" TODO: Implement these cards """
 # Havoc
 # Headbutt
 # Heavy Blade
@@ -639,6 +631,8 @@ class CombatDeck:
 # Wild Strike
 # Battle Trance
 # Blood for Blood
+
+
 # Bloodletting
 # Burning pact
 # Carnage
@@ -649,6 +643,8 @@ class CombatDeck:
 # Dual Wield
 # Entrench
 # Evolve
+
+#
 # Feel No Pain
 # Flame Barrier
 # Ghostly Armor
@@ -659,7 +655,9 @@ class CombatDeck:
 # Power Through
 # Pummel
 # Rage
-# Rampage
+
+
+# Rampage Y
 # Reckless Charge
 # Rupture
 # Searing Blow
@@ -669,9 +667,11 @@ class CombatDeck:
 # Shockwave
 # Spot Weakness
 # Uppercut
-# Whirlwind - add special cost for X energy
+
+
+# Whirlwind Y
 # Barricade - block no longer expires
-# Beserk
+# Berserk
 # Bludgeon
 # Brutality
 # Dark Embrace
@@ -679,6 +679,8 @@ class CombatDeck:
 # Double Tap - literally everything happens twice
 # Exhume
 # Feed - no such thing as "minions"/"bosses" for us... for now
+
+
 # Fiend fire
 # Immolate
 # Impervious
@@ -686,6 +688,16 @@ class CombatDeck:
 # Limit Break
 # Offering
 # Reaper
+# Sentinel
+
+
+# Dazed
+# Wound
+# Burn
+
+# StatusCondition(Status, value, duration, static)
+# If permanent, then (Status, value, 0, True)
+# If not permanent, then (Status, 0, duration, False)
 
 """ So what kind of thing are we doing here?
 Strategy: Function approximation/Q-learning with features.
