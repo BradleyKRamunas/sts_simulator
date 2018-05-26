@@ -10,18 +10,18 @@ import random
 
 def testing_deck():
     deck = Deck()
-<<<<<<< HEAD
+
     for i in range(1):
         deck.add_card(strike)
         deck.add_card(havoc)
         deck.add_card(pommelStrike)
         deck.add_card(inflame)
-=======
+
     for i in range(3):
         deck.add_card(juggernaut)
         deck.add_card(defend)
         deck.add_card(defend)
->>>>>>> 53fc1a3640f6aa524051ba965efe3c92479e548f
+
     return deck
 
 
