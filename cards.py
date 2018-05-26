@@ -16,10 +16,12 @@ def testing_deck():
         deck.add_card(havoc)
         deck.add_card(pommelStrike)
         deck.add_card(inflame)
+=======
     for i in range(3):
         deck.add_card(juggernaut)
         deck.add_card(defend)
         deck.add_card(defend)
+>>>>>>> 53fc1a3640f6aa524051ba965efe3c92479e548f
     return deck
 
 
@@ -263,7 +265,6 @@ def shrug_it_off_fx(combat, target, count):
 
 def thunderclap_fx(combat, target, count):
     player = combat.player
-    vulnerable = StatusCondition(Status.VULNERABLE, 0, 1, True)
     for enemy in combat.enemies:
         vulnerable = StatusCondition(Status.VULNERABLE, 0, 1, False)
         enemy.take_damage(4)
@@ -413,7 +414,6 @@ def evolve_fx(combat, target, count):
 def feel_no_pain_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
-    noPainNoGain = StatusCondition(Status.FEELNOPAIN, 1, 0, True)
     noPainNoGain = StatusCondition(Status.FEELNOPAIN, 4, 0, True)
     enemy.apply_status_condition(noPainNoGain)
 
@@ -422,7 +422,6 @@ def flame_barrier_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     player.gain_block(12)
-    fireInYourHair = StatusCondition(Status.FLAMEBARRIER, 0, 1, False)
     fireInYourHair = StatusCondition(Status.FLAMEBARRIER, 6, 1, False)
     enemy.apply_status_condition(fireInYourHair)
 
@@ -456,7 +455,6 @@ def intimidate_fx(combat, target, count):
 
 def metallicize_fx(combat, target, count):
     player = combat.player
-    metalMan = StatusCondition(Status.METALLICIZE, 0, 1, False)
     metalMan = StatusCondition(Status.METALLICIZE, 3, 0, True)
     player.apply_status_condition(metalMan)
 
@@ -481,7 +479,6 @@ def pummel_fx(combat, target, count):
 
 def rage_fx(combat, target, count):
     player = combat.player
-    rawr = StatusCondition(Status.RAGE, 0, 1, False)
     rawr = StatusCondition(Status.RAGE, 3, 0, True)
     player.apply_status_condition(rawr)
 
@@ -533,7 +530,6 @@ def sever_soul_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     enemy.take_damage(player.generate_damage(16))
-    # TODO: Exhaust all non-attack cards in your hand.
     to_remove = []
     for card in player.deck.hand:
         if card.card_type != CardType.ATTACK:
@@ -543,8 +539,6 @@ def sever_soul_fx(combat, target, count):
 
 
 def shockwave_fx(combat, target, count):
-    shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
-    wave = StatusCondition(Status.WEAK, 0, 3, False)
     for enemy in combat.enemies:
         shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
         wave = StatusCondition(Status.WEAK, 0, 3, False)
@@ -599,8 +593,6 @@ def bludgeon_fx(combat, target, count):
 
 def brutality_fx(combat, target, count):
     player = combat.player
-    player.lose_health(1)
-    player.deck.draw_card()
     brute = StatusCondition(Status.BRUTALITY, 1, 0, True)
     player.apply_status_condition(brute)
 
@@ -663,7 +655,6 @@ def impervious_fx(combat, target, count):
 
 def juggernaut_fx(combat, target, count):
     player = combat.player
-    juggler_naught = StatusCondition(Status.JUGGERNAUT, 1, 0, True)
     juggler_naught = StatusCondition(Status.JUGGERNAUT, 3, 0, True)
     player.apply_status_condition(juggler_naught)
 
@@ -671,7 +662,6 @@ def juggernaut_fx(combat, target, count):
 def limit_break_fx(combat, target, count):
     player = combat.player
     if Status.STRENGTH in player.conditions:
-        player.conditions[Status.STRENGTH] *= 2
         player.conditions[Status.STRENGTH].value *= 2
 
 
