@@ -393,7 +393,10 @@ class CombatEnemy:
     def apply_intent(self):
         intent, value, status = self.intent
         if intent == Intent.ATTACK:
-            self.combat.player.take_damage(value)
+            self.combat.player.take_damage(self.generate_damage(value))
+            if Status.FLAMEBARRIER in self.combat.player.conditions:
+                value = self.combat.player.conditions[Status.FLAMEBARRIER].value
+                self.lose_health(value)
         if intent == Intent.BLOCK:
             self.block += value
         if intent == Intent.BUFF:
@@ -405,6 +408,18 @@ class CombatEnemy:
 
     def generate_move(self):
         self.intent = self.ai.generate_move()
+
+    def generate_damage(self, value):
+        calc_value = value
+        if Status.STRENGTH in self.conditions:
+            calc_value += self.conditions[Status.STRENGTH].value
+        if Status.WEAK in self.conditions:
+            calc_value = int(math.floor(0.75 * calc_value))
+        return calc_value
+
+    def lose_health(self, value):
+        self.health -= value
+        self.health = max(0, self.health)
 
     def take_damage(self, value):
         calc_value = value
@@ -496,6 +511,9 @@ class CombatPlayer:
         if Status.FRAIL in self.conditions:
             calc_value = int(math.floor(0.75 * calc_value))
         self.block += calc_value
+        if Status.JUGGERNAUT in self.conditions:
+            value = self.conditions[Status.JUGGERNAUT].value
+
 
     def draw_cards(self, number):
         for i in range(number):
@@ -535,6 +553,8 @@ class CombatPlayer:
                     conditions_to_remove.append(key)
         for condition in conditions_to_remove:
             del self.conditions[condition]
+        if Status.DOUBLE in self.conditions:
+            del self.conditions[Status.DOUBLE]
 
 
 class CombatDeck:
@@ -557,7 +577,7 @@ class CombatDeck:
                     self.discard_pile = []
                 elif len(self.discard_pile) == 0:
                     return
-            card = self.draw_pile.pop()
+            card = self.draw_pile.pop(0)
             if card.card_type == CardType.STATUS and Status.EVOLVE in self.combat.player.conditions:
                 value = self.combat.player.conditions[Status.EVOLVE].value
                 for i in range(value):
@@ -565,18 +585,23 @@ class CombatDeck:
             self.hand.append(card)
 
     def discard_hand(self):
+        cards_to_exhaust = []
         for card in self.hand:
             if card.name == "Burn":
                 self.combat.player.lose_health(2)
             if card.name == "Dazed" or card.name == "Carnage" or card.name == "Ghostly Armor":
-                self.exhaust_card(card)
+                cards_to_exhaust.append(card)
             else:
                 self.discard_pile.append(card)
+        for card in cards_to_exhaust:
+            self.exhaust_card(card)
         self.hand = []
 
     def exhaust_card(self, card):
         self.hand.remove(card)
         self.exhaust_pile.append(card)
+        if card.name == "Sentinel":
+            self.combat.player.energy += 2
         if Status.FEELNOPAIN in self.combat.player.conditions:
             value = self.combat.player.conditions[Status.FEELNOPAIN].value
             self.combat.player.block += value
@@ -585,6 +610,8 @@ class CombatDeck:
             self.combat.player.draw_cards(value)
 
     def use_card(self, card, target):
+        if card.card_type == CardType.STATUS:
+            return
         if card.name == "Clash":
             for card_in_hand in self.hand:
                 if card_in_hand.card_type != CardType.ATTACK:
@@ -593,14 +620,25 @@ class CombatDeck:
             value = self.combat.player.conditions[Status.RAGE].value
             self.combat.player.block += value  # note that dexterity is not accounted for
         if card.name == "Blood for Blood":
-            card.cost = max(0, 4 - card.damage_track)
+            card.cost = max(0, 4 - self.combat.player.damage_track)
+        if card.card_type == CardType.SKILL and Status.CORRUPTION in self.combat.player.conditions:
+            card.cost = 0
+            card.exhaust = True
         if card.cost <= self.combat.player.energy:
             self.combat.player.energy -= card.cost
             if card.exhaust:
                 self.exhaust_card(card)
             else:
-                self.hand.remove(card)
-                self.discard_pile.append(card)
+                if card.card_type == CardType.POWER:
+                    self.hand.remove(card)
+                else:
+                    self.hand.remove(card)
+                    self.discard_pile.append(card)
+            if card.card_type == CardType.ATTACK and Status.DOUBLE in self.combat.player.conditions:
+                card.apply(self.combat, target)
+                remover = StatusCondition(Status.DOUBLE, 0, -1, False)
+                self.combat.player.apply_status_condition(remover)
+                card.count += 1
             card.apply(self.combat, target)
             if card.name == "Whirlwind":
                 self.combat.player.energy = 0
