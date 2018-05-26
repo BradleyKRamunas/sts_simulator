@@ -11,17 +11,9 @@ import random
 def testing_deck():
     deck = Deck()
 
-    for i in range(1):
-        deck.add_card(strike)
-        deck.add_card(havoc)
-        deck.add_card(pommelStrike)
-        deck.add_card(inflame)
-
-    for i in range(3):
-        deck.add_card(juggernaut)
-        deck.add_card(defend)
-        deck.add_card(defend)
-
+    for i in range(5):
+        deck.add_card(hemoKinesis)
+        deck.add_card(bloodForBlood)
     return deck
 
 
@@ -386,6 +378,7 @@ def dropkick_fx(combat, target, count):
 
 
 def dual_wield_fx(combat, target, count):
+    # TODO: only attack cards
     player = combat.player
     enemy = combat.enemies[target]
     print ("Your hand: "),

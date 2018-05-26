@@ -47,13 +47,17 @@ def is_end_state(state):
 
 def generate_successor_state(state, action):
     temp_state = deepcopy(state)
-    if action is None:
-        temp_state.end_turn()
-        temp_state.start_turn()
-    else:
-        card, target = action
-        if not temp_state.player.deck.use_card(card, target):
-            return None
+    if state.state_type == main.StateType.NORMAL:
+        if action is None:
+            temp_state.end_turn()
+            temp_state.start_turn()
+        else:
+            card, target = action
+            if not temp_state.player.deck.use_card(card, target):
+                return None
+    if state.state_type == main.StateType.COPY:
+        # TODO: complete
+        return temp_state
     return temp_state
 
 
@@ -61,16 +65,44 @@ def generate_actions(state):
     if state is None:
         return None
     actions = []
-    for card in state.player.deck.hand:
-        if card.target_type == main.Target.SELF:
-            actions.append((card, -1))
-        if card.target_type == main.Target.SINGLE:
-            for target, enemy in enumerate(state.enemies):
-                if enemy.health > 0:
-                    actions.append((card, target))
-        if card.target_type == main.Target.ALL:
-            actions.append((card, 0))
-    actions.append(None)
+    if state.state_type == main.StateType.NORMAL:
+        for card in state.player.deck.hand:
+            if card.target_type == main.Target.SELF:
+                actions.append((card, -1))
+            if card.target_type == main.Target.SINGLE:
+                for target, enemy in enumerate(state.enemies):
+                    if enemy.health > 0:
+                        actions.append((card, target))
+            if card.target_type == main.Target.ALL:
+                actions.append((card, 0))
+        actions.append(None)
+    if state.state_type == main.StateType.COPY:
+        for card in state.player.deck.hand:
+            if card.card_type == main.CardType.ATTACK:
+                actions.append(card)
+        if len(actions) == 0:
+            actions.append(None)
+    if state.state_type == main.StateType.DISCARD_TO_DRAW:
+        if len(state.player.deck.discard_pile) == 0:
+            actions.append(None)
+        for card in state.player.deck.discard_pile:
+            actions.append(card)
+    if state.state_type == main.StateType.EXHAUST_TO_HAND:
+        if len(state.player.deck.exhaust_pile) == 0:
+            actions.append(None)
+        for card in state.player.deck.exhaust_pile:
+            actions.append(card)
+    if state.state_type == main.StateType.HAND_TO_DRAW:
+        if len(state.player.deck.hand) == 0:
+            actions.append(None)
+        for card in state.player.deck.hand:
+            actions.append(card)
+    if state.state_type == main.StateType.HAND_TO_EXHAUST:
+        if len(state.player.deck.hand) == 0:
+            actions.append(None)
+        for card in state.player.deck.hand:
+            actions.append(card)
+
     return actions
 
 def state_feature_extractor(state):
@@ -99,7 +131,7 @@ def state_feature_extractor(state):
     return
 
 def run():
-    player = main.Player(cards.generate_all_deck(), 80)
+    player = main.Player(cards.testing_deck(), 80)
     enemies = [main.CombatEnemy(None, main.SpikeSlimeAI(), 100), main.CombatEnemy(None, main.AcidSlimeAI(), 100)]
     current_state = main.Combat(player, enemies)
     current_state.start_turn()

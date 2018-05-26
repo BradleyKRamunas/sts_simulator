@@ -238,14 +238,23 @@ class Card:
         return self.name
 
     def __eq__(self, other):
-        return self.name == other.name and self.cost == other.cost and self.card_type == other.card_type and\
+        return self.name == other.name and self.card_type == other.card_type and\
                self.exhaust == other.exhaust and self.count == other.count
+
+class StateType(Enum):
+    NORMAL = 1
+    HAND_TO_EXHAUST = 2
+    HAND_TO_DRAW = 3
+    DISCARD_TO_DRAW = 4
+    EXHAUST_TO_HAND = 5
+    COPY = 6
 
 
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
         self.enemies = enemies
+        self.state_type = StateType.NORMAL
         for enemy in self.enemies:
             enemy.combat = self
         #self.game_loop()  # meant for human player, not for AI usage
