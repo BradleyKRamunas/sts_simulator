@@ -3,7 +3,7 @@ class Player:
         self.deck = deck
         self.health = health
         self.max_health = health
-        self.max_energy = 3
+        self.max_energy = energy
 
 
 class Deck:

@@ -19,7 +19,7 @@ EPSILON = 0.5
 
 
 def generic_policy(state, actions):
-    if state.state_type == StateType.NORMAL:
+    if state.state_type == CombatStateType.NORMAL:
         if random.uniform(0, 1) <= EPSILON:
             max_action = None
             max_delta = 0
@@ -63,7 +63,7 @@ def is_end_state(state):
 
 def generate_successor_state(state, action):
     temp_state = deepcopy(state)
-    if state.state_type == StateType.NORMAL:
+    if state.state_type == CombatStateType.NORMAL:
         if action is None:
             temp_state.end_turn()
             temp_state.start_turn()
@@ -72,33 +72,33 @@ def generate_successor_state(state, action):
             if not temp_state.player.deck.use_card(card, target):
                 return None
         return temp_state
-    if state.state_type == StateType.COPY:
+    if state.state_type == CombatStateType.COPY:
         if action is not None:
             temp_state.player.deck.hand.append(action)
-        temp_state.state_type = StateType.NORMAL
+        temp_state.state_type = CombatStateType.NORMAL
         return temp_state
-    if state.state_type == StateType.DISCARD_TO_DRAW:
+    if state.state_type == CombatStateType.DISCARD_TO_DRAW:
         if action is not None:
             temp_state.player.deck.draw_pile.insert(0, action)
             temp_state.player.deck.discard_pile.remove(action)
-        temp_state.state_type = StateType.NORMAL
+        temp_state.state_type = CombatStateType.NORMAL
         return temp_state
-    if state.state_type == StateType.EXHAUST_TO_HAND:
+    if state.state_type == CombatStateType.EXHAUST_TO_HAND:
         if action is not None:
             temp_state.player.deck.hand.append(action)
             temp_state.player.deck.exhaust_pile.remove(action)
-        temp_state.state_type = StateType.NORMAL
+        temp_state.state_type = CombatStateType.NORMAL
         return temp_state
-    if state.state_type == StateType.HAND_TO_DRAW:
+    if state.state_type == CombatStateType.HAND_TO_DRAW:
         if action is not None:
             temp_state.player.deck.draw_pile.insert(0, action)
             temp_state.player.deck.hand.remove(action)
-        temp_state.state_type = StateType.NORMAL
+        temp_state.state_type = CombatStateType.NORMAL
         return temp_state
-    if state.state_type == StateType.HAND_TO_EXHAUST:
+    if state.state_type == CombatStateType.HAND_TO_EXHAUST:
         if action is not None:
             temp_state.player.deck.exhaust_card(action)
-        temp_state.state_type = StateType.NORMAL
+        temp_state.state_type = CombatStateType.NORMAL
         return temp_state
 
 
@@ -106,7 +106,7 @@ def generate_actions(state):
     if state is None:
         return None
     actions = []
-    if state.state_type == StateType.NORMAL:
+    if state.state_type == CombatStateType.NORMAL:
         for card in state.player.deck.hand:
             if card.target_type == Target.SELF:
                 actions.append((card, -1))
@@ -117,28 +117,28 @@ def generate_actions(state):
             if card.target_type == Target.ALL:
                 actions.append((card, 0))
         actions.append(None)
-    if state.state_type == StateType.COPY:
+    if state.state_type == CombatStateType.COPY:
         for card in state.player.deck.hand:
             if card.card_type == CardType.ATTACK:
                 actions.append(card)
         if len(actions) == 0:
             actions.append(None)
-    if state.state_type == StateType.DISCARD_TO_DRAW:
+    if state.state_type == CombatStateType.DISCARD_TO_DRAW:
         if len(state.player.deck.discard_pile) == 0:
             actions.append(None)
         for card in state.player.deck.discard_pile:
             actions.append(card)
-    if state.state_type == StateType.EXHAUST_TO_HAND:
+    if state.state_type == CombatStateType.EXHAUST_TO_HAND:
         if len(state.player.deck.exhaust_pile) == 0:
             actions.append(None)
         for card in state.player.deck.exhaust_pile:
             actions.append(card)
-    if state.state_type == StateType.HAND_TO_DRAW:
+    if state.state_type == CombatStateType.HAND_TO_DRAW:
         if len(state.player.deck.hand) == 0:
             actions.append(None)
         for card in state.player.deck.hand:
             actions.append(card)
-    if state.state_type == StateType.HAND_TO_EXHAUST:
+    if state.state_type == CombatStateType.HAND_TO_EXHAUST:
         if len(state.player.deck.hand) == 0:
             actions.append(None)
         for card in state.player.deck.hand:

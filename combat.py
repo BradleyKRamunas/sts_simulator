@@ -207,6 +207,9 @@ class CombatEnemy:
         self.health = max(0, self.health)
 
     def take_damage(self, value):
+        if Status.THORNS in self.conditions:
+            value = self.conditions[Status.THORNS].value
+            self.combat.player.lose_health(value)
         calc_value = value
         if Status.VULNERABLE in self.conditions:
             calc_value = int(math.floor(1.5 * calc_value))

@@ -18,6 +18,166 @@ def testing_deck():
     return deck
 
 
+def generate_common_cards():
+    cards = []
+    cards.append(bash)
+    cards.append(anger)
+    cards.append(bodySlam)
+    cards.append(cleave)
+    cards.append(clothesline)
+    cards.append(headbutt)
+    cards.append(ironWave)
+    cards.append(pommelStrike)
+    cards.append(shrugItOff)
+    cards.apend(thunderclap)
+    cards.append(trueGrit)
+    cards.append(twinStrike)
+    cards.append(wildStrike)
+    cards.append(rampage)
+    cards.append(recklessCharge)
+    cards.append(uppercut)
+    cards.append(whirlwind)
+    cards.append(sentinel)
+    return cards
+
+
+def generate_uncommon_cards():
+    cards = []
+    cards.append(armaments)  # uncommon
+    cards.append(flex)  # uncommon
+    cards.append(heavyBlade)  # uncommon
+    cards.append(perfectedStrike)  # uncommon
+    cards.append(warcry)  # uncommon
+    cards.append(battleTrance)  # uncommon
+    cards.append(bloodLetting)  # uncommon
+    cards.append(carnage)  # uncommon
+    cards.append(combust)  # uncommon
+    cards.append(dropkick)  # uncommon
+    cards.append(entrench)  # uncommon
+    cards.append(evolve)  # uncommon
+    cards.append(feelNoPain)  # uncommon
+    cards.append(flameBarrier)  # uncommon
+    cards.append(hemoKinesis)  # uncommon
+    cards.append(inflame)  # uncommon
+    cards.append(metallicize)  # uncommon
+    cards.append(pummel)  # uncommon
+    cards.append(rage)  # uncommon
+    cards.append(searingBlow)  # uncommon
+    cards.append(secondWind)  # uncommon
+    cards.append(severSoul)  # uncommon
+    cards.append(shockwave)  # uncommon
+    cards.append(spotWeakness)  # uncommon
+    cards.append(sentinel)  # uncommon
+    return cards
+
+
+def generate_rare_cards():
+    cards = []
+    cards.append(havoc)  # rare
+    cards.append(bloodForBlood)  # rare
+    cards.append(burningPact)  # rare
+    cards.append(corruption)  # rare
+    cards.append(disarm)  # rare
+    cards.append(dualWield)  # rare
+    cards.append(rupture)  # rare
+    cards.append(seeingRed)  # rare
+    cards.append(barricade)  # rare
+    cards.append(berserk)  # rare
+    cards.append(bludgeon)  # rare
+    cards.append(brutality)  # rare
+    cards.append(darkEmbrace)  # rare
+    cards.append(demonForm)  # rare
+    cards.append(doubleTap)  # rare
+    cards.append(exhume)  # rare
+    cards.append(feed)  # rare
+    cards.append(fiendFire)  # rare
+    cards.append(immolate)  # rare
+    cards.append(impervious)  # rare
+    cards.append(juggernaut)  # rare
+    cards.append(limitBreak)  # rare
+    cards.append(offering)  # rare
+    cards.append(reaper)  # rare
+    return cards
+
+
+def generate_all_cards():
+    cards = []
+    cards.append(strike)  # no rarity
+    cards.append(defend)  # no rarity
+    cards.append(bash)  # common
+    cards.append(anger)  # common
+    cards.append(armaments)  # uncommon
+    cards.append(bodySlam)  # common
+    cards.append(clash)  # uncommon
+    cards.append(cleave)  # common
+    cards.append(clothesline)  # common
+    cards.append(flex)  # uncommon
+    cards.append(havoc)  # rare
+    cards.append(headbutt)  # common
+    cards.append(heavyBlade)  # uncommon
+    cards.append(ironWave)  # common
+    cards.append(perfectedStrike)  # uncommon
+    cards.append(pommelStrike)  # common
+    cards.append(shrugItOff)  # common
+    cards.append(thunderclap)  # common
+    cards.append(trueGrit)  # common
+    cards.append(twinStrike)  # common
+    cards.append(warcry)  # uncommon
+    cards.append(wildStrike)  # common
+    cards.append(battleTrance)  # uncommon
+    cards.append(bloodForBlood)  # rare
+    cards.append(bloodLetting)  # uncommon
+    cards.append(burningPact)  # rare
+    cards.append(carnage)  # uncommon
+    cards.append(combust)  # uncommon
+    cards.append(corruption)  # rare
+    cards.append(disarm)  # rare
+    cards.append(dropkick)  # uncommon
+    cards.append(dualWield)  # rare
+    cards.append(entrench)  # uncommon
+    cards.append(evolve)  # uncommon
+    cards.append(feelNoPain)  # uncommon
+    cards.append(flameBarrier)  # uncommon
+    cards.append(ghostlyArmor)  # common
+    cards.append(hemoKinesis)  # uncommon
+    cards.append(inflame)  # uncommon
+    cards.append(intimidate)  # common
+    cards.append(metallicize)  # uncommon
+    cards.append(powerThrough)  # common
+    cards.append(pummel)  # uncommon
+    cards.append(rage)  # uncommon
+    cards.append(rampage)  # common
+    cards.append(recklessCharge)  # common
+    cards.append(rupture)  # rare
+    cards.append(searingBlow)  # uncommon
+    cards.append(secondWind)  # uncommon
+    cards.append(seeingRed)  # rare
+    cards.append(severSoul)  # uncommon
+    cards.append(shockwave)  # uncommon
+    cards.append(spotWeakness)  # uncommon
+    cards.append(uppercut)  # common
+    cards.append(whirlwind)  # common
+    cards.append(barricade)  # rare
+    cards.append(berserk)  # rare
+    cards.append(bludgeon)  # rare
+    cards.append(brutality)  # rare
+    cards.append(darkEmbrace)  # rare
+    cards.append(demonForm)  # rare
+    cards.append(doubleTap)  # rare
+    cards.append(exhume)  # rare
+    cards.append(feed)  # rare
+    cards.append(fiendFire)  # rare
+    cards.append(immolate)  # rare
+    cards.append(impervious)  # rare
+    cards.append(juggernaut)  # rare
+    cards.append(limitBreak)  # rare
+    cards.append(offering)  # rare
+    cards.append(reaper)  # rare
+    cards.append(sentinel)  # uncommon
+    return cards
+
+
+
 def generate_all_deck():
     deck = Deck()
     for i in range(3):
@@ -115,11 +275,17 @@ def strike_fx(combat, target, count):
     enemy = combat.enemies[target]
     enemy.take_damage(combat.player.generate_damage(6))
 
+def strike_plus_fx(combat, target, count):
+    enemy = combat.enemies[target]
+    enemy.take_damage(combat.player.generate_damage(9))
 
 def defend_fx(combat, target, count):
     player = combat.player
     player.gain_block(5)
 
+def defend_plus_fx(combat, target, count):
+    player = combat.player
+    player.gain_block(8)
 
 def bash_fx(combat, target, count):
     enemy = combat.enemies[target]
@@ -127,6 +293,11 @@ def bash_fx(combat, target, count):
     condition = StatusCondition(Status.VULNERABLE, 0, 2, False)
     enemy.apply_status_condition(condition)
 
+def bash_plus_fx(combat, target, count):
+    enemy = combat.enemies[target]
+    enemy.take_damage(combat.player.generate_damage(10))
+    condition = StatusCondition(Status.VULNERABLE, 0, 3, False)
+    enemy.apply_status_condition(condition)
 
 def anger_fx(combat, target, count):
     enemy = combat.enemies[target]
@@ -134,6 +305,11 @@ def anger_fx(combat, target, count):
     player = combat.player
     player.deck.discard_pile.append(anger)
 
+def anger_fx(combat, target, count):
+    enemy = combat.enemies[target]
+    enemy.take_damage(combat.player.generate_damage(7))
+    player = combat.player
+    player.deck.discard_pile.append(anger)
 
 def armaments_fx(combat, target, count):
     # TODO: ask player which card they want to upgrade
