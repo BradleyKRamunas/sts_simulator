@@ -501,9 +501,9 @@ def sever_soul_fx(combat, target, count):
 
 
 def shockwave_fx(combat, target, count):
-    shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
-    wave = StatusCondition(Status.WEAK, 0, 3, False)
     for enemy in combat.enemies:
+        shock = StatusCondition(Status.VULNERABLE, 0, 3, False)
+        wave = StatusCondition(Status.WEAK, 0, 3, False)
         enemy.apply_status_condition(shock)
         enemy.apply_status_condition(wave)
 
