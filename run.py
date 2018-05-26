@@ -1,5 +1,6 @@
 import main
 import cards
+import enemy_ai
 from copy import deepcopy
 
 '''
@@ -56,8 +57,9 @@ def generate_successor_state(state, action):
             if not temp_state.player.deck.use_card(card, target):
                 return None
     if state.state_type == main.StateType.COPY:
-        # TODO: complete
-        return temp_state
+        return
+    if state.state_type == main.StateType.DISCARD_TO_DRAW:
+        return
     return temp_state
 
 
@@ -132,7 +134,7 @@ def state_feature_extractor(state):
 
 def run():
     player = main.Player(cards.testing_deck(), 80)
-    enemies = [main.CombatEnemy(None, main.SpikeSlimeAI(), 100), main.CombatEnemy(None, main.AcidSlimeAI(), 100)]
+    enemies = [main.CombatEnemy(None, enemy_ai.SpikeSlimeAI(), 100), main.CombatEnemy(None, enemy_ai.AcidSlimeAI(), 100)]
     current_state = main.Combat(player, enemies)
     current_state.start_turn()
     while not is_end_state(current_state):

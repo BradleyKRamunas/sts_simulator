@@ -1,10 +1,7 @@
 from main import Card
 from main import StatusCondition
-from main import Status
-from main import CardType
-from main import Target
 from main import Deck
-from main import Intent
+from enums import *
 import random
 
 
