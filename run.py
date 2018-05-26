@@ -1,6 +1,7 @@
 import main
 import cards
-import enemy_ai
+from enemy_ai import *
+from enums import *
 from copy import deepcopy
 
 '''
@@ -48,7 +49,7 @@ def is_end_state(state):
 
 def generate_successor_state(state, action):
     temp_state = deepcopy(state)
-    if state.state_type == main.StateType.NORMAL:
+    if state.state_type == StateType.NORMAL:
         if action is None:
             temp_state.end_turn()
             temp_state.start_turn()
@@ -56,9 +57,15 @@ def generate_successor_state(state, action):
             card, target = action
             if not temp_state.player.deck.use_card(card, target):
                 return None
-    if state.state_type == main.StateType.COPY:
+    if state.state_type == StateType.COPY:
         return
-    if state.state_type == main.StateType.DISCARD_TO_DRAW:
+    if state.state_type == StateType.DISCARD_TO_DRAW:
+        return
+    if state.state_type == StateType.EXHAUST_TO_HAND:
+        return
+    if state.state_type == StateType.HAND_TO_DRAW:
+        return
+    if state.state_type == StateType.HAND_TO_EXHAUST:
         return
     return temp_state
 
@@ -67,45 +74,46 @@ def generate_actions(state):
     if state is None:
         return None
     actions = []
-    if state.state_type == main.StateType.NORMAL:
+    if state.state_type == StateType.NORMAL:
         for card in state.player.deck.hand:
-            if card.target_type == main.Target.SELF:
+            if card.target_type == Target.SELF:
                 actions.append((card, -1))
-            if card.target_type == main.Target.SINGLE:
+            if card.target_type == Target.SINGLE:
                 for target, enemy in enumerate(state.enemies):
                     if enemy.health > 0:
                         actions.append((card, target))
-            if card.target_type == main.Target.ALL:
+            if card.target_type == Target.ALL:
                 actions.append((card, 0))
         actions.append(None)
-    if state.state_type == main.StateType.COPY:
+    if state.state_type == StateType.COPY:
         for card in state.player.deck.hand:
-            if card.card_type == main.CardType.ATTACK:
+            if card.card_type == CardType.ATTACK:
                 actions.append(card)
         if len(actions) == 0:
             actions.append(None)
-    if state.state_type == main.StateType.DISCARD_TO_DRAW:
+    if state.state_type == StateType.DISCARD_TO_DRAW:
         if len(state.player.deck.discard_pile) == 0:
             actions.append(None)
         for card in state.player.deck.discard_pile:
             actions.append(card)
-    if state.state_type == main.StateType.EXHAUST_TO_HAND:
+    if state.state_type == StateType.EXHAUST_TO_HAND:
         if len(state.player.deck.exhaust_pile) == 0:
             actions.append(None)
         for card in state.player.deck.exhaust_pile:
             actions.append(card)
-    if state.state_type == main.StateType.HAND_TO_DRAW:
+    if state.state_type == StateType.HAND_TO_DRAW:
         if len(state.player.deck.hand) == 0:
             actions.append(None)
         for card in state.player.deck.hand:
             actions.append(card)
-    if state.state_type == main.StateType.HAND_TO_EXHAUST:
+    if state.state_type == StateType.HAND_TO_EXHAUST:
         if len(state.player.deck.hand) == 0:
             actions.append(None)
         for card in state.player.deck.hand:
             actions.append(card)
 
     return actions
+
 
 def state_feature_extractor(state):
     #TODO: implement some sort of feature extraction
@@ -134,7 +142,7 @@ def state_feature_extractor(state):
 
 def run():
     player = main.Player(cards.testing_deck(), 80)
-    enemies = [main.CombatEnemy(None, enemy_ai.SpikeSlimeAI(), 100), main.CombatEnemy(None, enemy_ai.AcidSlimeAI(), 100)]
+    enemies = [main.CombatEnemy(None, SpikeSlimeAI(), 100), main.CombatEnemy(None, AcidSlimeAI(), 100)]
     current_state = main.Combat(player, enemies)
     current_state.start_turn()
     while not is_end_state(current_state):
@@ -146,7 +154,6 @@ def run():
         print
         current_state = generate_successor_state(current_state, action)
         current_state.print_information()
-
 
 
 if __name__ == '__main__':
