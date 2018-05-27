@@ -1,13 +1,17 @@
 import collections
 import random
 import math
+from combat import *
 
 
 class Algorithm:
-    def __init__(self, discount, actionGenerator, featureExtractor, explorationProb=0.2):
+    def __init__(self, discount, featureExtractor, temp_get_action, temp_mdp, explorationProb = 0.2):
 
         # Actions is a function where actions(state) returns a list of actions one can take at that state.
-        self.actions = actionGenerator
+        self.mdp = temp_mdp
+
+        # getAction is a function that takes in a state, and returns which action to play.
+        self.getAction = temp_get_action
 
         # Discount TBD
         self.discount = discount
@@ -31,19 +35,55 @@ class Algorithm:
             score += self.weights[f] * v
         return score
 
-    # Sort of epsilon greedy right now... we'll probably change this.
-    # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
-    def getAction(self, state):
-        self.numIters += 1
-        if random.random() < self.explorationProb:
-            return random.choice(self.actions(state))
-        else:
-            return max((self.getQ(state, action), action) for action in self.actions(state))[1]
-
     # Call this function to get the step size to update the weights.
     # We... may want to change this, although we may not?
     def getStepSize(self):
         return 1.0 / (1 + math.sqrt(self.numIters))
+
+    # Baseline policy: randomly play a card with probability 0.5, or attack with the card
+    # that does the most damage.
+    def generic_policy(self, state):
+        epsilon = 0.5
+        if state.state_type == StateType.NORMAL_COMBAT:
+            actions = self.mdp.generate_actions(state)
+            if random.uniform(0, 1) <= epsilon:
+                max_action = None
+                max_delta = 0
+                prev_sum = 0
+                for enemy in state.enemies:
+                    prev_sum += enemy.block
+                    prev_sum += enemy.health
+
+                for action in actions:
+                    next_state = self.mdp.generate_successor_state(state, action)
+                    new_sum = 0
+                    if next_state is not None:
+                        for enemy in next_state.enemies:
+                            new_sum += enemy.block
+                            new_sum += enemy.health
+                        if prev_sum - new_sum > max_delta:
+                            max_action = action
+                            max_delta = prev_sum - new_sum
+
+                return max_action
+            else:
+                action = random.choice(actions)
+                next_state = self.mdp.generate_successor_state(state, action)
+                if next_state is None:
+                    return None
+                return action
+        else:
+            return random.choice(self.mdp.generate_actions(state))
+
+    # Sort of epsilon greedy right now... we'll probably change this.
+    # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
+    def getAction(self, state):
+        actions = self.mdp.generate_actions(state)
+        self.numIters += 1
+        if random.random() < self.explorationProb:
+            return random.choice(actions)
+        else:
+            return max((self.getQ(state, action), action) for action in actions)[1]
 
     # Performs weights = weights + k * features (for sparse vectors weights (dictionary) and features (list))
     def increment(self, weights, features, k):

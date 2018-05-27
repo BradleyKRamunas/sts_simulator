@@ -18,38 +18,6 @@ IsEnd(s): is_end_state
 EPSILON = 0.5
 
 
-def generic_policy(state, actions):
-    if state.state_type == CombatStateType.NORMAL:
-        if random.uniform(0, 1) <= EPSILON:
-            max_action = None
-            max_delta = 0
-            prev_sum = 0
-            for enemy in state.enemies:
-                prev_sum += enemy.block
-                prev_sum += enemy.health
-
-            for action in actions:
-                next_state = generate_successor_state(state, action)
-                new_sum = 0
-                if next_state is not None:
-                    for enemy in next_state.enemies:
-                        new_sum += enemy.block
-                        new_sum += enemy.health
-                    if prev_sum - new_sum > max_delta:
-                        max_action = action
-                        max_delta = prev_sum - new_sum
-
-            return max_action
-        else:
-            action = random.choice(actions)
-            next_state = generate_successor_state(state, action)
-            if next_state is None:
-                return None
-            return action
-    else:
-        return random.choice(actions)
-
-
 def is_end_state(state):
     if state is None:
         return False

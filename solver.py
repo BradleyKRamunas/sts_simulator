@@ -118,12 +118,11 @@ def identityFeatureExtractor(state, action):
 # Perform |numTrials| of the following:
 # Each trial will run for at most |maxIterations|.
 # Return the list of rewards that we get for each trial.
-def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False):
-
+def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False, action_gen_type = 0):
 
     # (discount, actionGenerator, featureExtractor, explorationProb=0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
-    function_approx = Algorithm(1, mdp.generate_actions, game_general_feature_extractor)
+    function_approx = Algorithm(1, mdp.generate_actions, game_general_feature_extractor, mdp)
 
     totalRewards = []  # The rewards we get on each trial
 
@@ -142,7 +141,10 @@ def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False):
         while True:
 
             # Algorithm will pick one of its possible actions from state state to do.
-            action = function_approx.getAction(state)
+            if action_gen_type == 0:
+                action = function_approx.generic_policy(state)
+            else:
+                action = function_approx.getAction(state)
 
             # Single successor state generated (our MDP is, for all intents and purposes, well, deterministic.)
             successorState, reward = mdp.generate_successor_state(state, action)
