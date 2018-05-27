@@ -379,9 +379,9 @@ class CombatDeck:
     def discard_hand(self):
         cards_to_exhaust = []
         for card in self.hand:
-            if card.name == "Burn":
+            if "Burn" in card.name:
                 self.combat.player.lose_health(2)
-            if card.name == "Dazed" or card.name == "Carnage" or card.name == "Ghostly Armor":
+            if "Dazed" in card.name or "Carnage" in card.name or "Ghostly Armor" in card.name:
                 cards_to_exhaust.append(card)
             else:
                 self.discard_pile.append(card)
@@ -394,6 +394,8 @@ class CombatDeck:
         self.exhaust_pile.append(card)
         if card.name == "Sentinel":
             self.combat.player.energy += 2
+        if card.name == "Sentinel+":
+            self.combat.player.energy += 3
         if Status.FEELNOPAIN in self.combat.player.conditions:
             value = self.combat.player.conditions[Status.FEELNOPAIN].value
             self.combat.player.block += value
@@ -404,14 +406,14 @@ class CombatDeck:
     def use_card(self, card, target):
         if card.card_type == CardType.STATUS:
             return False
-        if card.name == "Clash":
+        if "Clash" in card.name:
             for card_in_hand in self.hand:
                 if card_in_hand.card_type != CardType.ATTACK:
                     return False
         if Status.RAGE in self.combat.player.conditions:
             value = self.combat.player.conditions[Status.RAGE].value
             self.combat.player.block += value  # note that dexterity is not accounted for
-        if card.name == "Blood for Blood":
+        if "Blood for Blood" in card.name:
             card.cost = max(0, 4 - self.combat.player.damage_track)
         if card.card_type == CardType.SKILL and Status.CORRUPTION in self.combat.player.conditions:
             card.cost = 0
@@ -432,7 +434,7 @@ class CombatDeck:
                 self.combat.player.apply_status_condition(remover)
                 card.count += 1
             card.apply(self.combat, target)
-            if card.name == "Whirlwind":
+            if "Whirlwind" in card.name:
                 self.combat.player.energy = 0
             card.count += 1
             return True
