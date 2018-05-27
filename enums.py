@@ -54,13 +54,6 @@ class CardType(Enum):
     STATUS = 4
 
 
-class StateType(Enum):
-    COMBAT = 1
-    REST_SITE = 2
-    RANDOM_EVENT = 3
-    INTERMEDIARY = 4
-
-
 class CombatStateType(Enum):
     NORMAL = 1
     HAND_TO_EXHAUST = 2
@@ -72,11 +65,11 @@ class CombatStateType(Enum):
 
 
 class RestSiteStateType(Enum):
-    NORMAL = 1
-    UPGRADE = 2
+    NORMAL = 8
+    UPGRADE = 9
 
 
 class RandomEventStateType(Enum):
-    NORMAL = 1
-    REMOVE_CARD = 2
-    ADD_CARD = 3
+    NORMAL = 10
+    REMOVE_CARD = 11
+    ADD_CARD = 12

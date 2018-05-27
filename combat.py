@@ -26,6 +26,7 @@ class Combat:
         self.state_type = StateType.NORMAL
         for enemy in self.enemies:
             enemy.combat = self
+        self.start_turn()
         #self.game_loop()  # meant for human player, not for AI usage
 
     def start_turn(self):

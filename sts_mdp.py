@@ -1,24 +1,31 @@
 from enums import *
 from copy import deepcopy
+import random
+import cards
+import player
+import combat
+from enemy_ai import *
 
 class STSMDP:
 
     def __init__(self):
-        # TODO:
-        # Generate start state
+        self.combat_count = 0
+        self.easy_enemies = [[combat.CombatEnemy(None, SpikeSlimeAI(), 12), combat.CombatEnemy(None, AcidSlimeAI(), 15)],
+                             [combat.CombatEnemy(None, JawWormAI(), 30)], [combat.CombatEnemy(None, FungiBeastAI(), 24),
+                                                                           combat.CombatEnemy(None, FungiBeastAI(), 25)],
+                             [combat.CombatEnemy(None, SlaverAI(), 34)]]
 
     def start_state(self):
-        # TODO
+        actor = player.Player(cards.generate_default_deck(), 80)
+        enemies = random.choice(self.easy_enemies)
+        start_state = combat.Combat(actor, enemies)
+        return start_state
 
     def is_end_state(self, state):
-        if state is None:
-            return False
-        if state.player.health == 0:
+        if self.combat_count >= 10:
             return True
-        for enemy in state.enemies:
-            if enemy.health > 0:
-                return False
-        return True
+        else:
+            return False
 
 
     def generate_successor_state(self, state, action):
