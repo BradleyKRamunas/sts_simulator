@@ -6,5 +6,5 @@ def run():
     simulate(mdp, 1, True, 0)
 
 
-if __name__ == '__smain__':
+if __name__ == '__main__':
     run()

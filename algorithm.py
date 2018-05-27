@@ -55,9 +55,9 @@ class Algorithm:
                     prev_sum += enemy.health
 
                 for action in actions:
-                    next_state = self.mdp.generate_successor_state(state, action)
+                    next_state, reward = self.mdp.generate_successor_state(state, action)
                     new_sum = 0
-                    if next_state is not None:
+                    if next_state is not None and next_state.state_type == StateType.NORMAL_COMBAT:
                         for enemy in next_state.enemies:
                             new_sum += enemy.block
                             new_sum += enemy.health
@@ -109,7 +109,7 @@ class Algorithm:
         vOptNextState = 0
 
         # If new state is None, then our reward is 0.
-        if newState is not None:
+        if newState is not (None or True or False):
             # Grab the estimated V_opt of the new state
             vOptNextState = max(self.getQ(newState, newAction) for newAction in self.actions(newState))
 

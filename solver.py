@@ -129,7 +129,7 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
     for trial in range(numTrials):
 
         # Grab the start state and put it in the sequence.
-        state = mdp.startState()
+        state = mdp.start_state()
         #sequence = [state]
 
         # Total Discount is 1 for now.
@@ -160,7 +160,8 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
             #sequence.append(successorState)
 
             # Incorporate the feedback we got from state, action, reward, state'.
-            function_approx.incorporateFeedback(state, action, reward, successorState)
+            if action_gen_type != 0:
+                function_approx.incorporateFeedback(state, action, reward, successorState)
 
             totalReward += totalDiscount * reward
             # totalDiscount *= mdp.discount()

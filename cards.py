@@ -1549,8 +1549,6 @@ def sentinel_plus_fx(combat, target, count):
 def status_fx(combat, target, count):
     return
 
-UPGRADE_DICT = generate_upgrade_dictionary()
-
 # <<<<<<< HEAD
 # Parameters: "name", cost, CardType, fx function, Target, Exhaust (t/f)
 strike = Card("Strike", 1, CardType.ATTACK, strike_fx, Target.SINGLE, False)
@@ -1720,6 +1718,8 @@ sentinelPlus = Card("Sentinel+", 1, CardType.SKILL, sentinel_plus_fx, Target.SEL
 dazed = Card("Dazed", 0, CardType.STATUS, status_fx, Target.SELF, False)
 wound = Card("Wound", 0, CardType.STATUS, status_fx, Target.SELF, False)
 burn = Card("Burn", 0, CardType.STATUS, status_fx, Target.SELF, False)
+
+UPGRADE_DICT = generate_upgrade_dictionary()
 # =======
 # >>>>>>> b048d96c58fdacaa4b154b626b5cb9008c106daf
 # Not sure what this is...
