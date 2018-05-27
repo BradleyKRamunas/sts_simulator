@@ -1,6 +1,7 @@
 import random
 import cards
 from enums import StateType
+from copy import deepcopy
 # offer a random event (occurs with 0.2 probability)
 # 1/8 probability for each possible random event
 # EVENTS:
@@ -15,7 +16,7 @@ from enums import StateType
 
 class RandomEvent:
     def __init__(self, player):
-        self.player = player
+        self.player = deepcopy(player)
         self.state_type = StateType.NORMAL_RANDOM
 
     def generate_random_event(self):

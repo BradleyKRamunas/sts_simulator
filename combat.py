@@ -1,6 +1,7 @@
 import random
 import math
 from enums import *
+from copy import deepcopy
 
 
 class StatusCondition:
@@ -22,7 +23,7 @@ class StatusCondition:
 class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
-        self.nc_player = player
+        self.nc_player = deepcopy(player)
         self.enemies = enemies
         self.state_type = StateType.NORMAL_COMBAT
         for enemy in self.enemies:

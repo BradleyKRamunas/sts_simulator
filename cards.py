@@ -349,7 +349,7 @@ def generate_default_deck():
         deck.add_card(strike)
     for i in range(4):
         deck.add_card(defend)
-    for i in range(3):
+    for i in range(5):
         deck.add_card(clash)
     return deck
 

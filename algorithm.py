@@ -2,22 +2,20 @@ import collections
 import random
 import math
 from combat import *
+import types
 
 
 class Algorithm:
-    def __init__(self, discount, featureExtractor, temp_get_action, temp_mdp, explorationProb = 0.2):
+    def __init__(self, discount, featureExtractor, temp_mdp, explorationProb = 0.2):
 
         # Actions is a function where actions(state) returns a list of actions one can take at that state.
         self.mdp = temp_mdp
-
-        # getAction is a function that takes in a state, and returns which action to play.
-        self.getAction = temp_get_action
 
         # Discount TBD
         self.discount = discount
 
         # Features and stuff TBD
-        self.featureExtractor = featureExtractor
+        self.feature_extractor = featureExtractor
 
         # ExplorationProb changer TBD as well
         self.explorationProb = explorationProb
@@ -31,8 +29,12 @@ class Algorithm:
     # Return the Q function associated with the weights and features
     def getQ(self, state, action):
         score = 0
-        for f, v in self.featureExtractor(state, action):
-            score += self.weights[f] * v
+
+        # If state is None, the action we tried taking was illegal
+        if state is not None:
+            features = self.feature_extractor(state, action)
+            for f in features.keys():
+                score += self.weights[f] * features[f]
         return score
 
     # Call this function to get the step size to update the weights.
@@ -44,7 +46,7 @@ class Algorithm:
     # that does the most damage.
     def generic_policy(self, state):
         epsilon = 0.5
-        if state.state_type == StateType.NORMAL_COMBAT:
+        if state is not None and state.state_type == StateType.NORMAL_COMBAT:
             actions = self.mdp.generate_actions(state)
             if random.uniform(0, 1) <= epsilon:
                 max_action = None
@@ -67,36 +69,53 @@ class Algorithm:
 
                 return max_action
             else:
-                action = random.choice(actions)
+                """action = random.choice(actions)
                 next_state = self.mdp.generate_successor_state(state, action)
                 if next_state is None:
                     return None
+                return action"""
+                successorState = None
+                action = None
+                actions = self.mdp.generate_actions(state)
+                while successorState is None:
+                    action = random.choice(actions)
+                    successorState, reward = self.mdp.generate_successor_state(state, action)
+                    if successorState is None:
+                        actions.remove(action)
                 return action
-        else:
-            return random.choice(self.mdp.generate_actions(state))
+
 
     # Sort of epsilon greedy right now... we'll probably change this.
     # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
-    def getAction(self, state):
+    def q_learning_action(self, state):
         actions = self.mdp.generate_actions(state)
         self.numIters += 1
+        action = None
+        successorState = None
         if random.random() < self.explorationProb:
-            return random.choice(actions)
+            while successorState is None:
+                action = random.choice(actions)
+                successorState, reward = self.mdp.generate_successor_state(state, action)
+                if successorState is None:
+                    actions.remove(action)
         else:
-            return max((self.getQ(state, action), action) for action in actions)[1]
+            while successorState is None:
+                action = max((self.getQ(state, action), action) for action in actions)[1]
+                successorState, reward = self.mdp.generate_successor_state(state, action)
+                if successorState is None:
+                    actions.remove(action)
+        return action
 
     # Performs weights = weights + k * features (for sparse vectors weights (dictionary) and features (list))
     def increment(self, weights, features, k):
         for featureTwo in features:
             if featureTwo[0] in weights:
-                weights[featureTwo[0]] += k * featureTwo[1]
+                weights[featureTwo] += k * features[featureTwo]
             else:
-                weights[featureTwo[0]] = k * featureTwo[1]
+                weights[featureTwo] = k * features[featureTwo]
 
-    # We will call this function with (s, a, r, s'), which you should use to update |weights|.
-    # Note that if s is a terminal state, then s' will be None.  Remember to check for this.
-    # You should update the weights using self.getStepSize(); use
-    # self.getQ() to compute the current estimate of the parameters.
+    # Performs incorporating feedback for every (state, action, reward, state') tuple whenever we choose
+    # an action during Q-learning.
     def incorporateFeedback(self, state, action, reward, newState):
 
         # Eta computed using the inverse square root weight method
@@ -108,14 +127,14 @@ class Algorithm:
         # Assume end state
         vOptNextState = 0
 
-        # If new state is None, then our reward is 0.
-        if newState is not (None or True or False):
+        # If new state is None or an end combat state, we don't have Vopts for our "next state" (no next state)
+        if newState is not None and (not isinstance(newState, int)):
             # Grab the estimated V_opt of the new state
-            vOptNextState = max(self.getQ(newState, newAction) for newAction in self.actions(newState))
+            vOptNextState = max(self.getQ(newState, newAction) for newAction in self.mdp.generate_actions(newState))
 
         coefficient = (1.0 - eta) * qOptCur + eta * (reward + self.discount * vOptNextState)
 
-        self.increment(self.weights, self.featureExtractor(state, action), coefficient)
+        self.increment(self.weights, self.feature_extractor(state, action), coefficient)
 
 
 """def simulate_QL_over_MDP(mdp, featureExtractor):

@@ -28,9 +28,7 @@ class STSMDP:
         return start_state
 
     def is_end_state(self, state):
-        if state is None:
-            return True
-        if self.combat_count >= 10:
+        if isinstance(state, int):
             return True
         else:
             return False
@@ -56,7 +54,7 @@ class STSMDP:
                     dead_enemies = False
                     break
             if temp_state.player.health <= 0:
-                return (False, -10000)
+                return (0, -1000)
             if dead_enemies:
                 self.combat_count += 1
                 probability = random.uniform(0, 1)
@@ -64,17 +62,17 @@ class STSMDP:
                 temp_state.nc_player.max_health = temp_state.player.max_health
                 if probability <= 0.2:
                     # go to rest
-                    next_state = RestSite(temp_state.nc_player)
+                    next_state = RestSite(deepcopy(temp_state.nc_player))
                     return (next_state, next_state.player.health)
                 elif probability <= 0.4:
                     # go to a random event
-                    next_state = RandomEvent(temp_state.nc_player)
+                    next_state = RandomEvent(deepcopy(temp_state.nc_player))
                     return (next_state, next_state.player.health)
                 else:
                     # go to a combat
-                    next_state = combat.Combat(temp_state.nc_player, self.get_enemy_encounter())
-                    if self.combat_count >= 10:
-                        return (True, 10000)
+                    next_state = combat.Combat(deepcopy(temp_state.nc_player), self.get_enemy_encounter())
+                    if self.combat_count >= 20:
+                        return (1, 1000)
                     else:
                         return (next_state, next_state.player.health)
             else:
@@ -119,15 +117,15 @@ class STSMDP:
                 probability = random.uniform(0, 1)
                 if probability <= 0.2:
                     # go to rest
-                    next_state = RestSite(temp_state.player)
+                    next_state = RestSite(deepcopy(temp_state.player))
                     return (next_state, 0)
                 elif probability <= 0.4:
                     # go to a random event
-                    next_state = RandomEvent(temp_state.player)
+                    next_state = RandomEvent(deepcopy(temp_state.player))
                     return (next_state, 0)
                 else:
                     # go to a combat
-                    next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                    next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                     return (next_state, 0)
             else:
                 temp_state.state_type = StateType.UPGRADE_REST
@@ -140,29 +138,29 @@ class STSMDP:
             probability = random.uniform(0, 1)
             if probability <= 0.2:
                 # go to rest
-                next_state = RestSite(temp_state.player)
+                next_state = RestSite(deepcopy(temp_state.player))
                 return (next_state, 0)
             elif probability <= 0.3:
                 # go to a random event
-                next_state = RandomEvent(temp_state.player)
+                next_state = RandomEvent(deepcopy(temp_state.player))
                 return (next_state, 0)
             else:
                 # go to a combat
-                next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                 return (next_state, 0)
         if state.state_type == StateType.NORMAL_RANDOM:
             if temp_state.generate_random_event():
                 probability = random.uniform(0, 1)
                 if probability <= 0.1:
                     # go to rest
-                    next_state = RestSite(temp_state.player)
+                    next_state = RestSite(deepcopy(temp_state.player))
                     return (next_state, 0)
                 elif probability <= 0.2:
                     # go to a random event
-                    next_state = RandomEvent(temp_state.player)
+                    next_state = RandomEvent(deepcopy(temp_state.player))
                     return (next_state, 0)
                 else:
-                    next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                    next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                     return (next_state, 0)
             else:
                 return (temp_state, 0)
@@ -172,34 +170,34 @@ class STSMDP:
             probability = random.uniform(0, 1)
             if probability <= 0.1:
                 # go to rest
-                next_state = RestSite(temp_state.player)
+                next_state = RestSite(deepcopy(temp_state.player))
                 return (next_state, 0)
             elif probability <= 0.2:
                 # go to a random event
-                next_state = RandomEvent(temp_state.player)
+                next_state = RandomEvent(deepcopy(temp_state.player))
                 return (next_state, 0)
             else:
-                next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                 return (next_state, 0)
         if state.state_type == StateType.ADD_CARD:
             temp_state.player.deck.add_card(action)
             probability = random.uniform(0, 1)
             if probability <= 0.1:
                 # go to rest
-                next_state = RestSite(temp_state.player)
+                next_state = RestSite(deepcopy(temp_state.player))
                 return (next_state, 0)
             elif probability <= 0.2:
                 # go to a random event
-                next_state = RandomEvent(temp_state.player)
+                next_state = RandomEvent(deepcopy(temp_state.player))
                 return (next_state, 0)
             else:
-                next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                 return (next_state, 0)
 
 
     def generate_actions(self, state):
         if state is None:
-            return None
+            return [None]
         actions = []
         if state.state_type == StateType.NORMAL_COMBAT:
             for card in state.player.deck.hand:
@@ -242,12 +240,13 @@ class STSMDP:
             if len(state.player.deck.hand) == 0:
                 actions.append(None)
             for card in state.player.deck.hand:
-                actions.append(card)
+                if not card.upgraded:
+                    actions.append(card)
         if state.state_type == StateType.NORMAL_REST:
             actions.append(0)  # corresponding to rest
             actions.append(1)  # corresponding to upgrade
         if state.state_type == StateType.UPGRADE_REST:
-            for card in state.player.deck:
+            for card in state.player.deck.cards:
                 if not card.upgraded:
                     actions.append(card)
             if len(actions) == 0:
@@ -255,7 +254,7 @@ class STSMDP:
         if state.state_type == StateType.NORMAL_RANDOM:
             actions.append(None)
         if state.state_type == StateType.REMOVE_CARD:
-            for card in state.player.deck:
+            for card in state.player.deck.cards:
                 actions.append(card)
             if len(actions) == 0:
                 actions.append(None)

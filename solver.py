@@ -87,23 +87,24 @@ def game_general_feature_extractor(state, action):
         # Grabs health and indicators for each card in player's deck
         features["health"] = state.player.health
         for card in state.player.deck.cards:
-            features[card] = 1
+            features[card.name] = 1
 
     elif state.state_type == StateType.UPGRADE_REST:
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
-            features[card] = 1
+            features[card.name] = 1
 
     elif state.state_type == StateType.REMOVE_CARD:
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
-            features[card] = 1
+            features[card.name] = 1
 
     elif state.state_type == StateType.ADD_CARD:
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
-            features[card] = 1
+            features[card.name] = 1
 
+    return features
     # else state.state_type == StateType.NORMAL_RANDOM: no features
 
 
@@ -120,9 +121,9 @@ def identityFeatureExtractor(state, action):
 # Return the list of rewards that we get for each trial.
 def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
 
-    # (discount, actionGenerator, featureExtractor, explorationProb=0.2)
+    # (discount, featureExtractor, temp_mdp, explorationProb = 0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
-    function_approx = Algorithm(1, mdp.generate_actions, game_general_feature_extractor, mdp)
+    function_approx = Algorithm(1, game_general_feature_extractor, mdp)
 
     totalRewards = []  # The rewards we get on each trial
 
@@ -139,12 +140,11 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
         totalReward = 0
 
         while True:
-
             # Algorithm will pick one of its possible actions from state state to do.
             if action_gen_type == 0:
                 action = function_approx.generic_policy(state)
             else:
-                action = function_approx.getAction(state)
+                action = function_approx.q_learning_action(state)
 
             if verbose:
                 print "------------------"
@@ -172,4 +172,11 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
                 break
 
         totalRewards.append(totalReward)
+        print("==========================")
+        print("==========================")
+        print("Iteration done")
+        print("==========================")
+        print("==========================")
+        mdp.combat_count = 0
+        print(function_approx.weights)
     return totalRewards
