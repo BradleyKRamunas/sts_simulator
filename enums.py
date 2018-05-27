@@ -58,6 +58,7 @@ class StateType(Enum):
     COMBAT = 1
     REST_SITE = 2
     RANDOM_EVENT = 3
+    INTERMEDIARY = 4
 
 
 class CombatStateType(Enum):
@@ -67,6 +68,7 @@ class CombatStateType(Enum):
     DISCARD_TO_DRAW = 4
     EXHAUST_TO_HAND = 5
     COPY = 6
+    UPGRADE = 7
 
 
 class RestSiteStateType(Enum):
