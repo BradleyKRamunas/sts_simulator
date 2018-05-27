@@ -23,18 +23,23 @@ class RandomEvent:
         if event_pos == 0:
             # gain 1 energy
             self.player.max_energy += 1
+            return True
         elif event_pos == 1:
             # gain 5 max hp
             self.player.max_health += 5
+            return True
         elif event_pos == 2:
             # lose 5 max hp
             self.player.max_health -= 5
+            return True
         elif event_pos == 3:
             # gain 10 max hp
             self.player.max_health += 10
+            return True
         elif event_pos == 4:
             # lose 7 max hp
             self.player.max_health -= 7
+            return True
         elif event_pos == 5:
             # gain 3 random cards
             all_cards = cards.generate_all_cards()
@@ -44,8 +49,14 @@ class RandomEvent:
             self.player.deck.add_card(first_card)
             self.player.deck.add_card(second_card)
             self.player.deck.add_card(third_card)
+            return True
         elif event_pos == 6:
             # remove a card from deck
             self.state_type = StateType.REMOVE_CARD
+            return False
         elif event_pos == 7:
             self.state_type = StateType.ADD_CARD
+            return False
+
+    def print_information(self):
+        print "We are in a random event at the moment."

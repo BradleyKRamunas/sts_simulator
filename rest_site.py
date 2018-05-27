@@ -16,6 +16,7 @@ class RestSite:
         self.player.health = min(possible_heal, self.player.max_health)
 
     def upgrade(self):
-        # TODO: once upgraded cards are implemented... for now, only heal
         self.state_type = StateType.UPGRADE_REST
-        return
+
+    def print_information(self):
+        print "We are at a rest site at the moment."

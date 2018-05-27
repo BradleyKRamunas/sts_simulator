@@ -164,6 +164,7 @@ class Combat:
             print ("---END OF TURN---")
             self.end_turn()
 
+
 class CombatEnemy:
     def __init__(self, combat, ai, health):
         self.combat = combat

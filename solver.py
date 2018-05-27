@@ -118,7 +118,7 @@ def identityFeatureExtractor(state, action):
 # Perform |numTrials| of the following:
 # Each trial will run for at most |maxIterations|.
 # Return the list of rewards that we get for each trial.
-def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False, action_gen_type = 0):
+def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
 
     # (discount, actionGenerator, featureExtractor, explorationProb=0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
@@ -130,7 +130,7 @@ def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False, action_gen_ty
 
         # Grab the start state and put it in the sequence.
         state = mdp.startState()
-        sequence = [state]
+        #sequence = [state]
 
         # Total Discount is 1 for now.
         totalDiscount = 1
@@ -146,12 +146,18 @@ def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False, action_gen_ty
             else:
                 action = function_approx.getAction(state)
 
+            if verbose:
+                print "------------------"
+                state.print_information()
+                print "\t", action
+                print "------------------"
+
             # Single successor state generated (our MDP is, for all intents and purposes, well, deterministic.)
             successorState, reward = mdp.generate_successor_state(state, action)
 
             # Append our action and successor state to the sequence (for verbose display if needed)
-            sequence.append(action)
-            sequence.append(successorState)
+            #sequence.append(action)
+            #sequence.append(successorState)
 
             # Incorporate the feedback we got from state, action, reward, state'.
             function_approx.incorporateFeedback(state, action, reward, successorState)
@@ -163,9 +169,6 @@ def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False, action_gen_ty
             # If we've hit an end state, we need to stop.
             if mdp.is_end_state(state):
                 break
-
-        if verbose:
-            print "Trial %d (totalReward = %s): %s" % (trial, totalReward, sequence)
 
         totalRewards.append(totalReward)
     return totalRewards

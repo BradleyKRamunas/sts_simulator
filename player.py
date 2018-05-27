@@ -20,6 +20,7 @@ class Deck:
 class Card:
     def __init__(self, name, cost, card_type, fx, target_type, exhaust):
         self.name = name
+        self.upgraded = 1 if '+' in name else 0
         self.cost = cost  # cost of the card in order to use (-1 is X, -2 is X+1...)
         self.card_type = card_type  # of type Card_Type
         self.fx = fx  # function that takes in (combat, target) and does something

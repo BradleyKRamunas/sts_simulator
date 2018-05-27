@@ -5,6 +5,8 @@ import cards
 import player
 import combat
 from enemy_ai import *
+from rest_site import RestSite
+from random_event import RandomEvent
 
 class STSMDP:
 
@@ -14,6 +16,10 @@ class STSMDP:
                              [combat.CombatEnemy(None, JawWormAI(), 30)], [combat.CombatEnemy(None, FungiBeastAI(), 24),
                                                                            combat.CombatEnemy(None, FungiBeastAI(), 25)],
                              [combat.CombatEnemy(None, SlaverAI(), 34)]]
+        self.common_cards = cards.generate_common_cards()
+        self.uncommon_cards = cards.generate_uncommon_cards()
+        self.rare_cards = cards.generate_rare_cards()
+        self.upgrade_list = cards.generate_upgrade_dictionary()
 
     def start_state(self):
         actor = player.Player(cards.generate_default_deck(), 80)
@@ -27,6 +33,9 @@ class STSMDP:
         else:
             return False
 
+    def get_enemy_encounter(self):
+        # TODO: implement tiers via combat_count
+        return random.choice(self.easy_enemies)
 
     def generate_successor_state(self, state, action):
         temp_state = deepcopy(state)
@@ -38,7 +47,28 @@ class STSMDP:
                 card, target = action
                 if not temp_state.player.deck.use_card(card, target):
                     return None
-            return temp_state
+            dead_enemies = True
+            for enemy in temp_state.enemies:
+                if enemy.health > 0:
+                    dead_enemies = False
+                    break
+            if dead_enemies:
+                self.combat_count += 1
+                probability = random.uniform(0, 1)
+                if probability <= 0.2:
+                    # go to rest
+                    next_state = RestSite(temp_state.player)
+                    return next_state
+                elif probability <= 0.4:
+                    # go to a random event
+                    next_state = RandomEvent(temp_state.player)
+                    return next_state
+                else:
+                    # go to a combat
+                    next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                    return next_state
+            else:
+                return temp_state
         if state.state_type == StateType.COPY:
             if action is not None:
                 temp_state.player.deck.hand.append(action)
@@ -67,6 +97,98 @@ class STSMDP:
                 temp_state.player.deck.exhaust_card(action)
             temp_state.state_type = StateType.NORMAL_COMBAT
             return temp_state
+        if state.state_type == StateType.UPGRADE:
+            if action is not None:
+                temp_state.player.deck.hand.remove(action)
+                temp_state.player.deck.hand.append(self.upgrade_list[action.name])
+            temp_state.state_type = StateType.NORMAL_COMBAT
+            return temp_state
+        if state.state_type == StateType.NORMAL_REST:
+            if action == 0:
+                temp_state.heal()
+                probability = random.uniform(0, 1)
+                if probability <= 0.2:
+                    # go to rest
+                    next_state = RestSite(temp_state.player)
+                    return next_state
+                elif probability <= 0.4:
+                    # go to a random event
+                    next_state = RandomEvent(temp_state.player)
+                    return next_state
+                else:
+                    # go to a combat
+                    next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                    return next_state
+            else:
+                temp_state.state_type = StateType.UPGRADE_REST
+                return temp_state
+        if state.state_type == StateType.UPGRADE_REST:
+            if action is not None:
+                upgraded_card = self.upgrade_list[action.name]
+                temp_state.player.deck.remove_card(action)
+                temp_state.player.deck.add_card(upgraded_card)
+            probability = random.uniform(0, 1)
+            if probability <= 0.2:
+                # go to rest
+                next_state = RestSite(temp_state.player)
+                return next_state
+            elif probability <= 0.3:
+                # go to a random event
+                next_state = RandomEvent(temp_state.player)
+                return next_state
+            else:
+                # go to a combat
+                next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                return next_state
+        if state.state_type == StateType.NORMAL_RANDOM:
+            if temp_state.generate_random_event():
+                probability = random.uniform(0, 1)
+                if probability <= 0.1:
+                    # go to rest
+                    next_state = RestSite(temp_state.player)
+                    return next_state
+                elif probability <= 0.2:
+                    # go to a random event
+                    next_state = RandomEvent(temp_state.player)
+                    return next_state
+                else:
+                    next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                    return next_state
+            else:
+                return temp_state
+        if state.state_type == StateType.REMOVE_CARD:
+            if action is not None:
+                temp_state.player.deck.remove_card(action)
+            probability = random.uniform(0, 1)
+            if probability <= 0.1:
+                # go to rest
+                next_state = RestSite(temp_state.player)
+                return next_state
+            elif probability <= 0.2:
+                # go to a random event
+                next_state = RandomEvent(temp_state.player)
+                return next_state
+            else:
+                next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                return next_state
+        if state.state_type == StateType.ADD_CARD:
+            temp_state.player.deck.add_card(action)
+            probability = random.uniform(0, 1)
+            if probability <= 0.1:
+                # go to rest
+                next_state = RestSite(temp_state.player)
+                return next_state
+            elif probability <= 0.2:
+                # go to a random event
+                next_state = RandomEvent(temp_state.player)
+                return next_state
+            else:
+                next_state = combat.Combat(temp_state.player, self.get_enemy_encounter())
+                return next_state
+
+
+
+
 
 
     def generate_actions(self, state):
@@ -110,5 +232,38 @@ class STSMDP:
                 actions.append(None)
             for card in state.player.deck.hand:
                 actions.append(card)
-
+        if state.state_type == StateType.UPGRADE:
+            if len(state.player.deck.hand) == 0:
+                actions.append(None)
+            for card in state.player.deck.hand:
+                actions.append(card)
+        if state.state_type == StateType.NORMAL_REST:
+            actions.append(0)  # corresponding to rest
+            actions.append(1)  # corresponding to upgrade
+        if state.state_type == StateType.UPGRADE_REST:
+            for card in state.player.deck:
+                if not card.upgraded:
+                    actions.append(card)
+            if len(actions) == 0:
+                actions.append(None)
+        if state.state_type == StateType.NORMAL_RANDOM:
+            actions.append(None)
+        if state.state_type == StateType.REMOVE_CARD:
+            for card in state.player.deck:
+                actions.append(card)
+            if len(actions) == 0:
+                actions.append(None)
+        if state.state_type == StateType.ADD_CARD:
+            count = 0
+            while count <= 2:
+                value = random.uniform(0, 1)
+                if value <= 0.1:
+                    actions.append(random.choice(self.rare_cards))
+                    count += 1
+                elif value <= 0.35:
+                    actions.append(random.choice(self.uncommon_cards))
+                    count += 1
+                elif value <= 1:
+                    actions.append(random.choice(self.common_cards))
+                    count += 1
         return actions

@@ -4,7 +4,6 @@ from player import Deck
 from enums import *
 import random
 
-
 def testing_deck():
     deck = Deck()
 
@@ -17,6 +16,15 @@ def testing_deck():
         deck.add_card(barricade)
     return deck
 
+def generate_upgrade_dictionary():
+    cards = generate_all_cards()
+    upgrades = generate_all_upgraded_cards()
+    correspond = {}
+    for i in range(len(cards)-1):
+        card = cards[i]
+        upgrade = upgrades[i]
+        correspond[card.name] = upgrade
+    return correspond
 
 def generate_common_cards():
     cards = []
@@ -29,7 +37,7 @@ def generate_common_cards():
     cards.append(ironWave)
     cards.append(pommelStrike)
     cards.append(shrugItOff)
-    cards.apend(thunderclap)
+    cards.append(thunderclap)
     cards.append(trueGrit)
     cards.append(twinStrike)
     cards.append(wildStrike)
@@ -176,6 +184,81 @@ def generate_all_cards():
     cards.append(sentinel)  # uncommon
     return cards
 
+def generate_all_upgraded_cards():
+    cards = []
+    cards.append(strikePlus)  # no rarity
+    cards.append(defendPlus)  # no rarity
+    cards.append(bashPlus)  # common
+    cards.append(angerPlus)  # common
+    cards.append(armamentsPlus)  # uncommon
+    cards.append(bodySlamPlus)  # common
+    cards.append(clashPlus)  # uncommon
+    cards.append(cleavePlus)  # common
+    cards.append(clotheslinePlus)  # common
+    cards.append(flexPlus)  # uncommon
+    cards.append(havocPlus)  # rare
+    cards.append(headbuttPlus)  # common
+    cards.append(heavyBladePlus)  # uncommon
+    cards.append(ironWavePlus)  # common
+    cards.append(perfectedStrikePlus)  # uncommon
+    cards.append(pommelStrikePlus)  # common
+    cards.append(shrugItOffPlus)  # common
+    cards.append(thunderclapPlus)  # common
+    cards.append(trueGritPlus)  # common
+    cards.append(twinStrikePlus)  # common
+    cards.append(warcryPlus)  # uncommon
+    cards.append(wildStrikePlus)  # common
+    cards.append(battleTrancePlus)  # uncommon
+    cards.append(bloodForBloodPlus)  # rare
+    cards.append(bloodLettingPlus)  # uncommon
+    cards.append(burningPactPlus)  # rare
+    cards.append(carnagePlus)  # uncommon
+    cards.append(combustPlus)  # uncommon
+    cards.append(corruptionPlus)  # rare
+    cards.append(disarmPlus)  # rare
+    cards.append(dropkickPlus)  # uncommon
+    cards.append(dualWieldPlus)  # rare
+    cards.append(entrenchPlus)  # uncommon
+    cards.append(evolvePlus)  # uncommon
+    cards.append(feelNoPainPlus)  # uncommon
+    cards.append(flameBarrierPlus)  # uncommon
+    cards.append(ghostlyArmorPlus)  # common
+    cards.append(hemoKinesisPlus)  # uncommon
+    cards.append(inflamePlus)  # uncommon
+    cards.append(intimidatePlus)  # common
+    cards.append(metallicizePlus)  # uncommon
+    cards.append(powerThroughPlus)  # common
+    cards.append(pummelPlus)  # uncommon
+    cards.append(ragePlus)  # uncommon
+    cards.append(rampagePlus)  # common
+    cards.append(recklessChargePlus)  # common
+    cards.append(rupturePlus)  # rare
+    cards.append(searingBlowPlus)  # uncommon
+    cards.append(secondWindPlus)  # uncommon
+    cards.append(seeingRedPlus)  # rare
+    cards.append(severSoulPlus)  # uncommon
+    cards.append(shockwavePlus)  # uncommon
+    cards.append(spotWeaknessPlus)  # uncommon
+    cards.append(uppercutPlus)  # common
+    cards.append(whirlwindPlus)  # common
+    cards.append(barricadePlus)  # rare
+    cards.append(berserkPlus)  # rare
+    cards.append(bludgeonPlus)  # rare
+    cards.append(brutalityPlus)  # rare
+    cards.append(darkEmbracePlus)  # rare
+    cards.append(demonFormPlus)  # rare
+    cards.append(doubleTapPlus)  # rare
+    cards.append(exhumePlus)  # rare
+    cards.append(feedPlus)  # rare
+    cards.append(fiendFirePlus)  # rare
+    cards.append(immolatePlus)  # rare
+    cards.append(imperviousPlus)  # rare
+    cards.append(juggernautPlus)  # rare
+    cards.append(limitBreakPlus)  # rare
+    cards.append(offeringPlus)  # rare
+    cards.append(reaperPlus)  # rare
+    cards.append(sentinelPlus)  # uncommon
+    return cards
 
 
 def generate_all_deck():
@@ -316,12 +399,20 @@ def armaments_fx(combat, target, count):
     # TODO: ask player which card they want to upgrade
     player = combat.player
     player.gain_block(5)
+    combat.state_type = StateType.UPGRADE
 
 
 def armaments_plus_fx(combat, target, count):
     # TODO: ask player which card they want to upgrade
     player = combat.player
     player.gain_block(5)
+    new_hand = []
+    for card in player.deck.hand:
+        if card.name in UPGRADE_DICT:
+            new_hand.append(UPGRADE_DICT[card.name])
+        else:
+            new_hand.append(card)
+    player.deck.hand = new_hand
 
 
 def bodyslam_fx(combat, target, count):
@@ -1458,6 +1549,8 @@ def sentinel_plus_fx(combat, target, count):
 def status_fx(combat, target, count):
     return
 
+UPGRADE_DICT = generate_upgrade_dictionary()
+
 # <<<<<<< HEAD
 # Parameters: "name", cost, CardType, fx function, Target, Exhaust (t/f)
 strike = Card("Strike", 1, CardType.ATTACK, strike_fx, Target.SINGLE, False)
@@ -1578,7 +1671,7 @@ combustPlus = Card("Combust+", 1, CardType.POWER, combust_plus_fx, Target.SELF, 
 corruptionPlus = Card("Corruption+", 2, CardType.POWER, corruption_plus_fx, Target.SELF, False)
 disarmPlus = Card("Disarm+", 1, CardType.SKILL, disarm_plus_fx, Target.SINGLE, True)
 dropkickPlus = Card("Dropkick+", 1, CardType.ATTACK, dropkick_plus_fx, Target.SINGLE, False)
-dualWieldPlus = Card("Dual Wield+", 1, CardType.SKILL, dual_wield_plus_fx, Target.SELF, False)
+dualWieldPlus = Card("Dual Wield+", 0, CardType.SKILL, dual_wield_plus_fx, Target.SELF, False)
 entrenchPlus = Card("Entrench+", 1, CardType.SKILL, entrench_plus_fx, Target.SELF, False)
 evolvePlus = Card("Evolve+", 1, CardType.POWER, evolve_plus_fx, Target.SELF, False)
 
