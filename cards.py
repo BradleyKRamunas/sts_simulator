@@ -451,7 +451,7 @@ def headbutt_fx(combat, target, count):
             card = combat.player.deck.discard_pile.pop(index)
             player.deck.draw_pile.insert(0, card)
     else:
-        combat.state_type = CombatStateType.DISCARD_TO_DRAW
+        combat.state_type = StateType.DISCARD_TO_DRAW
 
 
 def headbutt_plus_fx(combat, target, count):
@@ -471,7 +471,7 @@ def headbutt_plus_fx(combat, target, count):
             card = combat.player.deck.discard_pile.pop(index)
             player.deck.draw_pile.insert(0, card)
     else:
-        combat.state_type = CombatStateType.DISCARD_TO_DRAW
+        combat.state_type = StateType.DISCARD_TO_DRAW
 
 
 def heavy_blade_fx(combat, target, count):
@@ -610,7 +610,7 @@ def true_grit_plus_fx(combat, target, count):
         # not implemented
         return
     else:
-        combat.state_type = CombatStateType.HAND_TO_EXHAUST
+        combat.state_type = StateType.HAND_TO_EXHAUST
 
 
 def twin_strike_fx(combat, target, count):
@@ -642,7 +642,7 @@ def warcry_fx(combat, target, count):
         player.deck.hand.remove(card)
         player.deck.draw_pile.insert(0, card)
     else:
-        combat.state_type = CombatStateType.HAND_TO_DRAW
+        combat.state_type = StateType.HAND_TO_DRAW
 
 
 def warcry_plus_fx(combat, target, count):
@@ -660,7 +660,7 @@ def warcry_plus_fx(combat, target, count):
         player.deck.hand.remove(card)
         player.deck.draw_pile.insert(0, card)
     else:
-        combat.state_type = CombatStateType.HAND_TO_DRAW
+        combat.state_type = StateType.HAND_TO_DRAW
 
 
 def wild_strike_fx(combat, target, count):
@@ -736,7 +736,7 @@ def burning_pact_fx(combat, target, count):
         card = player.deck.hand[option]
         player.deck.exhaust_card(card)
     else:
-        combat.state_type = CombatStateType.HAND_TO_EXHAUST
+        combat.state_type = StateType.HAND_TO_EXHAUST
 
 
 def burning_pact_plus_fx(combat, target, count):
@@ -753,7 +753,7 @@ def burning_pact_plus_fx(combat, target, count):
         card = player.deck.hand[option]
         player.deck.exhaust_card(card)
     else:
-        combat.state_type = CombatStateType.HAND_TO_EXHAUST
+        combat.state_type = StateType.HAND_TO_EXHAUST
 
 
 def carnage_fx(combat, target, count):
@@ -841,7 +841,7 @@ def dual_wield_fx(combat, target, count):
         card = player.deck.hand[option]
         player.deck.hand.append(card)
     else:
-        combat.state_type = CombatStateType.COPY
+        combat.state_type = StateType.COPY
 
 
 def dual_wield_plus_fx(combat, target, count):
@@ -858,7 +858,7 @@ def dual_wield_plus_fx(combat, target, count):
         card = player.deck.hand[option]
         player.deck.hand.append(card)
     else:
-        combat.state_type = CombatStateType.COPY
+        combat.state_type = StateType.COPY
 
 
 def entrench_fx(combat, target, count):
@@ -1304,7 +1304,7 @@ def exhume_fx(combat, target, count):
         # TODO: not implemented for debug mode
         return
     else:
-        combat.state_type = CombatStateType.EXHAUST_TO_HAND
+        combat.state_type = StateType.EXHAUST_TO_HAND
 
 
 def exhume_plus_fx(combat, target, count):
@@ -1314,7 +1314,7 @@ def exhume_plus_fx(combat, target, count):
         # TODO: not implemented for debug mode
         return
     else:
-        combat.state_type = CombatStateType.EXHAUST_TO_HAND
+        combat.state_type = StateType.EXHAUST_TO_HAND
 
 
 def feed_fx(combat, target, count):

@@ -23,7 +23,7 @@ class Combat:
     def __init__(self, player, enemies):
         self.player = CombatPlayer(player, self)
         self.enemies = enemies
-        self.state_type = StateType.NORMAL
+        self.state_type = StateType.NORMAL_COMBAT
         for enemy in self.enemies:
             enemy.combat = self
         self.start_turn()

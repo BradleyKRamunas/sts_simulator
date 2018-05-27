@@ -1,5 +1,5 @@
 import math
-from enums import RestSiteStateType
+from enums import *
 # offer a chance to rest or upgrade (occurs with 0.2 probability)
 # OPTIONS:
 # rest -> heal 30% of max_health
@@ -9,7 +9,7 @@ from enums import RestSiteStateType
 class RestSite:
     def __init__(self, player):
         self.player = player
-        self.state_type = RestSiteStateType.NORMAL
+        self.state_type = StateType.NORMAL_REST
 
     def heal(self):
         possible_heal = self.player.health + math.floor(0.3 * self.player.max_health)
@@ -17,5 +17,5 @@ class RestSite:
 
     def upgrade(self):
         # TODO: once upgraded cards are implemented... for now, only heal
-        self.state_type = RestSiteStateType.UPGRADE
+        self.state_type = StateType.UPGRADE_REST
         return

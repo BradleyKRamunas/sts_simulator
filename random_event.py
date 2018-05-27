@@ -1,6 +1,6 @@
 import random
 import cards
-from enums import RandomEventStateType
+from enums import StateType
 # offer a random event (occurs with 0.2 probability)
 # 1/8 probability for each possible random event
 # EVENTS:
@@ -16,7 +16,7 @@ from enums import RandomEventStateType
 class RandomEvent:
     def __init__(self, player):
         self.player = player
-        self.state_type = RandomEventStateType.NORMAL
+        self.state_type = StateType.NORMAL_RANDOM
 
     def generate_random_event(self):
         event_pos = random.randint(1,7)
@@ -46,6 +46,6 @@ class RandomEvent:
             self.player.deck.add_card(third_card)
         elif event_pos == 6:
             # remove a card from deck
-            self.state_type = RandomEventStateType.REMOVE_CARD
+            self.state_type = StateType.REMOVE_CARD
         elif event_pos == 7:
-            self.state_type = RandomEventStateType.ADD_CARD
+            self.state_type = StateType.ADD_CARD
