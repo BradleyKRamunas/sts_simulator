@@ -55,6 +55,8 @@ class CardType(Enum):
 
 
 class StateType(Enum):
+
+    # Combats
     NORMAL_COMBAT = 1
     HAND_TO_EXHAUST = 2
     HAND_TO_DRAW = 3
@@ -62,8 +64,12 @@ class StateType(Enum):
     EXHAUST_TO_HAND = 5
     COPY = 6
     UPGRADE = 7
+
+    # Rest_sites
     NORMAL_REST = 8
     UPGRADE_REST = 9
+
+    # Random_events
     NORMAL_RANDOM = 10
     REMOVE_CARD = 11
     ADD_CARD = 12

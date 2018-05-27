@@ -1,17 +1,119 @@
-import collections
-import random
-import algorithm
+from algorithm import *
+from combat import *
+from collections import defaultdict
 
 
 ############################################################
-def gameGeneralFeatureExtractor(state, action): # TODO: lol
+def game_general_feature_extractor(state, action):
 
-# Return a single-element list containing a binary (indicator) feature
+    # Features is going to be a dictionary of {key: int}
+    features = defaultdict(int)
+
+    if state.state_type == StateType.NORMAL_COMBAT:
+
+        # Health feature
+        features["health"] = state.player.health
+
+        # Block feature
+        features["block"] = state.player.block
+
+        # Total enemy health feature, total enemy block feature, total enemy attack intent, enemy intent indicator
+        # Also condition indicators/value/duration for player and enemy
+        totalEnemyHP = 0
+        totalEnemyAtk = 0
+        totalEnemyBlock = 0
+        for enemy in state.enemies:
+
+            # If the enemy is not dead, find its intent and append it to our features
+            if enemy.intent is not None:
+                intent, value, status = enemy.intent
+                if intent == Intent.ATTACK:
+                    totalEnemyAtk += value
+                elif intent == Intent.BLOCK:
+                    totalEnemyBlock += value
+                elif intent == Intent.BUFF:
+                    features[("enemy", status)] += value
+                else:
+                    features[("player", status)] += value
+
+            totalEnemyHP += enemy.health
+
+        features["total enemy HP"] = totalEnemyHP
+        features["total enemy ATK"] = totalEnemyAtk
+        features["total enemy block"] = totalEnemyBlock
+
+        # Appends indicators for all cards in player's hand
+        for card in state.player.deck.hand:
+            features[("hand", card.name)] = 1
+
+        # Appends indicators for all cards in player's draw pile
+        for card in state.player.deck.draw_pile:
+            features[("draw", card.name)] = 1
+
+        # Appends indicators for all cards in player's discard pile
+        for card in state.player.deck.discard_pile:
+            features[("discard", card.name)] = 1
+
+        # Appends indicators for all cards in player's exhaust pile
+        for card in state.player.deck.exhaust_pile:
+            features[("exhausted", card.name)] = 1
+
+    if state.state_type == StateType.COPY:
+        # Appends indicators for all cards in player's hand
+        for card in state.player.deck.hand:
+            features[("hand", card.name)] = 1
+
+    if state.state_type == StateType.DISCARD_TO_DRAW:
+        # Appends indicators for all cards in player's discard pile
+        for card in state.player.deck.discard_pile:
+            features[("discard", card.name)] = 1
+
+    if state.state_type == StateType.EXHAUST_TO_HAND:
+        # Appends indicators for all cards in player's exhaust pile
+        for card in state.player.deck.exhaust_pile:
+            features[("exhausted", card.name)] = 1
+
+    if state.state_type == StateType.HAND_TO_DRAW:
+        # Appends indicators for all cards in player's hand
+        for card in state.player.deck.hand:
+            features[("hand", card.name)] = 1
+
+    if state.state_type == StateType.HAND_TO_EXHAUST:
+        # Appends indicators for all cards in player's hand
+        for card in state.player.deck.hand:
+            features[("hand", card.name)] = 1
+
+    if state.state_type == StateType.NORMAL_REST:
+        # Grabs health and indicators for each card in player's deck
+        features["health"] = state.player.health
+        for card in state.player.deck.cards:
+            features[card] = 1
+
+    if state.state_type == StateType.UPGRADE_REST:
+        # Grabs indicators for each card in the player's deck
+        for card in state.player.deck.cards:
+            features[card] = 1
+
+    if state.state_type == StateType.NORMAL_RANDOM:
+        # Only one action; no features
+
+    if state.state_type == StateType.REMOVE_CARD:
+        # Grabs indicators for each card in the player's deck
+        for card in state.player.deck.cards:
+            features[card] = 1
+
+    if state.state_type == StateType.ADD_CARD:
+        # Grabs indicators for each card in the player's deck
+        for card in state.player.deck.cards:
+            features[card] = 1
+
+
+"""# Return a single-element list containing a binary (indicator) feature
 # for the existence of the (state, action) pair.  Provides no generalization.
 def identityFeatureExtractor(state, action):
     featureKey = (state, action)
     featureValue = 1
-    return [(featureKey, featureValue)]
+    return [(featureKey, featureValue)]"""
 
 ############################################################
 # Perform |numTrials| of the following:
@@ -22,7 +124,7 @@ def simulate(mdp, numTrials=10, maxIterations=1000, verbose=False):
 
     # (discount, actionGenerator, featureExtractor, explorationProb=0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
-    function_approx = algorithm.Algorithm(1, mdp.generate_actions, identityFeatureExtractor) # <- identityFeatureExtractor is placeholder
+    function_approx = Algorithm(1, mdp.generate_actions, game_general_feature_extractor)
 
     totalRewards = []  # The rewards we get on each trial
 

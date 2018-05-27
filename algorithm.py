@@ -2,6 +2,7 @@ import collections
 import random
 import math
 
+
 class Algorithm:
     def __init__(self, discount, actionGenerator, featureExtractor, explorationProb=0.2):
 
