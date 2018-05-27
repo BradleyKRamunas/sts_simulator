@@ -43,7 +43,7 @@ class Algorithm:
     # Call this function to get the step size to update the weights.
     # We... may want to change this, although we may not?
     def getStepSize(self):
-        return 1.0 / math.sqrt(self.numIters)
+        return 1.0 / (1 + math.sqrt(self.numIters))
 
     # Performs weights = weights + k * features (for sparse vectors weights (dictionary) and features (list))
     def increment(self, weights, features, k):

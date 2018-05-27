@@ -58,54 +58,53 @@ def game_general_feature_extractor(state, action):
         for card in state.player.deck.exhaust_pile:
             features[("exhausted", card.name)] = 1
 
-    if state.state_type == StateType.COPY:
+    elif state.state_type == StateType.COPY:
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
             features[("hand", card.name)] = 1
 
-    if state.state_type == StateType.DISCARD_TO_DRAW:
+    elif state.state_type == StateType.DISCARD_TO_DRAW:
         # Appends indicators for all cards in player's discard pile
         for card in state.player.deck.discard_pile:
             features[("discard", card.name)] = 1
 
-    if state.state_type == StateType.EXHAUST_TO_HAND:
+    elif state.state_type == StateType.EXHAUST_TO_HAND:
         # Appends indicators for all cards in player's exhaust pile
         for card in state.player.deck.exhaust_pile:
             features[("exhausted", card.name)] = 1
 
-    if state.state_type == StateType.HAND_TO_DRAW:
+    elif state.state_type == StateType.HAND_TO_DRAW:
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
             features[("hand", card.name)] = 1
 
-    if state.state_type == StateType.HAND_TO_EXHAUST:
+    elif state.state_type == StateType.HAND_TO_EXHAUST:
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
             features[("hand", card.name)] = 1
 
-    if state.state_type == StateType.NORMAL_REST:
+    elif state.state_type == StateType.NORMAL_REST:
         # Grabs health and indicators for each card in player's deck
         features["health"] = state.player.health
         for card in state.player.deck.cards:
             features[card] = 1
 
-    if state.state_type == StateType.UPGRADE_REST:
+    elif state.state_type == StateType.UPGRADE_REST:
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
             features[card] = 1
 
-    if state.state_type == StateType.NORMAL_RANDOM:
-        # Only one action; no features
-
-    if state.state_type == StateType.REMOVE_CARD:
+    elif state.state_type == StateType.REMOVE_CARD:
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
             features[card] = 1
 
-    if state.state_type == StateType.ADD_CARD:
+    elif state.state_type == StateType.ADD_CARD:
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
             features[card] = 1
+
+    # else state.state_type == StateType.NORMAL_RANDOM: no features
 
 
 """# Return a single-element list containing a binary (indicator) feature
