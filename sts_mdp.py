@@ -57,24 +57,15 @@ class STSMDP:
                 return (0, -1000)
             if dead_enemies:
                 self.combat_count += 1
+                if self.combat_count >= 20:
+                    return (1, 1000)
                 probability = random.uniform(0, 1)
                 temp_state.nc_player.health = temp_state.player.health
                 temp_state.nc_player.max_health = temp_state.player.max_health
-                if probability <= 0.2:
-                    # go to rest
-                    next_state = RestSite(deepcopy(temp_state.nc_player))
-                    return (next_state, float(next_state.player.health) / next_state.player.max_health)
-                elif probability <= 0.4:
-                    # go to a random event
-                    next_state = RandomEvent(deepcopy(temp_state.nc_player))
-                    return (next_state, float(next_state.player.health) / next_state.player.max_health)
-                else:
-                    # go to a combat
-                    next_state = combat.Combat(deepcopy(temp_state.nc_player), self.get_enemy_encounter())
-                    if self.combat_count >= 20:
-                        return (1, 1000)
-                    else:
-                        return (next_state, float(next_state.player.health) / next_state.player.max_health)
+
+                next_state = RandomEvent(deepcopy(temp_state.nc_player))
+                next_state.state_type = StateType.ADD_CARD
+                return(next_state, float(next_state.player.health) / next_state.player.max_health)
             else:
                 return (temp_state, 0)
         if state.state_type == StateType.COPY:
@@ -106,7 +97,7 @@ class STSMDP:
             temp_state.state_type = StateType.NORMAL_COMBAT
             return (temp_state, 0)
         if state.state_type == StateType.UPGRADE:
-            if action is not None:
+            if action is not None and action.card_type != CardType.STATUS:
                 temp_state.player.deck.hand.remove(action)
                 temp_state.player.deck.hand.append(self.upgrade_list[action.name])
             temp_state.state_type = StateType.NORMAL_COMBAT
@@ -180,7 +171,8 @@ class STSMDP:
                 next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                 return (next_state, 0)
         if state.state_type == StateType.ADD_CARD:
-            temp_state.player.deck.add_card(action)
+            if action is not None:
+                temp_state.player.deck.add_card(action)
             probability = random.uniform(0, 1)
             if probability <= 0.1:
                 # go to rest
@@ -260,6 +252,7 @@ class STSMDP:
                 actions.append(None)
         if state.state_type == StateType.ADD_CARD:
             count = 0
+            # actions.append(None)
             while count <= 2:
                 value = random.uniform(0, 1)
                 if value <= 0.1:

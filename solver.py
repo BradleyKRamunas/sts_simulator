@@ -14,18 +14,25 @@ def game_general_feature_extractor(state, action):
         # Allows for a constant term bias
         features["combat"] = 1
 
+        for i in range(13):
+            features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
+
         # Health feature
-        features["health"] = state.player.health
+        # features["health"] = state.player.health
+
+        for i in range(10):
+            features[str(10 * i) + " to " + str(10 * (i + 1)) + " block"] = 1 if state.player.block >= 10 * i and state.player.block < 11 * i else 0
+
 
         # Block feature
-        features["block"] = state.player.block
+        # features["block"] = state.player.block
 
         # Total enemy health feature, total enemy block feature, total enemy attack intent, enemy intent indicator
         # Also condition indicators/value/duration for player and enemy
-        totalEnemyHP = 0
-        totalEnemyAtk = 0
-        totalEnemyBlock = 0
-        for enemy in state.enemies:
+        # totalEnemyHP = 0
+        # totalEnemyAtk = 0
+        # totalEnemyBlock = 0
+        """for enemy in state.enemies:
 
             # If the enemy is not dead, find its intent and append it to our features
             if enemy.intent is not None:
@@ -43,7 +50,7 @@ def game_general_feature_extractor(state, action):
 
         features["total enemy HP"] = totalEnemyHP
         features["total enemy ATK"] = totalEnemyAtk
-        features["total enemy block"] = totalEnemyBlock
+        features["total enemy block"] = totalEnemyBlock"""
 
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
@@ -94,7 +101,9 @@ def game_general_feature_extractor(state, action):
     elif state.state_type == StateType.NORMAL_REST:
         features["normalRest"] = 1
         # Grabs health and indicators for each card in player's deck
-        features["health"] = state.player.health
+        for i in range(13):
+            features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
+
         for card in state.player.deck.cards:
             features[card.name] = 1
 
@@ -135,9 +144,11 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
 
     # (discount, featureExtractor, temp_mdp, explorationProb = 0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
-    function_approx = Algorithm(0.5, game_general_feature_extractor, mdp)
+    function_approx = Algorithm(1, game_general_feature_extractor, mdp)
 
     totalRewards = []  # The rewards we get on each trial
+
+    epsilon = 0.0
 
     for trial in range(numTrials):
 
@@ -153,10 +164,13 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
 
         while True:
             # Algorithm will pick one of its possible actions from state state to do.
+            # if state.state_type == StateType.ADD_CARD:
+                # print mdp.generate_actions(state)
+
             if action_gen_type == 0:
-                action = function_approx.generic_policy(state)
+                action = function_approx.generic_policy(state, epsilon / numTrials)
             else:
-                action = function_approx.q_learning_action(state)
+                action = function_approx.q_learning_action(state, epsilon / numTrials)
 
             if verbose:
                 print "------------------"
@@ -166,6 +180,8 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
 
             # Single successor state generated (our MDP is, for all intents and purposes, well, deterministic.)
             successorState, reward = mdp.generate_successor_state(state, action)
+            # if mdp.is_end_state(successorState):
+                # print state.nc_player.deck.cards
 
             # Append our action and successor state to the sequence (for verbose display if needed)
             #sequence.append(action)
@@ -183,12 +199,14 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
             if mdp.is_end_state(state):
                 break
 
+        # Make it slightly more likely we'll exploit
+        epsilon += 1
         totalRewards.append(totalReward)
-        print("==========================")
+        """print("==========================")
         print("==========================")
         print("Iteration done")
         print("==========================")
-        print("==========================")
+        print("==========================")"""
         mdp.combat_count = 0
-        print(function_approx.weights)
+        # print(function_approx.weights)
     return totalRewards

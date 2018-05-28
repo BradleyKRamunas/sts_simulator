@@ -38,4 +38,4 @@ class Card:
         return self.name
 
     def __eq__(self, other):
-        return self.name == other.name and self.card_type == other.card_type and self.count == other.count
+        return other is not None and (self.name == other.name and self.card_type == other.card_type and self.count == other.count)

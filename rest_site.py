@@ -13,10 +13,8 @@ class RestSite:
         self.state_type = StateType.NORMAL_REST
 
     def heal(self):
-        print self.player.health
         possible_heal = int(self.player.health + math.floor(0.3 * self.player.max_health))
         self.player.health = min(possible_heal, self.player.max_health)
-        print self.player.health
 
     def upgrade(self):
         self.state_type = StateType.UPGRADE_REST

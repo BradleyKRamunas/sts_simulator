@@ -2,6 +2,7 @@ import collections
 import random
 import math
 from combat import *
+import numpy
 import types
 
 
@@ -42,10 +43,9 @@ class Algorithm:
     def getStepSize(self):
         return 1.0 / (1 + math.sqrt(self.numIters))
 
-    # Baseline policy: randomly play a card with probability 0.5, or attack with the card
+    # Baseline policy: randomly play a card with probability epsilon, or attack with the card
     # that does the most damage.
-    def generic_policy(self, state):
-        epsilon = 1
+    def generic_policy(self, state, epsilon):
         if state is not None and state.state_type == StateType.NORMAL_COMBAT and random.uniform(0, 1) <= epsilon:
             actions = self.mdp.generate_actions(state)
             max_action = None
@@ -94,12 +94,12 @@ class Algorithm:
 
     # Sort of epsilon greedy right now... we'll probably change this.
     # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
-    def q_learning_action(self, state):
+    def q_learning_action(self, state, epsilon):
         actions = self.mdp.generate_actions(state)
         self.numIters += 1
         action = None
         successorState = None
-        if random.random() < self.explorationProb:
+        if random.random() > epsilon:
             while successorState is None:
                 action = random.choice(actions)
                 successorState, reward = self.mdp.generate_successor_state(state, action)
@@ -140,12 +140,14 @@ class Algorithm:
             vOptNextState = max(self.getQ(newState, newAction) for newAction in self.mdp.generate_actions(newState))
 
         coefficient = (1.0 - eta) * qOptCur + eta * (reward + self.discount * vOptNextState)
-        print coefficient
-        print self.weights
-        print "incrementing"
+        # print coefficient
+        # print self.weights
+        # print "incrementing"
         self.increment(self.weights, self.feature_extractor(state, action), coefficient)
+        for key in self.weights:
+            self.weights[key] = numpy.tanh(self.weights[key])
 
-        print self.weights
+        # print self.weights
 
 
 """def simulate_QL_over_MDP(mdp, featureExtractor):

@@ -20,7 +20,7 @@ def generate_upgrade_dictionary():
     cards = generate_all_cards()
     upgrades = generate_all_upgraded_cards()
     correspond = {}
-    for i in range(len(cards)-1):
+    for i in range(len(cards)):
         card = cards[i]
         upgrade = upgrades[i]
         correspond[card.name] = upgrade
@@ -349,8 +349,6 @@ def generate_default_deck():
         deck.add_card(strike)
     for i in range(4):
         deck.add_card(defend)
-    for i in range(5):
-        deck.add_card(clash)
     return deck
 
 
