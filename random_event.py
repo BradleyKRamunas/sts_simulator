@@ -20,7 +20,7 @@ class RandomEvent:
         self.state_type = StateType.NORMAL_RANDOM
 
     def generate_random_event(self):
-        event_pos = random.randint(1,7)
+        event_pos = random.randint(1, 7)
         if event_pos == 0:
             # gain 1 energy
             self.player.max_energy += 1

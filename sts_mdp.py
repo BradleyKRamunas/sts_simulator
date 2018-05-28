@@ -63,18 +63,18 @@ class STSMDP:
                 if probability <= 0.2:
                     # go to rest
                     next_state = RestSite(deepcopy(temp_state.nc_player))
-                    return (next_state, next_state.player.health)
+                    return (next_state, float(next_state.player.health) / next_state.player.max_health)
                 elif probability <= 0.4:
                     # go to a random event
                     next_state = RandomEvent(deepcopy(temp_state.nc_player))
-                    return (next_state, next_state.player.health)
+                    return (next_state, float(next_state.player.health) / next_state.player.max_health)
                 else:
                     # go to a combat
                     next_state = combat.Combat(deepcopy(temp_state.nc_player), self.get_enemy_encounter())
                     if self.combat_count >= 20:
                         return (1, 1000)
                     else:
-                        return (next_state, next_state.player.health)
+                        return (next_state, float(next_state.player.health) / next_state.player.max_health)
             else:
                 return (temp_state, 0)
         if state.state_type == StateType.COPY:

@@ -45,44 +45,51 @@ class Algorithm:
     # Baseline policy: randomly play a card with probability 0.5, or attack with the card
     # that does the most damage.
     def generic_policy(self, state):
-        epsilon = 0.5
-        if state is not None and state.state_type == StateType.NORMAL_COMBAT:
+        epsilon = 1
+        if state is not None and state.state_type == StateType.NORMAL_COMBAT and random.uniform(0, 1) <= epsilon:
             actions = self.mdp.generate_actions(state)
-            if random.uniform(0, 1) <= epsilon:
-                max_action = None
-                max_delta = 0
-                prev_sum = 0
-                for enemy in state.enemies:
-                    prev_sum += enemy.block
-                    prev_sum += enemy.health
+            max_action = None
+            max_delta = 0
+            prev_sum = 0
+            for enemy in state.enemies:
+                prev_sum += enemy.block
+                prev_sum += enemy.health
 
-                for action in actions:
-                    next_state, reward = self.mdp.generate_successor_state(state, action)
-                    new_sum = 0
-                    if next_state is not None and next_state.state_type == StateType.NORMAL_COMBAT:
+            for action in actions:
+                next_state, reward = self.mdp.generate_successor_state(state, action)
+                new_sum = 0
+                if next_state is not None and not isinstance(next_state, int):
+
+                    # If we're still in a combat, consider the next states.
+                    if next_state.state_type == StateType.NORMAL_COMBAT:
                         for enemy in next_state.enemies:
                             new_sum += enemy.block
                             new_sum += enemy.health
-                        if prev_sum - new_sum > max_delta:
+                        # If we've won a combat and instantly entered a new one
+                        if prev_sum - new_sum < 0:
+                            max_action = action
+                            break
+                        elif prev_sum - new_sum > max_delta:
                             max_action = action
                             max_delta = prev_sum - new_sum
+                    else:
+                        # We got out of combat, which means we probably won the fight, so take that action.
+                        max_action = action
+                        break
 
-                return max_action
-            else:
-                """action = random.choice(actions)
-                next_state = self.mdp.generate_successor_state(state, action)
-                if next_state is None:
-                    return None
-                return action"""
-                successorState = None
-                action = None
-                actions = self.mdp.generate_actions(state)
-                while successorState is None:
-                    action = random.choice(actions)
-                    successorState, reward = self.mdp.generate_successor_state(state, action)
-                    if successorState is None:
-                        actions.remove(action)
-                return action
+            return max_action
+
+        else:
+            # Otherwise, generate a random non-invalid action
+            successorState = None
+            action = None
+            actions = self.mdp.generate_actions(state)
+            while successorState is None:
+                action = random.choice(actions)
+                successorState, reward = self.mdp.generate_successor_state(state, action)
+                if successorState is None:
+                    actions.remove(action)
+            return action
 
 
     # Sort of epsilon greedy right now... we'll probably change this.
@@ -133,8 +140,12 @@ class Algorithm:
             vOptNextState = max(self.getQ(newState, newAction) for newAction in self.mdp.generate_actions(newState))
 
         coefficient = (1.0 - eta) * qOptCur + eta * (reward + self.discount * vOptNextState)
-
+        print coefficient
+        print self.weights
+        print "incrementing"
         self.increment(self.weights, self.feature_extractor(state, action), coefficient)
+
+        print self.weights
 
 
 """def simulate_QL_over_MDP(mdp, featureExtractor):

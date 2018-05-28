@@ -5,7 +5,7 @@ import time
 def run():
     mdp = STSMDP()
     startTime = time.time()
-    totalRewards = simulate(mdp, 10, True, 1)
+    totalRewards = simulate(mdp, 10, True, 0)
     print("Total runtime: " + str(time.time() - startTime))
     print totalRewards
 

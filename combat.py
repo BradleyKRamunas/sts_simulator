@@ -374,6 +374,8 @@ class CombatDeck:
                 elif len(self.discard_pile) == 0:
                     return
             card = self.draw_pile.pop(0)
+            if card is None:
+                return
             if card.card_type == CardType.STATUS and Status.EVOLVE in self.combat.player.conditions:
                 value = self.combat.player.conditions[Status.EVOLVE].value
                 for i in range(value):
