@@ -1,6 +1,7 @@
 from algorithm import *
 from combat import *
 from collections import defaultdict
+import time
 
 
 ############################################################
@@ -142,6 +143,9 @@ def identityFeatureExtractor(state, action):
 # Return the list of rewards that we get for each trial.
 def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
 
+    startTime = time.time()
+    lastThirty = startTime
+
     # (discount, featureExtractor, temp_mdp, explorationProb = 0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
     function_approx = Algorithm(1, game_general_feature_extractor, mdp)
@@ -151,6 +155,12 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
     epsilon = 0.0
 
     for trial in range(numTrials):
+
+        curTime = time.time()
+        if curTime - lastThirty >= 15:
+            print str(int(curTime - startTime)) + " seconds have elapsed."
+            print "Iteration number: " + str(trial)
+            lastThirty = curTime
 
         # Grab the start state and put it in the sequence.
         state = mdp.start_state()
@@ -209,4 +219,7 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
         print("==========================")"""
         mdp.combat_count = 0
         # print(function_approx.weights)
+
+    # print function_approx.weights
+    print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
     return totalRewards

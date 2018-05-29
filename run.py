@@ -1,13 +1,10 @@
 from sts_mdp import STSMDP
 from solver import simulate
-import time
 
 def run():
     mdp = STSMDP()
-    startTime = time.time()
     numIters = 1000
     totalRewards = simulate(mdp, numIters, False, 1)
-    print("Total runtime: " + str(time.time() - startTime))
     print totalRewards
 
     numWon = 0.0
@@ -32,10 +29,19 @@ def run():
     print "Last 100 rounds: win rate"
     print "----------------------"
     last100 = 0.0
-    for i in range(900, numIters):
+    for i in range(numIters - 100, numIters):
         if totalRewards[i] > 0:
             last100 += 1
-    print last100 / (numIters / 10)
+    print last100 / 100
+    print
+
+    print "Last 50 rounds: win rate"
+    print "----------------------"
+    last50 = 0.0
+    for i in range(numIters - 50, numIters):
+        if totalRewards[i] > 0:
+            last50 += 1
+    print last50 / 50
     print
 
     print "First " + str(numIters / 2) + " rounds: win rate"

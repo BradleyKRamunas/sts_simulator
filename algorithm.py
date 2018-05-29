@@ -137,18 +137,33 @@ class Algorithm:
         # If new state is None or an end combat state, we don't have Vopts for our "next state" (no next state)
         if newState is not None and (not isinstance(newState, int)):
             # Grab the estimated V_opt of the new state
-            vOptNextState = max(self.getQ(newState, newAction) for newAction in self.mdp.generate_actions(newState))
+            try:
+                vOptNextState = max(self.getQ(newState, newAction) for newAction in self.mdp.generate_actions(newState))
+            except ValueError:
+                print newState
+                print self.mdp.generate_actions(newState)
 
         coefficient = (1.0 - eta) * qOptCur + eta * (reward + self.discount * vOptNextState)
+        # coefficient = numpy.tanh(coefficient)
         # print coefficient
         # print self.weights
         # print "incrementing"
         self.increment(self.weights, self.feature_extractor(state, action), coefficient)
         for key in self.weights:
-            self.weights[key] = numpy.tanh(self.weights[key])
+            self.weights[key] = self.weights[key]
+
+        # Normalize our weight vector
+        self.normalize()
 
         # print self.weights
 
+    def normalize(self):
+        sum = 0.0
+        for key in self.weights:
+            sum += abs(self.weights[key])
+        if sum > 0:
+            for key in self.weights:
+                self.weights[key] /= sum
 
 """def simulate_QL_over_MDP(mdp, featureExtractor):
     # NOTE: adding more code to this function is totally optional, but it will probably be useful
