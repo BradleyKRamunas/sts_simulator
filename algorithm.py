@@ -60,7 +60,7 @@ class Algorithm:
                 prev_sum += enemy.health
 
             for action in actions:
-                next_state, reward = self.mdp.generate_successor_state(state, action)
+                next_state, reward = self.mdp.generate_successor_state(state, action, False)
                 new_sum = 0
                 if next_state is not None and not isinstance(next_state, int):
 
@@ -89,13 +89,12 @@ class Algorithm:
             action = None
             actions = self.mdp.generate_actions(state)
             while successorState is None:
-                # action = random.choice(actions)
-                action = actions[0]
-                successorState, reward = self.mdp.generate_successor_state(state, action)
+                action = random.choice(actions)
+                # action = actions[0]
+                successorState, reward = self.mdp.generate_successor_state(state, action, False)
                 if successorState is None:
                     actions.remove(action)
             return action
-
 
     # Sort of epsilon greedy right now... we'll probably change this.
     # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
@@ -109,7 +108,7 @@ class Algorithm:
         if random.random() <= epsilon:
             while successorState is None:
                 action = random.choice(actions)
-                successorState, reward = self.mdp.generate_successor_state(state, action)
+                successorState, reward = self.mdp.generate_successor_state(state, action, False)
                 if successorState is None:
                     actions.remove(action)
         else:
@@ -117,7 +116,7 @@ class Algorithm:
                 bestVOpt = -10000000
                 action = None
                 for a in actions:
-                    successorState, reward = self.mdp.generate_successor_state(state, a)
+                    successorState, reward = self.mdp.generate_successor_state(state, a, False)
                     if successorState is None:
                         actions.remove(a)
                     else:

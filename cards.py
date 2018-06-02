@@ -394,14 +394,12 @@ def anger_plus_fx(combat, target, count):
 
 
 def armaments_fx(combat, target, count):
-    # TODO: ask player which card they want to upgrade
     player = combat.player
     player.gain_block(5)
     combat.state_type = StateType.UPGRADE
 
 
 def armaments_plus_fx(combat, target, count):
-    # TODO: ask player which card they want to upgrade
     player = combat.player
     player.gain_block(5)
     new_hand = []
@@ -917,7 +915,6 @@ def dropkick_plus_fx(combat, target, count):
 
 
 def dual_wield_fx(combat, target, count):
-    # TODO: only attack cards
     player = combat.player
     enemy = combat.enemies[target]
     if not __debug__:
@@ -934,7 +931,6 @@ def dual_wield_fx(combat, target, count):
 
 
 def dual_wield_plus_fx(combat, target, count):
-    # TODO: only attack cards
     player = combat.player
     enemy = combat.enemies[target]
     if not __debug__:
@@ -1413,7 +1409,6 @@ def feed_fx(combat, target, count):
     if enemy.health == 0:
         player.max_health += 3
         player.heal_health(3)
-        # TODO: increase real player's max health (not the combat players)
 
 
 def feed_plus_fx(combat, target, count):
@@ -1423,7 +1418,6 @@ def feed_plus_fx(combat, target, count):
     if enemy.health == 0:
         player.max_health += 4
         player.heal_health(4)
-        # TODO: increase real player's max health (not the combat players)
 
 # -------------------------------------
 
@@ -1574,7 +1568,6 @@ warcry = Card("Warcry", 0, CardType.SKILL, warcry_fx, Target.SELF, True)
 wildStrike = Card("Wild Strike", 1, CardType.ATTACK, wild_strike_fx, Target.SINGLE, False)
 battleTrance = Card("Battle Trance", 0, CardType.SKILL, battle_trance_fx, Target.SELF, False)
 
-# TODO: Counter for number of times we've taken damage
 bloodForBlood = Card("Blood for Blood", 4, CardType.SKILL, blood_for_blood_fx, Target.SINGLE, False)
 
 bloodLetting = Card("Bloodletting", 0, CardType.SKILL, bloodletting_fx, Target.SELF, False)
@@ -1657,7 +1650,6 @@ warcryPlus = Card("Warcry+", 0, CardType.SKILL, warcry_plus_fx, Target.SELF, Tru
 wildStrikePlus = Card("Wild Strike+", 1, CardType.ATTACK, wild_strike_plus_fx, Target.SINGLE, False)
 battleTrancePlus = Card("Battle Trance+", 0, CardType.SKILL, battle_trance_plus_fx, Target.SELF, False)
 
-# TODO: Counter for number of times we've taken damage
 bloodForBloodPlus = Card("Blood for Blood+", 3, CardType.SKILL, blood_for_blood_plus_fx, Target.SINGLE, False)
 
 bloodLettingPlus = Card("Bloodletting+", 0, CardType.SKILL, bloodletting_plus_fx, Target.SELF, False)

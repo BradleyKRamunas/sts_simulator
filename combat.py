@@ -29,7 +29,12 @@ class Combat:
         for enemy in self.enemies:
             enemy.combat = self
         self.start_turn()
-        #self.game_loop()  # meant for human player, not for AI usage
+
+        # TODO: Big todo!
+        self.last_card_played = None
+        self.cards_played = []
+        self.two_combos_played = []
+        # self.game_loop()  # meant for human player, not for AI usage
 
     def start_turn(self):
         for enemy in self.enemies:
@@ -441,6 +446,13 @@ class CombatDeck:
             if "Whirlwind" in card.name:
                 self.combat.player.energy = 0
             card.count += 1
+
+            # To keep track of which cards we've played this combat
+            if self.combat.last_card_played is not None:
+                self.combat.two_combos_played.append((self.combat.last_card_played, card.name))
+            self.combat.last_card_played = card.name
+            self.combat.cards_played.append(card.name)
+
             return True
         else:
             return False

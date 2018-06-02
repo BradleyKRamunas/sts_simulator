@@ -37,7 +37,7 @@ class STSMDP:
         # TODO: implement tiers via combat_count
         return random.choice(self.easy_enemies)
 
-    def generate_successor_state(self, state, action):
+    def generate_successor_state(self, state, action, real):
         temp_state = deepcopy(state)
         reward = 0
         if state.state_type == StateType.NORMAL_COMBAT:
@@ -53,19 +53,32 @@ class STSMDP:
                 if enemy.health > 0:
                     dead_enemies = False
                     break
+
+            # If we've lost this combat/game
             if temp_state.player.health <= 0:
                 return (0, -1000)
+
+            # If we've won this combat...
             if dead_enemies:
-                self.combat_count += 1
-                if self.combat_count >= 20:
+
+                # Only increment combat_count if we've won a real combat
+                if real:
+                    self.combat_count += 1
+
+                # 10 wins = win game!
+                if self.combat_count >= 10:
                     return (1, 1000)
+
+                # Else, we have some probability of going to a number of different events.
                 probability = random.uniform(0, 1)
                 temp_state.nc_player.health = temp_state.player.health
                 temp_state.nc_player.max_health = temp_state.player.max_health
 
                 next_state = RandomEvent(deepcopy(temp_state.nc_player))
                 next_state.state_type = StateType.ADD_CARD
-                return(next_state, float(next_state.player.health) / next_state.player.max_health)
+
+                # Our reward is how much health we had left at the end of this combat
+                return(next_state, next_state.player.health)
             else:
                 return (temp_state, 0)
         if state.state_type == StateType.COPY:

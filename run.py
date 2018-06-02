@@ -5,6 +5,7 @@ from numpy_test import test_np
 def run():
     mdp = STSMDP()
     numIters = 1000
+    # simulate params: (mdp, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
     totalRewards, final_weights = simulate(mdp, numIters, False, 1, False)
     print totalRewards
 
@@ -14,29 +15,26 @@ def run():
             numWon += 1
 
     def print_weights(weights):
+        print weights
         print "Overall Status"
         for key in weights.keys():
             if "enemy" in key or "player" in key or "health" in key or "total enemy HP" in key or "block percentage" in key:
                 print "{}, {}".format(key, weights[key])
 
-        print "Cards in hand"
+        """print "Cards in hand"
         for key in weights.keys():
             if "hand" in key:
+                print "{}, {}".format(key, weights[key])"""
+
+        # Prints out which cards were used this game
+        print "Cards used"
+        for key in weights.keys():
+            if "single_played" in key:
                 print "{}, {}".format(key, weights[key])
 
-        print "Cards in draw"
+        print "Card pairs used"
         for key in weights.keys():
-            if "draw" in key:
-                print "{}, {}".format(key, weights[key])
-
-        print "Cards in discard"
-        for key in weights.keys():
-            if "discard" in key:
-                print "{}, {}".format(key, weights[key])
-
-        print "Cards in exhausted"
-        for key in weights.keys():
-            if "exhausted" in key:
+            if "double_played" in key:
                 print "{}, {}".format(key, weights[key])
 
     def print_all_stats():
@@ -80,8 +78,9 @@ def run():
                 first250 += 1
         print first250 / (numIters / 2)
 
-    print_all_stats()
     print_weights(final_weights)
+    print_all_stats()
+
 
 if __name__ == '__main__':
     run()

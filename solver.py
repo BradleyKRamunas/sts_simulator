@@ -60,7 +60,9 @@ def game_general_feature_extractor(state, action):
         # features["total enemy block"] = totalEnemyBlock
         # TODO: Features for player's action (how much damage it's doing; what statuses it's applying)
 
-        # Appends indicators for all cards in player's hand
+        # TODO: Feature for sequences of cards played.
+
+        """# Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
             features[("hand", card.name)] = 1
 
@@ -74,7 +76,13 @@ def game_general_feature_extractor(state, action):
 
         # Appends indicators for all cards in player's exhaust pile
         for card in state.player.deck.exhaust_pile:
-            features[("exhausted", card.name)] = 1
+            features[("exhausted", card.name)] = 1"""
+
+        # This way we can keep track of which cards we've played this round
+        for card in state.cards_played:
+            features[("single_played", card)] += 1
+        for card_pair in state.two_combos_played:
+            features[("double_played", card_pair)] += 1
 
     elif state.state_type == StateType.COPY:
         features["copy"] = 1
@@ -196,7 +204,10 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
                 print "------------------"
 
             # Single successor state generated (our MDP is, for all intents and purposes, well, deterministic.)
-            successorState, reward = mdp.generate_successor_state(state, action)
+            successorState, reward = mdp.generate_successor_state(state, action, True)
+            # if reward != 0:
+                # print "fight finished"
+                # print reward
             # if mdp.is_end_state(successorState):
                 # print state.nc_player.deck.cards
 
