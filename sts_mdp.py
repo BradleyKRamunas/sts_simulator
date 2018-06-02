@@ -12,10 +12,16 @@ class STSMDP:
 
     def __init__(self):
         self.combat_count = 0
+        self.combat_wins = 30
         self.easy_enemies = [[combat.CombatEnemy(None, SpikeSlimeAI(), 12), combat.CombatEnemy(None, AcidSlimeAI(), 15)],
                              [combat.CombatEnemy(None, JawWormAI(), 30)], [combat.CombatEnemy(None, FungiBeastAI(), 24),
                                                                            combat.CombatEnemy(None, FungiBeastAI(), 25)],
                              [combat.CombatEnemy(None, SlaverAI(), 34)]]
+        self.medium_enemies = [[combat.CombatEnemy(None, SentryOddAI(), 42), combat.CombatEnemy(None, SentryEvenAI(),
+                                42), combat.CombatEnemy(None, SentryOddAI(), 42)], [combat.CombatEnemy(None,
+                                GremlinNobAI(), 84)], [combat.CombatEnemy(None, GremlinWizardAI(), 84)], [combat.CombatEnemy(None, DoubleThiefAI(), 45),
+                                combat.CombatEnemy(None, DoubleThiefAI(), 45)], [combat.CombatEnemy(None, ThornyPlantAI(), 60)],
+                               [combat.CombatEnemy(None, SpikeSlimeAI(), 30), combat.CombatEnemy(None, AcidSlimeAI(), 30)]]
         self.common_cards = cards.generate_common_cards()
         self.uncommon_cards = cards.generate_uncommon_cards()
         self.rare_cards = cards.generate_rare_cards()
@@ -34,8 +40,10 @@ class STSMDP:
             return False
 
     def get_enemy_encounter(self):
-        # TODO: implement tiers via combat_count
-        return random.choice(self.easy_enemies)
+        if self.combat_count <= 20:
+            return random.choice(self.easy_enemies)
+        else:
+            return random.choice(self.medium_enemies)
 
     def generate_successor_state(self, state, action, real):
         temp_state = deepcopy(state)
@@ -66,7 +74,7 @@ class STSMDP:
                     self.combat_count += 1
 
                 # 10 wins = win game!
-                if self.combat_count >= 10:
+                if self.combat_count >= self.combat_wins:
                     return (1, 1000)
 
                 # Else, we have some probability of going to a number of different events.
