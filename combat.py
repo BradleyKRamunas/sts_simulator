@@ -30,10 +30,11 @@ class Combat:
             enemy.combat = self
         self.start_turn()
 
-        # TODO: Big todo!
+        # To keep track of sequences of cards/just cards, really, played this combat.
         self.last_card_played = None
         self.cards_played = []
         self.two_combos_played = []
+        self.turns_ended_early = 0
         # self.game_loop()  # meant for human player, not for AI usage
 
     def start_turn(self):
@@ -98,6 +99,10 @@ class Combat:
             self.player.block += value  # note that dexterity does not affect this
 
         self.player.decrement_status_conditions()
+
+        # For features; check if we ended with excess energy.
+        if self.player.energy > 0:
+            self.turns_ended_early += 1
 
     def print_information(self):
         print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\

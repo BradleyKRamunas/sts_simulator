@@ -1,6 +1,7 @@
 from algorithm import *
 from combat import *
 from collections import defaultdict
+from brain import *
 import time
 
 
@@ -84,6 +85,9 @@ def game_general_feature_extractor(state, action):
         for card_pair in state.two_combos_played:
             features[("double_played", card_pair)] += 1
 
+        # See how many turns we ended early
+        features["early_end"] = state.turns_ended_early
+
     elif state.state_type == StateType.COPY:
         features["copy"] = 1
         # Appends indicators for all cards in player's hand
@@ -159,7 +163,7 @@ def identityFeatureExtractor(state, action):
 
 ############################################################
 # Return the list of rewards that we get for each trial.
-def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False):
+def learn(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False):
 
     startTime = time.time()
     lastThirty = startTime
@@ -237,3 +241,64 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
 
     print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
     return totalRewards, function_approx.weights
+
+
+def test(mdp, weights, numTrials=10, verbose=False):
+
+    startTime = time.time()
+    lastThirty = startTime
+
+    # (discount, featureExtractor, temp_mdp, explorationProb = 0.2)
+    # This creates our actual function approximation (based off q-learning) algorithm
+    brain = Brain(1, game_general_feature_extractor, mdp, weights)
+
+    totalRewards = []  # The rewards we get on each trial
+
+    for trial in range(numTrials):
+
+        curTime = time.time()
+        if curTime - lastThirty >= 15:
+            print str(int(curTime - startTime)) + " seconds have elapsed."
+            print "Iteration number: " + str(trial)
+            lastThirty = curTime
+
+        # Grab the start state and put it in the sequence.
+        state = mdp.start_state()
+
+        # Total Discount is 1 for now.
+        totalDiscount = 1
+
+        # Keeping track of total reward
+        totalReward = 0
+
+        while True:
+            # Algorithm will pick one of its possible actions from state state to do.
+            action = brain.q_learning_test(state)
+
+            if verbose:
+                print "------------------"
+                state.print_information()
+                print "\t", action
+                print "------------------"
+
+            # Single successor state generated (our MDP is, for all intents and purposes, well, deterministic.)
+            successorState, reward = mdp.generate_successor_state(state, action, True)
+
+            totalReward += totalDiscount * reward
+            # totalDiscount *= mdp.discount()
+            state = successorState
+
+            # If we've hit an end state, we need to stop.
+            if mdp.is_end_state(state):
+                break
+
+        totalRewards.append(totalReward)
+        """print("==========================")
+        print("==========================")
+        print("Iteration done")
+        print("==========================")
+        print("==========================")"""
+        mdp.combat_count = 0
+
+    print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
+    return totalRewards

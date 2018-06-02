@@ -96,6 +96,30 @@ class Algorithm:
                     actions.remove(action)
             return action
 
+    # When we do this, we assume we already have a Q_opt set and strictly try and exploit.
+    def q_learning_test(self, state):
+        actions = self.mdp.generate_actions(state)
+        self.numIters += 1
+        action = None
+        successorState = None
+
+        while successorState is None:
+            bestVOpt = -10000000
+            action = None
+            for a in actions:
+                successorState, reward = self.mdp.generate_successor_state(state, a, False)
+                if successorState is None:
+                    actions.remove(a)
+                else:
+                    # We're really only taking successorState into account here; the action is the prev action.
+                    # Else there's too many possibilities to loop through - we have to go through all actions of the new state too.
+                    vEst = self.getQ(successorState, a)
+                    if vEst > bestVOpt:
+                        bestVOpt = vEst
+                        action = a
+        return action
+
+
     # Sort of epsilon greedy right now... we'll probably change this.
     # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
     def q_learning_action(self, state, epsilon):
@@ -183,35 +207,3 @@ class Algorithm:
         if sum > 0:
             for key in self.weights:
                 self.weights[key] /= sum
-
-"""def simulate_QL_over_MDP(mdp, featureExtractor):
-    # NOTE: adding more code to this function is totally optional, but it will probably be useful
-    # to you as you work to answer question 4b (a written question on this assignment).  We suggest
-    # that you add a few lines of code here to run value iteration, simulate Q-learning on the MDP,
-    # and then print some stats comparing the policies learned by these two approaches.
-    # BEGIN_YOUR_CODE
-    qlearn = QLearningAlgorithm(mdp.actions, mdp.discount(), featureExtractor)
-    util.simulate(mdp, qlearn, 30000)
-    qlearn.explorationProb = 0
-    mdp.computeStates()
-    allStates = mdp.states
-
-    vi = util.ValueIteration()
-    vi.solve(mdp)
-    vi_policy = vi.pi
-
-    qlearnPolicy = {}
-    for state in allStates:
-        qlearnPolicy[state] = qlearn.getAction(state)
-
-    total = 0.0
-    sameCounter = 0
-    for state in vi_policy:
-        if vi_policy[state] == qlearnPolicy[state]:
-            sameCounter += 1
-        total += 1
-
-    print("total: {}, sameCounter: {}, percentage: {}".format(total, sameCounter, sameCounter / total))
-
-    # END_YOUR_CODE
-"""

@@ -1,13 +1,19 @@
 from sts_mdp import STSMDP
-from solver import simulate
+from solver import learn
+from solver import test
 from numpy_test import test_np
+
 
 def run():
     mdp = STSMDP()
-    numIters = 1000
+    numIters = 500
     # simulate params: (mdp, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
-    totalRewards, final_weights = simulate(mdp, numIters, False, 1, False)
+    totalRewards, final_weights = learn(mdp, numIters, False, 1, False)
     print totalRewards
+
+    write_weight_file = open("weights.txt", "w")
+    for item in final_weights:
+        write_weight_file.write(str(item) + " | " + str(final_weights[item]) + "\n")
 
     numWon = 0.0
     for reward in totalRewards:
@@ -15,7 +21,9 @@ def run():
             numWon += 1
 
     def print_weights(weights):
-        print weights
+        print "Turns ended early"
+        print "{}, {}".format("early_end", weights["early_end"])
+
         print "Overall Status"
         for key in weights.keys():
             if "enemy" in key or "player" in key or "health" in key or "total enemy HP" in key or "block percentage" in key:
@@ -81,6 +89,14 @@ def run():
     print_weights(final_weights)
     print_all_stats()
 
+    # =================================== TESTING PHASE ===================================
+    print
+    print "========================= TESTING PHASE ========================="
+    print
+
+    """numTests = 300
+    testRewards = test(mdp, final_weights, numTests, False)
+    print testRewards"""
 
 if __name__ == '__main__':
     run()
