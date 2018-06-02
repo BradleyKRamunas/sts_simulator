@@ -7,33 +7,39 @@ import time
 ############################################################
 def game_general_feature_extractor(state, action):
 
+    # Numba - similar to Cython; offers large performance speedup
+
     # Features is going to be a dictionary of {key: int}
     features = defaultdict(int)
 
     if state.state_type == StateType.NORMAL_COMBAT:
 
+        # Policy gradients?
+
         # Allows for a constant term bias
         features["combat"] = 1
 
-        for i in range(13):
-            features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
+        # Idea: discretized health indicators
+        # for i in range(13):
+            # features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
 
-        # Health feature
-        # features["health"] = state.player.health
+        # Health feature - what fraction of max health are we?
+        features["health"] = float(state.player.health) / state.player.max_health
 
-        for i in range(10):
-            features[str(10 * i) + " to " + str(10 * (i + 1)) + " block"] = 1 if state.player.block >= 10 * i and state.player.block < 11 * i else 0
-
+        # Idea: discretized block indicators
+        # for i in range(10):
+            # features[str(10 * i) + " to " + str(10 * (i + 1)) + " block"] = 1 if state.player.block >= 10 * i and state.player.block < 11 * i else 0
 
         # Block feature
         # features["block"] = state.player.block
 
         # Total enemy health feature, total enemy block feature, total enemy attack intent, enemy intent indicator
         # Also condition indicators/value/duration for player and enemy
-        # totalEnemyHP = 0
-        # totalEnemyAtk = 0
-        # totalEnemyBlock = 0
-        """for enemy in state.enemies:
+        totalEnemyHP = 0
+        totalEnemyMaxHP = 0
+        totalEnemyAtk = 0
+        totalEnemyBlock = 0
+        for enemy in state.enemies:
 
             # If the enemy is not dead, find its intent and append it to our features
             if enemy.intent is not None:
@@ -46,12 +52,13 @@ def game_general_feature_extractor(state, action):
                     features[("enemy", status)] += value
                 else:
                     features[("player", status)] += value
-
+            totalEnemyMaxHP += enemy.max_health
             totalEnemyHP += enemy.health
 
-        features["total enemy HP"] = totalEnemyHP
-        features["total enemy ATK"] = totalEnemyAtk
-        features["total enemy block"] = totalEnemyBlock"""
+        features["total enemy HP"] = float(totalEnemyHP) / totalEnemyMaxHP
+        features["block percentage"] = min(1, 0 if totalEnemyAtk == 0 else float(state.player.block) / totalEnemyAtk)
+        # features["total enemy block"] = totalEnemyBlock
+        # TODO: Features for player's action (how much damage it's doing; what statuses it's applying)
 
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
@@ -102,8 +109,10 @@ def game_general_feature_extractor(state, action):
     elif state.state_type == StateType.NORMAL_REST:
         features["normalRest"] = 1
         # Grabs health and indicators for each card in player's deck
-        for i in range(13):
-            features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
+        # for i in range(13):
+            # features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
+        # Health feature - what fraction of max health are we?
+        features["health"] = float(state.player.health) / state.player.max_health
 
         for card in state.player.deck.cards:
             features[card.name] = 1
@@ -139,9 +148,10 @@ def identityFeatureExtractor(state, action):
     featureValue = 1
     return [(featureKey, featureValue)]"""
 
+
 ############################################################
 # Return the list of rewards that we get for each trial.
-def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
+def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False):
 
     startTime = time.time()
     lastThirty = startTime
@@ -218,8 +228,9 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0):
         print("==========================")
         print("==========================")"""
         mdp.combat_count = 0
-        # print(function_approx.weights)
+        if weights:
+            print(function_approx.weights)
 
-    # print function_approx.weights
+    print function_approx.weights
     print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
     return totalRewards

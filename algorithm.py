@@ -41,11 +41,15 @@ class Algorithm:
     # Call this function to get the step size to update the weights.
     # We... may want to change this, although we may not?
     def getStepSize(self):
-        return 1.0 / (1 + math.sqrt(self.numIters))
+        # return 1.0 / (1 + math.sqrt(self.numIters))
+        # Just return a constant of some sort
+        return 0.001
 
     # Baseline policy: randomly play a card with probability epsilon, or attack with the card
     # that does the most damage.
-    def generic_policy(self, state, epsilon):
+    def generic_policy(self, state, epsilon1):
+        # 1 for greedy, 0 for random. Un-define it for a spectrum.
+        epsilon = 1
         if state is not None and state.state_type == StateType.NORMAL_COMBAT and random.uniform(0, 1) <= epsilon:
             actions = self.mdp.generate_actions(state)
             max_action = None
@@ -143,17 +147,16 @@ class Algorithm:
                 print newState
                 print self.mdp.generate_actions(newState)
 
-        coefficient = (1.0 - eta) * qOptCur + eta * (reward + self.discount * vOptNextState)
-        # coefficient = numpy.tanh(coefficient)
+        # Probably this (to debug, check qOptCur before and after)
+        coefficient = - eta * (qOptCur - (reward + self.discount * vOptNextState))
+
         # print coefficient
         # print self.weights
         # print "incrementing"
         self.increment(self.weights, self.feature_extractor(state, action), coefficient)
-        for key in self.weights:
-            self.weights[key] = self.weights[key]
 
         # Normalize our weight vector
-        self.normalize()
+        # self.normalize()
 
         # print self.weights
 
