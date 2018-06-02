@@ -770,7 +770,7 @@ def battle_trance_fx(combat, target, count):
     player = combat.player
     enemy = combat.enemies[target]
     player.draw_cards(3)
-    noDraw = StatusCondition(Status.NO_DRAW, 1, 0, True)
+    noDraw = StatusCondition(Status.NO_DRAW, 0, 1, False)
     player.apply_status_condition(noDraw)
 
 

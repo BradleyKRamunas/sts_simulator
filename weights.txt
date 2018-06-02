@@ -1,0 +1,2952 @@
+('double_played', ('Reckless Charge', 'Searing Blow')) | 0.0
+('hand_to_exhaust', 'Second Wind') | -2.40351463061e-12
+('double_played', ('Bash', 'Warcry')) | 9.99972990098e-05
+('double_played', ('Battle Trance', 'Strike')) | -0.01
+('double_played', ('Juggernaut', 'Strike')) | 0.00025000000002
+('remove_card', 'Reaper') | 6.82374218749e-09
+('discard_to_draw', 'Double Tap') | 8.59950111229e-09
+('double_played', ('Rage', 'Shrug it off')) | -0.01
+('double_played', ('Strike+', 'Rage')) | 9.99932957674e-05
+('double_played', ('Thunderclap', 'Double Tap')) | 0.0
+('copy_hand', 'Uppercut') | 0.0
+('hand_to_draw', 'Shrug it off') | -9.47982449268e-08
+('double_played', ('Bloodletting', 'Sentinel')) | 0.0
+('double_played', ('Strike', 'Bloodletting')) | -0.01
+('double_played', ('Battle Trance', 'Reckless Charge')) | -0.01
+('double_played', ('Heavy Blade', 'Heavy Blade')) | 0.0
+('hand_to_draw', 'Headbutt+') | 0.0
+('double_played', ('Whirlwind', 'Limit Break')) | 0.0
+('double_played', ('Iron Wave', 'Dropkick')) | 0.0
+('double_played', ('Defend', 'Seeing Red')) | 1.00000000214e-05
+('double_played', ('Strike+', 'Flex')) | 0.000410000000002
+('double_played', ('Entrench', 'Entrench')) | 2.00000003039e-05
+('double_played', ('Shrug it off', 'Armaments')) | 0.000650000004738
+('double_played', ('Anger', 'Brutality')) | 0.0
+('double_played', ('Flex', 'Sentinel')) | 0.0
+('double_played', ('Body Slam', 'Rupture')) | -0.00999989997895
+('double_played', ('Whirlwind', 'Heavy Blade')) | 0.000180000000472
+('double_played', ('Flame Barrier', 'Bash')) | -0.0100000054032
+('double_played', ('Searing Blow', 'True Grit')) | 0.0
+('double_played', ('Offering', 'Inflame')) | 0.0
+('double_played', ('Spot Weakness', 'Clothesline')) | 0.000210000000466
+('double_played', ('Pummel', 'Strike')) | -0.01
+('double_played', ('Inflame', 'Pommel Strike')) | -0.0100000020004
+('double_played', ('Exhume', 'Exhume')) | 0.000180000000028
+('double_played', ('Shock Wave', 'Armaments')) | 0.000249999900389
+('double_played', ('Whirlwind', 'Twin Strike')) | 0.000149996399597
+('hand_to_exhaust', 'Perfected Strike') | 0.0
+('double_played', ('Reckless Charge', 'Body Slam')) | 0.00026
+('add_card', 'Iron Wave+') | 2.19230603146e-09
+('double_played', ('Whirlwind', 'Iron Wave')) | 0.000260000000539
+('double_played', ('Sever Soul', 'Sentinel')) | -0.01
+('double_played', ('Anger', 'Second Wind')) | 0.000460000001372
+('hand_to_draw', 'Bludgeon') | 0.0
+('health_rest', 'Clash') | 1.65607523347e-09
+('double_played', ('Carnage', 'Searing Blow')) | 0.000250000000352
+('upgrade_rest', 'Combust') | -3.81339703294e-13
+('add_card', 'Defend') | 1.26007155898e-10
+('double_played', ('Armaments', 'Clothesline')) | 0.0
+('double_played', ('Wild Strike', 'Pummel')) | 0.0
+('double_played', ('Bloodletting', 'Uppercut')) | 0.0
+('double_played', ('Uppercut', 'Sentinel+')) | 0.000290000001197
+('double_played', ('Shrug it off+', 'Strike')) | -0.0100000036006
+('upgrade_rest', 'Iron Wave') | 9.66630584244e-10
+('double_played', ('Rage', 'Demon Form')) | 0.000120000000399
+('double_played', ('Shrug it off', 'Berserk')) | 0.0
+('double_played', ('Strike+', 'Entrench')) | 0.0
+('double_played', ('Anger', 'Body Slam')) | 0.000319999900039
+('double_played', ('Body Slam', 'Pummel')) | -0.0100000000005
+('double_played', ('Heavy Blade', 'Bash')) | 0.000150000000253
+('double_played', ('Sentinel', 'Spot Weakness')) | 0.000349998299539
+('double_played', ('Armaments+', 'Defend+')) | -0.0100000028003
+('double_played', ('Defend', 'Havoc')) | -0.0199997998351
+('double_played', ('Heavy Blade', 'Headbutt')) | 0.000330000000299
+('double_played', ('Shrug it off', 'Reckless Charge')) | 0.000299982793702
+('double_played', ('Armaments', 'Cleave+')) | 0.0
+('add_card', 'Armaments') | 5.60414130946e-10
+('double_played', ('Cleave', 'Pummel')) | 0.0
+('double_played', ('Defend', 'Entrench+')) | 0.000280000000412
+('health_rest', 'Burning Pact') | 7.45129650388e-08
+('discard_to_draw', 'Heavy Blade') | 3.70061613174e-09
+('single_played', 'Barricade') | -0.0100000022041
+('double_played', ('Anger', 'Bloodletting')) | 0.000250100027184
+('double_played', ('Warcry', 'Pommel Strike')) | 5.99995999854e-05
+('double_played', ('Bludgeon', 'Uppercut')) | 4.99941996011e-05
+('double_played', ('Juggernaut', 'Defend')) | 5.99945986224e-05
+('double_played', ('Sentinel', 'Bash')) | -0.010000001601
+('double_played', ('Flame Barrier', 'Sentinel')) | 0.000400000000585
+('double_played', ('Strike', 'Offering')) | -0.00999979996386
+('double_played', ('True Grit', 'Iron Wave')) | 0.000130000000722
+('double_played', ('Sentinel', 'Feel No Pain')) | 0.000160000000383
+('double_played', ('Twin Strike', 'Cleave')) | -0.0100000008004
+('health_rest', 'Clothesline') | 3.67352363461e-07
+('double_played', ('Uppercut', 'Twin Strike')) | -0.0100000063009
+('hand_to_exhaust', 'Warcry') | 0.0
+('single_played', 'Anger') | -0.0099995999747
+('double_played', ('Anger', 'Evolve')) | 0.0
+('double_played', ('True Grit', 'Defend+')) | 0.0
+('double_played', ('Inflame', 'Defend')) | 4.02001010233e-05
+('double_played', ('Rage', 'Reckless Charge')) | -0.01
+('double_played', ('Cleave', 'Sentinel')) | -0.0100000008004
+('double_played', ('Uppercut', 'Battle Trance')) | 0.0
+('double_played', ('Spot Weakness', 'Second Wind')) | 0.000239994597871
+('double_played', ('Heavy Blade', 'Bloodletting')) | 0.0
+('double_played', ('Wild Strike', 'Flame Barrier')) | 0.0
+('double_played', ('Bloodletting', 'Pummel')) | 0.00031000000043
+('single_played', 'Heavy Blade+') | 0.0
+('double_played', ('True Grit+', 'Shrug it off')) | 0.000189991593991
+('double_played', ('Defend', 'Sentinel')) | -0.01
+('double_played', ('Shock Wave', 'Rampage')) | 0.0
+('double_played', ('Shock Wave', 'Metallicize')) | 0.0
+('player', <Status.WEAK: 2>) | -0.0
+('double_played', ('Bash', 'Clothesline')) | -0.00999980739283
+('double_played', ('Juggernaut', 'Clothesline')) | 0.0
+('double_played', ('Uppercut', 'Brutality')) | 0.000259995699629
+('upgrade_rest', 'Seeing Red') | 3.01570440125e-09
+('double_played', ('Bash', 'Sentinel+')) | 0.0
+('double_played', ('Wild Strike', 'Anger')) | 2.00000001031e-05
+('double_played', ('Second Wind', 'Havoc')) | 0.0
+('hand_to_draw', 'Flex') | 4.79992974847e-09
+('discard_to_draw', 'Flame Barrier') | 5.29999704156e-09
+('double_played', ('Bash+', 'Entrench+')) | 9.00000000424e-05
+('double_played', ('Body Slam', 'Iron Wave')) | -0.01
+('double_played', ('Flex', 'Flex')) | -0.0100000077026
+('double_played', ('Twin Strike', 'Headbutt')) | 0.000600072805282
+('double_played', ('Iron Wave', 'Carnage')) | -0.01
+('double_played', ('Whirlwind', 'Flex')) | 0.0
+('double_played', ('Rampage', 'Body Slam+')) | 0.0
+('double_played', ('Rampage', 'Cleave')) | 0.00999999909889
+('double_played', ('Battle Trance', 'Perfected Strike')) | -0.01
+('double_played', ('Strike', 'Cleave+')) | 0.00041000000051
+('health_rest', 'Armaments') | 8.51368781662e-08
+('double_played', ('Flex', 'Pummel')) | 0.000640000000872
+('upgrade_rest', 'Sentinel+') | 2.12412665882e-08
+('double_played', ('Thunderclap', 'Blood for Blood')) | 0.0
+('double_played', ('Corruption', 'Barricade')) | 6.00000004085e-05
+('double_played', ('Inflame', 'Cleave')) | -0.0100000067007
+('double_played', ('Battle Trance', 'Headbutt')) | -0.01
+('double_played', ('Rage', 'Flex')) | 1.00000000374e-05
+('double_played', ('Limit Break', 'Metallicize')) | 0.0
+('add_card', 'Bludgeon') | 1.05810158857e-10
+('double_played', ('Pommel Strike', 'Defend')) | 0.000100000000086
+('double_played', ('Thunderclap+', 'Body Slam')) | 0.000109998199447
+('double_played', ('Whirlwind', 'True Grit')) | 0.000290000004406
+('double_played', ('Reaper', 'Defend+')) | 0.0
+('double_played', ('Bloodletting+', 'Bash')) | 0.0
+('double_played', ('Reckless Charge', 'Combust')) | 0.000109996799559
+('double_played', ('Shrug it off', 'Rampage')) | 9.00000001621e-05
+('double_played', ('Pummel', 'Defend')) | -0.0100000039006
+('double_played', ('Strike', 'Sever Soul')) | -0.0100000016001
+('double_played', ('Limit Break', 'Feel No Pain')) | 0.0
+('health_rest', 'Sentinel') | 2.59601854245e-07
+('double_played', ('Rupture', 'Warcry')) | 3.00000000361e-05
+('double_played', ('True Grit', 'Rampage')) | 0.000250000000349
+('add_card', 'Inflame') | 4.26640307727e-10
+('upgrade_rest', 'Corruption') | 1.20087137121e-08
+('double_played', ('Defend+', 'Body Slam')) | 0.000590000000121
+('double_played', ('Clothesline', 'Sentinel')) | 8.00000003353e-05
+('double_played', ('Defend+', 'Second Wind')) | 0.0
+('double_played', ('Iron Wave', 'Exhume')) | 6.00000004085e-05
+('hand_to_draw', 'Pommel Strike') | -9.90001540427e-08
+('double_played', ('Defend', 'Shock Wave')) | 6.00000000465e-05
+('double_played', ('Headbutt', 'Heavy Blade')) | 0.000170000000736
+('double_played', ('Rampage', 'Combust')) | 6.00000001827e-05
+('upgrade_rest', 'Uppercut') | 1.09959630824e-10
+('double_played', ('Whirlwind', 'Sever Soul')) | 0.0
+('double_played', ('Defend', 'Bludgeon')) | 0.000190000000009
+('double_played', ('Defend+', 'Clothesline')) | 6.00000002409e-05
+('double_played', ('Feed', 'Bash')) | 3.99949001085e-05
+('double_played', ('Twin Strike', 'Spot Weakness')) | 0.000400000000906
+('double_played', ('True Grit', 'Second Wind')) | 0.0
+('double_played', ('Body Slam', 'Pommel Strike')) | -0.0100000016001
+('double_played', ('Pummel', 'Anger')) | 0.000130000000557
+('double_played', ('Warcry', 'Flex')) | 0.000150000000176
+('add_card', 'Metallicize+') | 6.22413194391e-10
+('double_played', ('Perfected Strike', 'Defend')) | -0.0100000022006
+('hand_to_draw', 'Cleave') | 1.0112885487e-08
+('double_played', ('Shock Wave', 'Clothesline')) | 0.0
+('double_played', ('Second Wind', 'Disarm')) | 0.0
+('double_played', ('Defend', 'Armaments+')) | 0.000289999799946
+('double_played', ('Pommel Strike', 'Combust')) | -0.0100000022003
+('double_played', ('Iron Wave', 'Clothesline')) | 2.01000181236e-05
+addCard | 1.26007155898e-10
+('double_played', ('True Grit', 'Bash')) | -0.00999989990374
+('health_rest', 'Shock Wave') | 8.0899394635e-08
+('health_rest', 'Rupture') | 6.13490211788e-08
+('double_played', ('Clash', 'Strike')) | 0.0
+('double_played', ('Headbutt', 'Combust')) | 0.000469994299925
+('double_played', ('Uppercut', 'Seeing Red')) | 0.0
+('remove_card', 'Heavy Blade') | 1.1606662893e-08
+('double_played', ('Double Tap', 'Whirlwind')) | 0.000239996599092
+('double_played', ('Defend', 'Pummel')) | -0.01
+('double_played', ('Strike', 'Entrench+')) | 0.0
+('double_played', ('Heavy Blade', 'Defend+')) | 0.000149995900996
+('double_played', ('Flame Barrier', 'Headbutt')) | -0.0100000006
+('double_played', ('Defend', 'True Grit')) | -0.0100000016014
+('double_played', ('Pummel', 'Metallicize')) | 0.00013000000008
+('remove_card', 'Bloodletting+') | 3.69717731423e-10
+('double_played', ('Spot Weakness', 'Rampage')) | 0.000420000000013
+('double_played', ('Cleave', 'Evolve')) | 4.00000001005e-05
+('double_played', ('Cleave', 'Searing Blow')) | 0.0
+('double_played', ('Hemokinesis+', 'Strike')) | 0.000530000000783
+('double_played', ('Hemokinesis', 'Rampage')) | 0.0100001000047
+('add_card', 'Barricade') | 1.15935969796e-09
+('double_played', ('Offering', 'Flex')) | 0.000360000000637
+('double_played', ('Exhume', 'Body Slam')) | 0.0
+('double_played', ('Wild Strike', 'Defend')) | -0.00999989999623
+('double_played', ('Heavy Blade', 'Rampage')) | 0.0
+('add_card', 'Blood for Blood') | -1.59966920371e-13
+('double_played', ('Seeing Red', 'Defend')) | -0.0100000047014
+('hand_to_draw', 'Sentinel') | 2.99970614529e-09
+('remove_card', 'Feed') | 4.31733877764e-09
+('upgrade_rest', 'Rampage') | 8.65987680183e-10
+('double_played', ('Combust', 'True Grit')) | 0.0
+('double_played', ('Reckless Charge', 'Defend')) | -0.0100000052018
+('double_played', ('Twin Strike', 'Pummel')) | 0.000350000000017
+('hand_to_draw', 'Body Slam') | 1.00793874267e-09
+('double_played', ('Rampage', 'Offering')) | 9.999399784e-06
+('double_played', ('Iron Wave', 'Body Slam')) | -0.0100000011002
+('upgrade_rest', 'Demon Form') | 7.63010349726e-09
+('double_played', ('Strike', 'Iron Wave+')) | 0.000500000000005
+('double_played', ('Bloodletting', 'Feel No Pain')) | 0.000110200154744
+('double_played', ('Cleave', 'Bloodletting')) | 0.000389993298532
+('double_played', ('Shock Wave', 'Reaper')) | -0.01
+('double_played', ('True Grit', 'Demon Form')) | -0.0100000004001
+('double_played', ('Dual Wield', 'Thunderclap')) | 0.0
+('double_played', ('Twin Strike', 'Bash')) | -0.0100000030007
+('double_played', ('Hemokinesis', 'Twin Strike')) | 0.0
+('double_played', ('Fiend Fire', 'Cleave')) | 0.000200000000006
+('double_played', ('Dual Wield', 'Strike')) | -0.00999990714702
+('add_card', 'Flex') | 2.23643149141e-10
+('double_played', ('Barricade', 'Defend')) | 0.0
+('double_played', ('Impervious', 'Twin Strike')) | 0.0
+('add_card', 'Reckless Charge') | 1.42833292151e-09
+('hand_to_exhaust', 'Feel No Pain') | 0.0
+('double_played', ('Clothesline', 'Bash')) | 2.00000002512e-05
+('single_played', 'Perfected Strike+') | -0.0100000014
+('double_played', ('Cleave', 'Shock Wave')) | 0.00013010001527
+('double_played', ('Offering', 'Anger')) | 0.000229994798436
+('double_played', ('Sentinel', 'Limit Break')) | 0.000240000000197
+('double_played', ('Defend', 'Rage')) | -0.0100000024002
+('double_played', ('Pommel Strike', 'Dual Wield')) | 0.000479997499596
+('double_played', ('Metallicize', 'Shrug it off')) | -0.01
+('double_played', ('True Grit', 'Uppercut')) | -0.00999990197679
+('double_played', ('Carnage', 'Rage')) | -0.00999990229592
+('double_played', ('Body Slam', 'Strike')) | -0.00999959996365
+('double_played', ('Defend', 'Second Wind+')) | 0.0
+('double_played', ('Spot Weakness', 'Strike+')) | 0.000399972796094
+('double_played', ('Iron Wave', 'Headbutt')) | -0.0100000040012
+block percentage | -0.0
+('remove_card', 'Exhume') | 7.19210332752e-09
+('double_played', ('Twin Strike', 'Combust')) | 0.0
+('double_played', ('Havoc', 'Twin Strike')) | 0.000690000000033
+('upgrade_rest', 'Headbutt') | 3.30785588635e-09
+('double_played', ('Whirlwind', 'Brutality')) | 9.99759993096e-06
+('single_played', 'Warcry+') | -0.0100000013103
+('double_played', ('Dual Wield', 'Shrug it off')) | 1.00000001072e-05
+('double_played', ('Evolve', 'Double Tap')) | 0.000159991299078
+('double_played', ('Pummel', 'Iron Wave')) | -0.0100000013002
+('remove_card', 'Carnage') | 9.56647403499e-10
+('single_played', 'Disarm') | -0.00999990122853
+('double_played', ('Armaments', 'Dropkick')) | 0.0
+('double_played', ('Anger', 'Strike+')) | -0.0100000021002
+('double_played', ('Shrug it off', 'True Grit')) | -0.01
+('double_played', ('Strike', 'Carnage')) | -0.00999990019775
+('double_played', ('Feel No Pain', 'Flex')) | 0.0
+('health_rest', 'Armaments+') | -1.2476591631e-10
+('double_played', ('Defend+', 'Sever Soul')) | 0.000100000000018
+('double_played', ('Fiend Fire', 'Thunderclap')) | 0.000160000000004
+('add_card', 'Thunderclap') | 4.91016674623e-09
+('double_played', ('Power Through', 'Twin Strike')) | 0.000120000000158
+('double_played', ('Reckless Charge', 'Bash')) | 0.000270000000423
+('double_played', ('Flex', 'True Grit')) | 1.00000001347e-05
+('double_played', ('Wild Strike', 'Headbutt')) | 0.01
+('double_played', ('Entrench+', 'Reckless Charge')) | 0.0
+('double_played', ('Pommel Strike', 'Wild Strike')) | -0.0100000024001
+('double_played', ('Impervious', 'Anger')) | 4.000000019e-05
+('upgrade_rest', 'Exhume') | 6.01758526349e-10
+('double_played', ('Second Wind', 'Pummel')) | 0.000459984997614
+('double_played', ('Intimidate', 'Rage')) | 0.0
+('single_played', 'Spot Weakness') | -0.01
+('double_played', ('Bloodletting', 'Double Tap')) | -0.0100000025012
+('double_played', ('Combust', 'Rage')) | 0.000140000000313
+('single_played', 'Sentinel') | -0.01
+('double_played', ('Feel No Pain', 'Shrug it off')) | 0.01
+('double_played', ('Reaper', 'Defend')) | 0.000130000000722
+('double_played', ('Bludgeon', 'Rampage')) | 0.0
+('double_played', ('Hemokinesis', 'Whirlwind')) | 5.0000000003e-05
+('single_played', 'Defend') | -0.06
+('double_played', ('Impervious', 'Whirlwind')) | 7.99980988061e-05
+('double_played', ('Inflame', 'Thunderclap')) | 0.0
+('upgrade_rest', 'Reckless Charge') | 2.64343194744e-09
+('double_played', ('Hemokinesis+', 'Bash')) | 0.0
+('double_played', ('Reckless Charge', 'Seeing Red')) | 0.000170000000246
+('double_played', ('Iron Wave+', 'Bash')) | 0.01
+('double_played', ('Warcry', 'Bash+')) | 0.0
+('double_played', ('Bash', 'Metallicize')) | -0.00999989994594
+('single_played', 'Strike') | -0.0099994989923
+('add_card', 'Metallicize') | 3.18152692774e-10
+('double_played', ('Pommel Strike', 'True Grit')) | 0.0100001000177
+('double_played', ('Thunderclap', 'Wild Strike')) | 0.0003
+('double_played', ('Bash', 'Twin Strike')) | -0.0100000048011
+('double_played', ('Uppercut', 'Thunderclap')) | 0.0
+('copy_hand', 'Headbutt+') | 0.0
+('double_played', ('Headbutt+', 'Iron Wave')) | 0.0
+('double_played', ('Iron Wave', 'Sentinel')) | 0.000119999700117
+('double_played', ('Uppercut', 'Defend')) | -0.00999979996093
+('double_played', ('Whirlwind', 'Sentinel')) | 6.99967995979e-05
+('copy_hand', 'Shrug it off') | 6.29978371587e-09
+('double_played', ('Whirlwind', 'Strike+')) | -0.0100000045002
+('double_played', ('Body Slam', 'True Grit')) | -0.00999990197679
+('hand_to_draw', 'Battle Trance') | 0.0
+('double_played', ('Defend', 'Intimidate')) | 0.000199997798357
+('double_played', ('Bloodletting', 'Cleave')) | 0.0
+('double_played', ('Armaments', 'Defend+')) | -0.0100000018
+('double_played', ('Bash', 'Berserk')) | -0.0100000042006
+('double_played', ('Perfected Strike', 'Body Slam')) | 0.0
+('double_played', ('Dropkick', 'Uppercut')) | 0.000399995299662
+('double_played', ('Pommel Strike', 'Whirlwind+')) | 0.0
+('double_played', ('Hemokinesis', 'Evolve')) | 0.0
+('double_played', ('Headbutt', 'Defend')) | 0.000250000000319
+('double_played', ('Reaper', 'Anger')) | -0.01
+('double_played', ('Flame Barrier', 'Wild Strike')) | 0.01
+('copy_hand', 'Power Through') | 4.21467944117e-11
+('hand_to_draw', 'Rampage') | 3.11502426143e-09
+('health_rest', 'Flex') | 7.03591422319e-08
+('double_played', ('Dual Wield', 'Strike+')) | 0.000280000000144
+('double_played', ('Bash', 'Flame Barrier')) | 0.0
+('double_played', ('Defend', 'Wild Strike+')) | 0.0
+('double_played', ('Body Slam', 'Fiend Fire')) | -0.0100000003
+('double_played', ('Strike', 'Twin Strike+')) | 0.0
+('health_rest', 'Power Through') | 2.74373785795e-09
+('add_card', 'Flame Barrier') | 3.77612334181e-09
+('add_card', 'Evolve') | 4.48053376828e-10
+('double_played', ('Cleave', 'Barricade')) | 0.0
+('double_played', ('Body Slam', 'Thunderclap')) | 1.00000000062e-05
+('health_rest', 'Heavy Blade') | 5.62369403041e-08
+('double_played', ('Defend+', 'Corruption')) | 0.0
+('double_played', ('Disarm', 'Reckless Charge')) | 0.0
+('double_played', ('Inflame', 'Inflame')) | 0.01
+('double_played', ('Whirlwind', 'Cleave')) | -0.01
+('double_played', ('Clothesline', 'Defend')) | 6.00000000927e-05
+('single_played', 'Clothesline+') | 8.9999099817e-05
+('double_played', ('Rage', 'Metallicize')) | 4.98959863047e-05
+('single_played', 'Sever Soul+') | 0.0
+('double_played', ('Cleave', 'Armaments')) | -0.01
+('double_played', ('Demon Form', 'Inflame')) | 0.0
+('double_played', ('Flex', 'Metallicize')) | 0.0
+('double_played', ('Whirlwind', 'Dual Wield')) | 9.9904945774e-06
+('double_played', ('Clothesline', 'Inflame')) | 0.0
+('double_played', ('Bash', 'Heavy Blade')) | 6.00000001754e-05
+('double_played', ('Sever Soul', 'Whirlwind')) | 0.000239998800333
+('double_played', ('Power Through', 'Metallicize')) | -0.00999990128185
+('double_played', ('Anger+', 'Shrug it off')) | 0.010000100033
+('double_played', ('Defend', 'Uppercut')) | -0.00999979996093
+('health_rest', 'Disarm+') | 0.0
+('double_played', ('Combust', 'Sentinel')) | 0.0
+('double_played', ('Power Through', 'Uppercut')) | 0.0
+('double_played', ('Wild Strike', 'Clothesline')) | 3.99964992774e-05
+('double_played', ('Hemokinesis', 'Flex')) | 0.0
+('double_played', ('Thunderclap', 'Anger')) | 2.00000000133e-05
+('double_played', ('Whirlwind', 'Bloodletting')) | -0.00999990089593
+('double_played', ('Reaper', 'Power Through')) | 0.0
+('health_rest', 'Juggernaut') | 4.12715106686e-08
+('remove_card', 'Armaments') | 4.59908563562e-10
+('double_played', ('Defend', 'Flame Barrier+')) | 0.000100000000617
+('double_played', ('Strike', 'Feed')) | 6.02000221184e-05
+('double_played', ('Strike', 'Seeing Red')) | -0.00999999993357
+('double_played', ('Uppercut', 'Sentinel')) | 0.000240000000642
+('double_played', ('Strike', 'Clash')) | 0.0
+('double_played', ('Bash', 'Bash')) | -0.0099994989923
+('double_played', ('True Grit+', 'Strike')) | 0.000440000000488
+('double_played', ('Bash+', 'Pommel Strike')) | 0.0
+('double_played', ('Pommel Strike', 'Searing Blow')) | 4.99855989816e-05
+('double_played', ('Impervious', 'Body Slam')) | 0.0
+('double_played', ('Headbutt', 'Shrug it off')) | 0.000310000000483
+('double_played', ('True Grit', 'Combust')) | 0.000409990999641
+('double_played', ('Body Slam+', 'Pommel Strike+')) | -0.01
+('discard_to_draw', 'Burn') | 0.0
+('double_played', ('Defend', 'Berserk')) | 1.99994000411e-05
+('single_played', 'Inflame') | -0.0100000008041
+('upgrade_rest', 'Clash') | 1.86664302199e-08
+('double_played', ('Strike', 'Ghostly Armor')) | 0.0
+('double_played', ('Anger', 'Twin Strike')) | 4.99986003999e-05
+('single_played', 'Armaments+') | -0.0100000028003
+('double_played', ('Combust', 'Seeing Red')) | 6.00000001378e-05
+('double_played', ('Strike', 'Rage')) | 6.00000001317e-05
+('double_played', ('Thunderclap', 'Perfected Strike+')) | 0.000140000000257
+('double_played', ('Whirlwind', 'Pommel Strike')) | 0.0
+('discard_to_draw', 'Flex') | -1.95400456823e-07
+('add_card', 'Spot Weakness') | 3.30258536039e-10
+('double_played', ('Power Through', 'Wild Strike')) | 0.0
+('single_played', 'Power Through') | 0.000120000000158
+('double_played', ('Sentinel+', 'Reaper')) | 0.000530000000998
+('double_played', ('Shrug it off', 'Combust')) | -0.0100000036006
+('remove_card', 'Sentinel') | 3.46083004892e-09
+('double_played', ('Inflame', 'Evolve')) | 0.0
+('upgrade_rest', 'Pommel Strike+') | 5.34566596316e-09
+('double_played', ('Bloodletting', 'Wild Strike')) | 0.000179980985996
+('upgrade_rest', 'Rage') | 1.13341721833e-10
+('single_played', 'Metallicize+') | -0.0100000020002
+('double_played', ('Strike', 'Armaments+')) | -0.0100000028003
+('double_played', ('True Grit', 'Strike+')) | 0.000260000000496
+('double_played', ('Cleave', 'Anger')) | 0.0
+('double_played', ('Defend', 'Second Wind')) | -0.01
+('double_played', ('Inflame', 'Body Slam')) | 0.000399995398927
+('double_played', ('Combust', 'Warcry')) | 0.000469994299925
+('double_played', ('Clothesline', 'Feel No Pain+')) | 0.0
+('double_played', ('Headbutt', 'True Grit')) | 0.0
+('double_played', ('True Grit', 'Burning Pact')) | 0.000269998999846
+('hand_to_draw', 'Metallicize') | -1.99981670212e-07
+('double_played', ('Defend', 'Offering+')) | 0.000229996999265
+('single_played', 'Twin Strike+') | 0.0
+('hand_to_exhaust', 'Iron Wave') | 2.70190198538e-09
+('double_played', ('Seeing Red', 'Body Slam')) | 0.000419995398594
+('double_played', ('Burning Pact', 'Brutality')) | 0.0
+('double_played', ('Strike', 'Hemokinesis+')) | 0.000180000000747
+('double_played', ('Limit Break', 'Body Slam')) | -0.0100000003
+('double_played', ('Metallicize', 'Strike')) | -0.0100000016001
+('double_played', ('Combust', 'Strike+')) | 0.000290095516617
+('single_played', 'Perfected Strike') | -0.0100000004
+('hand_to_draw', 'Defend') | 1.00793874267e-09
+('double_played', ('Bash', 'Body Slam')) | -0.01
+('double_played', ('Body Slam', 'Body Slam')) | -0.0100000029002
+('double_played', ('Clothesline', 'Twin Strike')) | -0.0100000055016
+('double_played', ('Cleave', 'Defend+')) | -0.01
+('single_played', 'Pommel Strike') | 8.02000103462e-05
+('double_played', ('Limit Break', 'Double Tap')) | 0.0
+('double_played', ('Strike+', 'Reaper')) | 0.0
+('copy_hand', 'Bash') | -3.29778363751e-14
+('double_played', ('Twin Strike', 'Wild Strike')) | 0.0
+('double_played', ('Spot Weakness', 'Bash')) | -0.0100000036003
+('double_played', ('Uppercut', 'Flex')) | 0.00032000000071
+('double_played', ('Perfected Strike', 'Reckless Charge')) | 0.0
+('double_played', ('Defend+', 'Combust')) | 2.9999700165e-05
+('health_rest', 'Offering+') | -5.97460112441e-11
+('double_played', ('Body Slam', 'Carnage')) | -0.00999989999739
+('health_rest', 'Limit Break') | 1.04849977922e-07
+('add_card', 'Bash+') | 4.49966139701e-10
+('double_played', ('Shrug it off', 'Bloodletting')) | 0.0
+('double_played', ('Pommel Strike', 'Sever Soul')) | 0.0
+('upgrade_rest', 'Warcry') | -9.98685725143e-08
+('double_played', ('Feed', 'Combust+')) | 0.0
+('double_played', ('Headbutt', 'Rampage')) | 8.99996001084e-05
+('double_played', ('Rupture', 'Bash')) | -0.01
+('double_played', ('Reckless Charge', 'Shock Wave')) | 0.000479994699584
+('hand_to_draw', 'Iron Wave') | 1.4994295609e-09
+('double_played', ('Iron Wave', 'Disarm')) | -0.0100000042009
+('double_played', ('Strike+', 'Reckless Charge')) | 0.000369994099345
+('double_played', ('Dark Embrace', 'True Grit')) | 0.0
+('upgrade_rest', 'Wild Strike') | 1.83292199951e-09
+('single_played', 'Searing Blow') | -0.0100000007001
+('add_card', 'Defend+') | 1.6752892963e-09
+('hand_to_draw', 'Evolve') | 1.39994292348e-09
+('double_played', ('Second Wind', 'Whirlwind')) | 2.00000000345e-05
+('copy_hand', 'Headbutt') | 0.0
+('double_played', ('Clothesline', 'Body Slam')) | -0.0100000001
+('discard_to_draw', 'Feed') | 4.45193328213e-10
+('double_played', ('Cleave', 'Perfected Strike')) | -0.01
+('double_played', ('Reaper', 'Bash')) | 0.0
+('double_played', ('Anger', 'Fiend Fire')) | 0.0
+('remove_card', 'Feel No Pain') | 9.92217164267e-09
+('health_rest', 'Reckless Charge+') | -5.72147034646e-11
+('double_played', ('Offering', 'Defend')) | -0.00999979996386
+('double_played', ('Metallicize', 'Whirlwind')) | -0.0099999006949
+('double_played', ('Seeing Red', 'Sentinel')) | 0.00039999559568
+('double_played', ('Anger', 'Reaper')) | 4.000000019e-05
+('double_played', ('Reaper', 'Reckless Charge')) | 2.00000002065e-05
+('double_played', ('Strike+', 'Rampage+')) | 1.00000005018e-05
+('double_played', ('Body Slam', 'Anger')) | 0.0
+('double_played', ('Feel No Pain', 'Bash')) | 0.000170000000019
+('single_played', 'Feel No Pain+') | 0.000210000000001
+('double_played', ('Body Slam+', 'Cleave')) | 0.0
+('double_played', ('Cleave', 'Inflame')) | -0.0100000009
+('hand_to_exhaust', 'Seeing Red') | 0.0
+('double_played', ('Strike+', 'Body Slam')) | 0.000200000000903
+('double_played', ('Berserk', 'Inflame')) | -0.0100000067007
+('double_played', ('Cleave', 'Defend')) | 0.000199974389261
+('add_card', 'Carnage+') | 8.85952005294e-10
+('double_played', ('Uppercut', 'Rampage')) | 0.000570000000672
+('double_played', ('Metallicize', 'Anger')) | 0.000180000000019
+('double_played', ('Exhume', 'Dropkick')) | 0.0
+('add_card', 'Juggernaut') | 3.10297391811e-09
+('double_played', ('Heavy Blade', 'Iron Wave')) | 0.000180000000301
+('double_played', ('Heavy Blade', 'Reckless Charge')) | 0.000169998798723
+('hand_to_exhaust', 'Rupture') | -3.23785053657e-13
+('double_played', ('Body Slam', 'Warcry')) | -0.01
+('double_played', ('Metallicize', 'Strike+')) | -0.0100000100015
+('remove_card', 'Barricade') | 8.57246771106e-09
+('double_played', ('Metallicize', 'Bloodletting')) | -0.00999989999083
+('double_played', ('Shrug it off', 'Clash')) | 0.000340000001698
+('hand_to_draw', 'Dual Wield') | 0.0
+('hand_to_exhaust', 'Entrench') | 0.0
+('double_played', ('Iron Wave', 'Wild Strike')) | 0.0
+('double_played', ('Iron Wave', 'Feel No Pain')) | -0.0100000015006
+('double_played', ('Limit Break', 'Anger')) | 0.000330000000556
+('copy_hand', 'Dark Embrace') | 2.49908239039e-09
+('double_played', ('Rupture', 'Reckless Charge')) | 0.0
+('double_played', ('Exhume', 'Bash')) | 6.99967995979e-05
+('add_card', 'True Grit+') | 3.52114225907e-09
+('double_played', ('Bludgeon', 'Wild Strike')) | 0.0
+('double_played', ('Defend', 'Whirlwind')) | 6.00000001317e-05
+('double_played', ('Feel No Pain', 'Bash+')) | 4.00000000134e-05
+('upgrade_rest', 'Pummel') | -5.44447774082e-14
+('double_played', ('Hemokinesis', 'Entrench')) | 0.0
+('double_played', ('Flame Barrier+', 'Defend')) | 0.000559996998616
+('double_played', ('True Grit', 'True Grit')) | -0.01
+('double_played', ('Anger', 'Thunderclap')) | 9.99957992385e-05
+('copy_hand', 'Rampage') | -9.79971771734e-08
+('double_played', ('Body Slam', 'Battle Trance')) | 0.0
+('single_played', 'Burning Pact') | 4.00000000054e-05
+('remove_card', 'Metallicize') | 5.6350644329e-09
+('double_played', ('Anger', 'Anger')) | -0.00999989993896
+('upgrade_rest', 'Iron Wave+') | 0.0
+('double_played', ('Warcry', 'Shrug it off+')) | 0.0
+('health_rest', 'Combust+') | 1.07354376875e-09
+removeCard | 4.22524744448e-10
+('double_played', ('Strike+', 'Rampage')) | -0.0100000049007
+('double_played', ('True Grit', 'Defend')) | 4.00000000933e-05
+('double_played', ('Iron Wave', 'Hemokinesis')) | 0.000399997699894
+('double_played', ('Iron Wave', 'Cleave')) | -0.01
+('single_played', 'Clash') | 0.000340000001698
+('double_played', ('Defend', 'Dropkick')) | -0.00999979999026
+('double_played', ('Feel No Pain+', 'Whirlwind')) | 0.000210000000001
+('double_played', ('Wild Strike', 'Armaments')) | 2.99982001142e-05
+('double_played', ('Bludgeon', 'Cleave')) | 0.0
+('double_played', ('Pommel Strike', 'Inflame')) | -0.00999990297069
+('double_played', ('Headbutt', 'Clothesline')) | -0.0100000003001
+('double_played', ('Dropkick', 'Defend')) | -0.0100000066046
+('hand_to_draw', 'Strike+') | -9.71825939248e-08
+('double_played', ('Limit Break', 'Sentinel')) | 0.0
+('double_played', ('Shock Wave', 'Disarm')) | 0.0
+('double_played', ('Spot Weakness', 'Spot Weakness')) | 0.000269998500085
+('double_played', ('Armaments', 'Limit Break')) | 0.000250000000019
+('double_played', ('Dark Embrace', 'Defend')) | 0.000120000000115
+('double_played', ('Feel No Pain', 'Anger')) | 0.0
+('double_played', ('Perfected Strike', 'True Grit')) | 0.00023000000023
+('double_played', ('Entrench', 'Body Slam')) | 0.0
+('double_played', ('Wild Strike', 'Impervious')) | 4.000000019e-05
+('double_played', ('Bash', 'Seeing Red')) | 0.000149997598941
+('double_played', ('Rampage', 'Searing Blow')) | -0.010000002
+('double_played', ('Shock Wave', 'Pommel Strike')) | 0.000420000000451
+('double_played', ('Shock Wave', 'Reckless Charge')) | 0.000479994699149
+('double_played', ('Defend', 'Barricade')) | 0.00011020014425
+('double_played', ('Evolve', 'Thunderclap')) | 8.00000000753e-05
+('double_played', ('Reckless Charge', 'Havoc')) | 0.0
+('double_played', ('Bash', 'Strike')) | -0.0099994989923
+('double_played', ('Bash', 'Dual Wield')) | 0.000220000000598
+('double_played', ('Thunderclap', 'Shrug it off')) | 0.0
+('double_played', ('Cleave', 'Thunderclap')) | -0.01
+('double_played', ('Bloodletting', 'Flame Barrier')) | 0.0
+('health_rest', 'Uppercut') | 2.96941394517e-07
+('double_played', ('Dual Wield', 'True Grit')) | 0.0
+('double_played', ('Reckless Charge', 'Flex')) | 0.000349995899674
+('double_played', ('Dual Wield', 'Dual Wield')) | -0.00999990714702
+('double_played', ('Bash', 'Whirlwind')) | 0.00028010002017
+('discard_to_draw', 'Seeing Red') | -9.48964205942e-08
+('add_card', 'Carnage') | 1.93881560952e-09
+('double_played', ('Cleave', 'Bash')) | -0.0100000085009
+('double_played', ('Disarm', 'Wild Strike')) | 0.01
+('double_played', ('Barricade', 'Bloodletting')) | 0.0
+('double_played', ('Inflame', 'Whirlwind')) | 0.0
+('double_played', ('Iron Wave', 'Power Through')) | 0.0
+('add_card', 'Impervious') | 4.77819687214e-09
+('double_played', ('Reckless Charge', 'Strike')) | -0.0100000008
+('double_played', ('Perfected Strike', 'Twin Strike')) | 0.000309993199118
+('double_played', ('Havoc', 'Defend')) | -0.00999989991753
+('health_rest', 'Burning Pact+') | 4.81115017889e-09
+('remove_card', 'Thunderclap') | -4.7781110718e-13
+('copy_hand', 'Inflame') | 0.0
+('double_played', ('Strike', 'Dropkick')) | -0.0100000006022
+('upgrade_rest', 'Cleave+') | 5.12142968132e-10
+('double_played', ('Sentinel', 'Pommel Strike')) | -0.01
+('double_played', ('Reckless Charge', 'Sentinel')) | -0.0100000008012
+('double_played', ('Body Slam', 'Heavy Blade')) | 0.0
+('double_played', ('Bash', 'Clash')) | 0.0
+('double_played', ('True Grit+', 'Whirlwind')) | -0.01
+('double_played', ('Sentinel', 'Inflame')) | 0.01
+('add_card', 'Shrug it off') | 5.60414130946e-10
+('hand_to_exhaust', 'Clothesline') | 5.40591862502e-09
+('double_played', ('Combust+', 'Strike')) | 0.000149996999367
+('double_played', ('Armaments', 'Pommel Strike+')) | 0.0
+('double_played', ('Rampage', 'Disarm')) | 0.0
+('double_played', ('Iron Wave', 'Shock Wave')) | 0.0
+('double_played', ('Whirlwind', 'Uppercut')) | 0.0
+('double_played', ('Shock Wave', 'Blood for Blood')) | 0.0
+total enemy HP | -0.00733296592769
+('upgrade_rest', 'Strike') | 1.49905473141e-08
+('double_played', ('Wild Strike', 'Bloodletting')) | 0.000130096214582
+('double_played', ('Spot Weakness', 'Defend')) | -0.01
+('double_played', ('Sentinel', 'Battle Trance')) | 0.0
+('double_played', ('Bash', 'Offering')) | 0.000130000000286
+('hand_to_draw', 'Reckless Charge') | -9.86995985185e-08
+('upgrade_rest', 'Heavy Blade') | -5.70597843113e-14
+('double_played', ('Wild Strike', 'Reaper')) | 0.0
+('double_played', ('Shrug it off', 'Perfected Strike')) | -0.0100000022006
+('single_played', 'Hemokinesis') | -0.0100000026009
+('double_played', ('Double Tap', 'Inflame')) | 0.0
+('add_card', 'Immolate') | 2.90083393509e-09
+('discard_to_draw', 'Sever Soul') | -9.99992578652e-08
+('add_card', 'Perfected Strike') | 7.42857893193e-10
+('double_played', ('Sever Soul', 'Bash')) | 0.000650100013832
+('double_played', ('Rampage', 'Pommel Strike')) | 0.0
+('double_played', ('Rampage', 'True Grit')) | 0.000679996499492
+('double_played', ('Sentinel', 'Metallicize')) | 9.99989987982e-05
+('double_played', ('Second Wind', 'Flame Barrier')) | 0.0
+('double_played', ('Burning Pact', 'Uppercut')) | 0.000269998999846
+('upgrade_rest', 'Battle Trance') | -6.72494571159e-13
+('double_played', ('Twin Strike', 'Bloodletting')) | 0.00031000000043
+('discard_to_draw', 'Bash+') | 2.84611492178e-12
+('upgrade_rest', 'Feed') | 4.03594775534e-09
+('double_played', ('Bash', 'Headbutt')) | 0.000120095900116
+('double_played', ('Anger', 'Shrug it off')) | -0.01
+('double_played', ('Reaper', 'Rage')) | 0.0
+('double_played', ('True Grit', 'Rupture')) | 0.0
+('double_played', ('Rampage', 'Whirlwind')) | -0.0100000021031
+('double_played', ('Defend', 'Defend+')) | 2.00000002124e-05
+('double_played', ('Headbutt', 'Warcry')) | 0.000150000000176
+('double_played', ('Sever Soul', 'Defend')) | 8.00000000429e-05
+('double_played', ('Spot Weakness', 'Havoc')) | 0.000170000000325
+('add_card', 'Demon Form') | 1.1329848615e-09
+('double_played', ('Metallicize+', 'Shrug it off')) | 0.0
+('double_played', ('Flex', 'Hemokinesis')) | 0.0
+('double_played', ('Strike', 'Combust')) | 0.000310200074541
+('double_played', ('Metallicize', 'Shrug it off+')) | 0.00028010007189
+('double_played', ('Entrench', 'Twin Strike')) | 0.0
+('discard_to_draw', 'Clothesline') | 1.69980682077e-09
+('double_played', ('Warcry', 'Bash')) | 4.00000000451e-05
+('health_rest', 'Berserk') | 3.61130153309e-08
+('double_played', ('Inflame', 'Immolate')) | 0.0
+combat | -0.0099994989923
+('double_played', ('Anger', 'Armaments')) | -0.0100000031007
+('double_played', ('Shrug it off', 'Whirlwind')) | 1.0000000272e-05
+('double_played', ('Bludgeon', 'Iron Wave')) | 0.0
+('double_played', ('Barricade', 'Brutality')) | 0.0
+('double_played', ('Entrench', 'Pommel Strike')) | 0.0
+('double_played', ('Bludgeon', 'Twin Strike')) | 0.00035999459867
+('double_played', ('Rage', 'Bash')) | 0.000100000000294
+('add_card', 'Wild Strike+') | 4.07973755753e-11
+('double_played', ('Anger', 'Perfected Strike')) | 0.000350000000424
+('remove_card', 'Rampage') | 4.22524744448e-10
+('double_played', ('Searing Blow', 'Defend')) | -0.0100000007001
+('double_played', ('Evolve', 'Sentinel')) | 0.000240000000197
+('double_played', ('Iron Wave+', 'Twin Strike')) | 0.000300000000057
+('double_played', ('Power Through', 'Reckless Charge')) | 0.0
+('double_played', ('Rupture', 'Bloodletting')) | -0.0100000069008
+('hand_to_draw', 'Twin Strike') | 1.39994292348e-09
+('double_played', ('Rampage', 'Uppercut')) | -0.00999990108897
+('double_played', ('Shrug it off', 'Metallicize+')) | -0.0100000020002
+('double_played', ('True Grit', 'Wild Strike')) | 0.000100000000174
+('double_played', ('Clothesline', 'Iron Wave')) | 0.0
+('double_played', ('Flame Barrier', 'Rage')) | 0.0
+('double_played', ('Bash', 'Defend+')) | 0.000180000000354
+('health_rest', 'Searing Blow') | 1.72385954127e-07
+('double_played', ('Evolve', 'Havoc')) | 0.00016000000001
+('double_played', ('Rage', 'Iron Wave')) | 0.000300000000693
+('double_played', ('Combust+', 'Thunderclap')) | 0.0
+('double_played', ('Iron Wave', 'Defend')) | -0.0099998998516
+('double_played', ('Fiend Fire', 'Strike')) | 0.000419999995837
+('double_played', ('True Grit', 'Sentinel')) | 0.000110000000315
+('double_played', ('Armaments', 'Body Slam')) | 0.0
+('double_played', ('Power Through', 'Defend')) | -0.00999979996154
+('health_rest', 'Bludgeon') | 7.23135560825e-08
+('double_played', ('Bash', 'Fiend Fire')) | 0.000160000000004
+('double_played', ('Feel No Pain', 'Uppercut')) | 0.0
+('health_rest', 'Impervious+') | 0.0
+('double_played', ('Twin Strike', 'Entrench')) | 0.0
+('double_played', ('Barricade', 'Twin Strike')) | 6.00000004085e-05
+('double_played', ('Sever Soul', 'Immolate')) | 0.0
+('double_played', ('Dropkick', 'Bash')) | 5.99887980935e-05
+('double_played', ('Flame Barrier', 'Reckless Charge')) | 2.00000000789e-05
+('double_played', ('Pommel Strike', 'Sever Soul+')) | 0.0
+('health_rest', 'Bash') | 3.52044468466e-06
+('double_played', ('Corruption', 'Defend+')) | 0.0
+('double_played', ('Thunderclap', 'Feel No Pain')) | 0.0
+('double_played', ('Iron Wave', 'Pommel Strike')) | 0.000620000000028
+('double_played', ('Armaments', 'Feel No Pain')) | -0.01
+('double_played', ('Iron Wave', 'Anger')) | -0.0100000068008
+('double_played', ('Defend', 'Anger')) | -0.0100000064006
+('double_played', ('Bloodletting', 'Rupture')) | 0.000270000000642
+('double_played', ('Defend', 'Hemokinesis+')) | 0.000710000000006
+('double_played', ('Evolve', 'Armaments')) | 4.00000001005e-05
+('hand_to_draw', 'Pummel') | 0.0
+('double_played', ('Headbutt', 'Bash')) | -0.010000002401
+('double_played', ('Hemokinesis', 'True Grit')) | 0.0
+('double_played', ('Rampage', 'Thunderclap')) | 0.0
+('double_played', ('Sentinel', 'Thunderclap')) | -0.0100000005011
+('double_played', ('Defend', 'Rampage')) | -0.00999989999496
+('single_played', 'Shrug it off') | -0.02
+('double_played', ('Flex', 'Whirlwind')) | 9.99699936565e-06
+('upgrade_rest', 'Anger') | 6.59827278054e-10
+('hand_to_draw', 'Entrench') | 0.0
+('double_played', ('Defend', 'Clothesline+')) | 0.000349995899674
+('double_played', ('Flex', 'Flame Barrier')) | 0.0
+('double_played', ('Bloodletting+', 'Uppercut')) | 0.000169996799147
+('double_played', ('Thunderclap', 'Armaments')) | -0.0100000074999
+('double_played', ('Twin Strike', 'True Grit')) | -0.00999990073802
+('double_played', ('Shrug it off', 'Strike')) | -0.02
+('double_played', ('Pommel Strike', 'Cleave')) | 0.00010000000043
+('double_played', ('Defend', 'Perfected Strike')) | 0.000220000003297
+('remove_card', 'Flame Barrier') | 3.46083004892e-09
+('double_played', ('Inflame', 'True Grit')) | 0.0
+('double_played', ('Strike', 'Power Through')) | -0.00999979996154
+('double_played', ('Uppercut', 'Body Slam')) | -0.01
+('double_played', ('Shrug it off', 'Shrug it off')) | -0.02
+('single_played', 'Fiend Fire') | 0.000360000001229
+('double_played', ('Headbutt', 'Twin Strike')) | 0.000299991798382
+('double_played', ('Iron Wave', 'Sever Soul')) | 0.0
+('double_played', ('Reckless Charge', 'Warcry')) | -0.0100000028002
+('double_played', ('Clothesline', 'Headbutt')) | -0.0100000033648
+('double_played', ('Bloodletting', 'Metallicize')) | -0.01
+('copy_hand', 'Armaments') | 0.0
+('double_played', ('Uppercut', 'Uppercut')) | 0.000240000000642
+('double_played', ('Shrug it off', 'Defend')) | -0.02
+('double_played', ('Combust', 'Body Slam')) | 0.0
+('double_played', ('Fiend Fire', 'Defend')) | 0.000360000001229
+('double_played', ('Offering', 'Heavy Blade')) | 0.0
+('health_rest', 'Whirlwind') | 3.50001650927e-07
+('double_played', ('Feel No Pain', 'Sever Soul')) | 0.000110200154744
+('double_played', ('Defend', 'Brutality')) | 0.000330100039558
+('double_played', ('Body Slam', 'Headbutt')) | 0.000129998400454
+('double_played', ('Whirlwind', 'Rage')) | 6.00000001317e-05
+('double_played', ('True Grit', 'Spot Weakness')) | 0.0
+('double_played', ('Flame Barrier+', 'Perfected Strike')) | 0.0
+('copy_hand', 'Evolve') | 1.00016873366e-07
+('health_rest', 'Defend+') | 9.38061742985e-08
+('double_played', ('Anger', 'Heavy Blade')) | 0.0
+('double_played', ('Bash', 'Bloodletting+')) | 0.0
+('single_played', 'Demon Form') | -0.0100000082032
+('double_played', ('Defend', 'Burning Pact')) | 4.00000000054e-05
+('double_played', ('Thunderclap', 'Dropkick')) | 0.000289999900343
+('double_played', ('Seeing Red', 'Flame Barrier')) | 0.0
+('double_played', ('Rampage', 'Armaments')) | 0.000280000000223
+('double_played', ('Headbutt', 'Anger')) | 1.00000000718e-05
+('double_played', ('Iron Wave', 'Spot Weakness')) | 0.000169998499226
+('double_played', ('Armaments', 'Iron Wave')) | 0.000650000004738
+('health_rest', 'Thunderclap+') | 1.66713705515e-09
+('upgrade_rest', 'Disarm') | 1.25408172078e-08
+('double_played', ('Sever Soul', 'Rage')) | 0.000509994897481
+('double_played', ('Defend+', 'Evolve')) | 0.000590000000821
+('hand_to_draw', 'Wild Strike') | -9.73993417527e-08
+('double_played', ('Shrug it off', 'Sever Soul')) | 0.0
+('double_played', ('Anger', 'Pommel Strike')) | 0.0
+('double_played', ('Defend', 'Cleave+')) | 0.000179999700023
+('double_played', ('Reckless Charge', 'Anger')) | 0.000240000000197
+('double_played', ('Defend', 'Defend')) | -0.05
+('health_rest', 'Defend') | 3.72813431325e-06
+('single_played', 'Second Wind') | -0.02
+('double_played', ('Burning Pact', 'Defend')) | -0.00999989999335
+('single_played', 'Seeing Red') | 1.00000000214e-05
+('double_played', ('Feed', 'Strike')) | -0.0200000012044
+('double_played', ('Body Slam', 'Bloodletting+')) | 0.0
+('double_played', ('Iron Wave', 'Shrug it off+')) | 0.000160000000066
+('double_played', ('Rupture', 'Burning Pact')) | -0.0100000001
+('upgrade_rest', 'Body Slam+') | 5.71560721426e-11
+('double_played', ('Flame Barrier', 'Bloodletting')) | 0.0
+('double_played', ('Defend', 'Reaper')) | 0.000160192650427
+('double_played', ('Uppercut', 'Rage')) | 0.000180000000232
+('double_played', ('Warcry', 'Headbutt')) | -0.0100000090012
+('copy_hand', 'Anger') | 0.0
+('double_played', ('Dropkick', 'Strike+')) | 0.0
+('remove_card', 'Searing Blow') | 3.40683816193e-09
+('double_played', ('Dropkick', 'Thunderclap')) | 0.000169999803158
+('double_played', ('Double Tap', 'Defend')) | -0.00999990093845
+('health_rest', 'Pommel Strike+') | -4.28066784239e-11
+('double_played', ('Bloodletting', 'Defend')) | -0.01
+('double_played', ('Inflame', 'Bash')) | 0.000450000001255
+('double_played', ('Shock Wave', 'Shrug it off')) | 0.000270000001245
+('double_played', ('Reaper', 'Intimidate')) | 0.0
+('double_played', ('Flex', 'Rampage')) | 0.000240100014273
+('double_played', ('Searing Blow', 'Strike')) | -0.00999969997801
+('double_played', ('Wild Strike', 'Offering')) | 0.000489999800648
+('single_played', 'Pummel') | -0.00999979990759
+('double_played', ('Seeing Red', 'True Grit')) | 0.00035000000049
+('double_played', ('Seeing Red', 'Hemokinesis')) | 0.000170100043866
+('hand_to_exhaust', 'Berserk') | 0.0
+('double_played', ('Defend', 'Double Tap')) | 0.000290000000372
+('double_played', ('Bash', 'Bloodletting')) | 0.000119998999697
+('double_played', ('Seeing Red', 'Double Tap')) | 0.0
+('remove_card', 'Berserk') | 4.26292968859e-09
+('double_played', ('Clothesline', 'Heavy Blade')) | 0.0
+('double_played', ('Sentinel', 'Entrench')) | 0.0
+('add_card', 'Headbutt+') | 1.67256683157e-09
+('double_played', ('Bash', 'Hemokinesis')) | 0.00017000000016
+('double_played', ('Inflame', 'Reckless Charge')) | 0.0
+('hand_to_exhaust', 'Wild Strike') | -9.67971506129e-08
+('remove_card', 'Headbutt') | -4.7781110718e-13
+('double_played', ('Pommel Strike', 'Iron Wave')) | 0.0
+('double_played', ('Armaments', 'Whirlwind')) | 0.0
+('double_played', ('Bash', 'Searing Blow')) | 0.0
+('double_played', ('Barricade', 'Flame Barrier')) | 0.0
+('upgrade_rest', 'Barricade') | 1.00455060687e-12
+('double_played', ('Strike', 'Uppercut')) | -0.00999990049864
+('remove_card', 'Dual Wield') | 1.05826891784e-10
+('double_played', ('Immolate', 'Thunderclap')) | 0.0
+('double_played', ('Strike', 'Bloodletting+')) | 1.00000000062e-05
+('add_card', 'Feel No Pain+') | 2.33554867194e-09
+('double_played', ('Strike', 'Perfected Strike')) | -0.0100000004
+('discard_to_draw', 'Battle Trance') | 3.88190064745e-09
+('double_played', ('Metallicize', 'Pommel Strike')) | -0.0100000032005
+('double_played', ('Offering', 'Strike')) | 0.000520000000798
+('double_played', ('Reckless Charge', 'Armaments')) | 0.000280000000412
+('double_played', ('Thunderclap', 'Perfected Strike')) | 0.0
+('double_played', ('Defend', 'Clash')) | 0.0
+('double_played', ('Intimidate', 'Bash')) | -0.0100000024005
+('remove_card', 'Hemokinesis') | 1.02606658198e-10
+('double_played', ('Offering+', 'Reckless Charge')) | 0.0
+('double_played', ('Defend', 'Thunderclap')) | -0.01
+('double_played', ('Berserk', 'Dropkick')) | 0.0
+('double_played', ('Strike', 'Bash+')) | 5.00000001831e-05
+('health_rest', 'Body Slam') | 3.80259754979e-07
+('double_played', ('Rage', 'Strike+')) | 0.0
+('discard_to_draw', 'Defend') | -1.99992210343e-07
+('double_played', ('Burning Pact', 'Defend+')) | 0.000199999899982
+('double_played', ('Warcry', 'Cleave')) | 0.00032000000071
+('double_played', ('Defend', 'Headbutt+')) | 3.00000010529e-05
+('double_played', ('Clothesline', 'Clothesline')) | -0.00999990337103
+('double_played', ('Defend+', 'Feel No Pain')) | 0.0
+('double_played', ('Burning Pact', 'Anger')) | -0.0100000036005
+('upgrade_rest', 'Rupture') | 9.02971004492e-09
+('double_played', ('Reckless Charge', 'Demon Form')) | 0.0
+('double_played', ('Flex', 'Body Slam')) | 0.0
+('double_played', ('Shock Wave', 'Searing Blow')) | -0.0100000006
+('double_played', ('Shrug it off', 'Uppercut')) | -0.00999990279577
+('double_played', ('Uppercut', 'Limit Break')) | 0.000200100006289
+('double_played', ('Reckless Charge', 'Twin Strike+')) | 0.0
+('health_rest', 'Rampage') | 3.26070182625e-07
+('double_played', ('Whirlwind', 'Flame Barrier')) | 0.0
+('double_played', ('Bash+', 'Bash+')) | 0.000270099938168
+('double_played', ('Bludgeon', 'Shrug it off')) | 0.0
+('health_rest', 'Bloodletting') | 6.19470210036e-08
+('double_played', ('Entrench', 'Bash')) | -0.0100000016001
+('single_played', 'Warcry') | -0.01
+('remove_card', 'Impervious') | 3.40683816193e-09
+('double_played', ('Defend', 'Power Through')) | 0.000370000001025
+('double_played', ('Warcry', 'Sentinel')) | 0.0
+('double_played', ('Thunderclap', 'Headbutt')) | -0.010000006806
+('discard_to_draw', 'Pummel') | 5.0108523578e-10
+('remove_card', 'Evolve') | -4.7781110718e-13
+('add_card', 'Corruption') | 6.49717851227e-10
+('double_played', ('Shock Wave', 'Sentinel')) | 2.99989990662e-05
+('double_played', ('Defend+', 'Berserk')) | 0.0
+('single_played', 'Berserk') | -0.00999990016398
+('double_played', ('Barricade', 'Barricade')) | 0.0
+('double_played', ('Headbutt', 'Hemokinesis')) | 0.0
+('double_played', ('Body Slam', 'Reckless Charge')) | 0.000130000000016
+('upgrade_rest', 'Perfected Strike') | 5.35470495554e-09
+('double_played', ('Uppercut', 'Armaments')) | 0.000399998800026
+('double_played', ('Flex', 'Uppercut')) | 0.0
+('double_played', ('Limit Break', 'Pommel Strike')) | 0.000129993494582
+('double_played', ('Shrug it off', 'Shock Wave')) | 0.0
+('double_played', ('Rage', 'Sentinel')) | -0.0100000001
+('double_played', ('Blood for Blood', 'Second Wind')) | 0.0
+('double_played', ('Rampage+', 'Defend')) | 0.0
+('double_played', ('Strike', 'Feel No Pain+')) | 0.000210000000001
+('double_played', ('Cleave', 'Flex')) | 0.0
+('health_rest', 'True Grit') | 3.1416827641e-07
+('double_played', ('Pummel', 'Uppercut')) | 0.0
+('hand_to_draw', 'Bash') | 1.00793874267e-09
+('single_played', 'Flex') | -0.00999990099667
+('single_played', 'Entrench') | -0.00999969988251
+('copy_hand', 'Seeing Red') | 0.0
+('double_played', ('Pommel Strike', 'Dropkick')) | 0.000160000000204
+('double_played', ('Warcry+', 'Strike')) | 0.000129899982975
+('add_card', 'Reckless Charge+') | -4.71919982467e-14
+('health_rest', 'Brutality') | 8.89736396808e-09
+('copy_hand', 'Defend+') | 4.10527786868e-09
+('double_played', ('Hemokinesis', 'Rage')) | 0.000130000000165
+('double_played', ('Combust', 'Uppercut')) | 0.0
+('double_played', ('Defend', 'Dark Embrace')) | -0.00999979992367
+('double_played', ('Cleave', 'Feed')) | 8e-05
+('double_played', ('True Grit', 'Metallicize')) | 0.0
+('double_played', ('True Grit', 'Second Wind+')) | 0.000350000000012
+('double_played', ('Reckless Charge', 'Shrug it off')) | 5.999559948e-05
+('double_played', ('Dropkick', 'Feed')) | -0.0100000006022
+('discard_to_draw', 'Inflame') | 8.59950111229e-09
+('double_played', ('Pommel Strike', 'Twin Strike')) | 0.0
+('double_played', ('Second Wind', 'Bash')) | -0.00999979995988
+('double_played', ('Anger', 'Reckless Charge')) | 0.000109996799559
+('health_rest', 'Metallicize') | 1.67110132106e-07
+('remove_card', 'Immolate') | 9.74769041231e-09
+('add_card', 'Strike+') | 1.94161257663e-09
+('double_played', ('Battle Trance', 'Anger')) | -0.01
+('double_played', ('Disarm', 'Twin Strike')) | 7.00000000951e-05
+('double_played', ('Inflame', 'Rage')) | 0.0
+('double_played', ('Defend+', 'Limit Break')) | -0.01
+('double_played', ('Rage', 'Pommel Strike')) | 9.99982993697e-05
+('double_played', ('Reckless Charge', 'Spot Weakness')) | 0.0
+('double_played', ('Body Slam', 'Spot Weakness')) | 0.000600000000988
+('double_played', ('Twin Strike', 'Berserk')) | 0.0
+('double_played', ('Defend', 'Impervious')) | -0.01
+('double_played', ('Searing Blow', 'Bash')) | -0.01
+('double_played', ('Strike+', 'True Grit')) | -0.0100000042004
+('upgrade_rest', 'Bash+') | 4.66766894036e-10
+('double_played', ('Thunderclap', 'Bloodletting')) | -0.0100000064019
+('copy_hand', 'Thunderclap') | -9.51767618301e-08
+('double_played', ('Defend+', 'Thunderclap')) | 0.000420000000473
+('double_played', ('Thunderclap', 'Reckless Charge')) | 9.00000004151e-05
+('double_played', ('Pommel Strike', 'Metallicize')) | 0.0
+('remove_card', 'Demon Form') | 2.56666882103e-09
+('double_played', ('Twin Strike', 'Sentinel')) | -0.00999990008557
+('double_played', ('Strike', 'Pummel')) | -0.00999979990759
+('double_played', ('Barricade', 'Body Slam')) | 0.00011020014425
+('double_played', ('Flame Barrier', 'Hemokinesis')) | 0.0
+('double_played', ('Headbutt', 'Metallicize')) | -0.01
+('double_played', ('True Grit', 'Offering')) | -0.0100000032013
+('double_played', ('Defend', 'Pommel Strike+')) | 0.0
+('double_played', ('Iron Wave', 'Twin Strike')) | 0.000130000000722
+('double_played', ('Limit Break', 'Iron Wave')) | -0.0100000063007
+('double_played', ('Uppercut', 'Cleave')) | 0.0
+('double_played', ('True Grit', 'Heavy Blade')) | -0.01
+('double_played', ('True Grit', 'Perfected Strike')) | 0.0
+('double_played', ('Defend', 'Rupture')) | 3.00000000361e-05
+('double_played', ('Pommel Strike', 'Flex')) | -0.00999989998005
+('double_played', ('Combust', 'Second Wind')) | 0.0
+('double_played', ('True Grit', 'Dark Embrace')) | -0.01
+('double_played', ('Iron Wave', 'Rampage')) | 0.0
+('double_played', ('Feed', 'Defend')) | -0.01
+('single_played', 'Iron Wave') | -0.0100000040012
+('double_played', ('Flame Barrier', 'Defend')) | -0.0100000000001
+('double_played', ('Shock Wave', 'Body Slam')) | 0.0
+('upgrade_rest', 'Anger+') | 1.86664302199e-08
+('double_played', ('Twin Strike', 'Defend')) | -0.00999959997907
+('copy_hand', 'Wild Strike') | 0.0
+('double_played', ('Rage', 'Wild Strike')) | 0.0
+('hand_to_exhaust', 'Heavy Blade') | -1.99995875557e-07
+('single_played', 'Double Tap') | -0.00999990093845
+('health_rest', 'Cleave+') | -2.83949055438e-11
+('double_played', ('Metallicize', 'True Grit')) | -0.01
+('double_played', ('Strike+', 'Uppercut')) | 0.0
+('remove_card', 'Limit Break') | -3.41118370143e-13
+('double_played', ('Brutality', 'Bash')) | 0.000330100039558
+('double_played', ('Uppercut', 'Wild Strike')) | 6.00000000875e-05
+('double_played', ('Twin Strike', 'Metallicize')) | 0.000420000000556
+('hand_to_draw', 'Shock Wave') | 0.0
+('double_played', ('Bloodletting', 'Rage')) | 0.000220000000267
+('double_played', ('Seeing Red', 'Wild Strike')) | 0.0
+('double_played', ('Iron Wave', 'Seeing Red')) | 0.000240000000275
+('single_played', 'Bloodletting') | -0.03
+('double_played', ('Double Tap', 'Thunderclap')) | 0.0
+('double_played', ('Flame Barrier', 'Evolve')) | 0.0
+('double_played', ('Shock Wave', 'Strike')) | 7.00000001363e-05
+('double_played', ('Dropkick', 'Dark Embrace')) | -0.0100000010004
+('double_played', ('Limit Break', 'Defend')) | 9.00000001033e-05
+('double_played', ('Thunderclap', 'Bash')) | 0.000381000202021
+('double_played', ('Strike', 'Bludgeon')) | 4.99941996011e-05
+('add_card', 'Warcry') | 1.17403288923e-10
+('hand_to_exhaust', 'Feed') | 5.42335310053e-09
+('double_played', ('Feed', 'Armaments')) | -0.0100000014002
+('double_played', ('Thunderclap', 'Whirlwind')) | -0.01
+('double_played', ('Barricade', 'Bash')) | 0.000450000000481
+('health_rest', 'Rampage+') | 0.0
+('add_card', 'Thunderclap+') | 1.18375412625e-09
+('double_played', ('Cleave', 'Body Slam')) | 0.000300000000494
+('double_played', ('Rampage', 'Strike')) | -0.0100000008012
+('double_played', ('Reckless Charge', 'Feed')) | 0.000290000000247
+('double_played', ('Flex', 'Anger')) | -0.00999979999235
+('double_played', ('Flame Barrier', 'Flame Barrier')) | 6.00000003236e-05
+('double_played', ('Second Wind', 'Pommel Strike')) | 0.0
+('double_played', ('Wild Strike', 'Fiend Fire')) | 0.000360000001229
+('double_played', ('Strike', 'Battle Trance')) | -0.01
+('double_played', ('Rampage', 'Rage')) | 0.0
+('double_played', ('Entrench', 'Cleave')) | 0.000199997799268
+('double_played', ('Defend+', 'Twin Strike')) | 0.0
+('double_played', ('Defend', 'Bash')) | -0.0099998997714
+('health_rest', 'Sever Soul') | 7.06369554871e-08
+('double_played', ('Headbutt', 'Burning Pact')) | 0.000460100000736
+('double_played', ('Feed', 'Reaper')) | -0.00999989997378
+('double_played', ('Defend', 'Flame Barrier')) | 0.01
+('double_played', ('Pommel Strike', 'Limit Break')) | -0.0100000039002
+('double_played', ('Flame Barrier', 'Iron Wave')) | 0.00011020014425
+('double_played', ('Shrug it off', 'Sentinel')) | 5.99945986224e-05
+('double_played', ('Bash+', 'Defend')) | 5.00000001831e-05
+('double_played', ('Whirlwind', 'Anger')) | 2.99993999726e-05
+('double_played', ('Shrug it off', 'Cleave')) | 9.0000000962e-05
+('double_played', ('Heavy Blade', 'Bludgeon')) | 0.0
+('discard_to_draw', 'Immolate') | 0.0
+('single_played', 'Cleave+') | 0.000179999700023
+('double_played', ('Cleave', 'Burning Pact')) | 0.000119995503243
+('double_played', ('Strike+', 'Headbutt')) | 0.000500000000095
+('double_played', ('Metallicize', 'Defend')) | -0.00999989997783
+('double_played', ('Battle Trance', 'True Grit')) | 0.0
+('double_played', ('Entrench', 'Reckless Charge')) | 0.000230000000289
+('health_rest', 'Iron Wave') | 4.50955955162e-07
+('double_played', ('Whirlwind', 'Offering')) | 0.000269991998149
+('double_played', ('Headbutt', 'Inflame')) | 0.0
+('upgrade_rest', 'Spot Weakness') | 2.21817879641e-10
+('double_played', ('Inflame', 'Wild Strike')) | 0.0
+('remove_card', 'Bash') | 4.22524744448e-10
+('double_played', ('Wild Strike', 'Combust')) | 0.0
+('discard_to_draw', 'True Grit') | 4.104769108e-09
+('double_played', ('Strike', 'Bash')) | -0.00999989996582
+('double_played', ('Rampage', 'Inflame')) | 0.000340000000441
+('add_card', 'Pummel') | 1.42833292151e-09
+('double_played', ('Combust+', 'Rampage')) | 0.00020999659959
+('hand_to_draw', 'Bash+') | 2.99970614529e-09
+('double_played', ('Spot Weakness', 'Cleave')) | 0.0
+('hand_to_exhaust', 'Rampage') | -9.67971506129e-08
+('double_played', ('Dark Embrace', 'Body Slam')) | -0.0100000010004
+('double_played', ('Pummel', 'Seeing Red')) | -0.0100000021006
+('hand_to_exhaust', 'Shock Wave') | 3.5995661129e-09
+('upgrade_rest', 'Whirlwind+') | 0.0
+('copy_hand', 'Flame Barrier') | 0.0
+('double_played', ('Feel No Pain', 'Bloodletting')) | 0.0
+('double_played', ('Sentinel', 'Shrug it off')) | -0.01
+('double_played', ('Sentinel+', 'Strike')) | 0.000580000002393
+('double_played', ('Sentinel', 'Reaper')) | 0.0
+('single_played', 'Iron Wave+') | 0.01
+('double_played', ('Thunderclap', 'Corruption')) | 0.000169999803158
+('double_played', ('Body Slam', 'Sentinel')) | 0.00042000000006
+('double_played', ('Pommel Strike', 'Uppercut')) | 0.0
+('double_played', ('Offering+', 'Defend')) | 0.000340100025251
+('double_played', ('Hemokinesis', 'Headbutt+')) | 0.000520000000015
+('double_played', ('Entrench', 'Uppercut')) | -0.0100000038008
+('discard_to_draw', 'Armaments') | 9.97646864813e-10
+('double_played', ('Strike', 'Shock Wave')) | 0.00023000000022
+('double_played', ('Evolve', 'Inflame')) | 0.0
+('double_played', ('Sentinel', 'Feed')) | 0.000239995196787
+('hand_to_exhaust', 'Burn') | -1.00000807674e-07
+('double_played', ('Thunderclap', 'Impervious')) | 0.0
+('double_played', ('Impervious', 'Rampage')) | 8.99996999447e-05
+('double_played', ('Pommel Strike', 'Strike')) | -0.0100000016005
+('double_played', ('Defend', 'Iron Wave+')) | 0.000300000000057
+('double_played', ('Reckless Charge', 'Rampage')) | -0.0100000026003
+('double_played', ('Bash+', 'Perfected Strike')) | -0.0100000012
+('double_played', ('Twin Strike', 'Reckless Charge')) | 7.00000002608e-05
+('double_played', ('Twin Strike', 'Iron Wave')) | -0.0100000040012
+handToDraw | 1.00793874267e-09
+('double_played', ('Twin Strike', 'Shrug it off')) | 0.000440000000003
+('double_played', ('Strike', 'Rampage+')) | 5.0000000113e-05
+('copy_hand', 'Entrench') | -5.77564078021e-13
+('double_played', ('Carnage', 'Twin Strike')) | 0.000680000000016
+('double_played', ('Rupture', 'Defend')) | -0.01
+('double_played', ('Wild Strike', 'Whirlwind')) | 0.0
+('copy_hand', 'Double Tap') | 0.0
+('double_played', ('Wild Strike', 'Rampage')) | 8.00000000769e-05
+('double_played', ('Pommel Strike', 'Strike+')) | 0.0
+('double_played', ('Strike', 'Double Tap')) | -0.00999990093845
+('double_played', ('Bloodletting', 'Juggernaut')) | 0.000140000000002
+('double_played', ('Headbutt', 'Sentinel')) | 0.01
+('double_played', ('Pommel Strike', 'Havoc')) | 0.0
+('double_played', ('Exhume', 'Hemokinesis+')) | 0.0
+('add_card', 'Hemokinesis+') | 5.5250289685e-10
+('double_played', ('Defend', 'Carnage+')) | 0.000190000000018
+('double_played', ('Iron Wave', 'Shrug it off')) | -0.01
+('add_card', 'Searing Blow') | 4.38148058518e-09
+('double_played', ('Shrug it off', 'Spot Weakness')) | -0.01
+('double_played', ('Shrug it off', 'Flex')) | 0.000190000000225
+('hand_to_exhaust', 'Headbutt') | 5.40591862502e-09
+('double_played', ('Exhume', 'Second Wind')) | 0.0
+('double_played', ('Pommel Strike', 'Bloodletting')) | 0.0
+('double_played', ('Flex', 'Exhume')) | -0.0100000047013
+('double_played', ('Thunderclap', 'Twin Strike')) | 0.000119996899422
+copy | -2.99897214409e-07
+('double_played', ('Pommel Strike', 'Reaper')) | 0.0
+('double_played', ('Pommel Strike', 'Rampage')) | -0.0100000071031
+('double_played', ('Headbutt', 'Strike+')) | 0.000650000000047
+('double_played', ('Cleave+', 'Defend')) | 0.000140000000282
+('double_played', ('Juggernaut', 'Whirlwind')) | 0.0
+('double_played', ('Offering+', 'Strike')) | 0.0
+('double_played', ('Sentinel', 'Reckless Charge')) | 8.99999968062e-05
+('double_played', ('Sentinel', 'Strike')) | -0.0100000056108
+('double_played', ('Entrench', 'Whirlwind')) | 0.0
+('double_played', ('Havoc', 'Bash')) | 0.000320000000385
+('double_played', ('Clothesline', 'Immolate')) | 0.0
+('add_card', 'Berserk') | 1.27163546236e-09
+('health_rest', 'Intimidate') | -3.02922816743e-11
+('double_played', ('Pommel Strike', 'Headbutt')) | 8.00000002454e-05
+('double_played', ('Bash', 'Evolve')) | 0.00019000000042
+('upgrade_rest', 'Hemokinesis+') | 0.0
+('double_played', ('Bash', 'Anger')) | -0.01
+('double_played', ('Burning Pact', 'Bash')) | -0.01
+('double_played', ('Warcry', 'Body Slam')) | -0.01
+('double_played', ('Sentinel', 'Double Tap')) | 0.000239996599092
+('double_played', ('Strike', 'Strike+')) | -0.010000002806
+('double_played', ('Wild Strike', 'Metallicize')) | -0.00999989999083
+('double_played', ('Clothesline', 'Anger')) | 0.0
+('double_played', ('Anger', 'Wild Strike')) | -0.0100000017002
+('double_played', ('Strike', 'Defend+')) | 2.00000002124e-05
+('double_played', ('Wild Strike', 'Limit Break')) | 0.0
+('double_played', ('Dual Wield', 'Inflame')) | 0.0
+('health_rest', 'Ghostly Armor') | 2.60763035731e-09
+('hand_to_exhaust', 'Reckless Charge') | -9.67971506129e-08
+('double_played', ('Pommel Strike', 'Warcry')) | 0.000479997499596
+('health_rest', 'Shrug it off') | 4.94602176795e-07
+('remove_card', 'Spot Weakness') | 1.05826891784e-10
+('double_played', ('Flex', 'Defend+')) | 5.00000003495e-05
+('double_played', ('Thunderclap', 'Defend+')) | 0.000330000000487
+('double_played', ('Pummel', 'Sentinel')) | 0.00029000000095
+('double_played', ('Bash', 'Corruption')) | 0.0
+('double_played', ('Strike', 'Rampage')) | -0.0100000002
+('hand_to_exhaust', 'Armaments') | 5.39917758641e-09
+('double_played', ('Battle Trance', 'Defend')) | -0.01
+('double_played', ('Defend+', 'Shock Wave')) | 0.0
+('double_played', ('Whirlwind', 'Reckless Charge')) | 2.99991001201e-05
+('double_played', ('Uppercut', 'Whirlwind')) | -0.0100000016012
+('double_played', ('Rampage', 'Demon Form')) | 0.0
+('double_played', ('Limit Break', 'Battle Trance')) | -0.01
+('double_played', ('Uppercut', 'Iron Wave')) | 0.01
+('double_played', ('Twin Strike', 'Power Through')) | 0.000120000000158
+('copy_hand', 'True Grit') | 2.40210930004e-09
+('double_played', ('Rampage', 'Metallicize')) | -0.0100000019003
+('add_card', 'Double Tap') | 3.6949920069e-09
+('double_played', ('Twin Strike', 'Flame Barrier')) | 0.0
+('upgrade_rest', 'Twin Strike+') | 8.65987680183e-10
+('hand_to_exhaust', 'Sentinel') | 5.42335310053e-09
+('double_played', ('Carnage', 'Bash')) | -0.0100000027004
+('double_played', ('Flame Barrier', 'Barricade')) | 0.0
+('double_played', ('Perfected Strike', 'Strike+')) | 0.0
+('double_played', ('Body Slam', 'Bash')) | -0.0100000049008
+('upgrade_rest', 'Power Through') | 2.72496429415e-09
+('double_played', ('Juggernaut', 'Sentinel')) | 1.01000410212e-05
+('double_played', ('Sentinel+', 'Defend')) | 0.000690000000019
+('double_played', ('Combust', 'Pommel Strike')) | 0.0100001000177
+('double_played', ('Uppercut', 'Anger')) | 9.99639977893e-06
+('double_played', ('Strike', 'Wild Strike+')) | 0.000390000000027
+('double_played', ('Body Slam+', 'Defend')) | 0.01
+('double_played', ('Defend+', 'Wild Strike')) | 0.000140100022105
+('double_played', ('Flame Barrier', 'Whirlwind')) | 0.0
+('hand_to_exhaust', 'True Grit') | 0.0
+('add_card', 'Clash') | 3.193352912e-14
+('double_played', ('Intimidate', 'Strike')) | 0.000199997798357
+('double_played', ('Defend', 'Warcry+')) | 0.000129899982975
+('double_played', ('Shock Wave', 'Thunderclap')) | 0.0
+('double_played', ('Strike', 'Clothesline+')) | 0.0001799959002
+('upgrade_rest', 'Burning Pact') | -3.81339703294e-13
+('double_played', ('Metallicize', 'Clothesline')) | 0.0
+('double_played', ('Whirlwind', 'Seeing Red')) | 0.000349996499786
+('double_played', ('Seeing Red', 'Iron Wave')) | 0.000300100032266
+('health_rest', 'Iron Wave+') | 6.25517536441e-09
+('double_played', ('Uppercut', 'Exhume')) | 0.00020000000045
+('upgrade_rest', 'Berserk') | 1.23338021873e-08
+('single_played', 'Sentinel+') | 0.000580000002393
+('remove_card', 'Offering') | 0.0
+('double_played', ('Metallicize', 'Spot Weakness')) | 0.0
+('double_played', ('Defend', 'Body Slam+')) | 0.01
+('double_played', ('Bloodletting', 'Clothesline')) | 0.0
+('double_played', ('Defend', 'Twin Strike')) | -0.0100000073003
+('double_played', ('Uppercut', 'Strike')) | -0.010000001406
+('double_played', ('Strike+', 'Impervious')) | 0.0
+('double_played', ('Rage', 'Reaper')) | 0.000130000000722
+('single_played', 'Dropkick') | -0.00999979999026
+('double_played', ('Impervious', 'Whirlwind+')) | 0.0
+('single_played', 'Burning Pact+') | 0.000370000000011
+('double_played', ('Shock Wave', 'Cleave')) | 0.00023000000022
+('double_played', ('Anger', 'Battle Trance')) | -0.01
+('single_played', 'Bash+') | 4.00000000134e-05
+('double_played', ('Disarm', 'Body Slam')) | 0.000210000000016
+('hand_to_exhaust', 'Strike+') | 0.0
+('double_played', ('Defend+', 'Pommel Strike')) | 0.0
+('double_played', ('Reckless Charge', 'Entrench+')) | 0.0
+('double_played', ('Battle Trance', 'Wild Strike')) | -0.01
+('hand_to_exhaust', 'Twin Strike') | -9.99985864083e-08
+('copy_hand', 'Reaper') | 0.0
+('double_played', ('Bash+', 'Thunderclap')) | 0.0
+('double_played', ('True Grit', 'Brutality')) | 0.0
+('discard_to_draw', 'Blood for Blood') | 0.0
+('double_played', ('Power Through', 'Dropkick')) | 0.0
+('single_played', 'Reckless Charge') | -0.0100000052018
+('double_played', ('Double Tap', 'Cleave')) | 0.000100000000205
+('double_played', ('Sentinel', 'Strike+')) | -0.01
+('double_played', ('Anger', 'Dual Wield')) | 0.01
+('double_played', ('Demon Form', 'Combust')) | 0.0
+('double_played', ('Exhume', 'Thunderclap')) | 0.000380000001253
+('double_played', ('Bash+', 'Twin Strike')) | -0.0100000014001
+('double_played', ('Reckless Charge', 'Hemokinesis')) | 0.0
+('double_played', ('Spot Weakness', 'Body Slam')) | 0.000170095813777
+('double_played', ('Thunderclap', 'Uppercut')) | 2.00000002551e-05
+('double_played', ('Carnage', 'Body Slam')) | -0.0100000020007
+('add_card', 'Brutality') | 2.07387876877e-10
+('double_played', ('Armaments', 'Fiend Fire')) | 0.0
+('double_played', ('Pummel', 'True Grit')) | 3.00000000374e-05
+('health_rest', 'True Grit+') | 5.00297847216e-09
+('double_played', ('Offering', 'Sentinel')) | 0.0
+('double_played', ('Anger', 'Limit Break')) | 0.0
+('double_played', ('Warcry+', 'Defend')) | 0.0
+('remove_card', 'Strike+') | 2.49149837009e-09
+('double_played', ('Anger+', 'Uppercut')) | 0.0
+('upgrade_rest', 'Entrench+') | 7.28560690075e-09
+('double_played', ('Strike', 'Strike')) | -0.0299999999999
+('double_played', ('Barricade', 'Sentinel')) | 0.0
+('double_played', ('Wild Strike', 'Strike+')) | 0.000449994599663
+('double_played', ('Thunderclap', 'Battle Trance')) | 8.01000620811e-05
+('double_played', ('Anger', 'Iron Wave')) | -0.0100000068008
+('double_played', ('Metallicize', 'Battle Trance')) | -0.01
+('double_played', ('Pommel Strike', 'Anger')) | 9.999399784e-06
+('double_played', ('Shock Wave', 'Iron Wave')) | 0.00013010001527
+('double_played', ('Pommel Strike', 'Corruption')) | 0.0
+('double_played', ('Second Wind', 'Second Wind')) | -0.01
+('single_played', 'Evolve') | -0.00999979995685
+('double_played', ('Cleave', 'Strike+')) | 4.01000170538e-05
+('double_played', ('Strike+', 'Wild Strike')) | 0.000179995397821
+('double_played', ('Defend', 'Metallicize+')) | 0.0
+('double_played', ('Rage', 'Rage')) | -0.01
+('double_played', ('Perfected Strike', 'Pummel')) | 0.0
+('remove_card', 'Bloodletting') | 5.6350644329e-09
+('double_played', ('Uppercut', 'Feel No Pain')) | 0.0
+('double_played', ('Evolve', 'Uppercut')) | 0.000159994599831
+('double_played', ('Reckless Charge', 'Clothesline')) | 0.000430000001036
+('double_played', ('Reckless Charge', 'Pommel Strike')) | 0.000309995199719
+('health_rest', 'Brutality+') | 0.0
+('double_played', ('Wild Strike', 'Twin Strike')) | 0.00015009741101
+('double_played', ('Inflame', 'Iron Wave')) | 0.0
+('double_played', ('Combust', 'Havoc')) | 0.0
+('add_card', 'Twin Strike+') | 1.14082260306e-10
+('double_played', ('Rupture', 'Shrug it off')) | 0.000270000000642
+('double_played', ('Exhume', 'Defend')) | -0.0100000072008
+('double_played', ('True Grit', 'Cleave')) | 0.0
+('double_played', ('Warcry', 'Shrug it off')) | -0.0100000022008
+('double_played', ('Shock Wave', 'Battle Trance')) | 0.0
+('double_played', ('Strike', 'Heavy Blade')) | -0.0100000015003
+('double_played', ('Iron Wave', 'Strike+')) | 0.00042009512552
+('double_played', ('Inflame', 'Seeing Red')) | 0.0
+('remove_card', 'Seeing Red') | 8.26230093799e-09
+('double_played', ('Bash', 'Battle Trance')) | -0.01
+('double_played', ('Thunderclap', 'Pommel Strike')) | 0.000179998099977
+('double_played', ('Warcry', 'Whirlwind')) | 9.9904945774e-06
+('double_played', ('Battle Trance', 'Uppercut')) | 0.0
+('double_played', ('Feed', 'Wild Strike')) | -0.0100000059014
+('double_played', ('Twin Strike', 'Double Tap')) | 0.0
+('double_played', ('Strike+', 'Warcry')) | -0.0100000022008
+('double_played', ('Warcry', 'Thunderclap')) | 0.0
+('upgrade_rest', 'Hemokinesis') | 1.04065599822e-10
+('copy_hand', 'Warcry') | -9.57001860846e-08
+('upgrade_rest', 'Offering') | 2.29716359449e-09
+('single_played', 'Heavy Blade') | -0.0100000015003
+('double_played', ('Entrench', 'Sentinel')) | 0.0
+('discard_to_draw', 'Thunderclap') | 5.30281935312e-09
+('double_played', ('True Grit', 'Dropkick')) | -0.0100000063004
+('double_played', ('Hemokinesis', 'Demon Form')) | 0.0
+('double_played', ('Body Slam', 'Cleave')) | 7.00000002141e-05
+('double_played', ('Defend', 'True Grit+')) | 0.000480000000027
+('single_played', 'Rage') | 0.000120000000263
+('double_played', ('Pommel Strike', 'Defend+')) | -0.0100000022003
+('double_played', ('Headbutt', 'Evolve')) | 2.00000001523e-05
+('double_played', ('Disarm', 'Bash')) | 1.99959995589e-05
+('double_played', ('Whirlwind', 'Bash+')) | -0.01
+('double_played', ('Body Slam', 'Bloodletting')) | 0.000340000000504
+('double_played', ('Brutality', 'Flex')) | 0.0
+('double_played', ('Pummel', 'Spot Weakness')) | 6.00000003725e-05
+('double_played', ('Metallicize', 'Carnage')) | 0.0
+('double_played', ('Second Wind', 'Bash+')) | 0.0
+('double_played', ('Flex', 'Second Wind')) | 0.0
+('add_card', 'Cleave') | 9.67813543896e-10
+('double_played', ('Demon Form', 'Iron Wave')) | 0.0
+('double_played', ('Pommel Strike', 'Pommel Strike')) | 0.00044000000078
+('double_played', ('Strike', 'Second Wind+')) | 0.0
+('double_played', ('Havoc', 'Evolve')) | 0.01
+('upgrade_rest', 'True Grit+') | 6.21934485858e-09
+('double_played', ('Iron Wave+', 'Defend')) | -0.00999989996391
+('double_played', ('Spot Weakness', 'Reckless Charge')) | -0.0100000001
+('remove_card', 'Warcry') | 4.59908563562e-10
+('health_rest', 'Hemokinesis+') | 2.43577723769e-08
+('double_played', ('Body Slam', 'Rage')) | 0.0
+('double_played', ('Berserk', 'Flex')) | 0.0
+('double_played', ('Anger', 'Pummel')) | 0.0
+('double_played', ('Limit Break', 'Thunderclap')) | 0.000160200066449
+('double_played', ('Sentinel', 'Juggernaut')) | 0.000460200077901
+('discard_to_draw', 'Headbutt') | -9.83981201306e-08
+('double_played', ('Fiend Fire', 'Bash')) | 0.000409997499791
+('double_played', ('Pummel', 'Warcry')) | 1.00000000692e-05
+('double_played', ('Seeing Red', 'Reckless Charge')) | 0.0
+('add_card', 'Body Slam+') | 2.89860092219e-09
+('double_played', ('Iron Wave', 'True Grit')) | 0.01
+('double_played', ('Rage', 'Headbutt')) | 0.000360000001229
+('double_played', ('Exhume', 'Strike+')) | 0.000469998799282
+('double_played', ('Defend+', 'Bash')) | -0.00999979997394
+('double_played', ('Strike+', 'Inflame')) | 0.0
+('double_played', ('Dual Wield', 'Headbutt')) | 0.000160000000218
+('double_played', ('Reaper', 'Cleave')) | 0.0
+('single_played', 'Entrench+') | 0.000280000000412
+('double_played', ('True Grit', 'Headbutt')) | 0.000260000000353
+('double_played', ('Rampage', 'Rupture')) | 9.99739976415e-06
+('double_played', ('True Grit', 'Reaper')) | 0.01
+('double_played', ('Defend', 'Corruption')) | -0.01
+('double_played', ('Strike', 'Metallicize')) | -0.01
+('double_played', ('Shrug it off', 'Reaper')) | 0.0
+('double_played', ('Reckless Charge', 'Evolve')) | 0.0
+('double_played', ('Bloodletting', 'Bash')) | -0.0100000069008
+('double_played', ('Clothesline', 'True Grit')) | 0.000559996699561
+('add_card', 'Immolate+') | 2.51723978989e-10
+('double_played', ('Strike+', 'Sentinel')) | 0.000410000000469
+('double_played', ('Battle Trance', 'Battle Trance')) | -0.01
+('double_played', ('Flex', 'Strike+')) | 0.000550000001103
+('discard_to_draw', 'Fiend Fire') | 6.80595149613e-09
+('single_played', 'Exhume') | -0.0099997999997
+('double_played', ('Sentinel', 'Bash+')) | 0.0
+('single_played', 'Armaments') | 4.99937976879e-05
+('remove_card', 'Dropkick') | 7.13945962907e-09
+('remove_card', 'Wild Strike') | 1.05826891784e-10
+('health_rest', 'Anger+') | 1.57647539396e-09
+('double_played', ('Sentinel', 'Uppercut')) | 0.0
+('double_played', ('Iron Wave', 'Flame Barrier')) | 0.00011020014425
+('remove_card', 'Clothesline') | 4.22524744448e-10
+('double_played', ('Wild Strike', 'Warcry')) | 0.00999998739734
+('double_played', ('Strike+', 'Evolve')) | 0.0
+('double_played', ('Pummel', 'Bash')) | -0.00999990159855
+('health_rest', 'Pummel') | 6.26641961651e-08
+('double_played', ('Bash', 'Pommel Strike')) | -0.0100000023002
+('double_played', ('Sentinel', 'Heavy Blade')) | 0.000169998798723
+('double_played', ('Heavy Blade', 'Pommel Strike')) | 0.000100000000234
+('double_played', ('Armaments', 'Shock Wave')) | 0.0
+('double_played', ('Bash', 'Second Wind')) | 0.00016000000001
+('double_played', ('Headbutt', 'Rage')) | 0.000190000000648
+('double_played', ('Strike+', 'Thunderclap+')) | 0.000109998199447
+('upgrade_rest', 'Entrench') | 1.41287835775e-08
+('double_played', ('Feel No Pain', 'Reaper')) | 1.00000001914e-05
+('double_played', ('Searing Blow', 'Armaments')) | 2.000000021e-05
+('remove_card', 'Pummel') | 9.55542641722e-09
+('discard_to_draw', 'Rampage') | 8.60063274994e-09
+('remove_card', 'Burning Pact') | 1.31365206449e-08
+('double_played', ('Sentinel', 'Cleave')) | 0.000290000000022
+('hand_to_exhaust', 'Whirlwind') | 3.79949599878e-09
+('double_played', ('Cleave', 'Demon Form')) | 0.000440000000003
+('double_played', ('Strike', 'Sever Soul+')) | 0.0
+('double_played', ('Defend', 'Headbutt')) | -0.01
+('double_played', ('Bash', 'Pummel')) | 6.00000001288e-05
+('double_played', ('Bludgeon', 'Strike')) | -0.01
+('double_played', ('Headbutt', 'Dark Embrace')) | 0.0
+('double_played', ('Body Slam', 'Disarm')) | 0.0
+('add_card', 'Sentinel+') | 3.71157109614e-09
+('double_played', ('Pommel Strike', 'Offering')) | 7.00000001254e-05
+('double_played', ('Power Through', 'Seeing Red')) | 0.00013999289893
+('double_played', ('Bash', 'Spot Weakness')) | -0.0100000081011
+('double_played', ('Entrench', 'Thunderclap')) | -0.01
+('add_card', 'Clothesline+') | 2.16326534055e-10
+('double_played', ('Body Slam', 'Rampage')) | 0.000200000000615
+('double_played', ('Rage', 'Rampage')) | 0.000380000000442
+('double_played', ('Dropkick', 'Armaments')) | -0.0100000018
+('double_played', ('Defend+', 'Armaments+')) | 0.0
+('double_played', ('Limit Break', 'Strike')) | -0.0100000072005
+('double_played', ('Dropkick', 'Flame Barrier')) | 0.0
+('remove_card', 'Battle Trance') | 9.45434400428e-09
+('double_played', ('Carnage', 'Double Tap')) | 0.0
+('double_played', ('Wild Strike', 'Strike')) | 0.000170000000374
+('double_played', ('Bash', 'Juggernaut')) | 0.0
+('double_played', ('Uppercut', 'Bash')) | 8.00976177911e-05
+('double_played', ('Clothesline', 'Exhume')) | -0.01
+('double_played', ('Twin Strike', 'Corruption')) | 0.0
+('double_played', ('Uppercut', 'Bloodletting')) | -0.01
+('double_played', ('Inflame', 'Rampage')) | 0.0
+('double_played', ('Strike', 'Rupture')) | 9.00000002436e-05
+('upgrade_rest', 'Intimidate') | 1.02818820719e-08
+('single_played', 'Metallicize') | -0.01
+('copy_hand', 'Iron Wave') | 0.0
+('double_played', ('Strike', 'Burning Pact')) | 6.0000000263e-05
+('remove_card', 'Whirlwind+') | 3.30180545915e-10
+('discard_to_draw', 'Searing Blow') | 0.0
+('discard_to_draw', 'Shrug it off') | 4.104769108e-09
+('double_played', ('Flame Barrier', 'Seeing Red')) | -0.00999990028592
+('double_played', ('Pummel', 'Body Slam')) | 0.0
+('double_played', ('Twin Strike', 'Body Slam')) | 0.0
+('double_played', ('Blood for Blood', 'Reckless Charge')) | 0.00026
+('double_played', ('Strike+', 'Armaments')) | 0.000479999699975
+('double_played', ('Iron Wave', 'Limit Break')) | -0.0100000063007
+('double_played', ('Warcry', 'Rage')) | 0.000170000005897
+('double_played', ('Thunderclap', 'Defend')) | -0.01
+('double_played', ('Twin Strike', 'Dropkick')) | -0.0100000055016
+('exhausted_to_hand', 'Strike') | -6.29532903613e-13
+('double_played', ('Immolate', 'Havoc')) | 0.0
+('double_played', ('Berserk', 'Rampage')) | 0.0
+('double_played', ('Berserk', 'Reckless Charge')) | 4.99990000547e-05
+('double_played', ('Thunderclap', 'Cleave')) | -0.0100000114031
+('double_played', ('Cleave', 'Iron Wave')) | -0.00999979999144
+('double_played', ('Power Through', 'Iron Wave')) | 0.0001
+('double_played', ('Pommel Strike', 'Second Wind')) | 0.0
+('double_played', ('Battle Trance', 'Thunderclap')) | -0.01
+('double_played', ('Thunderclap', 'Berserk')) | -0.0100000001
+('double_played', ('Bash', 'Feed')) | 7.01966437331e-05
+('double_played', ('Carnage', 'Headbutt')) | 1.99989999517e-05
+('double_played', ('Twin Strike', 'Clothesline')) | 0.0
+('double_played', ('Anger', 'Flex')) | 0.0
+('double_played', ('Flex', 'Inflame')) | 0.0
+('double_played', ('Armaments', 'Rampage')) | 0.01
+('hand_to_exhaust', 'Flame Barrier') | -4.47733072438e-13
+('double_played', ('Defend+', 'Strike+')) | 0.00042009512552
+('health_rest', 'Perfected Strike') | 4.63968347097e-08
+('discard_to_draw', 'Perfected Strike') | -2.00000526372e-07
+('double_played', ('Combust', 'Offering')) | 0.000370000006003
+('double_played', ('Thunderclap', 'Thunderclap')) | 0.000290000000443
+('double_played', ('Thunderclap', 'Body Slam')) | 0.000130100050038
+('double_played', ('Juggernaut', 'Body Slam')) | 0.0
+('hand_to_exhaust', 'Searing Blow') | 0.0
+('double_played', ('Bash+', 'Shrug it off')) | 0.000569994396729
+('double_played', ('True Grit', 'Twin Strike')) | -0.0100000016014
+('double_played', ('Armaments', 'Shrug it off')) | 0.010000100033
+('double_played', ('Sentinel', 'Iron Wave')) | 0.000249995499386
+('health_rest', 'Flame Barrier') | 7.86230735307e-08
+('add_card', 'Power Through') | 1.30684210794e-09
+('double_played', ('Bash', 'Brutality')) | 0.0
+('double_played', ('Bash', 'Anger+')) | 0.0
+('double_played', ('Battle Trance', 'Whirlwind')) | 0.0
+('double_played', ('Dropkick', 'Strike')) | -0.01
+('double_played', ('Strike', 'Anger+')) | -0.01
+('double_played', ('Searing Blow', 'Iron Wave')) | 0.0
+('double_played', ('Armaments', 'Defend')) | -0.0100000008007
+('double_played', ('Searing Blow', 'Pommel Strike')) | 0.0
+('double_played', ('Reckless Charge', 'Corruption')) | -0.00999989999737
+('double_played', ('Whirlwind', 'Warcry+')) | -0.0100000013103
+('hand_to_draw', 'Dazed') | 1.03800696376e-07
+('double_played', ('Flex', 'Reckless Charge')) | 0.00025999029973
+('double_played', ('Cleave', 'Pommel Strike')) | 0.0
+('double_played', ('Headbutt', 'Armaments')) | 5.00000000097e-05
+('remove_card', 'Iron Wave') | 1.07150510954e-10
+('discard_to_draw', 'Rupture') | -1.00000062991e-07
+('double_played', ('Clothesline', 'Limit Break')) | 0.0
+('double_played', ('Defend', 'Bloodletting+')) | 0.000169996799147
+('hand_to_draw', 'Shrug it off+') | 6.01573887358e-10
+('double_played', ('Armaments+', 'Anger')) | 0.0
+('double_played', ('Body Slam', 'Flex')) | 0.0
+('double_played', ('Dropkick', 'Rampage')) | -0.00999990028592
+('double_played', ('Carnage', 'Defend+')) | 6.00000000255e-05
+('double_played', ('Hemokinesis', 'Iron Wave')) | 0.0
+('double_played', ('Headbutt', 'Spot Weakness')) | 2.02000900177e-05
+('double_played', ('Iron Wave', 'Combust')) | 0.0
+('double_played', ('Pommel Strike', 'Perfected Strike')) | 0.000170000000394
+('double_played', ('Whirlwind', 'Strike')) | -0.01
+('double_played', ('Combust', 'Strike')) | -0.0100000010005
+('double_played', ('Pommel Strike', 'Rupture')) | 4.00000001715e-05
+('double_played', ('Cleave', 'Whirlwind')) | 0.000350200017161
+('double_played', ('Feed', 'Anger')) | 0.000139997699818
+('double_played', ('Twin Strike', 'Evolve')) | 0.0
+upgradeRest | 1.49905473141e-08
+('double_played', ('Defend', 'Shrug it off+')) | 0.000160000000066
+('double_played', ('Anger', 'Rage')) | 7.98999551403e-05
+('double_played', ('Strike+', 'Spot Weakness')) | 0.000379994198148
+('remove_card', 'Blood for Blood') | 1.19871231254e-08
+('add_card', 'Pommel Strike') | 9.70379271785e-10
+('remove_card', 'Sever Soul') | 3.78013350543e-10
+('copy_hand', 'Reckless Charge') | 1.25997867997e-08
+('double_played', ('Body Slam', 'Second Wind')) | 0.0
+('double_played', ('Bash', 'Impervious')) | 0.000220000000484
+('double_played', ('Wild Strike', 'Evolve')) | -0.0100000059014
+('discard_to_draw', 'Sentinel') | 5.20124011194e-09
+('double_played', ('Flex', 'Thunderclap')) | 1.00000000718e-05
+('health_rest', 'Carnage') | 1.08116334275e-07
+('double_played', ('Disarm', 'Sentinel')) | 0.000110000000401
+('double_played', ('Spot Weakness', 'Sentinel')) | 0.000170000000445
+('double_played', ('Strike', 'True Grit')) | -0.00999979991595
+('double_played', ('Clothesline', 'Dropkick')) | 7.00000000912e-05
+('double_played', ('Berserk', 'Sentinel')) | 0.000209997600522
+('discard_to_draw', 'Wild Strike') | 5.29953343488e-09
+('double_played', ('Wild Strike', 'Searing Blow')) | 0.0
+('double_played', ('Shrug it off', 'Dual Wield')) | 0.000129997999297
+('health_rest', 'Demon Form') | -3.01246092156e-08
+('double_played', ('Pommel Strike', 'Thunderclap')) | 1.00000000804e-05
+('double_played', ('Combust+', 'Sentinel')) | 0.0
+('double_played', ('Rampage', 'Berserk')) | 0.0
+('double_played', ('Shock Wave', 'Whirlwind')) | 0.0
+('double_played', ('Corruption', 'Dropkick')) | 0.0
+('hand_to_exhaust', 'Reaper') | 0.0
+('discard_to_draw', 'Armaments+') | -9.70992713378e-08
+('double_played', ('Feel No Pain', 'Defend')) | -0.0100000056183
+('double_played', ('Defend', 'Shrug it off')) | -0.0100000022006
+('remove_card', 'Reckless Charge') | 4.47684535174e-10
+('discard_to_draw', 'Disarm') | 7.19896731571e-09
+('add_card', 'Perfected Strike+') | 1.47980662402e-09
+('double_played', ('Rampage', 'Anger')) | 0.0
+('double_played', ('Flex', 'Headbutt')) | 1.00000000718e-05
+('add_card', 'Twin Strike') | 1.94161257663e-09
+('discard_to_draw', 'Entrench') | 4.0080697453e-10
+('hand_to_draw', 'Intimidate') | -1.00000205185e-07
+('health_rest', 'Strike+') | 1.87779284345e-07
+('double_played', ('Cleave', 'Reckless Charge')) | 0.000400100035927
+('double_played', ('Rage', 'Bloodletting')) | 0.000110000000307
+('discard_to_draw', 'Headbutt+') | 5.20124011194e-09
+('add_card', 'Exhume') | -4.21860616561e-15
+('health_rest', 'Offering') | 9.64670729071e-09
+('double_played', ('Pommel Strike', 'Clothesline')) | 0.000350000000001
+('double_played', ('Flame Barrier', 'Spot Weakness')) | -0.01
+('double_played', ('Burning Pact', 'Clothesline')) | 0.0
+('double_played', ('Fiend Fire', 'Twin Strike')) | 0.0
+('double_played', ('Clothesline', 'Havoc')) | 0.0
+('add_card', 'Bloodletting+') | 1.0409105345e-10
+('double_played', ('Anger+', 'Pommel Strike')) | 4.99855989816e-05
+('double_played', ('Second Wind', 'Corruption')) | 0.000190000000631
+('remove_card', 'Brutality') | 5.70646530691e-09
+('double_played', ('Iron Wave', 'Offering')) | -0.0100000040005
+('double_played', ('Clothesline', 'Combust')) | 0.000190000000313
+('double_played', ('Shock Wave', 'Strike+')) | 0.000370000000964
+('double_played', ('Twin Strike', 'Anger')) | -0.0100000000041
+('double_played', ('Warcry', 'Defend+')) | 0.0
+('double_played', ('Iron Wave+', 'Whirlwind')) | 0.0
+('single_played', 'Cleave') | -0.00999990093845
+('single_played', 'Sever Soul') | -0.0099999007788
+('double_played', ('Disarm', 'Impervious')) | 0.000560000000825
+('double_played', ('Shrug it off', 'Wild Strike')) | -0.00999990169251
+('discard_to_draw', 'Bludgeon') | 6.01469871795e-09
+('double_played', ('Bash', 'True Grit')) | 4.00000000451e-05
+('double_played', ('Clothesline', 'Demon Form')) | 0.0
+('double_played', ('Strike+', 'Shrug it off+')) | 0.0
+('double_played', ('Body Slam', 'Flame Barrier')) | 0.00011020014425
+('double_played', ('Combust', 'Bash')) | -0.0100000139131
+('single_played', 'Impervious') | -0.01
+('double_played', ('Shrug it off', 'Hemokinesis')) | 0.000309995798046
+('add_card', 'Body Slam') | 1.22293454243e-10
+('double_played', ('Corruption', 'Bash')) | 1.01000883155e-05
+('double_played', ('Metallicize', 'Limit Break')) | 0.0
+('double_played', ('Uppercut', 'Pommel Strike')) | -0.0100000004
+('double_played', ('Reckless Charge', 'Rage')) | 0.000560000000008
+('hand_to_draw', 'Clothesline') | -9.69960288647e-08
+('health_rest', 'Evolve') | 6.82541215502e-08
+('double_played', ('Uppercut', 'Shrug it off')) | 0.0
+('double_played', ('Bash+', 'Iron Wave')) | -0.0100000003
+('double_played', ('Anger', 'Demon Form')) | 9.99429816682e-06
+('double_played', ('Dropkick', 'Iron Wave')) | 0.000370000000791
+('health_rest', 'Impervious') | 6.0382141636e-08
+('double_played', ('Pommel Strike', 'Whirlwind')) | -0.0100000035003
+('remove_card', 'Rupture') | 1.10779014638e-10
+('double_played', ('Pommel Strike', 'Spot Weakness')) | -0.0100000012
+('double_played', ('Wild Strike', 'Rage')) | 0.000460000000013
+('upgrade_rest', 'Strike+') | 1.20087137121e-08
+('double_played', ('Sentinel+', 'Demon Form')) | 0.0
+('double_played', ('Armaments', 'Thunderclap')) | 0.0
+('double_played', ('Havoc', 'Combust')) | 0.0
+('double_played', ('Carnage', 'Thunderclap')) | 0.0
+('double_played', ('Wild Strike', 'Reckless Charge')) | -0.0100000032001
+('upgrade_rest', 'Twin Strike') | 3.30785588635e-09
+('add_card', 'Seeing Red') | 1.25920105149e-10
+('double_played', ('Bash', 'Thunderclap')) | 0.000130100050038
+('double_played', ('Combust', 'Juggernaut')) | 0.0
+('double_played', ('Warcry', 'Offering+')) | 0.0
+('double_played', ('Strike', 'Defend')) | -0.00999969986983
+('double_played', ('Inflame', 'Havoc')) | 0.00012999109795
+('double_played', ('Demon Form', 'Defend')) | 0.000410100041871
+('health_rest', 'Clothesline+') | 1.19894510223e-08
+('double_played', ('Reckless Charge', 'Wild Strike')) | 7.00000000102e-05
+('double_played', ('Pommel Strike', 'Sentinel')) | 6.99971990255e-05
+('double_played', ('Flex', 'Defend')) | 0.00025000000001
+('single_played', 'Combust') | -0.00999979996113
+('double_played', ('Brutality', 'Sentinel+')) | 0.000530000000998
+('double_played', ('Inflame', 'Second Wind')) | 0.0
+('double_played', ('Feel No Pain', 'Body Slam')) | 0.000109994696396
+('double_played', ('Searing Blow', 'Shrug it off')) | 6.99993004369e-05
+('double_played', ('Warcry', 'Defend')) | 0.000140300402678
+('double_played', ('Searing Blow', 'Spot Weakness')) | 0.0
+('copy_hand', 'Twin Strike') | 1.80287062405e-09
+('double_played', ('Iron Wave', 'Iron Wave')) | -0.0199995998505
+('double_played', ('Body Slam', 'Dropkick')) | 2.00000002551e-05
+('single_played', 'Shock Wave') | 6.00000000465e-05
+('double_played', ('Dual Wield', 'Reckless Charge')) | -0.0100000066026
+('double_played', ('Rampage', 'Seeing Red')) | 0.00039999559568
+('double_played', ('Berserk', 'Thunderclap')) | 5.01000344125e-05
+('health_rest', 'Dual Wield') | 2.85134176593e-08
+('double_played', ('Spot Weakness', 'Iron Wave')) | 0.000280000000391
+('remove_card', 'Cleave') | 3.40683816193e-09
+('double_played', ('Power Through', 'Strike')) | -0.0100000021004
+('double_played', ('Flame Barrier', 'Bash+')) | 0.0
+('double_played', ('Feed', 'Thunderclap')) | 6.02000221184e-05
+('double_played', ('Iron Wave+', 'Strike')) | 0.000199998298186
+('double_played', ('True Grit', 'Evolve')) | -0.00999989999494
+('hand_to_draw', 'Thunderclap') | 1.20367415686e-09
+('hand_to_exhaust', 'Fiend Fire') | 0.0
+('double_played', ('Carnage', 'Rupture')) | 0.0
+('double_played', ('Twin Strike', 'Havoc')) | 6.0000000082e-05
+('double_played', ('Second Wind', 'Defend')) | -0.02
+('double_played', ('Anger', 'Dark Embrace')) | 0.0
+('double_played', ('Hemokinesis', 'Body Slam')) | 0.0
+('double_played', ('Body Slam', 'Strike+')) | -0.00999990129641
+('double_played', ('Flame Barrier', 'Dropkick')) | 0.0
+('double_played', ('Defend', 'Sentinel+')) | 0.000690000000015
+('double_played', ('Shrug it off', 'Anger')) | 0.000290000000489
+('double_played', ('Anger', 'Defend+')) | -0.010000009402
+('health_rest', 'Inflame') | 9.81834864838e-08
+('double_played', ('Perfected Strike', 'Thunderclap')) | -0.0100000012
+('double_played', ('Second Wind', 'Rage')) | 0.0
+('hand_to_draw', 'Offering+') | 1.40861942018e-09
+('double_played', ('Bloodletting', 'Corruption')) | 6.00000004085e-05
+('double_played', ('Warcry', 'Strike+')) | 0.0
+('double_played', ('Flex', 'Pommel Strike')) | 2.00000001646e-05
+('double_played', ('Cleave', 'Double Tap')) | 0.0
+('double_played', ('Limit Break', 'Twin Strike')) | 0.000770000000007
+('double_played', ('Rage', 'Defend+')) | 0.000360000000342
+('double_played', ('Hemokinesis', 'Bash')) | 8.00000002049e-05
+('double_played', ('Inflame', 'Strike+')) | 0.000590000000024
+('double_played', ('Anger', 'Rampage')) | 9.999399784e-06
+('double_played', ('Sentinel', 'Armaments')) | 1.99876957852e-05
+('double_played', ('Body Slam', 'Perfected Strike')) | 0.000189990998751
+('double_played', ('Bash', 'Shrug it off+')) | 0.000609993598867
+('health_rest', 'Searing Blow+') | 9.78543614399e-10
+('double_played', ('Twin Strike', 'Heavy Blade')) | 0.0
+('double_played', ('Bloodletting', 'Twin Strike')) | 0.000250100027184
+('double_played', ('Seeing Red', 'Strike+')) | 0.0
+('double_played', ('Strike+', 'Defend')) | -0.010000002806
+('add_card', 'Wild Strike') | 1.26007155898e-10
+('double_played', ('Bloodletting', 'Reckless Charge')) | 0.0
+('double_played', ('Evolve', 'Cleave')) | 0.0
+('double_played', ('Defend', 'Warcry')) | 4.00000000451e-05
+('double_played', ('Blood for Blood', 'Body Slam')) | 0.0
+('double_played', ('Double Tap', 'Strike')) | 0.000290000000372
+('double_played', ('Cleave', 'Corruption')) | 0.0
+('single_played', 'Bloodletting+') | 1.00000000062e-05
+('double_played', ('Thunderclap', 'Immolate')) | 0.0
+('double_played', ('Hemokinesis', 'Feel No Pain')) | 1.99966998136e-05
+('add_card', 'Clothesline') | 8.85720108593e-10
+('double_played', ('Defend+', 'Reckless Charge')) | 0.00033000000005
+('double_played', ('Shrug it off', 'Battle Trance')) | 0.0
+('double_played', ('Strike', 'Second Wind')) | -0.01
+('double_played', ('Strike+', 'Brutality')) | 0.000530000000998
+('double_played', ('Wild Strike', 'Entrench')) | 0.0
+('double_played', ('Offering', 'Rampage')) | 0.0
+('double_played', ('Armaments', 'Inflame')) | -0.01
+('double_played', ('True Grit', 'Anger')) | -0.010000002302
+('add_card', 'Burning Pact') | 4.48053376828e-10
+('double_played', ('Seeing Red', 'Shrug it off')) | 0.000149997598941
+('double_played', ('Pommel Strike', 'Feed')) | 3.99949001085e-05
+('double_played', ('Strike', 'Body Slam+')) | 0.000280000000117
+('upgrade_rest', 'Flame Barrier+') | 5.52123371538e-10
+('double_played', ('Sentinel', 'True Grit')) | -0.0100000032013
+('health_rest', 'Second Wind+') | 0.0
+('discard_to_draw', 'Anger') | 9.97646864813e-10
+('hand_to_exhaust', 'Immolate') | -1.00000807674e-07
+('double_played', ('Whirlwind', 'Warcry')) | 0.000170000005897
+('double_played', ('Inflame', 'Entrench')) | 0.0
+('double_played', ('Battle Trance', 'Second Wind')) | -0.01
+('health_rest', 'Reaper') | 1.80320399642e-07
+('double_played', ('Iron Wave', 'Dual Wield')) | 0.000420000001568
+('double_played', ('Reaper', 'Wild Strike')) | 0.00999999389932
+('double_played', ('Disarm', 'Clothesline')) | 0.00061000000014
+('health_rest', 'Exhume+') | 0.0
+('double_played', ('Warcry', 'True Grit')) | 5.00000002888e-05
+('double_played', ('Strike+', 'Metallicize')) | -0.0100000056032
+('hand_to_draw', 'Carnage') | -9.69960288647e-08
+('add_card', 'Battle Trance') | 8.44828519242e-10
+('remove_card', 'Second Wind') | 6.08358425896e-11
+('double_played', ('Evolve', 'Twin Strike')) | 0.0
+('double_played', ('Pommel Strike', 'Heavy Blade')) | 0.000630300173641
+('double_played', ('Clothesline', 'Shrug it off')) | 0.000400000000549
+('remove_card', 'Entrench') | 1.12004061331e-10
+('double_played', ('Havoc', 'Flame Barrier')) | 0.0
+('double_played', ('Evolve', 'Shrug it off')) | 0.0
+('double_played', ('Body Slam', 'Entrench')) | 0.0
+('double_played', ('Headbutt', 'Disarm')) | 0.00061000000014
+('double_played', ('Bash', 'Dark Embrace')) | 0.0
+('double_played', ('Strike+', 'Perfected Strike')) | 0.0
+('double_played', ('Inflame', 'Dropkick')) | -0.01
+('double_played', ('Sentinel', 'Sentinel')) | -0.01
+('double_played', ('Shrug it off', 'Clothesline+')) | 8.9999099817e-05
+('double_played', ('Cleave', 'Headbutt')) | 0.000429987097892
+('double_played', ('Evolve', 'Hemokinesis')) | 0.0
+('double_played', ('Bash+', 'Reckless Charge')) | 5.00000003011e-05
+('double_played', ('Bloodletting', 'Headbutt')) | 0.000130096214582
+('double_played', ('Iron Wave', 'Strike')) | -0.00999979992526
+('double_played', ('Shrug it off+', 'Defend')) | 0.000160000000066
+('double_played', ('Evolve', 'Brutality')) | -0.01
+('hand_to_exhaust', 'Sever Soul+') | 0.0
+('double_played', ('Ghostly Armor', 'Strike+')) | -0.0100000049007
+('double_played', ('Twin Strike', 'Flex')) | 0.0
+('copy_hand', 'Body Slam') | 0.0
+('add_card', 'Power Through+') | 7.02941552021e-14
+('health_rest', 'Strike') | 3.72813431325e-06
+('double_played', ('Armaments', 'Anger')) | -0.01
+('double_played', ('Uppercut', 'Strike+')) | 0.0
+('double_played', ('Flame Barrier', 'Warcry')) | 0.000160000000013
+('double_played', ('Strike', 'Offering+')) | 0.000340100025251
+('double_played', ('Bash', 'Sentinel')) | 0.000400000000356
+('double_played', ('Defend', 'Bash+')) | 0.000180000000233
+('double_played', ('Corruption', 'Burning Pact')) | 0.000199999899982
+('upgrade_rest', 'Whirlwind') | 3.89249254617e-12
+('double_played', ('Power Through', 'Shrug it off')) | 0.0
+('remove_card', 'Defend+') | 5.6350644329e-09
+('double_played', ('Pommel Strike', 'Impervious')) | 0.000610096528101
+('double_played', ('Immolate', 'Berserk')) | -0.00999989998993
+('upgrade_rest', 'Limit Break') | 2.79288618601e-09
+('double_played', ('Berserk', 'Pommel Strike')) | 0.000200000000007
+('player', <Status.FRAIL: 4>) | -0.00999999999998
+('double_played', ('Clothesline', 'Rage')) | 0.0
+('upgrade_rest', 'Brutality') | 4.48030915894e-10
+('double_played', ('Exhume', 'Rupture')) | 0.0
+('double_played', ('Bludgeon', 'Reckless Charge')) | 0.0
+('single_played', 'Rupture') | -0.0100000072008
+('double_played', ('Reaper', 'Twin Strike')) | 0.0
+('double_played', ('Reckless Charge', 'Defend+')) | 7.99969992054e-05
+('double_played', ('Headbutt', 'Headbutt')) | -0.0100000016005
+('double_played', ('Bash', 'Reckless Charge')) | -0.01
+('double_played', ('Iron Wave', 'Pummel')) | -0.0100000036003
+('double_played', ('Metallicize', 'Seeing Red')) | -0.01
+('double_played', ('Sentinel', 'Wild Strike')) | 9.99809978139e-06
+('single_played', 'Reaper') | -0.01
+('add_card', 'Iron Wave') | 1.22293454243e-10
+('double_played', ('Pommel Strike', 'Reckless Charge')) | -0.01
+('double_played', ('Sentinel', 'Dropkick')) | 0.000190000000338
+('double_played', ('Evolve', 'Pummel')) | -0.0100000016001
+('double_played', ('Defend+', 'Shrug it off')) | 0.000849981392411
+('double_played', ('Warcry', 'Twin Strike')) | 0.000120000000194
+('double_played', ('Armaments', 'Battle Trance')) | -0.00999999999579
+('double_played', ('Bloodletting', 'Bloodletting')) | -0.0100000019009
+('double_played', ('Strike', 'Twin Strike')) | -0.00999959997907
+('double_played', ('Intimidate', 'Clothesline')) | 0.0
+('double_played', ('Bloodletting+', 'Defend')) | 1.00000000062e-05
+('double_played', ('Carnage', 'Iron Wave')) | 0.0
+('double_played', ('Headbutt', 'Strike')) | -0.01
+('double_played', ('Rage', 'Berserk')) | 0.0
+('double_played', ('Wild Strike', 'True Grit')) | 0.000150000000198
+('double_played', ('Second Wind', 'Strike')) | -0.0100000101009
+('double_played', ('Reckless Charge', 'Sever Soul')) | 0.0
+('double_played', ('Perfected Strike', 'Heavy Blade')) | 0.000170099878936
+('double_played', ('Bloodletting', 'Strike+')) | 2.00000001325e-05
+('double_played', ('Entrench+', 'Defend')) | 0.0
+('double_played', ('Bash', 'Armaments')) | 0.000540000000007
+('double_played', ('Twin Strike', 'Limit Break')) | 0.0
+('add_card', 'Sever Soul') | 2.39296738521e-09
+('double_played', ('Headbutt', 'Whirlwind')) | 0.000160091623344
+('discard_to_draw', 'Evolve') | 0.0
+('double_played', ('Warcry', 'Flame Barrier')) | 3.00000000361e-05
+('double_played', ('Bloodletting', 'Shrug it off')) | 6.00000002362e-05
+('double_played', ('Shrug it off', 'Offering')) | 0.0
+('double_played', ('Anger', 'Sever Soul')) | 3.99974995889e-05
+('double_played', ('Thunderclap', 'Strike+')) | 9.00000001859e-05
+('double_played', ('Brutality', 'Reckless Charge')) | 0.000179996099523
+('health_rest', 'Bloodletting+') | 0.0
+('double_played', ('Bloodletting', 'True Grit')) | -0.00999990221788
+('remove_card', 'Anger') | 4.59908563562e-10
+('double_played', ('Offering', 'Pommel Strike')) | 0.0
+('double_played', ('Impervious', 'Combust')) | 0.0
+('double_played', ('Flame Barrier+', 'Brutality')) | 0.0
+('single_played', 'Body Slam') | -0.00999990129641
+('double_played', ('Feel No Pain', 'Strike+')) | 0.000160000000544
+('double_played', ('Strike', 'Disarm')) | 0.000240000000043
+('double_played', ('Hemokinesis', 'Wild Strike')) | -0.00999989998555
+('single_played', 'Headbutt+') | 0.000380000000868
+('upgrade_rest', 'Searing Blow') | 5.41193733915e-09
+('double_played', ('Uppercut', 'Demon Form')) | 0.0
+('copy_hand', 'Cleave') | 0.0
+('double_played', ('Strike', 'Brutality')) | -0.01
+('double_played', ('Defend', 'Carnage')) | -0.0100000027004
+('health_rest', 'Bludgeon+') | 0.0
+('double_played', ('Anger', 'Entrench')) | 7.99987997619e-05
+('double_played', ('Strike', 'Juggernaut')) | -0.0100000050002
+('double_played', ('Wild Strike', 'Feel No Pain')) | 0.000370000004996
+('add_card', 'Havoc') | 9.67813543896e-10
+('double_played', ('Rage', 'Strike')) | 6.99916990705e-05
+('double_played', ('Strike', 'True Grit+')) | 0.000180000000041
+('double_played', ('Sentinel', 'Defend+')) | 0.000110000000241
+('double_played', ('Reckless Charge', 'Bash+')) | 2.00000001788e-05
+('add_card', 'Cleave+') | 1.21119740921e-09
+('double_played', ('Berserk', 'Blood for Blood')) | 1.99994000411e-05
+('double_played', ('Thunderclap', 'Offering')) | 0.0
+('double_played', ('Bloodletting', 'Pommel Strike')) | 0.0
+('health_rest', 'Immolate') | 5.4495845618e-08
+('double_played', ('Strike', 'Sentinel+')) | 0.000290000001197
+('single_played', 'Wild Strike+') | 0.000390000000027
+('double_played', ('Rupture', 'Uppercut')) | 0.0
+('double_played', ('Barricade', 'Anger')) | 0.0
+('double_played', ('Bloodletting', 'Defend+')) | 9.99699948764e-06
+('double_played', ('Perfected Strike', 'Rampage')) | 0.000280000000477
+('double_played', ('Pommel Strike', 'Rage')) | -0.0100000016001
+('double_played', ('Sentinel', 'Rampage')) | 9.00000000336e-05
+('double_played', ('Shock Wave', 'Defend')) | 6.00000000465e-05
+('double_played', ('Strike', 'Pommel Strike+')) | -0.01
+health | -0.000749962424423
+('hand_to_draw', 'True Grit') | 7.60079610152e-09
+('health_rest', 'Twin Strike') | 3.06825971058e-07
+('single_played', 'Clothesline') | -0.0100000012
+('double_played', ('Defend', 'Body Slam')) | -0.00999959996365
+('double_played', ('Combust', 'Anger')) | 0.00026040016887
+('double_played', ('Bash+', 'Headbutt')) | 9.99953968177e-05
+('double_played', ('Shrug it off', 'Iron Wave+')) | 0.01
+('double_played', ('Shrug it off', 'Power Through')) | 0.0
+('upgrade_rest', 'Dual Wield') | 6.05007659587e-09
+('double_played', ('Defend', 'Spot Weakness')) | -0.01
+('double_played', ('Sentinel', 'Seeing Red')) | 0.0
+('double_played', ('Rage', 'Entrench')) | 0.0
+('double_played', ('Defend', 'Anger+')) | 0.010000100033
+('single_played', 'Thunderclap') | -0.01
+('double_played', ('Reckless Charge', 'Dropkick')) | 0.000230000000757
+('double_played', ('Bash+', 'Sentinel')) | 0.0
+('hand_to_draw', 'Rage') | 7.99741503642e-09
+('double_played', ('Rampage', 'Strike+')) | 8.99983990421e-05
+('double_played', ('Disarm', 'Sever Soul')) | 0.000270000000592
+('add_card', 'Sever Soul+') | 1.25148501334e-09
+('double_played', ('Defend', 'Heavy Blade+')) | 0.0
+('double_played', ('Twin Strike', 'Strike+')) | -0.01
+('double_played', ('Heavy Blade', 'Offering')) | 0.000220000003847
+('double_played', ('Dropkick', 'Corruption')) | 0.000310000000498
+('double_played', ('Sever Soul', 'Impervious')) | 7.99980988061e-05
+('double_played', ('Entrench', 'Strike')) | -0.0100000001
+('double_played', ('Sentinel', 'Flex')) | 8.00000002049e-05
+('add_card', 'Armaments+') | -4.71919982467e-14
+('add_card', 'Rupture') | 1.96456620324e-09
+('double_played', ('Bash', 'Uppercut')) | 0.000240000000642
+('double_played', ('Strike+', 'Dropkick')) | -0.0100000066046
+('double_played', ('Strike', 'Entrench')) | -0.00999969988251
+('double_played', ('Whirlwind', 'Defend')) | 0.000350200017161
+('double_played', ('Metallicize', 'Uppercut')) | 0.0
+('health_rest', 'Shock Wave+') | 0.0
+('double_played', ('Clothesline', 'Thunderclap')) | 0.01
+('double_played', ('Heavy Blade', 'Shrug it off')) | 0.0
+('double_played', ('Body Slam+', 'Shock Wave')) | 0.0
+('add_card', 'Uppercut') | 8.85720108593e-10
+('double_played', ('Perfected Strike', 'Pommel Strike')) | 0.0
+('double_played', ('Brutality', 'Feel No Pain')) | 0.0
+('double_played', ('Headbutt', 'Berserk')) | 0.0
+('double_played', ('Shrug it off', 'Rage')) | -0.01
+('double_played', ('Entrench', 'Clothesline')) | 7.99979992915e-05
+('double_played', ('Combust', 'Reckless Charge')) | -0.0099998999814
+('health_rest', 'Flame Barrier+') | 5.43474752084e-09
+('double_played', ('Reckless Charge', 'Power Through')) | 0.000210000000659
+('double_played', ('Strike+', 'Pommel Strike')) | 0.000280000000144
+('health_rest', 'Reckless Charge') | 2.21532851931e-07
+('double_played', ('Combust', 'Defend')) | -0.00999990565048
+('double_played', ('Flame Barrier', 'Cleave')) | 0.0
+('double_played', ('Anger', 'Juggernaut')) | 0.0
+('double_played', ('Reckless Charge', 'Dark Embrace')) | 0.000330000000679
+('double_played', ('Perfected Strike', 'Shrug it off')) | 0.0
+('double_played', ('Rampage', 'Carnage')) | 0.0
+('double_played', ('Whirlwind', 'Pummel')) | 0.000170099114484
+('double_played', ('Offering', 'Headbutt')) | 5.99979998167e-05
+('double_played', ('Strike+', 'Whirlwind')) | 0.0
+('remove_card', 'Whirlwind') | 2.38714607214e-09
+('upgrade_rest', 'Defend+') | 1.23142988706e-08
+('double_played', ('Perfected Strike', 'Strike')) | -0.0100000004
+('health_rest', 'Carnage+') | 0.0
+('double_played', ('Dark Embrace', 'Rampage')) | 0.000219993399055
+('double_played', ('Strike+', 'Twin Strike')) | 0.000520000000027
+('remove_card', 'Perfected Strike') | 3.79496862505e-09
+('double_played', ('Strike+', 'Anger')) | 0.000319999900039
+('double_played', ('Shrug it off', 'Havoc')) | 0.00025009695149
+('double_played', ('Pommel Strike', 'Armaments')) | 0.000189999399733
+('double_played', ('Evolve', 'Defend')) | -0.01
+('double_played', ('Second Wind', 'Clothesline')) | 0.000130000000012
+('double_played', ('Warcry', 'Reckless Charge')) | 0.0
+('double_played', ('Dropkick', 'Cleave')) | 0.000169999803158
+('double_played', ('Strike+', 'Iron Wave')) | -0.0100000023003
+('discard_to_draw', 'Twin Strike') | 4.00816562662e-09
+('add_card', 'Rampage') | 2.75492541059e-09
+('health_rest', 'Second Wind') | 5.1924389833e-08
+('discard_to_draw', 'Strike+') | 7.19896731571e-09
+('double_played', ('Seeing Red', 'Bash')) | 0.000370000000576
+('double_played', ('Hemokinesis', 'Headbutt')) | 2.00000001523e-05
+('double_played', ('Rage', 'Shock Wave')) | 0.0
+('health_rest', 'Rage+') | 0.0
+('double_played', ('Second Wind', 'Body Slam')) | -0.0100000070003
+('double_played', ('Whirlwind', 'Double Tap')) | 0.0
+('upgrade_rest', 'Dark Embrace') | 2.72496429415e-09
+('double_played', ('Hemokinesis+', 'Defend')) | 0.000180000000747
+health_rest | 1.08680846e-11
+('double_played', ('Burning Pact', 'Thunderclap')) | -0.00999989999077
+('double_played', ('Feel No Pain', 'Clothesline')) | 0.0
+('discard_to_draw', 'Berserk') | 3.79972476852e-09
+('double_played', ('Strike', 'Flame Barrier+')) | 0.000559996998616
+('double_played', ('Dual Wield', 'Pommel Strike')) | -0.0100000028008
+('double_played', ('Defend', 'Demon Form')) | -0.01
+('double_played', ('Bash', 'Headbutt+')) | 1.0000000002e-05
+('double_played', ('Shrug it off+', 'Evolve')) | -0.0100000008001
+('double_played', ('Headbutt', 'Rupture')) | 0.0
+('discard_to_draw', 'Second Wind') | -9.66720100866e-08
+('add_card', 'Offering+') | 2.57524361555e-09
+('double_played', ('Anger', 'Cleave')) | -0.0100000058008
+('double_played', ('Carnage+', 'Anger')) | 0.000190000000018
+('double_played', ('Flex', 'Strike')) | 0.00010000000046
+('upgrade_rest', 'Sever Soul') | -3.81339703294e-13
+('double_played', ('Dual Wield', 'Whirlwind')) | 0.000429999990802
+('double_played', ('Clothesline', 'Reckless Charge')) | -0.0100000009001
+('double_played', ('Defend', 'Cleave')) | -0.0100000000007
+('double_played', ('Havoc', 'Strike')) | -0.00999989991753
+('double_played', ('Spot Weakness', 'Berserk')) | -0.01
+('double_played', ('Whirlwind', 'Power Through')) | 0.0
+('hand_to_draw', 'Bloodletting') | 5.3997957302e-09
+('double_played', ('Heavy Blade', 'Strike')) | -0.0100000038023
+('discard_to_draw', 'Carnage') | 2.03006051121e-10
+('double_played', ('Iron Wave+', 'Pommel Strike')) | 0.0
+('single_played', 'True Grit+') | 0.000440000000488
+('health_rest', 'Sever Soul+') | 7.34603523756e-09
+('hand_to_draw', 'Inflame') | 7.00272302606e-09
+('double_played', ('Shrug it off', 'Headbutt')) | -0.01
+('double_played', ('Feel No Pain', 'Metallicize')) | 0.000369992797579
+('hand_to_draw', 'Spot Weakness') | 3.11502426143e-09
+('discard_to_draw', 'Body Slam') | 5.19689195565e-09
+('hand_to_draw', 'Anger') | -9.73993417527e-08
+('double_played', ('Bloodletting', 'Thunderclap')) | 0.000320200092844
+('double_played', ('Dropkick', 'Shrug it off')) | 0.0
+('double_played', ('Defend', 'Twin Strike+')) | 0.0
+('double_played', ('Evolve', 'Second Wind')) | 0.01
+('hand_to_exhaust', 'Wound') | 0.0
+('double_played', ('Rage', 'Clothesline')) | 0.000159996198695
+('double_played', ('Uppercut', 'True Grit')) | 0.0
+('double_played', ('Perfected Strike', 'Berserk')) | 0.0
+('double_played', ('Armaments', 'Strike')) | 4.99937976879e-05
+('double_played', ('Sentinel', 'Combust')) | 0.0
+('double_played', ('Impervious', 'Defend')) | -0.00999989992697
+('double_played', ('Body Slam', 'Feed')) | 9.00000000218e-05
+('double_played', ('Hemokinesis', 'Dropkick')) | -0.0100000068008
+('discard_to_draw', 'Reckless Charge') | 6.40206118292e-09
+('double_played', ('Defend', 'Disarm')) | 4.01000603409e-05
+('double_played', ('Offering', 'Corruption')) | 0.0
+('double_played', ('Blood for Blood', 'Strike')) | -0.0100000031008
+('double_played', ('Feel No Pain', 'Evolve')) | 0.0
+('double_played', ('Thunderclap', 'Limit Break')) | 0.000260000000046
+('double_played', ('Battle Trance', 'Iron Wave')) | -0.01
+('double_played', ('Barricade', 'Dropkick')) | 0.0
+('double_played', ('Strike', 'Body Slam')) | -0.00999990129641
+('double_played', ('Defend+', 'Flex')) | 0.0
+('double_played', ('Defend', 'Strike')) | -0.00999979918774
+('double_played', ('Whirlwind', 'Body Slam')) | -0.01
+('double_played', ('Defend', 'Sever Soul')) | -0.0099999007788
+('double_played', ('Bash+', 'Disarm')) | 0.0
+('double_played', ('Twin Strike', 'Demon Form')) | 0.0
+('double_played', ('Entrench', 'Dropkick')) | -0.0100000034002
+('remove_card', 'Strike') | 4.22524744448e-10
+('double_played', ('Cleave', 'Warcry')) | 9.00000007181e-05
+('double_played', ('Feed', 'Defend+')) | 0.000590000000821
+('double_played', ('Defend', 'Armaments')) | 0.000110000000004
+('double_played', ('Clothesline+', 'Second Wind')) | 0.0
+('double_played', ('Dark Embrace', 'Bash')) | -0.0100000178017
+('double_played', ('Hemokinesis', 'Dual Wield')) | -0.0100000999996
+('copy_hand', 'Rage') | 0.0
+('remove_card', 'Fiend Fire') | -5.19658960457e-13
+('double_played', ('Battle Trance', 'Bloodletting')) | -0.01
+('double_played', ('Clothesline', 'Rampage')) | 3.00000000239e-05
+('double_played', ('Flex', 'Heavy Blade')) | 0.0
+('copy_hand', 'Bloodletting') | 0.0
+('double_played', ('Defend', 'Combust')) | -0.00999979996113
+('double_played', ('Demon Form', 'Bash')) | 4.00000014523e-05
+('double_played', ('Dark Embrace', 'Cleave')) | 0.000110000001832
+('double_played', ('Strike', 'Inflame')) | -0.0100000008041
+('upgrade_rest', 'Sentinel') | 9.4078637434e-10
+('double_played', ('Feed', 'Twin Strike')) | 0.0
+('double_played', ('Cleave+', 'Strike')) | 0.000179999700023
+('double_played', ('Metallicize+', 'Strike')) | 3.00000001082e-05
+('double_played', ('Defend', 'Wild Strike')) | -0.00999989999623
+('copy_hand', 'Strike+') | 5.21250848414e-09
+('double_played', ('Evolve', 'Limit Break')) | 5.00000005215e-05
+('upgrade_rest', 'True Grit') | 1.49905473141e-08
+('double_played', ('Evolve', 'Clothesline')) | 0.000669991606718
+('double_played', ('Hemokinesis', 'Perfected Strike')) | 0.0
+('double_played', ('Thunderclap', 'Evolve')) | 0.0
+('double_played', ('Defend+', 'True Grit')) | 5.00000003495e-05
+('hand_to_draw', 'Defend+') | 5.09945421303e-09
+('remove_card', 'Inflame') | 1.19871231254e-08
+('add_card', 'Second Wind') | 1.42833292151e-09
+('add_card', 'Second Wind+') | 7.92397250679e-09
+('hand_to_exhaust', 'Burning Pact') | -9.91990478124e-08
+('double_played', ('Carnage', 'Defend')) | -0.0100000071002
+('hand_to_exhaust', 'Dropkick') | 0.0
+('health_rest', 'Spot Weakness') | 3.82741621199e-08
+('hand_to_draw', 'Wound') | 7.00272302606e-09
+('double_played', ('Offering', 'True Grit')) | 0.0
+('double_played', ('Rampage+', 'Disarm')) | 5.0000000113e-05
+('double_played', ('Flex', 'Bloodletting')) | 0.0
+('double_played', ('Twin Strike', 'Strike')) | 9.01000461275e-05
+('double_played', ('True Grit', 'Pommel Strike')) | 0.000610096528101
+('discard_to_draw', 'Pommel Strike') | 3.79953637013e-09
+('double_played', ('Bloodletting', 'Strike')) | -0.02
+('double_played', ('Brutality', 'Pommel Strike')) | 4.00000002367e-05
+('double_played', ('Offering', 'Reckless Charge')) | 0.000180000000389
+('double_played', ('Body Slam+', 'Bash')) | 0.0
+('double_played', ('Carnage', 'Rampage')) | 0.0
+('double_played', ('Wild Strike', 'Metallicize+')) | 0.000170095813777
+('upgrade_rest', 'Immolate') | 1.20087137121e-08
+('double_played', ('Warcry', 'Armaments')) | 0.000160000000013
+('single_played', 'Battle Trance') | -0.01
+('double_played', ('Ghostly Armor', 'Sever Soul')) | 0.00014999459764
+('double_played', ('Dropkick', 'Pommel Strike')) | 0.000300000000567
+('double_played', ('Clothesline', 'Strike+')) | 0.00048000000002
+('double_played', ('Corruption', 'Defend')) | 0.000190000000631
+('double_played', ('Perfected Strike', 'Sentinel')) | 2.99982999087e-05
+('discard_to_draw', 'Metallicize') | 6.90592196147e-09
+('double_played', ('Bash', 'Perfected Strike')) | 1.99962998551e-05
+('double_played', ('Rampage', 'Wild Strike')) | 0.000280000000477
+('double_played', ('Cleave', 'Cleave')) | 4.01000170538e-05
+('double_played', ('Combust', 'Twin Strike')) | 0.0
+('double_played', ('Rampage', 'Defend')) | 3.00000000093e-05
+('health_rest', 'Disarm') | 1.35806656717e-08
+('double_played', ('Berserk', 'Defend+')) | 0.000219992899293
+('double_played', ('Bash', 'Body Slam+')) | 0.0
+('double_played', ('Whirlwind', 'Dark Embrace')) | 0.0
+('double_played', ('Bloodletting', 'Body Slam')) | 0.0
+('double_played', ('Rage', 'Evolve')) | 0.0
+('double_played', ('Rampage', 'Entrench')) | 1.99991999788e-05
+('double_played', ('Bash', 'Strike+')) | -0.00999990037775
+('add_card', 'Heavy Blade') | 1.08371306529e-10
+('double_played', ('Spot Weakness', 'Wild Strike')) | 0.000240000000237
+('single_played', 'Intimidate') | 0.000199997798357
+('double_played', ('Battle Trance', 'Bash')) | -0.00999999999579
+('double_played', ('Defend', 'Evolve')) | -0.00999979995685
+('double_played', ('Headbutt', 'Body Slam')) | 0.000119991993331
+('exhausted_to_hand', 'Bash') | 0.0
+('double_played', ('Iron Wave', 'Heavy Blade')) | 2.00000002036e-05
+('double_played', ('Inflame', 'Offering')) | 0.000410000000886
+('hand_to_draw', 'Headbutt') | 2.17211783602e-09
+('add_card', 'Warcry+') | 7.02934110274e-09
+('double_played', ('Intimidate', 'Defend')) | 0.000110200154744
+('double_played', ('Body Slam', 'Juggernaut')) | 0.000520000001854
+('double_played', ('Impervious', 'Sentinel')) | 0.0
+('double_played', ('Strike', 'Feel No Pain')) | -0.0100000056183
+('double_played', ('Anger+', 'Defend')) | -0.01
+('double_played', ('Metallicize', 'Bash')) | -0.00999980179698
+('double_played', ('Bash', 'Reaper')) | 0.0
+('double_played', ('Rampage', 'Body Slam')) | 0.000640000000666
+('double_played', ('Reckless Charge', 'True Grit')) | 0.00022
+('double_played', ('Body Slam', 'Limit Break')) | 0.0
+('double_played', ('Reckless Charge', 'Headbutt')) | 0.000120000000008
+('double_played', ('Sentinel', 'Whirlwind')) | 0.000160000000002
+('add_card', 'Bloodletting') | 2.66726605337e-10
+('discard_to_draw', 'Reaper') | 0.0
+('double_played', ('Bash', 'Combust')) | 0.000159993794175
+('double_played', ('Shrug it off', 'Feel No Pain')) | 8.99975994149e-05
+('double_played', ('Whirlwind', 'Carnage')) | 0.0
+('double_played', ('Flex', 'Wild Strike')) | 0.0
+('single_played', 'Flame Barrier+') | 0.000559996998616
+('hand_to_draw', 'Hemokinesis') | 0.0
+('double_played', ('Sentinel+', 'Uppercut')) | 0.0
+('double_played', ('Strike+', 'Corruption')) | 0.0
+('add_card', 'Anger') | 2.66726605337e-10
+('upgrade_rest', 'Combust+') | 0.0
+('double_played', ('Bloodletting', 'Heavy Blade')) | 0.000119997899219
+('health_rest', 'Shrug it off+') | 5.10572088857e-09
+normalRandom | 3.99705882491e-09
+('double_played', ('Juggernaut', 'Limit Break')) | 0.0
+('double_played', ('Anger+', 'Strike')) | 0.0
+('double_played', ('Metallicize', 'Ghostly Armor')) | 0.0
+('double_played', ('Twin Strike', 'Bash+')) | 0.0
+('double_played', ('Body Slam', 'Defend')) | -0.0100000012001
+('double_played', ('Exhume', 'Strike')) | -0.02
+('double_played', ('Body Slam', 'Brutality')) | -0.0100000030007
+('double_played', ('Rage', 'Flame Barrier')) | 0.000220000000715
+('double_played', ('Sever Soul', 'Pommel Strike')) | 0.0
+('double_played', ('Combust', 'Shrug it off')) | 9.00000001824e-05
+('add_card', 'Dual Wield') | 5.60414130946e-10
+('double_played', ('Shrug it off', 'Flame Barrier')) | 0.0
+('remove_card', 'Flex') | 5.6350644329e-09
+('double_played', ('Bash', 'Entrench')) | 0.00071020004284
+('double_played', ('Corruption', 'Clothesline')) | 0.00010999459736
+('double_played', ('Defend', 'Flex')) | -0.01
+('double_played', ('Rupture', 'Spot Weakness')) | 0.0
+('double_played', ('Strike', 'Spot Weakness')) | -0.0100000032006
+('single_played', 'Feel No Pain') | -0.0100000056183
+('double_played', ('Anger', 'Dropkick')) | 0.0
+('double_played', ('Shock Wave', 'Twin Strike')) | 0.000160000000383
+('double_played', ('Body Slam', 'Offering')) | 0.000130000000502
+('single_played', 'Shrug it off+') | -0.0100000008001
+('double_played', ('Combust+', 'Defend')) | 0.0
+('double_played', ('Flame Barrier', 'Body Slam')) | 0.0
+('single_played', 'Combust+') | 0.000149996999367
+('double_played', ('Defend', 'Fiend Fire')) | 0.000190000000239
+('double_played', ('Shrug it off', 'Iron Wave')) | 0.000520000000859
+('double_played', ('Strike', 'Fiend Fire')) | 3.00000001742e-05
+('double_played', ('Armaments', 'Cleave')) | 0.000399992102079
+('double_played', ('Barricade', 'Strike')) | 0.00011020014425
+('double_played', ('Evolve', 'Reckless Charge')) | -0.00999989999555
+('upgrade_rest', 'Shrug it off') | 5.77931240558e-09
+('double_played', ('Bash', 'Exhume')) | -0.0099997999997
+('upgrade_rest', 'Carnage') | 4.29506109902e-09
+('double_played', ('Feed', 'Dropkick')) | 0.0
+('double_played', ('Carnage', 'Pommel Strike')) | 0.0
+('double_played', ('Flex', 'Shrug it off')) | 0.01
+('double_played', ('Intimidate', 'Pommel Strike')) | 0.000120000000399
+('copy_hand', 'Strike') | -3.29778363751e-14
+('double_played', ('True Grit', 'Flame Barrier')) | 6.99961976288e-05
+('double_played', ('Feel No Pain', 'Dropkick')) | 1.00000003731e-05
+('double_played', ('Rampage', 'Spot Weakness')) | 0.000399972796094
+('copy_hand', 'Whirlwind') | 7.20293304697e-09
+('double_played', ('Bash', 'Feel No Pain')) | -0.00999990317949
+('hand_to_exhaust', 'Thunderclap') | -1.00005561373e-07
+('hand_to_draw', 'Sever Soul') | 3.19957365209e-09
+('double_played', ('Feed', 'Body Slam')) | 9.99937985444e-05
+('double_played', ('Offering', 'Thunderclap')) | 0.0
+('double_played', ('Second Wind', 'True Grit')) | 0.0
+('double_played', ('Strike', 'Limit Break')) | 3.0000000001e-05
+('double_played', ('Pommel Strike', 'Dark Embrace')) | 0.0
+('remove_card', 'Corruption') | 1.05826891784e-10
+('discard_to_draw', 'Warcry') | 4.49962401599e-09
+('double_played', ('True Grit', 'Rage')) | 0.000420000001568
+('double_played', ('Strike+', 'Strike+')) | -0.0100000003
+('double_played', ('Shrug it off', 'Strike+')) | 4.99961983682e-05
+('double_played', ('Berserk', 'Defend')) | 0.000400000000007
+('double_played', ('Offering', 'Bash')) | -0.0100000040005
+('double_played', ('Strike', 'Reaper')) | -0.01
+('double_played', ('Armaments', 'Strike+')) | 5.00000000097e-05
+('double_played', ('Clash', 'Body Slam')) | 0.0
+('double_played', ('Bash', 'True Grit+')) | 0.000440000000488
+('double_played', ('Uppercut', 'Searing Blow')) | 0.0
+('double_played', ('Sentinel', 'Twin Strike')) | 0.000100000000598
+('upgrade_rest', 'Flex') | 9.4078637434e-10
+('double_played', ('Evolve', 'Corruption')) | 0.0
+('double_played', ('Uppercut', 'Second Wind')) | -0.0100000011002
+('double_played', ('Whirlwind', 'Feel No Pain')) | 0.000370100013505
+('double_played', ('Bash', 'Double Tap')) | 2.99989997649e-05
+('double_played', ('Second Wind', 'Wild Strike')) | 0.0
+('hand_to_exhaust', 'Pommel Strike') | -9.99985864083e-08
+('double_played', ('Wild Strike', 'Anger+')) | 0.0
+('double_played', ('Defend+', 'Whirlwind')) | 0.0
+('double_played', ('Bash+', 'Strike')) | 4.00000000134e-05
+('double_played', ('Searing Blow', 'Uppercut')) | 0.000240000000043
+('double_played', ('Feel No Pain', 'Thunderclap')) | 0.00024000000042
+('double_played', ('Havoc', 'Second Wind')) | 0.0
+('double_played', ('Rupture', 'Wild Strike')) | -0.0100000027003
+('double_played', ('Body Slam', 'Berserk')) | 0.0
+('double_played', ('Uppercut', 'Reckless Charge')) | 0.000320000000813
+('double_played', ('Battle Trance', 'Cleave')) | -0.01
+('remove_card', 'Uppercut') | -3.41118370143e-13
+('single_played', 'Juggernaut') | -0.0100000050002
+('double_played', ('Iron Wave', 'Evolve')) | 0.0
+('single_played', 'Rampage+') | 5.0000000113e-05
+('double_played', ('Shrug it off', 'Defend+')) | 0.000310000000006
+('double_played', ('Rampage', 'Shock Wave')) | 0.000299994607334
+('double_played', ('Defend+', 'Rampage')) | 0.0
+('single_played', 'Hemokinesis+') | 0.000180000000747
+('double_played', ('Defend+', 'Pommel Strike+')) | 0.0
+('single_played', 'Brutality') | -0.00999989999195
+('double_played', ('Twin Strike', 'Rupture')) | -0.01
+('double_played', ('Pommel Strike', 'Bash+')) | 0.0
+('double_played', ('Metallicize', 'Rampage')) | 0.0
+('double_played', ('Feed', 'Second Wind')) | 0.000270000000665
+('double_played', ('Twin Strike', 'Defend+')) | 0.01
+('double_played', ('Defend', 'Feed')) | -0.0100000006022
+('double_played', ('Bludgeon', 'Bash')) | 0.0
+('double_played', ('Sever Soul', 'Anger')) | 0.0
+('double_played', ('Perfected Strike', 'Bash')) | 0.000119998494887
+('double_played', ('Sentinel', 'Second Wind')) | 0.01
+('hand_to_draw', 'Dropkick') | 0.0
+('double_played', ('Dropkick', 'Heavy Blade')) | -0.0100000018002
+('double_played', ('Anger', 'Headbutt')) | 0.000600000000936
+('add_card', 'Whirlwind') | 6.54296819147e-09
+('double_played', ('Defend+', 'Armaments')) | 5.01000538879e-05
+('double_played', ('Disarm', 'Disarm')) | 0.000560000000825
+('double_played', ('Hemokinesis', 'Strike')) | -0.0100000022
+('double_played', ('True Grit+', 'Defend')) | 0.000480000000027
+('health_rest', 'Whirlwind+') | 1.65322035679e-08
+('double_played', ('Shrug it off', 'Bludgeon')) | 3.00000002102e-05
+('double_played', ('Rupture', 'Iron Wave')) | 9.99739976415e-06
+('double_played', ('Shock Wave', 'Bash')) | 0.000210000000335
+('double_played', ('Reckless Charge', 'Twin Strike')) | -0.00999990109799
+('double_played', ('Pommel Strike', 'Flame Barrier')) | 6.00000003236e-05
+('hand_to_exhaust', 'Metallicize') | 1.89991404827e-09
+('hand_to_draw', 'Perfected Strike') | 9.60158682365e-09
+('hand_to_exhaust', 'Double Tap') | 0.0
+('double_played', ('Strike', 'Headbutt')) | 0.000150098399033
+('double_played', ('Sever Soul', 'True Grit')) | 0.000170000000391
+('double_played', ('Heavy Blade', 'Battle Trance')) | -0.01
+('double_played', ('Dropkick', 'Wild Strike')) | 9.99759949682e-06
+('discard_to_draw', 'Havoc') | -9.66720100866e-08
+('double_played', ('Defend', 'Hemokinesis')) | -0.0100000026009
+('copy_hand', 'Dazed') | 0.0
+('double_played', ('Defend', 'Strike+')) | 1.00000000616e-05
+('copy_hand', 'Perfected Strike') | -1.95800132377e-07
+('double_played', ('Dropkick', 'Flex')) | 0.0
+('double_played', ('Sentinel', 'Rage')) | 4.0000000113e-05
+('double_played', ('Iron Wave', 'Flex')) | -0.0100000006
+('health_rest', 'Blood for Blood') | 3.58751101387e-08
+('double_played', ('Sentinel', 'Bloodletting')) | 0.000110000000315
+('double_played', ('Spot Weakness', 'Pommel Strike')) | 0.000650000000911
+('double_played', ('Heavy Blade', 'Burning Pact')) | 0.000259996499875
+('health_rest', 'Barricade') | 2.20159031376e-08
+('double_played', ('Reckless Charge', 'Rupture')) | 0.0
+('health_rest', 'Warcry+') | 0.0
+('double_played', ('Metallicize', 'Twin Strike')) | 0.0
+('double_played', ('Berserk', 'Demon Form')) | 0.000330100043355
+('double_played', ('Shrug it off', 'Demon Form')) | 0.0
+('double_played', ('Disarm', 'Defend')) | 6.00000001724e-05
+('remove_card', 'Shock Wave') | -1.24156078866e-13
+('single_played', 'Bash') | -0.0199989979846
+('double_played', ('Perfected Strike', 'Clothesline')) | 0.0
+('double_played', ('Body Slam', 'Whirlwind')) | 2.00000000959e-05
+exhaustToHand | -2.00000308423e-07
+('double_played', ('Defend', 'Ghostly Armor')) | 3.99974995889e-05
+('discard_to_draw', 'Barricade') | 1.09855655601e-10
+('double_played', ('Entrench', 'Anger')) | 0.0
+('double_played', ('True Grit', 'Shrug it off')) | 0.000130000000317
+('double_played', ('Immolate', 'Metallicize')) | -0.0100000052014
+('single_played', 'Feed') | 7.01966437331e-05
+('double_played', ('Havoc', 'Anger')) | 0.0
+('single_played', 'Thunderclap+') | 0.000109998199447
+('double_played', ('Hemokinesis', 'Uppercut')) | 0.0
+('double_played', ('Entrench', 'Rampage')) | 0.0
+('upgrade_rest', 'Flame Barrier') | 1.25408172078e-08
+('double_played', ('Cleave', 'Entrench')) | 0.00999999569853
+('double_played', ('Pommel Strike', 'Entrench')) | 4.00000002005e-05
+('double_played', ('Anger', 'Whirlwind')) | -0.0100000109017
+('hand_to_exhaust', 'Defend+') | -1.00001222014e-07
+('double_played', ('Bash', 'Power Through')) | -0.0100000021004
+('hand_to_draw', 'Burning Pact') | 0.0
+('double_played', ('Pommel Strike', 'Hemokinesis')) | 0.0
+('double_played', ('Evolve', 'Power Through')) | 0.0
+('double_played', ('Wild Strike', 'Sentinel')) | 7.00000000102e-05
+('double_played', ('Strike+', 'Second Wind')) | 4.00000005928e-05
+('double_played', ('Strike', 'Reckless Charge')) | -0.0100000052018
+('double_played', ('Pommel Strike', 'Bash')) | -0.0100000056001
+('upgrade_rest', 'Bludgeon') | 7.44392379817e-09
+('upgrade_rest', 'Blood for Blood') | 8.02704184825e-11
+('add_card', 'Sentinel') | 3.77612334181e-09
+('add_card', 'Shock Wave') | 9.92217761694e-14
+('copy_hand', 'Corruption') | -1.99959123955e-07
+('double_played', ('Rupture', 'Perfected Strike')) | 0.0
+('double_played', ('Spot Weakness', 'Twin Strike')) | 0.0
+('single_played', 'Dual Wield') | 0.000380000000297
+('upgrade_rest', 'Second Wind') | 9.47952738848e-10
+('double_played', ('Battle Trance', 'Defend+')) | 0.0
+('double_played', ('Thunderclap', 'Bash+')) | 0.0
+('discard_to_draw', 'Cleave') | -1.99992210343e-07
+('double_played', ('Sentinel', 'Defend')) | -0.01
+('hand_to_draw', 'Carnage+') | -1.00000065779e-07
+('single_played', 'Pommel Strike+') | -0.01
+('add_card', 'Strike') | 1.26007155898e-10
+('double_played', ('Inflame', 'Shrug it off')) | 0.000240000000005
+('health_rest', 'Flex+') | 0.0
+('double_played', ('Bash', 'Barricade')) | 0.0
+('double_played', ('Shock Wave', 'Anger')) | -0.0100000017002
+('single_played', 'Offering+') | 0.000229996999265
+('double_played', ('Shock Wave', 'True Grit')) | 0.0
+('double_played', ('Metallicize', 'Second Wind')) | 7.00000001856e-05
+('double_played', ('Disarm', 'Iron Wave')) | 0.0
+('double_played', ('Thunderclap', 'Juggernaut')) | 0.0
+('double_played', ('Strike', 'Warcry')) | 0.000300000000002
+('double_played', ('Defend', 'Feel No Pain')) | -0.01
+('single_played', 'Inflame+') | 0.0
+('add_card', 'Disarm') | 1.11118073115e-10
+('double_played', ('Strike', 'Demon Form')) | -0.0100000082032
+('double_played', ('Dropkick', 'True Grit')) | -0.01
+('double_played', ('Rampage', 'Twin Strike')) | 0.000819991800423
+('double_played', ('Brutality', 'Rampage')) | 0.0
+('double_played', ('Wild Strike', 'Flex')) | 0.00010000000046
+('hand_to_draw', 'Whirlwind') | 1.0112885487e-08
+('double_played', ('Thunderclap', 'Strike')) | -0.01
+('double_played', ('Defend', 'Clothesline')) | -0.0100000012
+('upgrade_rest', 'Offering+') | 3.72149502838e-09
+('health_rest', 'Battle Trance') | 2.97661129829e-08
+('double_played', ('Offering', 'Disarm')) | 0.0
+('double_played', ('Flame Barrier', 'Pommel Strike')) | 0.0
+('double_played', ('True Grit', 'Bloodletting')) | 0.0
+('remove_card', 'Bash+') | 3.40683816193e-09
+('double_played', ('Twin Strike', 'Thunderclap')) | 0.00030999539911
+('double_played', ('Feel No Pain', 'Intimidate')) | -0.00999979997767
+('double_played', ('Strike', 'Armaments')) | 4.99937976879e-05
+('double_played', ('Headbutt+', 'Defend+')) | -0.01
+('double_played', ('Reckless Charge', 'Cleave')) | -0.01
+('double_played', ('Bash', 'Inflame')) | 0.000140000000031
+('health_rest', 'Bash+') | 1.99030332289e-07
+('double_played', ('Clothesline', 'Whirlwind')) | 0.0
+('remove_card', 'Shrug it off+') | 2.74640209176e-09
+('hand_to_exhaust', 'Bash') | -9.93991679363e-08
+('double_played', ('Havoc', 'Thunderclap')) | 0.0
+('double_played', ('Offering', 'Combust')) | 0.000219995799749
+('double_played', ('Berserk', 'Cleave')) | -0.01
+('double_played', ('Limit Break', 'Bash')) | 3.0000000001e-05
+('double_played', ('Feel No Pain', 'Twin Strike')) | 0.000160000000383
+('double_played', ('Dropkick', 'Whirlwind')) | 0.0
+('double_played', ('Reckless Charge', 'Whirlwind')) | -0.01
+('double_played', ('Flex', 'Twin Strike')) | -0.0100000003011
+('double_played', ('Defend', 'Exhume')) | 7.00982001405e-05
+('double_played', ('Strike', 'Wild Strike')) | -0.0099997999853
+('double_played', ('Warcry', 'Rampage')) | 0.0
+('double_played', ('Defend', 'Entrench')) | -0.0100000016001
+('double_played', ('Strike+', 'Offering')) | 0.0
+('double_played', ('Anger+', 'Bash')) | -0.0100000062002
+('double_played', ('Twin Strike', 'Twin Strike')) | -0.00999990168602
+('add_card', 'Dark Embrace') | 9.92149173583e-09
+('double_played', ('Uppercut', 'Inflame')) | -0.0100000010002
+('single_played', 'Havoc') | -0.0199997998351
+('enemy', <Status.STRENGTH: 7>) | -1.31051134853e-63
+('double_played', ('Sentinel', 'Body Slam')) | -0.01
+('double_played', ('Strike', 'Thunderclap')) | -0.0100000056108
+('double_played', ('Iron Wave', 'Inflame')) | 0.000450000001255
+('double_played', ('Shrug it off', 'Clothesline')) | -0.0100000040014
+('double_played', ('Entrench+', 'Strike')) | 0.000280000000412
+('remove_card', 'Juggernaut') | 6.82374218749e-09
+('double_played', ('Pummel', 'Twin Strike')) | 0.000270000000454
+('double_played', ('Shrug it off', 'Metallicize')) | -0.01
+('single_played', 'Blood for Blood') | -0.0100000031008
+('double_played', ('Strike+', 'Combust')) | 0.0
+('double_played', ('Defend+', 'Inflame')) | 0.0
+('double_played', ('Heavy Blade', 'Seeing Red')) | -0.0100000012002
+('double_played', ('Strike+', 'Defend+')) | 0.000239998600223
+('double_played', ('Headbutt', 'Feed')) | 0.0
+('double_played', ('Strike', 'Hemokinesis')) | 0.000270000000205
+('double_played', ('Havoc', 'Dropkick')) | 0.000560000000611
+('double_played', ('Warcry', 'Bloodletting')) | 0.0
+('double_played', ('Reckless Charge', 'Reckless Charge')) | -0.01
+('double_played', ('Whirlwind', 'Hemokinesis')) | 0.0
+('double_played', ('Headbutt', 'Body Slam+')) | 0.000240100029095
+('double_played', ('Bloodletting', 'Armaments')) | 0.000109996397213
+('double_played', ('Dark Embrace', 'Strike')) | -0.00999989998944
+('double_played', ('Evolve', 'Wild Strike')) | -0.0100000058018
+('double_played', ('Cleave', 'Dark Embrace')) | 0.000110000001832
+('hand_to_draw', 'Searing Blow') | 0.0
+('double_played', ('Bash', 'Rupture')) | -0.0100000030024
+('upgrade_rest', 'Dropkick') | 2.003053829e-09
+('double_played', ('Bash', 'Burning Pact+')) | 0.000370000000011
+('double_played', ('Headbutt', 'Wild Strike')) | 0.000130096214582
+('double_played', ('Inflame', 'Strike')) | 3.00000000409e-05
+('double_played', ('Body Slam', 'Hemokinesis')) | 6.999439986e-05
+('double_played', ('Reckless Charge', 'Uppercut')) | 5.00000002435e-05
+('double_played', ('Inflame', 'Twin Strike')) | 0.000349992398627
+('double_played', ('Twin Strike', 'Rage')) | 0.000150000000364
+('health_rest', 'Seeing Red') | 1.01562212489e-07
+('double_played', ('Dropkick', 'Anger')) | 0.000209997399644
+('double_played', ('Battle Trance', 'Body Slam')) | -0.01
+('double_played', ('Body Slam', 'Shrug it off')) | 0.000210000000294
+('double_played', ('Bash', 'Wild Strike')) | 3.00000003269e-05
+('double_played', ('Shrug it off', 'Seeing Red')) | 0.000159996498346
+('add_card', 'Entrench+') | -4.15046478276e-14
+('double_played', ('Strike', 'Corruption')) | 0.000399992102079
+('upgrade_rest', 'Cleave') | 1.49905473141e-08
+('double_played', ('Thunderclap', 'Iron Wave')) | 4.00000003479e-05
+('double_played', ('Shrug it off+', 'Bash')) | 8.00000029792e-05
+('double_played', ('Defend', 'Iron Wave')) | 0.000240000000171
+('double_played', ('Strike', 'Shrug it off+')) | -0.0100000008001
+('upgrade_rest', 'Ghostly Armor') | 7.30353068727e-10
+('double_played', ('Anger', 'Feel No Pain')) | 0.0
+('double_played', ('Iron Wave', 'Battle Trance')) | -0.01
+('double_played', ('Iron Wave+', 'Feel No Pain')) | 0.0
+('double_played', ('Wild Strike', 'Shrug it off')) | 0.000530200059392
+('double_played', ('Reckless Charge', 'Flame Barrier')) | 0.0
+('double_played', ('Sentinel+', 'Heavy Blade')) | 0.0
+('double_played', ('Bash', 'Dropkick')) | -0.01
+('double_played', ('Brutality', 'Wild Strike')) | 3.00000001119e-05
+('add_card', 'Rage') | 7.42857893193e-10
+('double_played', ('Impervious', 'Strike')) | -0.01
+('double_played', ('Pommel Strike+', 'Strike')) | -0.01
+('double_played', ('Bash', 'Demon Form')) | 0.01
+('double_played', ('Second Wind', 'Rampage')) | 7.00000001856e-05
+('double_played', ('Bash', 'Cleave')) | 0.00013010001527
+('double_played', ('Anger', 'Strike')) | -0.0100000029002
+('double_played', ('Flame Barrier', 'Strike')) | -0.00999979996962
+('double_played', ('Sentinel', 'Carnage')) | 0.000209997600522
+('hand_to_exhaust', 'Shrug it off') | 1.99973051195e-09
+('double_played', ('Iron Wave', 'Uppercut')) | 0.000410000000352
+('double_played', ('Second Wind', 'Sentinel')) | 0.01
+('double_played', ('Clothesline+', 'Defend')) | 0.0
+('double_played', ('Rage', 'True Grit')) | -0.00999990229592
+('double_played', ('True Grit', 'Shrug it off+')) | -0.0100000036006
+('double_played', ('Hemokinesis', 'Anger')) | 0.0
+('double_played', ('Metallicize', 'Reckless Charge')) | 0.0
+('add_card', 'True Grit') | 1.6752892963e-09
+('double_played', ('Iron Wave', 'Thunderclap')) | 0.0
+('health_rest', 'Inflame+') | 0.0
+('double_played', ('Cleave', 'Wild Strike')) | 0.000490000000549
+('double_played', ('Strike', 'Dual Wield')) | 0.000380000000297
+('upgrade_rest', 'Body Slam') | 9.66630584244e-10
+('double_played', ('Demon Form', 'Anger')) | 0.0
+('add_card', 'Offering') | 3.5493458481e-09
+('double_played', ('Wild Strike', 'Dropkick')) | 0.0
+('double_played', ('Bash', 'Flex')) | -0.00999990099667
+('upgrade_rest', 'Fiend Fire') | -3.81339703294e-13
+('double_played', ('Brutality', 'Strike')) | -0.01
+('double_played', ('Demon Form', 'Second Wind')) | 0.0
+('double_played', ('Clothesline+', 'Strike')) | 0.0001799959002
+('double_played', ('Seeing Red', 'Rampage')) | -0.00999990028592
+('double_played', ('Strike', 'Shrug it off')) | -0.02
+('health_rest', 'Corruption') | -5.15411793881e-08
+('double_played', ('Wild Strike', 'Demon Form')) | 4.00000014523e-05
+('double_played', ('Disarm', 'Anger')) | 0.000120000000399
+('remove_card', 'Shrug it off') | -4.7781110718e-13
+('health_rest', 'Feel No Pain+') | 6.89186318579e-09
+('upgrade_rest', 'Shock Wave') | 1.04957371111e-09
+('double_played', ('Shrug it off', 'Bash+')) | 0.000540000000538
+('double_played', ('True Grit', 'Inflame')) | 2.99998000573e-05
+('double_played', ('Offering', 'Entrench')) | 0.000289999799946
+('double_played', ('Combust+', 'Juggernaut')) | 0.0
+('double_played', ('Spot Weakness', 'Bloodletting')) | 6.99960990565e-05
+('single_played', 'Rampage') | 3.00000000093e-05
+('discard_to_draw', 'Strike') | -1.99992210343e-07
+('add_card', 'Feel No Pain') | 2.66726605337e-10
+('add_card', 'Ghostly Armor') | -1.85356873409e-13
+('double_played', ('Anger+', 'Twin Strike')) | 0.0
+('double_played', ('Defend', 'Searing Blow')) | -0.0100000007001
+('double_played', ('Flex', 'Cleave')) | 0.0
+('double_played', ('Pommel Strike+', 'Defend')) | -0.01
+('double_played', ('Exhume', 'Sentinel')) | 0.0
+('double_played', ('Double Tap', 'Clothesline')) | 0.000260000000774
+('double_played', ('Carnage', 'Dark Embrace')) | 2.00000000064e-05
+('double_played', ('Cleave', 'Twin Strike')) | -0.01
+('health_rest', 'Headbutt+') | 1.39353751011e-09
+('single_played', 'Dark Embrace') | -0.00999989998944
+('double_played', ('Iron Wave', 'Bash')) | -0.0100000057004
+('double_played', ('Bloodletting+', 'Body Slam')) | 0.0
+('double_played', ('Warcry', 'Berserk')) | 0.0
+('single_played', 'Anger+') | 0.020000200066
+('double_played', ('Strike+', 'Shrug it off')) | 0.000139993197861
+('double_played', ('Strike+', 'Cleave')) | 0.000460000000693
+('health_rest', 'Exhume') | 6.23131556171e-08
+('double_played', ('Second Wind', 'Anger')) | -0.00999989997968
+('double_played', ('Anger', 'Defend')) | -0.02
+('double_played', ('Reaper', 'Feel No Pain')) | 0.00024000000042
+('single_played', 'Limit Break') | 3.0000000001e-05
+('double_played', ('Headbutt', 'Cleave')) | 0.000159996999976
+('double_played', ('Brutality', 'Spot Weakness')) | 0.000210000000466
+('health_rest', 'Feed') | 2.51672470751e-08
+('double_played', ('Thunderclap', 'Flex')) | -0.01
+('double_played', ('Iron Wave+', 'Wild Strike')) | 0.0
+('health_rest', 'Entrench+') | 5.24117794777e-09
+('double_played', ('Anger', 'Hemokinesis')) | 0.01
+('double_played', ('Flame Barrier', 'Feel No Pain')) | 0.0
+('upgrade_rest', 'Evolve') | -4.19806613303e-14
+('upgrade_rest', 'Thunderclap') | 5.41193733915e-09
+('double_played', ('Defend+', 'Flame Barrier')) | 0.000140000000888
+('double_played', ('Juggernaut', 'Reckless Charge')) | 0.0
+('double_played', ('Strike', 'Impervious')) | -0.01
+('double_played', ('Thunderclap', 'Rampage')) | 0.000400000000427
+('double_played', ('Brutality', 'Whirlwind')) | -0.00999989998488
+('discard_to_draw', 'Iron Wave') | 4.00816562662e-09
+('double_played', ('Anger', 'Inflame')) | 0.0
+('double_played', ('Thunderclap', 'Disarm')) | 6.99991000911e-05
+('double_played', ('Spot Weakness', 'Entrench')) | 0.0
+('double_played', ('Reckless Charge', 'Impervious')) | 0.000100100049059
+('double_played', ('Flame Barrier+', 'Strike')) | 0.000100000000617
+('double_played', ('Rage', 'Spot Weakness')) | 3.00000003017e-05
+('double_played', ('True Grit', 'Thunderclap')) | -0.0100000026009
+('double_played', ('Rampage', 'Clothesline')) | 3.00000000213e-05
+('double_played', ('Thunderclap', 'Sentinel')) | -0.01
+('upgrade_rest', 'Feel No Pain') | 1.83292199951e-09
+('double_played', ('Carnage', 'Reckless Charge')) | 0.0
+('double_played', ('Burning Pact+', 'Strike')) | 0.000370000000011
+('double_played', ('Inflame', 'Sentinel')) | 0.0
+('double_played', ('Thunderclap', 'Entrench')) | -0.0100000071031
+('double_played', ('Limit Break', 'Second Wind')) | 0.000130000000012
+('double_played', ('Defend', 'Immolate')) | -0.0100000009
+('double_played', ('Bloodletting+', 'Strike')) | 0.0
+('hand_to_draw', 'Juggernaut') | -9.90961316786e-08
+('remove_card', 'Intimidate') | 5.87239971467e-09
+('add_card', 'Pommel Strike+') | 1.11501052295e-10
+('single_played', 'Uppercut') | -0.010000001406
+('double_played', ('Hemokinesis', 'Clothesline')) | 0.0
+('double_played', ('Havoc', 'Immolate')) | 0.0
+('double_played', ('Strike+', 'Thunderclap')) | -0.00999990339286
+('health_rest', 'Wild Strike+') | -5.05152071735e-11
+('double_played', ('Bash', 'Iron Wave')) | -0.01
+('double_played', ('Flame Barrier', 'Entrench')) | 0.0
+('double_played', ('Thunderclap', 'Heavy Blade')) | 0.00037999239937
+('add_card', 'Combust') | 1.22233436509e-10
+('double_played', ('Reckless Charge', 'Entrench')) | 0.0
+('discard_to_draw', 'Hemokinesis') | 3.1059334914e-09
+('double_played', ('Reckless Charge', 'Thunderclap')) | 0.00011000000022
+('health_rest', 'Havoc') | 3.25760922523e-08
+('add_card', 'Entrench') | 2.04677832087e-09
+('upgrade_rest', 'Armaments+') | 3.47359465505e-09
+('double_played', ('Offering+', 'Cleave')) | 0.000229996999265
+('double_played', ('Strike', 'Exhume')) | -0.01
+('double_played', ('Flex', 'Spot Weakness')) | 0.0
+('double_played', ('Wild Strike', 'Wild Strike')) | 0.0
+('double_played', ('Defend', 'Inflame')) | 0.000260000000015
+('double_played', ('Iron Wave', 'Havoc')) | 0.0
+('double_played', ('Strike', 'Cleave')) | -0.00999990093845
+('double_played', ('Warcry', 'Strike')) | -0.01
+('copy_hand', 'Sentinel') | -3.77912683502e-13
+('double_played', ('Bloodletting', 'Anger')) | -0.0100000012001
+('health_rest', 'Headbutt') | 2.63413299577e-07
+('double_played', ('Shrug it off', 'Brutality')) | 0.0
+('double_played', ('Flame Barrier', 'Flex')) | 0.0
+('double_played', ('Strike+', 'Shock Wave')) | 0.0
+('double_played', ('Feel No Pain', 'Pommel Strike')) | -0.0100000017
+('double_played', ('Searing Blow', 'Disarm')) | -0.00999990122853
+('double_played', ('Hemokinesis', 'Defend')) | -0.0100000026009
+('double_played', ('Combust', 'Clothesline')) | -0.0100000000006
+('double_played', ('Metallicize', 'Sentinel')) | -0.0100000124027
+('double_played', ('Heavy Blade', 'Strike+')) | 0.0
+('double_played', ('Defend', 'Combust+')) | 0.000149996999367
+('add_card', 'Feed') | 7.68916876183e-10
+('double_played', ('Clothesline+', 'Combust')) | 8.9999099817e-05
+('hand_to_exhaust', 'Limit Break') | 0.0
+('health_rest', 'Dropkick+') | 0.0
+('double_played', ('Iron Wave', 'Bludgeon')) | 0.0
+('double_played', ('Headbutt', 'Fiend Fire')) | 0.0
+('double_played', ('Bash+', 'Body Slam+')) | -0.0100000043005
+('double_played', ('Twin Strike', 'Carnage')) | 0.000170000000369
+('hand_to_exhaust', 'Brutality') | 7.20045200039e-09
+('double_played', ('Dark Embrace', 'Searing Blow')) | -0.01
+('double_played', ('Feel No Pain', 'Reckless Charge')) | 0.0
+('double_played', ('Berserk', 'Uppercut')) | 0.000110000000299
+('double_played', ('Reaper', 'Strike')) | -0.01
+('double_played', ('Bash', 'Metallicize+')) | 0.0
+('double_played', ('Burning Pact', 'Strike')) | 4.00000000054e-05
+('hand_to_draw', 'Armaments') | -9.99092678757e-08
+('hand_to_draw', 'Heavy Blade') | 0.0
+('double_played', ('Inflame', 'Dual Wield')) | 0.000349997800447
+('double_played', ('Reckless Charge', 'Strike+')) | 2.00000002065e-05
+('double_played', ('Clothesline+', 'Reckless Charge')) | 0.000349995899674
+('double_played', ('Shrug it off', 'Entrench')) | 0.0
+('double_played', ('Berserk', 'Strike')) | -0.0100000037005
+('double_played', ('Bash', 'Rage')) | 0.000530000000658
+('hand_to_draw', 'Second Wind') | 0.0
+('double_played', ('Power Through', 'Bash')) | 0.000370000001025
+('double_played', ('Armaments', 'Bash')) | -0.010000005602
+('double_played', ('Whirlwind', 'Clothesline')) | 4.0000000278e-05
+('double_played', ('Strike', 'Pommel Strike')) | 8.02000103462e-05
+('double_played', ('True Grit', 'Reckless Charge')) | 0.000220100034299
+('upgrade_rest', 'Armaments') | 9.4078637434e-10
+('double_played', ('Headbutt', 'Entrench')) | 0.0
+('double_played', ('Iron Wave', 'Whirlwind')) | 0.0
+('double_played', ('Metallicize+', 'Bash')) | -0.0100000020002
+('single_played', 'Strike+') | -0.00999990129641
+('health_rest', 'Twin Strike+') | -1.13535410226e-10
+('double_played', ('Whirlwind', 'Spot Weakness')) | 0.0
+('double_played', ('Power Through', 'Thunderclap')) | 0.0
+('double_played', ('Sentinel+', 'Brutality')) | 2.00000002065e-05
+('double_played', ('Juggernaut', 'Bash')) | 6.99983998911e-05
+('double_played', ('Headbutt', 'Reckless Charge')) | -0.00999990149773
+('double_played', ('Sentinel', 'Clothesline')) | 0.00022000000037
+('double_played', ('Sentinel', 'Pummel')) | -0.0100000023012
+('double_played', ('Demon Form', 'Rage')) | 0.0
+('health_rest', 'Warcry') | 2.71446997716e-08
+('double_played', ('Wild Strike', 'Uppercut')) | -0.0100000058025
+('health_rest', 'Metallicize+') | 0.0
+('discard_to_draw', 'Feel No Pain') | 0.0
+('double_played', ('Flame Barrier', 'Berserk')) | -0.0100000037005
+('discard_to_draw', 'Corruption') | 0.0
+('double_played', ('Thunderclap', 'Rage')) | 6.99962992436e-05
+('double_played', ('Rage', 'Hemokinesis')) | 0.0
+('double_played', ('Reckless Charge', 'Feel No Pain')) | 3.9993097864e-05
+('double_played', ('Defend', 'Reckless Charge')) | 4.00990419473e-05
+('health_rest', 'Entrench') | 5.82710977942e-08
+('double_played', ('Rampage', 'Iron Wave')) | 2.01000181236e-05
+('double_played', ('Defend+', 'Iron Wave')) | 0.000420000000473
+('add_card', 'Flame Barrier+') | 8.75875738288e-09
+('double_played', ('Limit Break', 'Rampage')) | 0.000299995297265
+('double_played', ('Thunderclap', 'True Grit')) | -0.0100000026009
+('double_played', ('Reckless Charge', 'Carnage')) | 0.0
+('double_played', ('Reckless Charge', 'Second Wind')) | 1.99988999142e-05
+('double_played', ('Spot Weakness', 'Shrug it off')) | 1.00000000692e-05
+('double_played', ('Anger', 'Bash')) | -0.0100000064006
+('health_rest', 'Sentinel+') | 2.91774364617e-09
+('double_played', ('Rage', 'Sever Soul')) | 7.99980988061e-05
+normalRest | 2.89815589332e-10
+('health_rest', 'Demon Form+') | 0.0
+('double_played', ('Shrug it off', 'Pummel')) | 0.000100000000093
+('discard_to_draw', 'Dropkick') | 1.40238978095e-09
+('double_played', ('Bloodletting', 'Barricade')) | 0.0
+('double_played', ('Sentinel', 'Evolve')) | 0.0
+('double_played', ('Twin Strike', 'Burning Pact')) | -0.0100000038011
+('hand_to_draw', 'Combust') | 0.0
+('hand_to_draw', 'Strike') | 1.00793874267e-09
+('double_played', ('Dual Wield', 'Bash')) | 0.000410000000475
+('remove_card', 'Disarm') | 1.03932595211e-08
+('double_played', ('Twin Strike', 'Pommel Strike')) | 6.99803904469e-05
+('double_played', ('Feel No Pain', 'Defend+')) | 0.000430000001515
+('double_played', ('Shock Wave', 'Defend+')) | 0.000229997199282
+('double_played', ('Flex', 'Dual Wield')) | 2.00000002022e-05
+('double_played', ('Blood for Blood', 'Flame Barrier')) | 0.0
+('upgrade_rest', 'Metallicize') | 9.66630584244e-10
+('double_played', ('Inflame', 'Ghostly Armor')) | 0.00014999459764
+('double_played', ('Cleave', 'Rage')) | 0.0
+('health_rest', 'Body Slam+') | 2.63613080718e-09
+('double_played', ('Defend+', 'Sentinel')) | 0.00014000000004
+('double_played', ('Flame Barrier', 'Uppercut')) | 0.0
+('double_played', ('True Grit', 'Power Through')) | 0.0
+('upgrade_rest', 'Reaper') | 3.55844455646e-10
+('add_card', 'Whirlwind+') | 3.13448669086e-09
+('double_played', ('Spot Weakness', 'True Grit')) | 0.000369997898809
+('double_played', ('Headbutt+', 'True Grit')) | 0.000520000000015
+('double_played', ('Dual Wield', 'Iron Wave')) | 2.00000002022e-05
+('double_played', ('Strike', 'Sentinel')) | 0.000110000000086
+('double_played', ('Demon Form', 'Disarm')) | 0.000270000000592
+('add_card', 'Anger+') | 3.193352912e-14
+('double_played', ('Armaments', 'Pommel Strike')) | 0.0
+('double_played', ('Pommel Strike', 'Body Slam')) | -0.0100000010001
+('double_played', ('Defend', 'Heavy Blade')) | -0.0100000038023
+('double_played', ('Whirlwind', 'Rampage')) | -0.0100000016002
+('upgrade_rest', 'Defend') | 1.49905473141e-08
+('double_played', ('Carnage', 'Berserk')) | 0.000230000000322
+('double_played', ('Bash', 'Shrug it off')) | -0.0100000008002
+('double_played', ('Dropkick', 'Headbutt+')) | -0.01
+('double_played', ('Sentinel', 'Flame Barrier')) | 0.000300000000326
+('double_played', ('Immolate', 'Strike')) | -0.0100000009
+('health_rest', 'Immolate+') | 0.0
+('double_played', ('Sentinel', 'Anger')) | -0.01
+('double_played', ('Dual Wield', 'Defend')) | -0.00999990714702
+('double_played', ('Headbutt', 'Iron Wave')) | -0.0100000015006
+('double_played', ('Strike', 'Evolve')) | -0.00999979997394
+('double_played', ('Rampage', 'Bash')) | -0.00999989999496
+('single_played', 'True Grit') | -0.00999979991595
+('health_rest', 'Uppercut+') | 0.0
+('double_played', ('Twin Strike', 'Rampage')) | 0.000190099640196
+('double_played', ('Body Slam', 'Shock Wave')) | -0.0100000010001
+('double_played', ('Warcry', 'Sever Soul')) | 0.0
+('double_played', ('Disarm', 'Flex')) | -0.0100000017012
+('double_played', ('Reaper', 'Pommel Strike')) | 0.000390000000429
+('hand_to_exhaust', 'Rage') | 0.0
+('discard_to_draw', 'Wound') | 0.0
+('double_played', ('Defend', 'Pommel Strike')) | -0.0100000081011
+('double_played', ('True Grit', 'Whirlwind')) | 0.000180100012017
+('double_played', ('Metallicize+', 'Spot Weakness')) | 0.000170095813777
+('double_played', ('Strike', 'Iron Wave')) | -0.0099998998516
+('copy_hand', 'Clothesline') | 0.0
+('double_played', ('Headbutt', 'Sever Soul')) | 0.0
+('double_played', ('Defend', 'Battle Trance')) | -0.00999979996093
+('double_played', ('Bloodletting', 'Combust')) | -0.0100000014002
+('add_card', 'Headbutt') | 2.75492541059e-09
+('double_played', ('Cleave', 'True Grit')) | 0.000210000000528
+('upgrade_rest', 'Pommel Strike') | -3.81339703294e-13
+('hand_to_draw', 'Uppercut') | 6.01573887358e-10
+('upgrade_rest', 'Bash') | 1.49905473141e-08
+('double_played', ('Armaments+', 'Bash+')) | 0.000189999099866
+('double_played', ('Wild Strike', 'Thunderclap')) | 0.000770100021519
+('double_played', ('Rampage', 'Reaper')) | 0.0
+('double_played', ('Anger', 'Combust')) | 0.00044999940026
+('double_played', ('Defend', 'Blood for Blood')) | -0.0100000031008
+('double_played', ('Strike', 'Flame Barrier')) | -0.00999979996962
+('double_played', ('Thunderclap', 'Dark Embrace')) | 0.0
+('double_played', ('Anger', 'Uppercut')) | 0.000250000000607
+('double_played', ('Hemokinesis', 'Flame Barrier')) | 0.000460000000031
+('double_played', ('Body Slam', 'Defend+')) | 0.0
+('copy_hand', 'Feel No Pain+') | 0.0
+('double_played', ('Anger', 'Clothesline')) | 0.0
+('add_card', 'Hemokinesis') | 2.11439104774e-09
+('double_played', ('Shrug it off', 'Evolve')) | 0.0
+('add_card', 'Fiend Fire') | 1.22233436509e-10
+('remove_card', 'Rage') | 2.41064731769e-09
+('double_played', ('Headbutt+', 'Strike')) | 3.00000010529e-05
+('copy_hand', 'Juggernaut') | 6.29978371587e-09
+('health_rest', 'Reaper+') | 0.0
+('discard_to_draw', 'Juggernaut') | 0.0
+('double_played', ('Headbutt', 'Thunderclap')) | 0.000430000000024
+('double_played', ('Bash', 'Carnage')) | 0.000219986798576
+('remove_card', 'Pommel Strike') | 1.31858142802e-08
+('double_played', ('Defend', 'Whirlwind+')) | 0.0
+('double_played', ('Rampage', 'Flex')) | 0.000449996598967
+('double_played', ('Defend', 'Limit Break')) | -0.0100000072005
+('double_played', ('Demon Form', 'Shrug it off')) | 0.0
+('discard_to_draw', 'Spot Weakness') | 4.0080697453e-10
+('double_played', ('Bash', 'Havoc')) | 8.00000001311e-05
+('double_played', ('Clothesline', 'Second Wind')) | 0.000209995596995
+('double_played', ('Clothesline', 'Battle Trance')) | 0.0
+('double_played', ('Exhume', 'Bloodletting')) | -0.0100000012001
+('double_played', ('Shrug it off', 'Bash')) | -0.0100000021004
+('discard_to_draw', 'Bash') | -1.99992210343e-07
+('double_played', ('Flex', 'Rage')) | -0.01
+('double_played', ('Rage', 'Defend')) | 6.00000001317e-05
+('double_played', ('Anger', 'Sentinel')) | 6.00000001638e-05
+('remove_card', 'True Grit') | 1.02606658198e-10
+('double_played', ('Armaments', 'Perfected Strike')) | 0.0
+('double_played', ('Twin Strike', 'Whirlwind')) | 0.0100002000497
+('double_played', ('Reckless Charge', 'Battle Trance')) | 1.01000395208e-05
+('double_played', ('Immolate', 'Defend')) | 7.99918968096e-05
+('double_played', ('Dual Wield', 'Defend+')) | 0.0
+('double_played', ('Wild Strike', 'Cleave')) | 8.01000132868e-05
+('double_played', ('Headbutt+', 'Defend')) | 0.000380000000868
+('double_played', ('Sentinel', 'Sever Soul')) | 0.000330000006458
+('double_played', ('Pommel Strike', 'Pummel')) | 0.0
+('double_played', ('Sever Soul', 'Spot Weakness')) | 0.0
+('copy_hand', 'Intimidate') | 0.0
+('double_played', ('Metallicize+', 'Defend')) | 0.00012
+('double_played', ('Spot Weakness', 'Brutality')) | 0.0
+('double_played', ('Twin Strike', 'Feel No Pain')) | 4.99980998694e-05
+('double_played', ('Searing Blow', 'Searing Blow')) | 0.0
+('double_played', ('Strike+', 'Bloodletting')) | 4.0000000127e-05
+('upgrade_rest', 'Havoc') | 1.20087137121e-08
+('remove_card', 'Twin Strike') | 4.59908563562e-10
+('hand_to_exhaust', 'Cleave') | -9.67971506129e-08
+('double_played', ('Brutality', 'Defend')) | -0.0100000030007
+('double_played', ('Flex', 'Iron Wave')) | 0.0
+('double_played', ('Strike', 'Blood for Blood')) | 0.000330000000441
+handToExhaust | -9.93991679363e-08
+('upgrade_rest', 'Shrug it off+') | 1.0447177443e-10
+('add_card', 'Shrug it off+') | -2.97918693205e-12
+('double_played', ('Body Slam+', 'Strike+')) | 0.000480000000001
+('double_played', ('Evolve', 'Strike')) | -0.0100000012001
+('double_played', ('Berserk', 'Shrug it off')) | 0.000230000000322
+('single_played', 'Whirlwind+') | 0.0
+('double_played', ('Disarm', 'Defend+')) | 0.000129997299919
+('double_played', ('Armaments+', 'Strike')) | 0.000230100073124
+('double_played', ('Bludgeon', 'Anger')) | 0.000190000000306
+('double_played', ('Dual Wield', 'Warcry')) | 0.00018000000029
+('double_played', ('Hemokinesis', 'Hemokinesis')) | 0.00017000000016
+('double_played', ('Berserk', 'Wild Strike')) | 0.0
+('double_played', ('Rage', 'Perfected Strike')) | 0.000220000000369
+('double_played', ('Double Tap', 'Entrench')) | 0.0
+('health_rest', 'Feel No Pain') | 8.72338757313e-08
+('discard_to_draw', 'Defend+') | 8.30333859435e-09
+('double_played', ('Hemokinesis', 'Shrug it off')) | 0.0
+('double_played', ('Feed', 'Rampage')) | 0.0
+('hand_to_exhaust', 'Sever Soul') | 0.0
+('double_played', ('Bash', 'Burning Pact')) | 0.00034000000109
+('double_played', ('True Grit', 'Headbutt+')) | 0.000380000000868
+('double_played', ('Demon Form', 'Headbutt')) | 6.00000000553e-05
+('double_played', ('Sever Soul', 'Strike')) | -0.00999990299672
+('double_played', ('Feed', 'Headbutt')) | -0.0100000035003
+('upgrade_rest', 'Impervious') | 7.13421425678e-11
+('double_played', ('Clothesline', 'Pommel Strike')) | 0.0
+('double_played', ('Impervious', 'True Grit')) | 0.0
+('remove_card', 'Body Slam') | 1.19871231254e-08
+('double_played', ('Strike', 'Barricade')) | 0.00011020014425
+('double_played', ('Bash', 'Defend')) | -0.0099998997714
+('double_played', ('Strike', 'Immolate')) | 2.00000001166e-05
+('double_played', ('Strike', 'Combust+')) | 9.99978989071e-05
+('double_played', ('Twin Strike', 'Uppercut')) | 0.000110000000193
+('hand_to_exhaust', 'Body Slam') | 3.20273823319e-09
+('health_rest', 'Hemokinesis') | 9.64293777537e-08
+('double_played', ('Evolve', 'Feel No Pain')) | 0.0
+('double_played', ('Havoc', 'Reckless Charge')) | -0.01
+('hand_to_exhaust', 'Combust') | 3.20273823319e-09
+('single_played', 'Defend+') | -0.00999979997394
+discardToDraw | -9.83981201306e-08
+('double_played', ('Shrug it off', 'Body Slam')) | -0.0100000029002
+('double_played', ('Bash', 'Rampage')) | 0.000140200010299
+('double_played', ('Body Slam', 'Feel No Pain')) | 0.0
+('double_played', ('Strike', 'Searing Blow')) | -0.00999990122853
+('double_played', ('Sentinel', 'Combust+')) | 0.00020999659959
+('double_played', ('Flame Barrier', 'Anger')) | 0.00011020014425
+('single_played', 'Ghostly Armor') | -0.0100000049007
+('double_played', ('Cleave', 'Rampage')) | 0.000530000000117
+('double_played', ('Strike', 'Clothesline')) | 0.000149997798449
+('double_played', ('Twin Strike', 'Perfected Strike')) | 0.000119997599792
+('double_played', ('Offering', 'Strike+')) | 0.0
+('double_played', ('Pummel', 'Cleave')) | 0.0
+('double_played', ('Evolve', 'Heavy Blade')) | 0.0
+('double_played', ('Reaper', 'Berserk')) | 0.0
+('double_played', ('Strike', 'Inflame+')) | 0.0
+('discard_to_draw', 'Rage') | -9.82966505611e-08
+('double_played', ('Burning Pact', 'Cleave')) | 0.000180000000357
+('add_card', 'Reaper') | 2.75492541059e-09
+('health_rest', 'Rage') | 8.83590118117e-08
+('add_card', 'Intimidate') | 2.18372522776e-09
+('double_played', ('Seeing Red', 'Strike')) | 1.00000000214e-05
+('health_rest', 'Double Tap') | 1.47320703039e-08
+('single_played', 'Carnage+') | 0.000190000000018
+('upgrade_rest', 'Headbutt+') | 2.98107032638e-09
+('double_played', ('True Grit', 'Hemokinesis')) | 0.000450000000012
+('double_played', ('Hemokinesis', 'Reckless Charge')) | 0.0
+('double_played', ('True Grit', 'Feel No Pain')) | 2.9995097084e-05
+('health_rest', 'Fiend Fire') | 3.47480531521e-08
+('upgrade_rest', 'Juggernaut') | -2.07439083916e-13
+('double_played', ('Strike', 'Berserk')) | -0.00999990016398
+('remove_card', 'Combust') | 4.59908563562e-10
+('add_card', 'Limit Break') | 3.18152692774e-10
+('double_played', ('Rampage', 'Bloodletting')) | 0.0
+('double_played', ('Heavy Blade', 'Defend')) | -0.0100000015003
+('double_played', ('Bash', 'Shock Wave')) | 0.000260000000824
+('double_played', ('Burning Pact', 'Reckless Charge')) | 0.000160000000343
+('double_played', ('Shrug it off', 'Pommel Strike')) | 0.000210000000294
+('double_played', ('Reckless Charge', 'Iron Wave')) | 0.000229997697967
+('double_played', ('Defend+', 'Defend')) | -0.0100000018
+('hand_to_draw', 'Flame Barrier') | -9.99662148784e-08
+('upgrade_rest', 'Bloodletting') | 9.90589586466e-10
+('double_played', ('Searing Blow', 'Exhume')) | 0.000260000000572
+('double_played', ('Clothesline', 'Wild Strike')) | 3.99906984124e-05
+('double_played', ('Armaments', 'Corruption')) | 0.0
+('double_played', ('Bash+', 'Strike+')) | 0.000190000000631
+('double_played', ('Whirlwind', 'Bash')) | 9.99699936565e-06
+('discard_to_draw', 'Dual Wield') | 2.89986196269e-09
+('double_played', ('Clothesline', 'Juggernaut')) | 0.000160000000238
+('upgrade_rest', 'Inflame') | 9.47952738848e-10
+('double_played', ('Wild Strike+', 'Strike')) | 0.000390000000027
+('hand_to_exhaust', 'Evolve') | -9.93991679363e-08
+('double_played', ('Perfected Strike', 'Rage')) | 0.000359996400053
+('double_played', ('Heavy Blade', 'Body Slam')) | 4.0000000139e-05
+('double_played', ('Pommel Strike', 'Feel No Pain')) | 0.000199995398021
+('double_played', ('Rage', 'Twin Strike')) | 8.99962991591e-05
+('double_played', ('Rampage', 'Dropkick')) | 0.0
+('single_played', 'Body Slam+') | 0.01
+('upgrade_rest', 'Clothesline') | -3.81339703294e-13
+('double_played', ('Searing Blow', 'Sentinel')) | 0.0
+('double_played', ('Strike', 'Intimidate')) | 5.99967958181e-05
+('discard_to_draw', 'Bloodletting') | -7.57120233346e-12
+('remove_card', 'Defend') | 4.22524744448e-10
+('copy_hand', 'Hemokinesis') | 0.0
+('double_played', ('Strike+', 'Strike')) | -0.0100000031005
+('single_played', 'Headbutt') | 0.000150098399033
+('double_played', ('Dropkick', 'Entrench')) | 0.000190000000338
+('double_played', ('Reckless Charge', 'Fiend Fire')) | 4.00000000137e-05
+('double_played', ('Shrug it off', 'Barricade')) | 0.0
+('double_played', ('Disarm', 'Strike')) | -0.00999990122853
+('hand_to_exhaust', 'Strike') | -9.93991679363e-08
+('double_played', ('Bloodletting', 'Perfected Strike')) | 5.00000000121e-05
+('double_played', ('Twin Strike', 'Sever Soul')) | 4.99986003999e-05
+('exhausted_to_hand', 'Exhume') | -2.00000308423e-07
+('double_played', ('Defend', 'Metallicize')) | -0.00999989997783
+('double_played', ('Headbutt', 'Brutality')) | -0.00999989999195
+('double_played', ('Uppercut', 'Hemokinesis+')) | 0.0
+('double_played', ('Headbutt', 'Flex')) | 0.000730000000011
+('double_played', ('Dark Embrace', 'Armaments')) | -0.01
+('double_played', ('Anger', 'Second Wind+')) | 0.0
+('double_played', ('Carnage', 'Strike')) | -0.0100000006999
+('double_played', ('Feed', 'Whirlwind')) | 0.0
+('double_played', ('Searing Blow', 'Whirlwind')) | 0.0
+('double_played', ('Anger+', 'Armaments')) | 0.010000100033
+('double_played', ('True Grit', 'Feed')) | 0.0
+('copy_hand', 'Defend') | -2.99897214409e-07
+('health_rest', 'Dark Embrace') | 6.54059342286e-09
+('double_played', ('Headbutt', 'Bash+')) | 9.99953968177e-05
+('double_played', ('Feel No Pain', 'Strike')) | 2.00000000651e-05
+('double_played', ('Offering', 'Twin Strike')) | 0.0
+('double_played', ('Hemokinesis', 'Pommel Strike')) | 0.0
+('double_played', ('Exhume', 'Immolate')) | 0.0
+('double_played', ('Carnage', 'Whirlwind')) | 0.0
+('hand_to_exhaust', 'Battle Trance') | 0.0
+('discard_to_draw', 'Uppercut') | 1.03997553659e-08
+('add_card', 'Bash') | 1.26007155898e-10
+('double_played', ('Sever Soul', 'Wild Strike')) | 0.0
+('double_played', ('Strike', 'Metallicize+')) | 3.00000001082e-05
+('double_played', ('Dropkick', 'Dropkick')) | 0.000629998400073
+('hand_to_draw', 'Reaper') | 0.0
+('double_played', ('Entrench', 'Defend')) | 2.00000003039e-05
+('double_played', ('Strike', 'Flex')) | 1.99939987313e-05
+('hand_to_exhaust', 'Corruption') | -9.99960207326e-08
+('double_played', ('Rampage', 'Sentinel')) | 0.000249995499386
+('single_played', 'Flame Barrier') | -0.00999979996962
+('double_played', ('Body Slam+', 'Strike')) | 0.000550000000076
+('hand_to_exhaust', 'Anger') | 2.70190198538e-09
+('double_played', ('Reckless Charge', 'Reaper')) | 0.00063999579818
+('upgrade_rest', 'Thunderclap+') | 2.54121938008e-12
+('double_played', ('Evolve', 'Bash')) | -0.00999990479098
+('double_played', ('Body Slam', 'Clothesline')) | -0.0100000001
+('hand_to_exhaust', 'Uppercut') | -1.77792383275e-13
+('double_played', ('Combust', 'Iron Wave')) | 0.0
+('double_played', ('Headbutt', 'Bloodletting')) | 0.01
+('double_played', ('Armaments', 'Reckless Charge')) | -0.00999989999136
+('double_played', ('Warcry', 'Iron Wave')) | 0.000469994299925
+early_end | -0.139992985892
+('double_played', ('Strike+', 'Flame Barrier')) | 0.0
+('double_played', ('Bloodletting', 'Berserk')) | 0.0
+('health_rest', 'Wild Strike') | 4.2228826201e-07
+('discard_to_draw', 'Shock Wave') | 0.0
+('double_played', ('Thunderclap', 'Metallicize')) | 0.000260000000496
+('double_played', ('Impervious', 'Bash')) | -0.01
+('double_played', ('True Grit', 'Body Slam')) | -0.0100000030007
+('double_played', ('Rage', 'Thunderclap')) | 0.0
+('double_played', ('Defend+', 'Rage')) | 0.0
+('double_played', ('Dark Embrace', 'Combust')) | 2.99985999377e-05
+('discard_to_draw', 'Combust') | 3.79953637013e-09
+('double_played', ('Clothesline', 'Strike')) | 0.000149997798449
+('double_played', ('Cleave', 'Hemokinesis')) | 0.0
+('double_played', ('Rage', 'Whirlwind')) | -0.01
+('double_played', ('Power Through', 'Limit Break')) | 0.0
+('add_card', 'Rampage+') | 7.79590942206e-10
+('double_played', ('Iron Wave', 'Rage')) | 0.0
+('double_played', ('Strike+', 'Bash')) | 0.000130100050038
+('double_played', ('Rampage', 'Shrug it off')) | 6.00000003725e-05
+('double_played', ('Ghostly Armor', 'Defend')) | 3.99974995889e-05
+('double_played', ('Body Slam', 'Wild Strike')) | 0.000530200059392
+('double_played', ('Corruption', 'Strike')) | -0.01
+('double_played', ('Spot Weakness', 'Strike')) | 3.00000001634e-05
+('double_played', ('Power Through', 'Rampage')) | 0.0
+('double_played', ('Shock Wave', 'Rage')) | -0.01
+('double_played', ('Shrug it off', 'Juggernaut')) | 0.0
+('double_played', ('Double Tap', 'Bash')) | 7.99967996585e-05
+('double_played', ('Body Slam', 'Body Slam+')) | 0.0
+('double_played', ('Body Slam', 'Twin Strike')) | -0.0100000020008
+('remove_card', 'Bludgeon') | 5.6350644329e-09
+('double_played', ('Flame Barrier', 'Armaments')) | 0.000149995900996
+('double_played', ('Cleave', 'Shrug it off')) | 1.99985988277e-05
+('double_played', ('Shrug it off', 'Thunderclap')) | -0.00999989997986
+('hand_to_draw', 'Rupture') | 0.0
+('double_played', ('Flex', 'Bash')) | -0.0100000019011
+('double_played', ('Searing Blow', 'Thunderclap')) | -0.0100000007004
+('double_played', ('Pommel Strike', 'Disarm')) | 0.0
+('double_played', ('Flex', 'Bash+')) | 0.0
+('single_played', 'Whirlwind') | -0.00999979986576
+('double_played', ('Strike+', 'Heavy Blade')) | -0.0100000030001
+('double_played', ('Wild Strike', 'Bash')) | 0.000130000000252
+('single_played', 'Corruption') | 0.000190000000631
+('double_played', ('Body Slam', 'Dark Embrace')) | -0.0100000178017
+('double_played', ('Rupture', 'Strike')) | -0.0100000072008
+('double_played', ('Whirlwind', 'Defend+')) | 0.0
+('single_played', 'Offering') | -0.00999979996386
+('single_played', 'Second Wind+') | 0.000350000000012
+('double_played', ('Offering', 'Wild Strike')) | 0.0
+('double_played', ('Entrench', 'Iron Wave')) | 0.00999999569853
+('double_played', ('Berserk', 'True Grit')) | 0.0
+('double_played', ('Clothesline', 'Spot Weakness')) | 0.0
+('double_played', ('Heavy Blade', 'Twin Strike')) | 7.99992002787e-05
+('double_played', ('Iron Wave+', 'Shrug it off')) | 0.0
+('double_played', ('Defend', 'Dual Wield')) | -0.019999814294
+('double_played', ('Rampage', 'Reckless Charge')) | 9.00000000336e-05
+('double_played', ('Strike', 'Havoc')) | 0.00032000000047
+('remove_card', 'Metallicize+') | 2.17151508239e-09
+('double_played', ('Reckless Charge', 'Offering')) | 0.0
+('double_played', ('Defend+', 'Defend+')) | 0.000400000000025
+('double_played', ('Iron Wave', 'Reckless Charge')) | -0.01
+('double_played', ('Berserk', 'Body Slam')) | 2.99879983577e-05
+('double_played', ('Rage', 'Uppercut')) | 0.0
+('discard_to_draw', 'Whirlwind') | 5.19689195565e-09
+('double_played', ('Twin Strike', 'Offering')) | 0.0
+('double_played', ('Impervious', 'Rage')) | 0.0
+('double_played', ('Wild Strike', 'Body Slam')) | 0.000670000000015
+('double_played', ('True Grit', 'Flex')) | 0.000360100038597
+('double_played', ('Entrench', 'Bash+')) | 0.0
+('double_played', ('Bash', 'Disarm')) | 1.99959995589e-05
+('double_played', ('Demon Form', 'Strike')) | -0.01
+('double_played', ('Uppercut', 'Pummel')) | 0.00034010001723
+('copy_hand', 'Barricade') | -9.6101436974e-08
+('double_played', ('Bludgeon', 'Defend')) | 0.000220000003784
+('health_rest', 'Combust') | 2.92481526087e-08
+('double_played', ('Hemokinesis', 'Sentinel')) | 0.0
+('double_played', ('Pummel', 'Shrug it off')) | 0.000170099114484
+('double_played', ('Offering', 'Iron Wave')) | 2.00000002036e-05
+('health_rest', 'Dropkick') | 8.3063714772e-08
+('double_played', ('Seeing Red', 'Clothesline')) | 0.000140000000244
+('double_played', ('Whirlwind', 'Shrug it off')) | 0.000100000000093
+('remove_card', 'Double Tap') | 1.12004061331e-10
+('double_played', ('Warcry', 'Anger')) | 0.0
+('double_played', ('Hemokinesis', 'Thunderclap')) | -0.00999989998893
+('hand_to_exhaust', 'Defend') | -9.93991679363e-08
+('single_played', 'Carnage') | -0.00999990019775
+('double_played', ('Power Through', 'Power Through')) | 0.0
+('double_played', ('Rampage', 'Juggernaut')) | 0.0
+('hand_to_exhaust', 'Hemokinesis') | 0.0
+('double_played', ('Anger', 'True Grit')) | 0.000229994798436
+('double_played', ('Havoc', 'Heavy Blade')) | 0.0
+('single_played', 'Bludgeon') | 4.99941996011e-05
+('double_played', ('Whirlwind', 'Bludgeon')) | 0.0
+('double_played', ('Iron Wave', 'Perfected Strike')) | 0.0
+('double_played', ('Strike', 'Dark Embrace')) | -0.00999989998944
+('health_rest', 'Pommel Strike') | 2.84264173753e-07
+('double_played', ('Rage', 'Anger')) | 0.000230000000686
+('double_played', ('Body Slam', 'Uppercut')) | -0.01
+('add_card', 'Burning Pact+') | 2.13563111858e-09
+('add_card', 'Dropkick') | 1.42833292151e-09
+('double_played', ('Dropkick', 'Twin Strike')) | 0.0
+('discard_to_draw', 'Burning Pact') | -9.67961674725e-08
+('double_played', ('Twin Strike', 'Battle Trance')) | 0.000110100030228
+('double_played', ('Bash', 'Limit Break')) | 9.00000001033e-05
+('double_played', ('Thunderclap', 'Inflame')) | 0.0
+('double_played', ('Headbutt', 'Carnage')) | 5.00000001747e-05
+('double_played', ('Brutality', 'Headbutt')) | 0.000110000000371
+('double_played', ('Thunderclap', 'Clothesline')) | -0.00999989999077
+('double_played', ('Exhume', 'Anger')) | 0.0
+('double_played', ('Rampage', 'Second Wind')) | 0.0
+('upgrade_rest', 'Double Tap') | 7.40377338439e-10
+('double_played', ('Limit Break', 'Spot Weakness')) | 0.0
+('double_played', ('Whirlwind', 'Whirlwind')) | 0.000410000000473
+('double_played', ('Strike', 'Anger')) | -0.0099995999747
+('health_rest', 'Thunderclap') | 2.78820860149e-07
+('double_played', ('Headbutt', 'Uppercut')) | 0.000490000000447
+('double_played', ('Defend+', 'Cleave')) | 0.0
+('double_played', ('Strike', 'Whirlwind')) | -0.00999979986576
+('double_played', ('Iron Wave', 'Defend+')) | -0.00999979997394
+('health_rest', 'Cleave') | 4.57098891266e-07
+('double_played', ('True Grit', 'Strike')) | -0.0100000032027
+('double_played', ('Body Slam', 'Inflame')) | 3.00000000409e-05
+('double_played', ('Armaments', 'True Grit')) | 9.99982993697e-05
+('single_played', 'Twin Strike') | -0.00999959997907
+('double_played', ('Headbutt', 'Pommel Strike')) | -0.0100000035003
+('remove_card', 'Havoc') | 5.91059142017e-09
+('double_played', ('Defend', 'Bloodletting')) | -0.02
+('double_played', ('Rampage', 'Defend+')) | 0.000259991998905
+('double_played', ('Battle Trance', 'Sentinel')) | 0.0
+('upgrade_rest', 'Wild Strike+') | 5.40601533972e-10
+('double_played', ('Cleave', 'Strike')) | -0.0100000000007
+('double_played', ('Hemokinesis', 'Carnage')) | 0.0
+('double_played', ('Whirlwind', 'Metallicize')) | 0.0
+('double_played', ('Flame Barrier+', 'Bash')) | 0.0
+('add_card', 'Combust+') | 1.67256683157e-09
+('single_played', 'Immolate') | -0.0100000009
+('double_played', ('Armaments+', 'Strike+')) | 0.000289999799946
+('double_played', ('Blood for Blood', 'Defend')) | 3.999819969e-05
+('single_played', 'Wild Strike') | -0.00999989999623
+('double_played', ('Shrug it off', 'Twin Strike')) | 0.000590000001351
+('double_played', ('Twin Strike', 'Disarm')) | 0.000420100052004
+('health_rest', 'Anger') | 2.39456149847e-07
+('double_played', ('Feel No Pain', 'Sentinel')) | -0.01
+('double_played', ('Iron Wave', 'Reaper')) | 0.0
+('double_played', ('Bash', 'Sever Soul')) | 0.000320100043513
+('double_played', ('Berserk', 'Headbutt')) | 0.000130096214582
+('double_played', ('Whirlwind', 'Thunderclap')) | 0.0
+('double_played', ('Feel No Pain', 'Wild Strike')) | 0.0
+('discard_to_draw', 'Dazed') | 1.00299888638e-07
+('double_played', ('Defend', 'Offering')) | 2.00000002036e-05
+('double_played', ('Wild Strike', 'Iron Wave')) | 9.00000003318e-05
+('add_card', 'Heavy Blade+') | 3.4230592525e-10
+('double_played', ('Battle Trance', 'Armaments')) | -0.01
+('double_played', ('Sentinel+', 'Bash+')) | 0.0
+('double_played', ('Metallicize+', 'Pommel Strike')) | 0.0
+('double_played', ('Defend+', 'Strike')) | -0.0199998009461
+('double_played', ('Berserk', 'Bash')) | 0.000200000000303
+('double_played', ('Body Slam', 'Metallicize')) | 0.000100000000322
+('double_played', ('Strike+', 'Clothesline')) | 0.0
+('double_played', ('Defend', 'Juggernaut')) | -0.0100000001999
+('double_played', ('Shrug it off', 'Warcry')) | 6.00000003725e-05
+('double_played', ('Pommel Strike+', 'Iron Wave')) | 0.000390000000015
+('double_played', ('Pommel Strike', 'Shrug it off')) | 9.0000000962e-05
+('double_played', ('Armaments', 'Warcry')) | 7.0000000005e-05
+('double_played', ('Second Wind', 'Flex')) | 0.0
