@@ -5,7 +5,7 @@ from numpy_test import test_np
 def run():
     mdp = STSMDP()
     numIters = 1000
-    totalRewards = simulate(mdp, numIters, False, 0, False)
+    totalRewards, final_weights = simulate(mdp, numIters, False, 1, False)
     print totalRewards
 
     numWon = 0.0
@@ -13,10 +13,36 @@ def run():
         if reward > 0:
             numWon += 1
 
+    def print_weights(weights):
+        print "Overall Status"
+        for key in weights.keys():
+            if "enemy" in key or "player" in key or "health" in key or "total enemy HP" in key or "block percentage" in key:
+                print "{}, {}".format(key, weights[key])
+
+        print "Cards in hand"
+        for key in weights.keys():
+            if "hand" in key:
+                print "{}, {}".format(key, weights[key])
+
+        print "Cards in draw"
+        for key in weights.keys():
+            if "draw" in key:
+                print "{}, {}".format(key, weights[key])
+
+        print "Cards in discard"
+        for key in weights.keys():
+            if "discard" in key:
+                print "{}, {}".format(key, weights[key])
+
+        print "Cards in exhausted"
+        for key in weights.keys():
+            if "exhausted" in key:
+                print "{}, {}".format(key, weights[key])
+
     def print_all_stats():
         print "Total averages: (win/loss rate)"
-        print numWon / numIters
-        print 1 - (numWon / numIters)
+        print "win rate: " + str(numWon / numIters)
+        print "loss rate: " + str(1 - (numWon / numIters))
         print
 
         print "Last " + str(numIters / 2) + " rounds: win rate"
@@ -55,6 +81,7 @@ def run():
         print first250 / (numIters / 2)
 
     print_all_stats()
+    print_weights(final_weights)
 
 if __name__ == '__main__':
     run()

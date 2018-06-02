@@ -80,31 +80,31 @@ def game_general_feature_extractor(state, action):
         features["copy"] = 1
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
-            features[("hand", card.name)] = 1
+            features[("copy_hand", card.name)] = 1
 
     elif state.state_type == StateType.DISCARD_TO_DRAW:
         features["discardToDraw"] = 1
         # Appends indicators for all cards in player's discard pile
         for card in state.player.deck.discard_pile:
-            features[("discard", card.name)] = 1
+            features[("discard_to_draw", card.name)] = 1
 
     elif state.state_type == StateType.EXHAUST_TO_HAND:
         features["exhaustToHand"] = 1
         # Appends indicators for all cards in player's exhaust pile
         for card in state.player.deck.exhaust_pile:
-            features[("exhausted", card.name)] = 1
+            features[("exhausted_to_hand", card.name)] = 1
 
     elif state.state_type == StateType.HAND_TO_DRAW:
         features["handToDraw"] = 1
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
-            features[("hand", card.name)] = 1
+            features[("hand_to_draw", card.name)] = 1
 
     elif state.state_type == StateType.HAND_TO_EXHAUST:
         features["handToExhaust"] = 1
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
-            features[("hand", card.name)] = 1
+            features[("hand_to_exhaust", card.name)] = 1
 
     elif state.state_type == StateType.NORMAL_REST:
         features["normalRest"] = 1
@@ -112,28 +112,28 @@ def game_general_feature_extractor(state, action):
         # for i in range(13):
             # features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
         # Health feature - what fraction of max health are we?
-        features["health"] = float(state.player.health) / state.player.max_health
+        features["health_rest"] = float(state.player.health) / state.player.max_health
 
         for card in state.player.deck.cards:
-            features[card.name] = 1
+            features[("health_rest", card.name)] = 1
 
     elif state.state_type == StateType.UPGRADE_REST:
         features["upgradeRest"] = 1
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
-            features[card.name] = 1
+            features[("upgrade_rest", card.name)] = 1
 
     elif state.state_type == StateType.REMOVE_CARD:
         features["removeCard"] = 1
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
-            features[card.name] = 1
+            features[("remove_card", card.name)] = 1
 
     elif state.state_type == StateType.ADD_CARD:
         features["addCard"] = 1
         # Grabs indicators for each card in the player's deck
         for card in state.player.deck.cards:
-            features[card.name] = 1
+            features[("add_card", card.name)] = 1
 
     else:  # state.state_type == StateType.NORMAL_RANDOM:
         features["normalRandom"] = 1
@@ -162,7 +162,8 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
 
     totalRewards = []  # The rewards we get on each trial
 
-    epsilon = 0.0
+    # Exploration probability
+    epsilon = numTrials
 
     for trial in range(numTrials):
 
@@ -174,7 +175,6 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
 
         # Grab the start state and put it in the sequence.
         state = mdp.start_state()
-        #sequence = [state]
 
         # Total Discount is 1 for now.
         totalDiscount = 1
@@ -184,13 +184,10 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
 
         while True:
             # Algorithm will pick one of its possible actions from state state to do.
-            # if state.state_type == StateType.ADD_CARD:
-                # print mdp.generate_actions(state)
-
             if action_gen_type == 0:
-                action = function_approx.generic_policy(state, epsilon / numTrials)
+                action = function_approx.generic_policy(state, float(epsilon) / numTrials)
             else:
-                action = function_approx.q_learning_action(state, epsilon / numTrials)
+                action = function_approx.q_learning_action(state, float(epsilon) / numTrials)
 
             if verbose:
                 print "------------------"
@@ -202,10 +199,6 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
             successorState, reward = mdp.generate_successor_state(state, action)
             # if mdp.is_end_state(successorState):
                 # print state.nc_player.deck.cards
-
-            # Append our action and successor state to the sequence (for verbose display if needed)
-            #sequence.append(action)
-            #sequence.append(successorState)
 
             # Incorporate the feedback we got from state, action, reward, state'.
             if action_gen_type != 0:
@@ -220,7 +213,7 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
                 break
 
         # Make it slightly more likely we'll exploit
-        epsilon += 1
+        epsilon -= 1
         totalRewards.append(totalReward)
         """print("==========================")
         print("==========================")
@@ -231,6 +224,5 @@ def simulate(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = Fa
         if weights:
             print(function_approx.weights)
 
-    print function_approx.weights
     print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
-    return totalRewards
+    return totalRewards, function_approx.weights

@@ -7,7 +7,7 @@ import types
 
 
 class Algorithm:
-    def __init__(self, discount, featureExtractor, temp_mdp, explorationProb = 0.2):
+    def __init__(self, discount, featureExtractor, temp_mdp):
 
         # Actions is a function where actions(state) returns a list of actions one can take at that state.
         self.mdp = temp_mdp
@@ -17,9 +17,6 @@ class Algorithm:
 
         # Features and stuff TBD
         self.feature_extractor = featureExtractor
-
-        # ExplorationProb changer TBD as well
-        self.explorationProb = explorationProb
 
         # Weights TBD alongside features
         self.weights = collections.defaultdict(float)
@@ -32,7 +29,10 @@ class Algorithm:
         score = 0
 
         # If state is None, the action we tried taking was illegal
+        # If state is an int, we've either won the game or lost the game.
         if state is not None:
+            if isinstance(state, int):
+                return 1000 if state == 1 else -1000
             features = self.feature_extractor(state, action)
             for f in features.keys():
                 score += self.weights[f] * features[f]
@@ -43,14 +43,14 @@ class Algorithm:
     def getStepSize(self):
         # return 1.0 / (1 + math.sqrt(self.numIters))
         # Just return a constant of some sort
-        return 0.001
+        return 0.00001
 
     # Baseline policy: randomly play a card with probability epsilon, or attack with the card
     # that does the most damage.
     def generic_policy(self, state, epsilon1):
-        # 1 for greedy, 0 for random. Un-define it for a spectrum.
+        # 1 for random, 0 for greedy. Un-define it for a spectrum.
         epsilon = 1
-        if state is not None and state.state_type == StateType.NORMAL_COMBAT and random.uniform(0, 1) <= epsilon:
+        if state is not None and state.state_type == StateType.NORMAL_COMBAT and random.uniform(0, 1) > epsilon:
             actions = self.mdp.generate_actions(state)
             max_action = None
             max_delta = 0
@@ -89,7 +89,8 @@ class Algorithm:
             action = None
             actions = self.mdp.generate_actions(state)
             while successorState is None:
-                action = random.choice(actions)
+                # action = random.choice(actions)
+                action = actions[0]
                 successorState, reward = self.mdp.generate_successor_state(state, action)
                 if successorState is None:
                     actions.remove(action)
@@ -103,7 +104,9 @@ class Algorithm:
         self.numIters += 1
         action = None
         successorState = None
-        if random.random() > epsilon:
+
+        # Epsilon = probability of exploration
+        if random.random() <= epsilon:
             while successorState is None:
                 action = random.choice(actions)
                 successorState, reward = self.mdp.generate_successor_state(state, action)
@@ -111,10 +114,24 @@ class Algorithm:
                     actions.remove(action)
         else:
             while successorState is None:
-                action = max((self.getQ(state, action), action) for action in actions)[1]
-                successorState, reward = self.mdp.generate_successor_state(state, action)
-                if successorState is None:
-                    actions.remove(action)
+                bestVOpt = -10000000
+                action = None
+                for a in actions:
+                    successorState, reward = self.mdp.generate_successor_state(state, a)
+                    if successorState is None:
+                        actions.remove(a)
+                    else:
+                        # We're really only taking successorState into account here; the action is the prev action.
+                        # Else there's too many possibilities to loop through - we have to go through all actions of the new state too.
+                        vEst = self.getQ(successorState, a)
+                        if vEst > bestVOpt:
+                            bestVOpt = vEst
+                            action = a
+
+                # action = max((self.getQ(state, action), action) for action in actions)[1]
+                # successorState, reward = self.mdp.generate_successor_state(state, action)
+                # if successorState is None:
+                    # actions.remove(action)
         return action
 
     # Performs weights = weights + k * features (for sparse vectors weights (dictionary) and features (list))
