@@ -219,7 +219,7 @@ class GremlinWizardAI:
 
 class ThornyPlantAI:
     def __init__(self):
-        self.sequence = Intent[Intent.BUFF, Intent.BLOCK, Intent.BLOCK, Intent.ATTACK, Intent.ATTACK]
+        self.sequence = [Intent.BUFF, Intent.BLOCK, Intent.BLOCK, Intent.ATTACK, Intent.ATTACK]
         self.attack = 6
         self.block = 12
         self.buff = 3

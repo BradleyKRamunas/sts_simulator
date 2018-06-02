@@ -12,7 +12,7 @@ class STSMDP:
 
     def __init__(self):
         self.combat_count = 0
-        self.combat_wins = 30
+        self.combat_wins = 10
         self.easy_enemies = [[combat.CombatEnemy(None, SpikeSlimeAI(), 12), combat.CombatEnemy(None, AcidSlimeAI(), 15)],
                              [combat.CombatEnemy(None, JawWormAI(), 30)], [combat.CombatEnemy(None, FungiBeastAI(), 24),
                                                                            combat.CombatEnemy(None, FungiBeastAI(), 25)],

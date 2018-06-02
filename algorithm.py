@@ -96,30 +96,6 @@ class Algorithm:
                     actions.remove(action)
             return action
 
-    # When we do this, we assume we already have a Q_opt set and strictly try and exploit.
-    def q_learning_test(self, state):
-        actions = self.mdp.generate_actions(state)
-        self.numIters += 1
-        action = None
-        successorState = None
-
-        while successorState is None:
-            bestVOpt = -10000000
-            action = None
-            for a in actions:
-                successorState, reward = self.mdp.generate_successor_state(state, a, False)
-                if successorState is None:
-                    actions.remove(a)
-                else:
-                    # We're really only taking successorState into account here; the action is the prev action.
-                    # Else there's too many possibilities to loop through - we have to go through all actions of the new state too.
-                    vEst = self.getQ(successorState, a)
-                    if vEst > bestVOpt:
-                        bestVOpt = vEst
-                        action = a
-        return action
-
-
     # Sort of epsilon greedy right now... we'll probably change this.
     # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt
     def q_learning_action(self, state, epsilon):
