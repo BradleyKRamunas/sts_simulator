@@ -9,14 +9,13 @@ from numpy_test import test_np
 
 def run(q_learn, testing, file_name):
 
-    def learn_phase(mdp):
-        numIters = 100
-        # simulate params: (mdp, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
-        totalRewards, final_weights = learn(mdp, numIters, False, 1, False)
+    def learn_phase(mdp, weights = defaultdict(float), numIters = 1000):
+        # simulate params: (mdp, weights, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
+        totalRewards, final_weights = learn(mdp, weights, numIters, False, 0, False)
         print totalRewards
 
         # Write weights to file
-        write_weight_file = open(str(datetime.datetime.fromtimestamp(time()))[:19] + " with " + str(numIters) + " iterations.txt", "w")
+        write_weight_file = open(str(datetime.datetime.fromtimestamp(time())).replace(":", ".")[:19] + " with " + str(numIters) + " iterations.txt", "w")
         for item in final_weights:
             write_weight_file.write(str(item) + " | " + str(final_weights[item]) + "\n")
 
@@ -102,7 +101,8 @@ def run(q_learn, testing, file_name):
         print "========================= TESTING PHASE ========================="
         print
 
-        testRewards = test(mdp, weights, numTests, False)
+        # test params: mdp, weight vector, numTests, Verbose, Random
+        testRewards = test(mdp, weights, numTests, False, False)
         print testRewards
 
         numWon = 0.0
@@ -115,33 +115,55 @@ def run(q_learn, testing, file_name):
         print "loss rate: " + str(1 - (numWon / numTests))
         print
 
+        return numWon / numTests
 
     def read_weights(name):
-        file = open(name)
+        weight_file = open(name)
         weights = defaultdict(float)
-        line = file.readline()
+        line = weight_file.readline()
         while len(line) > 0:
             data = line.split(" | ")
-            print data
             weights[data[0]] = float(data[1])
-            line = file.readline()
-        file.close()
+            line = weight_file.readline()
+        weight_file.close()
         return weights
 
-# =========================================================================================
+    # =========================================================================================
+    # Usage: change numTests for number of test iterations. Change numIters for number of learning
+    # iterations. If you want pure learning starting from uninitialized (zeroed) weights, file_name
+    # must be None. If you want pure testing starting with file-saved weights, use False, True, file_name.
+    # Params are q_learn, testing, file_name. N.B. Testing returns the average win rate of using whichever
+    # weights were just used for testing.
     mdp = STSMDP()
-    numTests = 10
+    numTests = 100
+    numIters = 1000
+    weights = defaultdict(float)
+    if file_name is not None:
+        weights = read_weights(file_name)
     if q_learn:
-        recently_learned_weights = learn_phase(mdp)
-        if testing:
-            test_phase(mdp, recently_learned_weights, numTests)
-    elif testing:
-        recently_learned_weights = read_weights(file_name)
-        test_phase(mdp, recently_learned_weights, numTests)
+        weights = learn_phase(mdp, weights, numIters)
+    if testing:
+        return test_phase(mdp, weights, numTests)
 
 
+def helper(text_file_name):
+    f = open(text_file_name)
+    line = f.readline()
+    stuff_list = []
+    while len(line) > 0:
+        data = line.split(" | ")
+        stuff_list.append((data[0], float(data[1])))
+    print "here"
+    stuff_list.sort(key=lambda x: x[1])
+    for item in stuff_list:
+        print item
 
 if __name__ == '__main__':
     # None if we want to just learn and immediately save/test weights
     # run(learn, test, file_name)
-    run(True, True, "2018-06-02 21:20:52 with 100 iterations.txt")
+    avg_list = []
+    for i in range(5):
+        avg_list.append(run(False, True, "best.txt"))
+    avg_win = float(sum(avg_list)) / len(avg_list)
+    print avg_win
+

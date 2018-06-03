@@ -12,7 +12,7 @@ class STSMDP:
 
     def __init__(self):
         self.combat_count = 0
-        self.combat_wins = 10
+        self.combat_wins = 12
         self.easy_enemies = [[combat.CombatEnemy(None, SpikeSlimeAI(), 12), combat.CombatEnemy(None, AcidSlimeAI(), 15)],
                              [combat.CombatEnemy(None, JawWormAI(), 30)], [combat.CombatEnemy(None, FungiBeastAI(), 24),
                                                                            combat.CombatEnemy(None, FungiBeastAI(), 25)],
@@ -53,7 +53,7 @@ class STSMDP:
         if state.state_type == StateType.NORMAL_COMBAT:
 
             # Special state: if we've killed all enemies but want our q-learning to update itself
-            if action == (cards.strike, 0):
+            if action == (cards.strike, -1):
                 if temp_state.player.health <= 0:
                     return (0, -1000)
 
@@ -229,7 +229,7 @@ class STSMDP:
         if state.state_type == StateType.NORMAL_COMBAT:
             if state.end_game:
                 # Temp special action that will never get called
-                return [(cards.strike, 0)]
+                return [(cards.strike, -1)]
             for card in state.player.deck.hand:
                 if card.target_type == Target.SELF:
                     actions.append((card, -1))

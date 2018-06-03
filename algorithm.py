@@ -1,13 +1,14 @@
 import collections
 import random
 import math
+import cards
 from combat import *
 import numpy
 import types
 
 
 class Algorithm:
-    def __init__(self, discount, featureExtractor, temp_mdp):
+    def __init__(self, discount, featureExtractor, temp_mdp, weights):
 
         # Actions is a function where actions(state) returns a list of actions one can take at that state.
         self.mdp = temp_mdp
@@ -18,8 +19,8 @@ class Algorithm:
         # Features and stuff TBD
         self.feature_extractor = featureExtractor
 
-        # Weights TBD alongside features
-        self.weights = collections.defaultdict(float)
+        # Weights = collections.defaultdict(float)
+        self.weights = weights
 
         # This is useful for storing how many times we've stepped forward one state
         self.numIters = 0
@@ -49,7 +50,7 @@ class Algorithm:
     # that does the most damage.
     def generic_policy(self, state, epsilon1):
         # 1 for random, 0 for greedy. Un-define it for a spectrum.
-        epsilon = 1
+        epsilon = 0
         if state is not None and state.state_type == StateType.NORMAL_COMBAT and random.uniform(0, 1) > epsilon:
             actions = self.mdp.generate_actions(state)
             max_action = None
@@ -62,8 +63,9 @@ class Algorithm:
             for action in actions:
                 next_state, reward = self.mdp.generate_successor_state(state, action, False)
                 new_sum = 0
-                if next_state is not None and not isinstance(next_state, int):
-
+                if next_state is not None:
+                    if isinstance(next_state, int):
+                        return (cards.strike, -1)
                     # If we're still in a combat, consider the next states.
                     if next_state.state_type == StateType.NORMAL_COMBAT:
                         for enemy in next_state.enemies:
@@ -89,36 +91,12 @@ class Algorithm:
             action = None
             actions = self.mdp.generate_actions(state)
             while successorState is None:
-                action = random.choice(actions)
-                # action = actions[0]
+                # action = random.choice(actions)
+                action = actions[0]
                 successorState, reward = self.mdp.generate_successor_state(state, action, False)
                 if successorState is None:
                     actions.remove(action)
             return action
-
-    # When we do this, we assume we already have a Q_opt set and strictly try and exploit.
-    def q_learning_test(self, state):
-        actions = self.mdp.generate_actions(state)
-        self.numIters += 1
-        action = None
-        successorState = None
-
-        while successorState is None:
-            bestVOpt = -10000000
-            action = None
-            for a in actions:
-                successorState, reward = self.mdp.generate_successor_state(state, a, False)
-                if successorState is None:
-                    actions.remove(a)
-                else:
-                    # We're really only taking successorState into account here; the action is the prev action.
-                    # Else there's too many possibilities to loop through - we have to go through all actions of the new state too.
-                    vEst = self.getQ(successorState, a)
-                    if vEst > bestVOpt:
-                        bestVOpt = vEst
-                        action = a
-        return action
-
 
     # Sort of epsilon greedy right now... we'll probably change this.
     # Here's where we get to loop through all the successor states and see which generates the greatest Q_opt

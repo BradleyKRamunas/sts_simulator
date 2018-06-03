@@ -18,14 +18,11 @@ def game_general_feature_extractor(state, action):
         # Policy gradients?
 
         # Allows for a constant term bias
-        features["combat"] = 1
+        # features["combat"] = 1
 
         # Idea: discretized health indicators
         # for i in range(13):
             # features[str(10 * i) + " to " + str(10 * (i + 1)) + " health"] = 1 if state.player.health >= 10 * i and state.player.health < 11 * i else 0
-
-        # Health feature - what fraction of max health are we?
-        features["health"] = float(state.player.health) / state.player.max_health
 
         # Idea: discretized block indicators
         # for i in range(10):
@@ -33,6 +30,9 @@ def game_general_feature_extractor(state, action):
 
         # Block feature
         # features["block"] = state.player.block
+
+        # Health feature - what fraction of max health are we?
+        features["health"] = float(state.player.health) / state.player.max_health
 
         # Total enemy health feature, total enemy block feature, total enemy attack intent, enemy intent indicator
         # Also condition indicators/value/duration for player and enemy
@@ -163,14 +163,14 @@ def identityFeatureExtractor(state, action):
 
 ############################################################
 # Return the list of rewards that we get for each trial.
-def learn(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False):
+def learn(mdp, weights, numTrials=10, verbose=False, action_gen_type = 0, print_weights = False):
 
     startTime = time.time()
     lastThirty = startTime
 
     # (discount, featureExtractor, temp_mdp, explorationProb = 0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
-    function_approx = Algorithm(0.5, game_general_feature_extractor, mdp)
+    function_approx = Algorithm(1, game_general_feature_extractor, mdp, weights)
 
     totalRewards = []  # The rewards we get on each trial
 
@@ -244,14 +244,14 @@ def learn(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False
             print("====================================")
             print("====================================")
         mdp.combat_count = 0
-        if weights:
+        if print_weights:
             print(function_approx.weights)
 
     print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
     return totalRewards, function_approx.weights
 
 
-def test(mdp, weights, numTrials=10, verbose=False):
+def test(mdp, weights, numTrials=10, verbose=False, random = False):
 
     startTime = time.time()
     lastThirty = startTime
@@ -281,7 +281,10 @@ def test(mdp, weights, numTrials=10, verbose=False):
 
         while True:
             # Algorithm will pick one of its possible actions from state state to do.
-            action = brain.q_learning_test(state)
+            if random:
+                action = brain.random_action(state)
+            else:
+                action = brain.q_learning_test(state)
 
             if verbose:
                 print "------------------"

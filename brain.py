@@ -1,3 +1,4 @@
+import random
 
 class Brain:
     def __init__(self, discount, feature_extractor, temp_mdp, weights):
@@ -47,4 +48,16 @@ class Brain:
                     if vEst > bestVOpt:
                         bestVOpt = vEst
                         action = a
+        return action
+
+    def random_action(self, state):
+        successorState = None
+        action = None
+        actions = self.mdp.generate_actions(state)
+        while successorState is None:
+            # action = random.choice(actions)
+            action = actions[0]
+            successorState, reward = self.mdp.generate_successor_state(state, action, False)
+            if successorState is None:
+                actions.remove(action)
         return action
