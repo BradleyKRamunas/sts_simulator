@@ -12,7 +12,7 @@ class StatusCondition:
         self.static = static  # true if value will never change, false is value decrements/changes per turn
 
     def __str__(self):
-        return "{} with value {} for duration {} (static: {})"\
+        return "{} with value {} for duration {} (static: {})" \
             .format(self.status, self.value, self.duration, self.static)
 
     def __repr__(self):
@@ -35,6 +35,10 @@ class Combat:
         self.cards_played = []
         self.two_combos_played = []
         self.turns_ended_early = 0
+
+        # To see if we're in an end-game state
+        self.end_game = False
+
         # self.game_loop()  # meant for human player, not for AI usage
 
     def start_turn(self):
@@ -68,6 +72,17 @@ class Combat:
         self.player.draw_cards(draw_size)
 
     def end_turn(self):
+
+        # Treats ending turn as a card, so we don't confuse combos
+        if self.last_card_played is not None:
+            self.two_combos_played.append((self.last_card_played, "None"))
+        self.cards_played.append("None")
+        self.last_card_played = "None"
+
+        # For features; check if we ended with excess energy.
+        if self.player.energy > 0:
+            self.turns_ended_early += 1
+
         for enemy in self.enemies:
             enemy.decrement_status_conditions()
 
@@ -100,13 +115,9 @@ class Combat:
 
         self.player.decrement_status_conditions()
 
-        # For features; check if we ended with excess energy.
-        if self.player.energy > 0:
-            self.turns_ended_early += 1
-
     def print_information(self):
-        print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"\
-            .format(self.player.health, self.player.max_health, self.player.energy, self.player.block))
+        print ("Your health: {}/{} | Your Energy: {} | Your Block: {}"
+               .format(self.player.health, self.player.max_health, self.player.energy, self.player.block))
         count = 0
         print ("Your hand: "),
         for card in self.player.deck.hand:
@@ -142,7 +153,8 @@ class Combat:
             self.start_turn()
             while True:
                 self.print_information()
-                option = int(raw_input("Which card would you like to use (-1 end, -2 draw, -3 discard, -4 exhaust)? > "))
+                option = int(
+                    raw_input("Which card would you like to use (-1 end, -2 draw, -3 discard, -4 exhaust)? > "))
                 if option == -1:  # -1 means end turn
                     break
                 if option == -2:  # print draw pile
@@ -202,7 +214,7 @@ class CombatEnemy:
             status_condition = StatusCondition(status, value, 0, True)
             self.apply_status_condition(status_condition)
         if intent == Intent.DEBUFF:
-            status_condition = StatusCondition(status, 0, value+1, False)
+            status_condition = StatusCondition(status, 0, value + 1, False)
             self.combat.player.apply_status_condition(status_condition)
 
     def generate_move(self):
@@ -316,7 +328,7 @@ class CombatPlayer:
         self.block += calc_value
         if Status.JUGGERNAUT in self.conditions:
             value = self.conditions[Status.JUGGERNAUT].value
-            random_target = random.randint(0, len(self.combat.enemies)-1)
+            random_target = random.randint(0, len(self.combat.enemies) - 1)
             while self.combat.enemies[random_target].health <= 0:
                 random_target = random.randint(0, len(self.combat.enemies) - 1)
             self.combat.enemies[random_target].lose_health(value)
@@ -479,4 +491,3 @@ IX. Energy remaining
 X. Health remaining
 XI. Block remaining
 XII. Conditions"""
-

@@ -6,14 +6,8 @@ import random
 
 def testing_deck():
     deck = Deck()
-
-    for i in range(10):
-        deck.add_card(defend)
-        deck.add_card(bodySlam)
-        deck.add_card(shrugItOff)
-        deck.add_card(impervious)
-    for i in range(3):
-        deck.add_card(barricade)
+    deck.add_card(pummelPlus)
+    deck.add_card(flexPlus)
     return deck
 
 def generate_upgrade_dictionary():

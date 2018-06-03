@@ -10,7 +10,7 @@ from numpy_test import test_np
 def run(q_learn, testing, file_name):
 
     def learn_phase(mdp):
-        numIters = 1000
+        numIters = 100
         # simulate params: (mdp, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
         totalRewards, final_weights = learn(mdp, numIters, False, 1, False)
         print totalRewards
@@ -102,7 +102,7 @@ def run(q_learn, testing, file_name):
         print "========================= TESTING PHASE ========================="
         print
 
-        testRewards = test(mdp, weights, numTests, True)
+        testRewards = test(mdp, weights, numTests, False)
         print testRewards
 
         numWon = 0.0
@@ -119,9 +119,12 @@ def run(q_learn, testing, file_name):
     def read_weights(name):
         file = open(name)
         weights = defaultdict(float)
-        while len(file.readline()) > 0:
-            data = file.readline().split(" | ")
+        line = file.readline()
+        while len(line) > 0:
+            data = line.split(" | ")
+            print data
             weights[data[0]] = float(data[1])
+            line = file.readline()
         file.close()
         return weights
 
@@ -141,4 +144,4 @@ def run(q_learn, testing, file_name):
 if __name__ == '__main__':
     # None if we want to just learn and immediately save/test weights
     # run(learn, test, file_name)
-    run(False, True, "weights.txt")
+    run(True, True, "2018-06-02 21:20:52 with 100 iterations.txt")

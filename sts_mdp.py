@@ -27,9 +27,12 @@ class STSMDP:
         self.rare_cards = cards.generate_rare_cards()
         self.upgrade_list = cards.generate_upgrade_dictionary()
 
+        # Always go to another combat
+        self.constant_combat = True
+
     def start_state(self):
         actor = player.Player(cards.generate_default_deck(), 80)
-        enemies = random.choice(self.easy_enemies)
+        enemies = deepcopy(random.choice(self.easy_enemies))
         start_state = combat.Combat(actor, enemies)
         return start_state
 
@@ -41,33 +44,18 @@ class STSMDP:
 
     def get_enemy_encounter(self):
         if self.combat_count <= 20:
-            return random.choice(self.easy_enemies)
+            return deepcopy(random.choice(self.easy_enemies))
         else:
-            return random.choice(self.medium_enemies)
+            return deepcopy(random.choice(self.medium_enemies))
 
     def generate_successor_state(self, state, action, real):
         temp_state = deepcopy(state)
-        reward = 0
         if state.state_type == StateType.NORMAL_COMBAT:
-            if action is None:
-                temp_state.end_turn()
-                temp_state.start_turn()
-            else:
-                card, target = action
-                if not temp_state.player.deck.use_card(card, target):
-                    return (None, 0)
-            dead_enemies = True
-            for enemy in temp_state.enemies:
-                if enemy.health > 0:
-                    dead_enemies = False
-                    break
 
-            # If we've lost this combat/game
-            if temp_state.player.health <= 0:
-                return (0, -1000)
-
-            # If we've won this combat...
-            if dead_enemies:
+            # Special state: if we've killed all enemies but want our q-learning to update itself
+            if action == (cards.strike, 0):
+                if temp_state.player.health <= 0:
+                    return (0, -1000)
 
                 # Only increment combat_count if we've won a real combat
                 if real:
@@ -86,7 +74,34 @@ class STSMDP:
                 next_state.state_type = StateType.ADD_CARD
 
                 # Our reward is how much health we had left at the end of this combat
-                return(next_state, next_state.player.health)
+                return (next_state, next_state.player.health)
+
+            if action is None:
+                temp_state.end_turn()
+                temp_state.start_turn()
+            else:
+                card, target = action
+                if not temp_state.player.deck.use_card(card, target):
+                    return (None, 0)
+
+            # This checks in the new state if all enemies are dead. Temp state -> new state
+            dead_enemies = True
+            for enemy in temp_state.enemies:
+                if enemy.health > 0:
+                    dead_enemies = False
+                    break
+
+            # If we've lost this combat/game
+            if temp_state.player.health <= 0:
+                temp_state.end_game = True
+                return (temp_state, 0)
+
+            # If we've won this combat...
+            if dead_enemies:
+                temp_state.end_game = True
+                return (temp_state, 0)
+
+
             else:
                 return (temp_state, 0)
         if state.state_type == StateType.COPY:
@@ -207,12 +222,14 @@ class STSMDP:
                 next_state = combat.Combat(deepcopy(temp_state.player), self.get_enemy_encounter())
                 return (next_state, 0)
 
-
     def generate_actions(self, state):
         if state is None:
             return [None]
         actions = []
         if state.state_type == StateType.NORMAL_COMBAT:
+            if state.end_game:
+                # Temp special action that will never get called
+                return [(cards.strike, 0)]
             for card in state.player.deck.hand:
                 if card.target_type == Target.SELF:
                     actions.append((card, -1))

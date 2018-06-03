@@ -56,7 +56,7 @@ def game_general_feature_extractor(state, action):
             totalEnemyMaxHP += enemy.max_health
             totalEnemyHP += enemy.health
 
-        features["total enemy HP"] = float(totalEnemyHP) / totalEnemyMaxHP
+        # features["total enemy HP"] = float(totalEnemyHP) / totalEnemyMaxHP
         features["block percentage"] = min(1, 0 if totalEnemyAtk == 0 else float(state.player.block) / totalEnemyAtk)
         # features["total enemy block"] = totalEnemyBlock
         # TODO: Features for player's action (how much damage it's doing; what statuses it's applying)
@@ -170,7 +170,7 @@ def learn(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False
 
     # (discount, featureExtractor, temp_mdp, explorationProb = 0.2)
     # This creates our actual function approximation (based off q-learning) algorithm
-    function_approx = Algorithm(1, game_general_feature_extractor, mdp)
+    function_approx = Algorithm(0.5, game_general_feature_extractor, mdp)
 
     totalRewards = []  # The rewards we get on each trial
 
@@ -209,15 +209,22 @@ def learn(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False
 
             # Single successor state generated (our MDP is, for all intents and purposes, well, deterministic.)
             successorState, reward = mdp.generate_successor_state(state, action, True)
-            # if reward != 0:
-                # print "fight finished"
-                # print reward
             # if mdp.is_end_state(successorState):
                 # print state.nc_player.deck.cards
+
+            """if reward != 0:
+                print "pre fight finished (w/o incorporate feedback)"
+                print reward
+                print function_approx.weights"""
 
             # Incorporate the feedback we got from state, action, reward, state'.
             if action_gen_type != 0:
                 function_approx.incorporateFeedback(state, action, reward, successorState)
+
+            """if reward != 0:
+                print "post fight finished (w/incorporate feedback)"
+                print reward
+                print function_approx.weights"""
 
             totalReward += totalDiscount * reward
             # totalDiscount *= mdp.discount()
@@ -230,11 +237,12 @@ def learn(mdp, numTrials=10, verbose=False, action_gen_type = 0, weights = False
         # Make it slightly more likely we'll exploit
         epsilon -= 1
         totalRewards.append(totalReward)
-        """print("==========================")
-        print("==========================")
-        print("Iteration done")
-        print("==========================")
-        print("==========================")"""
+        if verbose:
+            print("====================================")
+            print("====================================")
+            print("Iteration done")
+            print("====================================")
+            print("====================================")
         mdp.combat_count = 0
         if weights:
             print(function_approx.weights)
