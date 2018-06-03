@@ -1,4 +1,6 @@
 import random
+import cards
+from collections import defaultdict
 
 class Brain:
     def __init__(self, discount, feature_extractor, temp_mdp, weights):
@@ -14,6 +16,9 @@ class Brain:
 
         # Grabbing weights we've already learned
         self.weights = weights
+
+        # Trying to see if there's a strategy going on
+        # self.action_count = defaultdict(int)
 
     # Return the value associated with the weights and features
     def get_v(self, state, action):
@@ -48,6 +53,7 @@ class Brain:
                     if vEst > bestVOpt:
                         bestVOpt = vEst
                         action = a
+        # self.action_count[action] += 1
         return action
 
     def random_action(self, state):
@@ -55,9 +61,15 @@ class Brain:
         action = None
         actions = self.mdp.generate_actions(state)
         while successorState is None:
-            # action = random.choice(actions)
-            action = actions[0]
+            try:
+                action = random.choice(actions)
+            except IndexError:
+                print state.state_type
+                state.print_information()
+            # action = actions[0]
             successorState, reward = self.mdp.generate_successor_state(state, action, False)
             if successorState is None:
                 actions.remove(action)
+
+        # self.action_count[action] += 1
         return action

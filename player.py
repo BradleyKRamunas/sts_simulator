@@ -39,3 +39,6 @@ class Card:
 
     def __eq__(self, other):
         return other is not None and (self.name == other.name and self.card_type == other.card_type and self.count == other.count)
+
+    def __hash__(self):
+        return hash(self.name)

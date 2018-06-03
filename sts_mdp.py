@@ -10,9 +10,9 @@ from random_event import RandomEvent
 
 class STSMDP:
 
-    def __init__(self):
+    def __init__(self, wins):
         self.combat_count = 0
-        self.combat_wins = 12
+        self.combat_wins = wins
         self.easy_enemies = [[combat.CombatEnemy(None, SpikeSlimeAI(), 12), combat.CombatEnemy(None, AcidSlimeAI(), 15)],
                              [combat.CombatEnemy(None, JawWormAI(), 30)], [combat.CombatEnemy(None, FungiBeastAI(), 24),
                                                                            combat.CombatEnemy(None, FungiBeastAI(), 25)],

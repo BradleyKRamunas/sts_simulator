@@ -7,7 +7,7 @@ from collections import defaultdict
 from numpy_test import test_np
 
 
-def run(q_learn, testing, file_name):
+def run(q_learn, testing, file_name, num_enemies = 10):
 
     def learn_phase(mdp, weights = defaultdict(float), numIters = 1000):
         # simulate params: (mdp, weights, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
@@ -96,13 +96,13 @@ def run(q_learn, testing, file_name):
         return final_weights
 
     # =================================== TESTING PHASE ===================================
-    def test_phase(mdp, weights, numTests):
+    def test_phase(test_mdp, test_weights, num_tests):
         print
         print "========================= TESTING PHASE ========================="
         print
 
         # test params: mdp, weight vector, numTests, Verbose, Random
-        testRewards = test(mdp, weights, numTests, False, False)
+        testRewards = test(test_mdp, test_weights, num_tests, False, False)
         print testRewards
 
         numWon = 0.0
@@ -134,7 +134,7 @@ def run(q_learn, testing, file_name):
     # must be None. If you want pure testing starting with file-saved weights, use False, True, file_name.
     # Params are q_learn, testing, file_name. N.B. Testing returns the average win rate of using whichever
     # weights were just used for testing.
-    mdp = STSMDP()
+    mdp = STSMDP(num_enemies)
     numTests = 100
     numIters = 1000
     weights = defaultdict(float)
@@ -153,17 +153,17 @@ def helper(text_file_name):
     while len(line) > 0:
         data = line.split(" | ")
         stuff_list.append((data[0], float(data[1])))
-    print "here"
     stuff_list.sort(key=lambda x: x[1])
     for item in stuff_list:
         print item
 
 if __name__ == '__main__':
     # None if we want to just learn and immediately save/test weights
-    # run(learn, test, file_name)
+    # run(learn, test, file_name, num_enemies) - num_enemies goes for learning and testing
     avg_list = []
-    for i in range(5):
-        avg_list.append(run(False, True, "best.txt"))
-    avg_win = float(sum(avg_list)) / len(avg_list)
-    print avg_win
+    for enemies in range(15, 21):
+        for i in range(5):
+            avg_list.append(run(False, True, "best.txt", enemies))
+        avg_win = float(sum(avg_list)) / len(avg_list)
+        print "Number of enemies: " + str(enemies) + " gave win rate " + str(avg_win)
 

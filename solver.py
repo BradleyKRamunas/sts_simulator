@@ -312,4 +312,6 @@ def test(mdp, weights, numTrials=10, verbose=False, random = False):
         mdp.combat_count = 0
 
     print "Total runtime: " + str(int(time.time() - startTime)) + " seconds."
+    """for key in brain.action_count.keys():
+        print "{}, {}".format(key, brain.action_count[key])"""
     return totalRewards
