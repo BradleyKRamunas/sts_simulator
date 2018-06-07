@@ -30,11 +30,11 @@ class Combat:
             enemy.combat = self
         self.start_turn()
 
-        # To keep track of sequences of cards/just cards, really, played this combat.
-        self.last_card_played = None
-        self.cards_played = []
+        # To keep track of pairs of cards played this combat.
+        self.last_card_played = 'None'
         self.two_combos_played = []
         self.turns_ended_early = 0
+        # self.cards_played = []
 
         # To see if we're in an end-game state
         self.end_game = False
@@ -74,10 +74,12 @@ class Combat:
     def end_turn(self):
 
         # Treats ending turn as a card, so we don't confuse combos
-        if self.last_card_played is not None:
-            self.two_combos_played.append((self.last_card_played, "None"))
-        self.cards_played.append("None")
+        self.two_combos_played.append((self.last_card_played, "None"))
         self.last_card_played = "None"
+
+        # For single card played feature
+        # self.cards_played.append("None")
+
 
         # For features; check if we ended with excess energy.
         if self.player.energy > 0:
@@ -465,10 +467,11 @@ class CombatDeck:
             card.count += 1
 
             # To keep track of which cards we've played this combat
-            if self.combat.last_card_played is not None:
-                self.combat.two_combos_played.append((self.combat.last_card_played, card.name))
+            self.combat.two_combos_played.append((self.combat.last_card_played, card.name))
             self.combat.last_card_played = card.name
-            self.combat.cards_played.append(card.name)
+
+            # For single card feature
+            # self.combat.cards_played.append(card.name)
 
             return True
         else:

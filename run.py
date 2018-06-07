@@ -10,8 +10,12 @@ from numpy_test import test_np
 def run(q_learn, testing, file_name, num_enemies = 10):
 
     def learn_phase(mdp, weights = defaultdict(float), numIters = 1000):
+        print
+        print "========================= TRAINING PHASE ========================="
+        print
+
         # simulate params: (mdp, weights, number of iterations, verbose, 0 - generic policy; 1 - q-learning, print weights)
-        totalRewards, final_weights = learn(mdp, weights, numIters, False, 0, False)
+        totalRewards, final_weights = learn(mdp, weights, numIters, False, 1, False)
         print totalRewards
 
         # Write weights to file
@@ -51,44 +55,44 @@ def run(q_learn, testing, file_name, num_enemies = 10):
 
         def print_all_stats():
             print "Total averages: (win/loss rate)"
-            print "win rate: " + str(numWon / numIters)
-            print "loss rate: " + str(1 - (numWon / numIters))
+            print "win rate: " + str(float(numWon) / numIters)
+            print "loss rate: " + str(1 - (float(numWon) / numIters))
             print
 
             print "Last " + str(numIters / 2) + " rounds: win rate"
             print "----------------------"
-            numLaterWon = 0.0
+            numLaterWon = 0
             for i in range(numIters / 2, numIters):
                 if totalRewards[i] > 0:
                     numLaterWon += 1
-            print numLaterWon / (numIters / 2)
+            print float(numLaterWon) / (numIters / 2)
             print
 
             print "Last 100 rounds: win rate"
             print "----------------------"
-            last100 = 0.0
+            last100 = 0
             for i in range(numIters - 100, numIters):
                 if totalRewards[i] > 0:
                     last100 += 1
-            print last100 / 100
+            print float(last100) / 100
             print
 
             print "Last 50 rounds: win rate"
             print "----------------------"
-            last50 = 0.0
+            last50 = 0
             for i in range(numIters - 50, numIters):
                 if totalRewards[i] > 0:
                     last50 += 1
-            print last50 / 50
+            print float(last50) / 50
             print
 
             print "First " + str(numIters / 2) + " rounds: win rate"
             print "----------------------"
-            first250 = 0.0
+            first250 = 0
             for i in range(0, numIters / 2):
                 if totalRewards[i] > 0:
                     first250 += 1
-            print first250 / (numIters / 2)
+            print float(first250) / (numIters / 2)
 
         print_weights(final_weights)
         print_all_stats()
@@ -101,21 +105,22 @@ def run(q_learn, testing, file_name, num_enemies = 10):
         print "========================= TESTING PHASE ========================="
         print
 
-        # test params: mdp, weight vector, numTests, Verbose, Random
-        testRewards = test(test_mdp, test_weights, num_tests, False, False)
+        # Policies - 0 -> random; 1 -> damage greedy; 2 -> q-learning
+        # test params:     mdp,     weight vector, numTests, Verbose, policy
+        testRewards = test(test_mdp, test_weights, num_tests, False, 1)
         print testRewards
 
-        numWon = 0.0
+        numWon = 0
         for reward in testRewards:
             if reward > 0:
                 numWon += 1
 
         print "Total averages: (win/loss rate)"
-        print "win rate: " + str(numWon / numTests)
-        print "loss rate: " + str(1 - (numWon / numTests))
+        print "win rate: " + str(float(numWon) / numTests)
+        print "loss rate: " + str(1 - (float(numWon) / numTests))
         print
 
-        return numWon / numTests
+        return float(numWon) / numTests
 
     def read_weights(name):
         weight_file = open(name)
@@ -160,10 +165,7 @@ def helper(text_file_name):
 if __name__ == '__main__':
     # None if we want to just learn and immediately save/test weights
     # run(learn, test, file_name, num_enemies) - num_enemies goes for learning and testing
-    avg_list = []
-    for enemies in range(15, 21):
-        for i in range(5):
-            avg_list.append(run(False, True, "best.txt", enemies))
-        avg_win = float(sum(avg_list)) / len(avg_list)
-        print "Number of enemies: " + str(enemies) + " gave win rate " + str(avg_win)
+    # Usage: file_name -> None if you want to start learning anew
+    enemies = 10
+    run(True, False, None, enemies)
 

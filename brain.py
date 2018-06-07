@@ -1,5 +1,6 @@
 import random
 import cards
+from combat import StateType
 from collections import defaultdict
 
 class Brain:
@@ -62,14 +63,54 @@ class Brain:
         actions = self.mdp.generate_actions(state)
         while successorState is None:
             try:
-                action = random.choice(actions)
+                # action = random.choice(actions) # Grabs a completely random action
+                action = actions[0] # Always tries the first action available
             except IndexError:
                 print state.state_type
                 state.print_information()
-            # action = actions[0]
             successorState, reward = self.mdp.generate_successor_state(state, action, False)
             if successorState is None:
                 actions.remove(action)
 
         # self.action_count[action] += 1
         return action
+
+    # Greedy baseline: Always picks the card that does the most damage in combat, or random otherwise.
+    def greedy_baseline(self, state):
+        if state is not None and state.state_type == StateType.NORMAL_COMBAT:
+            actions = self.mdp.generate_actions(state)
+            max_action = actions[0]
+            max_delta = 0
+            prev_sum = 0
+            for enemy in state.enemies:
+                prev_sum += enemy.block
+                prev_sum += enemy.health
+
+            for action in actions:
+                next_state, reward = self.mdp.generate_successor_state(state, action, False)
+                new_sum = 0
+                if next_state is not None:
+                    if isinstance(next_state, int):
+                        return (cards.strike, -1)
+                    # If we're still in a combat, consider the next states.
+                    if next_state.state_type == StateType.NORMAL_COMBAT:
+                        for enemy in next_state.enemies:
+                            new_sum += enemy.block
+                            new_sum += enemy.health
+                        # If we've won a combat and instantly entered a new one
+                        if prev_sum - new_sum < 0:
+                            max_action = action
+                            break
+                        elif prev_sum - new_sum > max_delta:
+                            max_action = action
+                            max_delta = prev_sum - new_sum
+                    else:
+                        # We got out of combat, which means we probably won the fight, so take that action.
+                        max_action = action
+                        break
+            if self.mdp.generate_successor_state(state, max_action, False)[0] is None:
+                return self.random_action(state)
+            else:
+                return max_action
+        else:
+            return self.random_action(state)

@@ -79,9 +79,9 @@ def game_general_feature_extractor(state, action):
         for card in state.player.deck.exhaust_pile:
             features[("exhausted", card.name)] = 1"""
 
-        # This way we can keep track of which cards we've played this round
-        for card in state.cards_played:
-            features[("single_played", card)] += 1
+        # This way we can keep track of which cards we've played this round. Only card pairs now!
+        '''for card in state.cards_played:
+            features[("single_played", card)] += 1'''
         for card_pair in state.two_combos_played:
             features[("double_played", card_pair)] += 1
 
@@ -180,7 +180,7 @@ def learn(mdp, weights, numTrials=10, verbose=False, action_gen_type = 0, print_
     for trial in range(numTrials):
 
         curTime = time.time()
-        if curTime - lastThirty >= 15:
+        if curTime - lastThirty >= 5:
             print str(int(curTime - startTime)) + " seconds have elapsed."
             print "Iteration number: " + str(trial)
             lastThirty = curTime
@@ -251,7 +251,7 @@ def learn(mdp, weights, numTrials=10, verbose=False, action_gen_type = 0, print_
     return totalRewards, function_approx.weights
 
 
-def test(mdp, weights, numTrials=10, verbose=False, random = False):
+def test(mdp, weights, numTrials=10, verbose=False, policy = 0):
 
     startTime = time.time()
     lastThirty = startTime
@@ -265,7 +265,7 @@ def test(mdp, weights, numTrials=10, verbose=False, random = False):
     for trial in range(numTrials):
 
         curTime = time.time()
-        if curTime - lastThirty >= 15:
+        if curTime - lastThirty >= 5:
             print str(int(curTime - startTime)) + " seconds have elapsed."
             print "Iteration number: " + str(trial)
             lastThirty = curTime
@@ -281,10 +281,14 @@ def test(mdp, weights, numTrials=10, verbose=False, random = False):
 
         while True:
             # Algorithm will pick one of its possible actions from state state to do.
-            if random:
+            if policy == 0:
                 action = brain.random_action(state)
-            else:
+            elif policy == 1:
+                action = brain.greedy_baseline(state)
+            elif policy == 2:
                 action = brain.q_learning_test(state)
+            else:
+                exit("stop - must use 0, 1, or 2 as policy option.")
 
             if verbose:
                 print "------------------"
