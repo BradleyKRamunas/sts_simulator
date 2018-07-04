@@ -9,3 +9,8 @@
 .main.py.swp
 *.iml
 *.xml___jb_old___
+.DS_Store
+.idea/inspectionProfiles/Project_Default.xml
+2018-06-03 01_06_25 with 2000 iterations.txt
+best.txt
+win rate.txt

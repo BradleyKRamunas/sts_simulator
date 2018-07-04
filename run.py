@@ -107,7 +107,7 @@ def run(q_learn, testing, file_name, num_enemies = 10):
 
         # Policies - 0 -> random; 1 -> damage greedy; 2 -> q-learning
         # test params:     mdp,     weight vector, numTests, Verbose, policy
-        testRewards = test(test_mdp, test_weights, num_tests, False, 1)
+        testRewards = test(test_mdp, test_weights, num_tests, True, 2)
         print testRewards
 
         numWon = 0
@@ -140,7 +140,7 @@ def run(q_learn, testing, file_name, num_enemies = 10):
     # Params are q_learn, testing, file_name. N.B. Testing returns the average win rate of using whichever
     # weights were just used for testing.
     mdp = STSMDP(num_enemies)
-    numTests = 100
+    numTests = 1
     numIters = 1000
     weights = defaultdict(float)
     if file_name is not None:
@@ -167,5 +167,6 @@ if __name__ == '__main__':
     # run(learn, test, file_name, num_enemies) - num_enemies goes for learning and testing
     # Usage: file_name -> None if you want to start learning anew
     enemies = 10
-    run(True, False, None, enemies)
+    # for i in range(3):
+    run(False, True, 'best_txt/best.txt', enemies)
 

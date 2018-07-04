@@ -56,7 +56,7 @@ def game_general_feature_extractor(state, action):
             totalEnemyMaxHP += enemy.max_health
             totalEnemyHP += enemy.health
 
-        # features["total enemy HP"] = float(totalEnemyHP) / totalEnemyMaxHP
+        features["total enemy HP"] = float(totalEnemyHP) / totalEnemyMaxHP
         features["block percentage"] = min(1, 0 if totalEnemyAtk == 0 else float(state.player.block) / totalEnemyAtk)
         # features["total enemy block"] = totalEnemyBlock
         # TODO: Features for player's action (how much damage it's doing; what statuses it's applying)
@@ -88,7 +88,7 @@ def game_general_feature_extractor(state, action):
         # See how many turns we ended early
         features["early_end"] = state.turns_ended_early
 
-    elif state.state_type == StateType.COPY:
+    '''elif state.state_type == StateType.COPY:
         features["copy"] = 1
         # Appends indicators for all cards in player's hand
         for card in state.player.deck.hand:
@@ -148,7 +148,7 @@ def game_general_feature_extractor(state, action):
             features[("add_card", card.name)] = 1
 
     else:  # state.state_type == StateType.NORMAL_RANDOM:
-        features["normalRandom"] = 1
+        features["normalRandom"] = 1'''
 
     return features
 

@@ -65,8 +65,7 @@ class STSMDP:
                 if self.combat_count >= self.combat_wins:
                     return (1, 1000)
 
-                # Else, we have some probability of going to a number of different events.
-                probability = random.uniform(0, 1)
+                # Else, we add a card
                 temp_state.nc_player.health = temp_state.player.health
                 temp_state.nc_player.max_health = temp_state.player.max_health
 
@@ -100,8 +99,6 @@ class STSMDP:
             if dead_enemies:
                 temp_state.end_game = True
                 return (temp_state, 0)
-
-
             else:
                 return (temp_state, 0)
         if state.state_type == StateType.COPY:
